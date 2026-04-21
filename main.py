@@ -19,7 +19,7 @@ def load_data(file_name):
         return None
 
 # --- 2. 画面設定とデザイン ---
-st.set_page_config(page_title="受験全科目 網羅クイズ", layout="centered")
+st.set_page_config(page_title="文系科目は、ゆずらない。", layout="centered")
 
 st.markdown("""
     <style>
@@ -31,17 +31,17 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- 3. 科目選択（入口） ---
-st.title("📚 受験全科目 網羅クイズ")
+st.title("📚 文系科目は、ゆずらない。")
 
 # セッション状態で科目が変わったら進捗をリセットする
 selected_subject = st.sidebar.selectbox(
     "学習する科目を選んでください",
-    ["選択してください", "古文単語350", "英単語", "日本史一問一答"]
+    ["選択してください", "古文単語", "英単語", "日本史一問一答"]
 )
 
 # ファイル名の紐付け
 subject_map = {
-    "古文単語350": "kobun350.csv",
+    "古文単語": "kobun350.csv",
     "英単語": "english.csv",
     "日本史一問一答": "nihonshi.csv"
 }
