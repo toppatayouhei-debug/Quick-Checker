@@ -6,12 +6,10 @@ import random
 def load_data(file_name, subject):
     try:
         df = pd.read_csv(file_name, engine='python', encoding='utf-8-sig', header=None)
-        
-        # 1行目がヘッダー（見出し）なら飛ばす判定
+        # 1行目がヘッダー（見出し）なら飛ばす
         first_val = str(df.iloc[0, 0]).lower()
-        if subject == "英単語" or "essential" in first_val or "level" in first_val or "question" in first_val:
+        if any(x in first_val for x in ["question", "word", "単語", "id", "essential"]):
             df = df.iloc[1:].reset_index(drop=True)
-            
         return df
     except Exception:
         return None
@@ -28,7 +26,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# アプリタイトルの変更
 st.title("🔥 文系科目は、ゆずらない")
 
 # --- 3. 科目選択 ---
@@ -37,7 +34,6 @@ selected_subject = st.sidebar.selectbox(
     ["選択してください", "英単語", "古文単語", "日本史一問一答"]
 )
 
-# ファイル名との紐付け（GitHub上のファイル名と一致させてください）
 subject_map = {
     "古文単語": "kobun350.csv",
     "英単語": "final_tango_list.csv",
@@ -45,10 +41,10 @@ subject_map = {
 }
 
 if selected_subject == "選択してください":
-    st.info("サイドバーから科目を選択して、学習を開始しましょう！")
+    st.info("サイドバーから科目を選択して開始してください。")
     st.stop()
 
-# 状態リセット
+# 状態リセット処理
 if 'last_sub' not in st.session_state or st.session_state.last_sub != selected_subject:
     st.session_state.last_sub = selected_subject
     raw_df = load_data(subject_map[selected_subject], selected_subject)
@@ -62,74 +58,95 @@ if 'last_sub' not in st.session_state or st.session_state.last_sub != selected_s
         st.session_state.q_df = None
 
 if st.session_state.q_df is None:
-    st.error(f"⚠️ '{subject_map[selected_subject]}' が見つかりません。GitHubのファイル名を確認してください。")
+    st.error(f"⚠️ '{subject_map[selected_subject]}' が見つかりません。")
     st.stop()
 
 # --- 4. クイズ表示 ---
 df = st.session_state.q_df
 if st.session_state.idx < len(df):
     row = df.iloc[st.session_state.idx]
-    
-    # 共通データ取得 (0:単語/問題, 1:正解, 2:誤答, 3:例文/問題文, 4:訳/解説)
-    target = str(row[0]).strip()
-    correct_list = [a.strip() for a in str(row[1]).split(',')]
-    dummy_list = [d.strip() for d in str(row[2]).split(',')]
-    sentence = str(row[3]).strip() if len(row) > 3 and pd.notna(row[3]) else ""
-    translation = str(row[4]).strip() if len(row) > 4 and pd.notna(row[4]) else ""
-
-    if st.session_state.new_ques:
-        display_correct = random.choice(correct_list)
-        display_dummies = random.sample(dummy_list, min(len(dummy_list), 3))
-        choices = list(set([display_correct] + display_dummies))
-        random.shuffle(choices)
-        st.session_state.shuffled_choices = choices
-        st.session_state.new_ques = False
-        st.session_state.answered = False
-
+    st.progress((st.session_state.idx + 1) / len(df))
     st.subheader(f"【{selected_subject}】 第 {st.session_state.idx + 1} 問")
-    
-    # 科目別の表示カスタマイズ
-    if selected_subject == "古文単語":
-        h_target = f'<span class="highlight-target">{target}</span>'
-        if sentence and sentence.lower() != "nan":
-            display_text = sentence.replace(target, h_target) if target in sentence else f"{sentence}<br><br>({h_target})"
-        else:
-            display_text = f"（単語） {h_target}"
-            
-    elif selected_subject == "英単語":
-        display_text = f'<div style="text-align:center;"><span style="font-size:32px; font-weight:bold;">{target}</span></div>'
-        if sentence and sentence.lower() != "nan":
-            display_text += f'<hr><p style="font-size:18px;">{sentence.replace(target, f"<b>{target}</b>")}</p>'
-            
-    else: # 日本史
-        display_text = sentence if sentence and sentence.lower() != "nan" else f"【問題】 {target}"
 
-    st.markdown(f'<div class="sentence-box"><p style="font-size:20px; color:#333;">{display_text}</p></div>', unsafe_allow_html=True)
+    # --- 日本史：記述入力モード ---
+    if selected_subject == "日本史一問一答":
+        # 0:問題, 1:答え, 2:時代
+        q_text = str(row[0])
+        correct_answer = str(row[1]).strip()
+        
+        if len(row) >= 3 and pd.notna(row[2]):
+            st.info(f"時代：{row[2]}")
 
-    # 選択肢
-    for choice in st.session_state.shuffled_choices:
-        if st.button(choice, use_container_width=True, disabled=st.session_state.answered):
+        st.markdown(f'<div class="sentence-box"><p style="font-size:22px;"><b>問題：</b>{q_text}</p></div>', unsafe_allow_html=True)
+        st.write("⚠️ 漢字で正確に入力してください。")
+
+        with st.form(key='nihonshi_form', clear_on_submit=True):
+            user_input = st.text_input("答えを入力してください", key="nihonshi_input")
+            submit_button = st.form_submit_button(label='解答する')
+
+        if submit_button:
+            if user_input.strip() == correct_answer:
+                st.success(f"✨ 正解！！ 「{correct_answer}」")
+                st.session_state.score += 1
+            else:
+                st.error(f"❌ 不正解... 正解は 「{correct_answer}」 でした。")
+            
             st.session_state.answered = True
-            st.session_state.last_res = "correct" if choice in correct_list else "incorrect"
-            if st.session_state.last_res == "correct": st.session_state.score += 1
-            st.rerun()
 
-    if st.session_state.answered:
-        if st.session_state.last_res == "correct": st.success("✨ 正解！")
-        else: st.error("❌ 不正解...")
-        st.info(f"**正解:** {', '.join(correct_list)}")
-        if translation and translation.lower() != "nan":
-            with st.expander("📖 解説・訳を見る", expanded=True): st.write(translation)
-        if st.button("次の問題へ 👉", type="primary"):
-            st.session_state.idx += 1
-            st.session_state.new_ques = True
-            st.session_state.answered = False
-            st.rerun()
+        if st.session_state.answered:
+            if st.button("次の問題へ 👉", type="primary"):
+                st.session_state.idx += 1
+                st.session_state.answered = False
+                st.rerun()
+
+    # --- 英・古文：選択肢モード ---
+    else:
+        target = str(row[0]).strip()
+        correct_raw = str(row[1]).strip()
+        dummy_raw = str(row[2]).strip()
+        sentence = str(row[3]).strip() if len(row) > 3 else ""
+        translation = str(row[4]).strip() if len(row) > 4 else ""
+
+        if st.session_state.new_ques:
+            correct_list = [c.strip() for c in correct_raw.split(',')]
+            dummy_list = [d.strip() for d in dummy_raw.split(',') if d.strip() != ""]
+            display_correct = random.choice(correct_list)
+            display_dummies = random.sample(dummy_list, min(len(dummy_list), 3))
+            choices = list(set([display_correct] + display_dummies))
+            random.shuffle(choices)
+            st.session_state.shuffled_choices = choices
+            st.session_state.new_ques = False
+
+        if selected_subject == "英単語":
+            display_text = f'<div style="text-align:center;"><span style="font-size:35px; font-weight:bold; color:#2e7d32;">{target}</span></div>'
+            if sentence and sentence.lower() != "nan":
+                display_text += f'<hr><p style="font-size:18px;">{sentence}</p>'
+        else: # 古文
+            h_target = f'<span class="highlight-target">{target}</span>'
+            display_text = sentence.replace(target, h_target) if (sentence and target in sentence) else f"{sentence}<br>({h_target})"
+        
+        st.markdown(f'<div class="sentence-box"><p style="font-size:20px; color:#333;">{display_text}</p></div>', unsafe_allow_html=True)
+
+        for choice in st.session_state.shuffled_choices:
+            if st.button(choice, use_container_width=True, disabled=st.session_state.answered):
+                st.session_state.answered = True
+                st.session_state.last_res = "correct" if choice in correct_raw.split(',') else "incorrect"
+                if st.session_state.last_res == "correct": st.session_state.score += 1
+                st.rerun()
+
+        if st.session_state.answered:
+            if st.session_state.last_res == "correct": st.success("✨ 正解！")
+            else: st.error(f"❌ 不正解... 正解は: {correct_raw}")
+            if st.button("次の問題へ 👉", type="primary"):
+                st.session_state.idx += 1
+                st.session_state.answered = False
+                st.session_state.new_ques = True
+                st.rerun()
+
 else:
     st.balloons()
     st.write(f"## 🎉 {selected_subject} 全問終了！")
-    accuracy = (st.session_state.score / len(df)) * 100
-    st.metric("最終正答率", f"{accuracy:.1f}%")
-    if st.button("もう一度挑戦（シャッフル）"):
+    st.write(f"正解数: {st.session_state.score} / {len(df)}")
+    if st.button("最初からやり直す"):
         del st.session_state.q_df
         st.rerun()
