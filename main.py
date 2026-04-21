@@ -3,50 +3,54 @@ import pandas as pd
 import random
 import re
 
-# --- 1. 画面設定（サイドバーの白地・黒文字を徹底） ---
+# --- 1. 画面設定（すべての黒塗りを排除し、白地・黒文字を強制） ---
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 st.markdown("""
     <style>
-    /* 1. メイン背景を白に固定 */
+    /* 1. メインエリアを強制的に白背景・黒文字にする */
     .stApp {
         background-color: #FFFFFF !important;
+        color: #000000 !important;
     }
     
-    /* 2. サイドバーを「真っ白」に固定し、枠線を引く */
-    [data-testid="stSidebar"] {
+    /* 2. サイドバーの黒塗りを完全に排除し、白背景にする */
+    [data-testid="stSidebar"], 
+    [data-testid="stSidebar"] > div:first-child,
+    section[data-testid="stSidebar"] {
         background-color: #FFFFFF !important;
-        border-right: 1px solid #EEEEEE;
+        background: #FFFFFF !important;
     }
 
-    /* 3. サイドバー内のすべての文字・ラベルを「漆黒」に固定 */
-    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+    /* 3. サイドバー内のすべてのテキスト・ラベルを漆黒にする */
+    [data-testid="stSidebar"] .stSelectbox label p,
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] div {
+    [data-testid="stSidebar"] div,
+    [data-testid="stSidebar"] .stMarkdown {
         color: #000000 !important;
-        font-weight: bold !important;
+        font-weight: 600 !important;
     }
 
-    /* 4. 全体の基本文字色 */
-    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label {
+    /* 4. 入力フォームやセレクトボックスの背景が沈まないように調整 */
+    .stSelectbox div[data-baseweb="select"] > div {
+        background-color: #FFFFFF !important;
         color: #000000 !important;
+        border: 1px solid #CCCCCC !important;
     }
 
-    /* 5. 問題文のボックス */
+    /* 5. 問題文ボックス */
     .sentence-box {
-        background-color: #F8F9FA !important;
+        background-color: #F0F2F6 !important;
         color: #000000 !important;
         padding: 20px;
         border-radius: 12px;
         margin-bottom: 20px;
+        border: 1px solid #DDDDDD;
         border-left: 10px solid;
-        border-top: 1px solid #EEEEEE;
-        border-right: 1px solid #EEEEEE;
-        border-bottom: 1px solid #EEEEEE;
     }
 
-    /* 6. 選択肢ボタン（黒枠でクッキリ） */
+    /* 6. ボタン：黒枠で白背景、文字は黒 */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
@@ -54,7 +58,7 @@ st.markdown("""
         font-weight: bold !important;
     }
     
-    /* 7. 日本史の「解答する」ボタン */
+    /* 7. 日本史の解答ボタン（ここだけは緑で目立たせる） */
     button[kind="primaryFormSubmit"] {
         background-color: #2E7D32 !important;
         color: #FFFFFF !important;
@@ -62,8 +66,11 @@ st.markdown("""
     }
 
     /* 8. ハイライト */
-    .hl-red { color: #CC0000 !important; font-weight: bold; text-decoration: underline; }
-    .hl-green { color: #1B5E20 !important; font-weight: bold; border-bottom: 2px solid #1B5E20; }
+    .hl-red { color: #D32F2F !important; font-weight: bold; text-decoration: underline; }
+    .hl-green { color: #2E7D32 !important; font-weight: bold; border-bottom: 2px solid #2E7D32; }
+    
+    /* 9. すべての見出し・テキストを黒に */
+    h1, h2, h3, p, span, div, label { color: #000000 !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -83,6 +90,7 @@ def load_raw_data(subject):
             return pd.read_csv(files[subject], encoding='utf-8-sig')
         else:
             df = pd.read_csv(files[subject], encoding='utf-8-sig', header=None)
+            # 見出し行飛ばし
             if "単語" in str(df.iloc[0,0]) or "question" in str(df.iloc[0,0]):
                 df = df.iloc[1:].reset_index(drop=True)
             return df
@@ -96,12 +104,12 @@ if selected_subject != "選択してください":
             levels = ["All"] + sorted(raw_df['level'].unique().tolist(), key=lambda x: int(x) if str(x).isdigit() else 999)
             sel_level = st.sidebar.selectbox("レベルを選択", levels)
             current_df = raw_df if sel_level == "All" else raw_df[raw_df['level'] == sel_level]
-            sub_color = "#D32F2F" # 赤
+            sub_color = "#D32F2F"
         else:
             current_df, sel_level = raw_df, None
-            sub_color = "#2E7D32" # 緑
+            sub_color = "#2E7D32"
 
-        # リセット処理
+        # 科目/レベル変更時のリセット
         if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
             st.session_state.active_sub = selected_subject
             st.session_state.active_level = sel_level
@@ -173,6 +181,6 @@ if selected_subject != "選択してください":
                         st.rerun()
         else:
             st.balloons()
-            if st.button("全問終了！最初から"):
+            if st.button("最初から"):
                 st.session_state.idx = 0
                 st.rerun()
