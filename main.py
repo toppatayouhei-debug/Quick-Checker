@@ -3,329 +3,145 @@ import pandas as pd
 import random
 import re
 
-# ==================================================
-# 基本設定（安定版）
-# ==================================================
-st.set_page_config(
-    page_title="文系科目は、ゆずれない",
-    page_icon="🔥",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
+# --- 1. 画面設定（サイドバー：水色 / メイン：極淡ピンク） ---
+st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
-# ==================================================
-# CSS（スマホ / iPad対応）
-# ==================================================
 st.markdown("""
-<style>
-.stApp{
-    background:#f7f8fc;
-}
-
-.block-container{
-    max-width:720px;
-    padding-top:1rem;
-    padding-bottom:3rem;
-    padding-left:1rem;
-    padding-right:1rem;
-}
-
-.main-title{
-    text-align:center;
-    font-size:2.1rem;
-    font-weight:900;
-    margin-bottom:0.2rem;
-}
-
-.sub-title{
-    text-align:center;
-    color:#666;
-    font-size:0.95rem;
-    margin-bottom:1.2rem;
-}
-
-.card{
-    background:white;
-    padding:22px;
-    border-radius:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.06);
-    margin-bottom:1rem;
-    line-height:1.7;
-    font-size:1.08rem;
-    color:#111;
-}
-
-.red{border-left:8px solid #e53935;}
-.green{border-left:8px solid #2e7d32;}
-.blue{border-left:8px solid #1565c0;}
-
-.stButton button{
-    width:100%;
-    border-radius:14px;
-    padding:0.8rem;
-    font-size:0.95rem;
-    font-weight:700;
-    min-height:66px;
-}
-
-@media (max-width:768px){
-.main-title{font-size:1.6rem;}
-.card{padding:16px;font-size:1rem;}
-}
-</style>
-""", unsafe_allow_html=True)
-
-# ==================================================
-# タイトル
-# ==================================================
-st.markdown('<div class="main-title">🔥 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・古文・日本史 学習ツール</div>', unsafe_allow_html=True)
-
-# ==================================================
-# CSV読み込み
-# ==================================================
-@st.cache_data
-def load_csv(subject):
-    files = {
-        "英単語": "final_tango_list.csv",
-        "古文単語": "kobun350.csv",
-        "日本史一問一答": "nihonshi.csv"
+    <style>
+    .stApp { background-color: #FFF9FB !important; }
+    [data-testid="stSidebar"], [data-testid="stSidebarContent"], [data-testid="stSidebarNav"] {
+        background-color: #E0F7FA !important; 
+        background: #E0F7FA !important;
     }
+    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label, [data-testid="stSidebar"] * {
+        color: #000000 !important;
+    }
+    .sentence-box {
+        background-color: #FFFFFF !important; 
+        color: #000000 !important;
+        padding: 22px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #E0E0E0;
+        border-left: 10px solid;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.05);
+    }
+    .stButton button {
+        color: #000000 !important;
+        background-color: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        font-weight: bold !important;
+    }
+    button[kind="primaryFormSubmit"] { background-color: #00796B !important; color: #FFFFFF !important; }
+    
+    .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline !important; }
+    .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 3px solid #1B5E20 !important; }
+    </style>
+    """, unsafe_allow_html=True)
 
+st.title("🔥 文系科目は、ゆずれない")
+
+@st.cache_data
+def load_raw_data(subject):
+    files = {"英単語": "final_tango_list.csv", "古文単語": "kobun350.csv", "日本史一問一答": "nihonshi.csv"}
     try:
         if subject == "英単語":
-            return pd.read_csv(files[subject], encoding="utf-8-sig")
+            return pd.read_csv(files[subject], encoding='utf-8-sig')
         else:
-            return pd.read_csv(files[subject], encoding="utf-8-sig", header=None)
-    except Exception as e:
-        st.error(f"CSV読み込み失敗: {e}")
-        return None
+            df = pd.read_csv(files[subject], encoding='utf-8-sig', header=None)
+            if "単語" in str(df.iloc[0,0]) or "question" in str(df.iloc[0,0]):
+                df = df.iloc[1:].reset_index(drop=True)
+            return df
+    except: return None
 
-# ==================================================
-# 状態初期化（必要キーのみ）
-# ==================================================
-def clear_quiz_state():
-    keys = [
-        "quiz_subject",
-        "df",
-        "idx",
-        "answered",
-        "choices",
-        "correct",
-        "selected"
-    ]
+selected_subject = st.sidebar.selectbox("学習する科目を選択", ["選択してください", "英単語", "古文単語", "日本史一問一答"])
 
-    for key in keys:
-        if key in st.session_state:
-            del st.session_state[key]
+if selected_subject != "選択してください":
+    raw_df = load_raw_data(selected_subject)
+    if raw_df is not None:
+        if selected_subject == "英単語":
+            levels = ["All"] + sorted(raw_df['level'].unique().tolist(), key=lambda x: int(x) if str(x).isdigit() else 999)
+            sel_level = st.sidebar.selectbox("レベルを選択", levels)
+            current_df = raw_df if sel_level == "All" else raw_df[raw_df['level'] == sel_level]
+            sub_color = "#D32F2F"
+        else:
+            current_df, sel_level = raw_df, None
+            sub_color = "#00796B"
 
-# ==================================================
-# 科目開始
-# ==================================================
-def start_subject(df, subject):
-    st.session_state.quiz_subject = subject
-    st.session_state.df = df.sample(frac=1).reset_index(drop=True)
-    st.session_state.idx = 0
-    st.session_state.answered = False
+        if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
+            st.session_state.active_sub, st.session_state.active_level = selected_subject, sel_level
+            st.session_state.idx, st.session_state.answered = 0, False
+            st.session_state.q_df = current_df.sample(frac=1).reset_index(drop=True)
+            if 'choices' in st.session_state: del st.session_state.choices
 
-# ==================================================
-# 次の問題
-# ==================================================
-def next_q():
-    st.session_state.idx += 1
-    st.session_state.answered = False
+        df = st.session_state.q_df
+        if st.session_state.idx < len(df):
+            row = df.iloc[st.session_state.idx]
+            st.subheader(f"【{selected_subject}】 第 {st.session_state.idx + 1} 問")
 
-    for key in ["choices", "correct", "selected"]:
-        if key in st.session_state:
-            del st.session_state[key]
+            if selected_subject == "日本史一問一答":
+                q, ans = str(row.iloc[0]), str(row.iloc[1]).strip()
+                st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><h3>問題：{q}</h3></div>', unsafe_allow_html=True)
+                with st.form(key='hist_form'):
+                    u_in = st.text_input("答えを入力")
+                    if st.form_submit_button("解答する", type="primary"):
+                        st.session_state.answered, st.session_state.u_ans = True, u_in.strip()
+                if st.session_state.answered:
+                    if st.session_state.u_ans == ans: st.success(f"✨ 正解！ 「{ans}」")
+                    else: st.error(f"❌ 正解は 「{ans}」")
+                    if st.button("次へ 👉"):
+                        st.session_state.idx += 1
+                        st.session_state.answered = False
+                        st.rerun()
+            else:
+                if selected_subject == "英単語":
+                    word, correct = str(row['question']).strip(), str(row['all_answers']).strip()
+                    dummy_raw, sentence, trans = str(row['dummy_pool']), str(row['sentence']), str(row['translation'])
+                    hl_class = "hl-red"
+                else:
+                    word, correct, dummy_raw = str(row.iloc[0]).strip(), str(row.iloc[1]).strip(), str(row.iloc[2])
+                    sentence, trans = str(row.iloc[3]), str(row.iloc[4])
+                    hl_class = "hl-green"
 
-# ==================================================
-# 選択肢ボタン（2列）
-# ==================================================
-def show_choices(subject, idx):
-    cols = st.columns(2)
+                # 【重要】正解を「先頭の一つ」に完全固定
+                sel_correct = [c.strip() for c in correct.split(',') if c.strip()][0]
 
-    for i, c in enumerate(st.session_state.choices):
-        with cols[i % 2]:
-            if st.button(
-                c,
-                key=f"{subject}_{idx}_{i}",
-                disabled=st.session_state.answered,
-                use_container_width=True
-            ):
-                st.session_state.selected = c
-                st.session_state.answered = True
+                # --- 誤爆防止ハイライト ---
+                disp_sentence = sentence if (sentence and sentence.lower() not in ["nan", "sentence", ""]) else ""
+                if not disp_sentence:
+                    disp = f"意味を答えよ： <span class='{hl_class}'>{word}</span>"
+                else:
+                    # 単語そのものが文中にあれば1回だけ置換
+                    if word in disp_sentence:
+                        disp = disp_sentence.replace(word, f'<span class="{hl_class}">{word}</span>', 1)
+                    else:
+                        # 見つからなければ無理に光らせず、文末に表示
+                        disp = f"{disp_sentence}<br><br>ターゲット単語： <span class='{hl_class}'>{word}</span>"
+
+                st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><p style="font-size:22px;">{disp}</p></div>', unsafe_allow_html=True)
+
+                if 'choices' not in st.session_state or st.session_state.get('last_idx') != st.session_state.idx:
+                    dummies = [d.strip() for d in str(dummy_raw).split(',') if d.strip()]
+                    # 正解候補は一つだけ！
+                    pool = [sel_correct] + random.sample(dummies, min(len(dummies), 3))
+                    random.shuffle(pool)
+                    st.session_state.choices, st.session_state.ans_val, st.session_state.last_idx = pool, sel_correct, st.session_state.idx
+
+                for c in st.session_state.choices:
+                    if st.button(c, use_container_width=True, disabled=st.session_state.answered):
+                        st.session_state.answered, st.session_state.is_cor = True, (c == st.session_state.ans_val)
+                        st.rerun()
+
+                if st.session_state.answered:
+                    if st.session_state.is_cor: st.success(f"✨ 正解！ 「{st.session_state.ans_val}」")
+                    else: st.error(f"❌ 正解は 「{st.session_state.ans_val}」")
+                    st.info(f"💡 意味一覧: {correct}\n\n📖 訳: {trans}")
+                    if st.button("次へ 👉"):
+                        st.session_state.idx += 1
+                        st.session_state.answered = False
+                        st.rerun()
+        else:
+            st.balloons()
+            if st.button("最初から"):
+                st.session_state.idx = 0
                 st.rerun()
-
-# ==================================================
-# 科目選択
-# ==================================================
-subject = st.selectbox(
-    "学習する科目を選択",
-    ["選択してください", "英単語", "古文単語", "日本史一問一答"],
-    key="subject_selector"
-)
-
-if subject == "選択してください":
-    st.info("科目を選んでください。")
-    st.stop()
-
-df = load_csv(subject)
-if df is None:
-    st.stop()
-
-# 科目変更時
-if (
-    "quiz_subject" not in st.session_state
-    or st.session_state.quiz_subject != subject
-):
-    clear_quiz_state()
-    start_subject(df, subject)
-
-# ==================================================
-# 問題情報
-# ==================================================
-df = st.session_state.df
-idx = st.session_state.idx
-
-# 終了判定
-if idx >= len(df):
-    st.balloons()
-    st.success("全問終了！")
-
-    if st.button("もう一度やる"):
-        clear_quiz_state()
-        start_subject(df, subject)
-        st.rerun()
-
-    st.stop()
-
-row = df.iloc[idx]
-
-# 進捗バー
-st.progress((idx + 1) / len(df))
-st.caption(f"{idx+1} / {len(df)} 問")
-
-# ==================================================
-# 英単語
-# ==================================================
-if subject == "英単語":
-
-    word = str(row["question"])
-    answer = str(row["all_answers"])
-    dummy = str(row["dummy_pool"])
-    sentence = str(row["sentence"])
-    trans = str(row["translation"])
-
-    sentence = re.sub(
-        re.escape(word),
-        f"<span style='color:#e53935;font-weight:bold'>{word}</span>",
-        sentence,
-        flags=re.IGNORECASE
-    )
-
-    st.markdown(f'<div class="card red">{sentence}</div>', unsafe_allow_html=True)
-
-    if "choices" not in st.session_state:
-        answer_list = [x.strip() for x in answer.split(",") if x.strip()]
-        correct = random.choice(answer_list)
-
-        dummies = [x.strip() for x in dummy.split(",") if x.strip()]
-        choices = [correct] + random.sample(dummies, min(3, len(dummies)))
-        random.shuffle(choices)
-
-        st.session_state.choices = choices
-        st.session_state.correct = correct
-
-    show_choices(subject, idx)
-
-    if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct:
-            st.success("✨ 正解！")
-        else:
-            st.error(f"❌ 正解：{st.session_state.correct}")
-
-        st.info(f"意味一覧：{answer}\n\n訳：{trans}")
-
-        if st.button("次の問題へ"):
-            next_q()
-            st.rerun()
-
-# ==================================================
-# 古文単語
-# ==================================================
-elif subject == "古文単語":
-
-    word = str(row.iloc[0])
-    answer = str(row.iloc[1])
-    dummy = str(row.iloc[2])
-    sentence = str(row.iloc[3])
-    trans = str(row.iloc[4])
-
-    sentence = sentence.replace(
-        word,
-        f"<span style='color:#2e7d32;font-weight:bold'>{word}</span>"
-    )
-
-    st.markdown(f'<div class="card green">{sentence}</div>', unsafe_allow_html=True)
-
-    if "choices" not in st.session_state:
-        answer_list = [x.strip() for x in answer.split(",") if x.strip()]
-        correct = random.choice(answer_list)
-
-        dummies = [x.strip() for x in dummy.split(",") if x.strip()]
-        choices = [correct] + random.sample(dummies, min(3, len(dummies)))
-        random.shuffle(choices)
-
-        st.session_state.choices = choices
-        st.session_state.correct = correct
-
-    show_choices(subject, idx)
-
-    if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct:
-            st.success("✨ 正解！")
-        else:
-            st.error(f"❌ 正解：{st.session_state.correct}")
-
-        st.info(f"意味一覧：{answer}\n\n訳：{trans}")
-
-        if st.button("次の問題へ"):
-            next_q()
-            st.rerun()
-
-# ==================================================
-# 日本史
-# ==================================================
-else:
-
-    q = str(row.iloc[0])
-    ans = str(row.iloc[1]).strip()
-
-    era = ""
-    if len(row) >= 3:
-        era = str(row.iloc[2])
-
-    st.markdown(f'<div class="card blue"><b>{q}</b></div>', unsafe_allow_html=True)
-
-    if era:
-        st.caption(f"時代：{era}")
-
-    user = st.text_input("答えを入力（漢字）")
-
-    if st.button("解答する"):
-
-        user_clean = user.replace(" ", "").replace("　", "")
-        ans_clean = ans.replace(" ", "").replace("　", "")
-
-        if user_clean == ans_clean:
-            st.success("✨ 正解！")
-        else:
-            st.error(f"❌ 正解：{ans}")
-
-        st.session_state.answered = True
-
-    if st.session_state.answered:
-        if st.button("次の問題へ"):
-            next_q()
-            st.rerun()
