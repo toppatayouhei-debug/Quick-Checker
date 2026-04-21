@@ -3,40 +3,43 @@ import pandas as pd
 import random
 import re
 
-# --- 1. 画面設定（さらに淡いサクラ色 × 漆黒文字） ---
+# --- 1. 画面設定（サイドバー：水色 / メイン：極淡ピンク） ---
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 st.markdown("""
     <style>
-    /* 1. 全体をさらに淡いピンクに固定 */
-    .stApp, 
+    /* メイン背景：さらに淡いサクラ色 */
+    .stApp {
+        background-color: #FFF9FB !important;
+    }
+    
+    /* サイドバー：爽やかな水色 */
     [data-testid="stSidebar"], 
     [data-testid="stSidebarContent"],
-    header, 
-    [data-testid="stHeader"],
     [data-testid="stSidebarNav"] {
-        background-color: #FFF9FB !important; /* 極めて淡いサクラ色 */
-        background: #FFF9FB !important;
+        background-color: #E0F7FA !important; /* パステル水色 */
+        background: #E0F7FA !important;
     }
 
-    /* 2. すべてのテキストを「黒」に強制 */
+    /* テキストはすべて「黒」 */
     .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label,
     [data-testid="stSidebar"] * {
         color: #000000 !important;
     }
 
-    /* 3. 問題文ボックス（淡いミスティローズ） */
+    /* 問題文ボックス */
     .sentence-box {
-        background-color: #FFF0F5 !important; 
+        background-color: #FFFFFF !important; 
         color: #000000 !important;
-        padding: 20px;
+        padding: 22px;
         border-radius: 12px;
         margin-bottom: 20px;
-        border: 1px solid #FFD1DC;
+        border: 1px solid #E0E0E0;
         border-left: 10px solid;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.05);
     }
 
-    /* 4. 選択肢ボタン（白背景・太い黒枠・黒文字） */
+    /* 選択肢ボタン */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
@@ -44,16 +47,16 @@ st.markdown("""
         font-weight: bold !important;
     }
     
-    /* 5. 日本史の解答ボタン（勝負の緑） */
+    /* 日本史解答ボタン */
     button[kind="primaryFormSubmit"] {
-        background-color: #2E7D32 !important;
+        background-color: #00796B !important; /* 水色に合う深緑 */
         color: #FFFFFF !important;
         border: none !important;
     }
 
-    /* 6. ハイライト（太字と色を確実に適用） */
-    .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline; }
-    .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 2px solid #1B5E20; }
+    /* ハイライト（font-weightを最大化し、!importantで強制適用） */
+    .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline !important; }
+    .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 3px solid #1B5E20 !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -86,9 +89,8 @@ if selected_subject != "選択してください":
             sub_color = "#D32F2F"
         else:
             current_df, sel_level = raw_df, None
-            sub_color = "#2E7D32"
+            sub_color = "#00796B"
 
-        # リセット処理
         if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
             st.session_state.active_sub = selected_subject
             st.session_state.active_level = sel_level
@@ -118,24 +120,30 @@ if selected_subject != "選択してください":
                         st.rerun()
             else:
                 if selected_subject == "英単語":
-                    word, correct = str(row['question']).strip(), str(row['all_answers']).strip()
+                    word = str(row['question']).strip()
+                    correct = str(row['all_answers']).strip()
                     dummy_raw, sentence, trans = str(row['dummy_pool']), str(row['sentence']), str(row['translation'])
                     hl_class = "hl-red"
-                    # 英語は全候補からランダム
                     sel_correct = random.choice([c.strip() for c in correct.split(',') if c.strip()])
                 else:
-                    word, correct, dummy_raw = str(row.iloc[0]).strip(), str(row.iloc[1]).strip(), str(row.iloc[2])
+                    word = str(row.iloc[0]).strip()
+                    correct = str(row.iloc[1]).strip()
+                    dummy_raw = str(row.iloc[2])
                     sentence, trans = str(row.iloc[3]), str(row.iloc[4])
                     hl_class = "hl-green"
-                    # 古文は「先頭の意味」を正解にする
+                    # 先頭の意味を正解に
                     sel_correct = [c.strip() for c in correct.split(',') if c.strip()][0]
 
-                # ハイライト表示（単語を確実に太字＋色付きに）
+                # --- ハイライトロジックの改善 ---
                 if not sentence or sentence.lower() in ["nan", "sentence", ""]:
                     disp = f"この単語の意味は？： <span class='{hl_class}'>{word}</span>"
                 else:
-                    # 確実に置換するためstripした単語で検索
+                    # 1. まず単語そのものを置換
                     disp = re.sub(re.escape(word), f'<span class="{hl_class}">{word}</span>', sentence, flags=re.IGNORECASE)
+                    # 2. もし置換されなかった場合（活用形など）、単語の頭数文字で再トライ
+                    if f'class="{hl_class}"' not in disp and len(word) > 1:
+                        short_word = word[:-1] # 最後の1文字（送り仮名）を削って検索
+                        disp = re.sub(re.escape(short_word), f'<span class="{hl_class}">{short_word}</span>', sentence, flags=re.IGNORECASE)
 
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><p style="font-size:22px;">{disp}</p></div>', unsafe_allow_html=True)
 
