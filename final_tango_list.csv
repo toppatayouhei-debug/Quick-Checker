@@ -1,0 +1,2028 @@
+level,question,all_answers,dummy_pool,sentence,translation,exam_info
+Fundamental (1-600),follow,～に従う、～に続く,"～を導く, ～を追い越す, ～を避ける",You should follow the rules of the school.,あなたは校則に従うべきだ。,共通テスト
+Fundamental (1-600),consider,～を考慮する、～とみなす,"～を無視する, ～を否定する, ～を恐れる",We need to consider every possibility.,あらゆる可能性を考慮する必要がある。,早稲田大
+Fundamental (1-600),increase,増える、～を増やす,"～が減る, ～を止める, ～を壊す",The population of the city will increase.,その市の人口は増加するだろう。,立教大
+Fundamental (1-600),expect,～を予期する、期待する,"～を拒絶する, ～を忘れる, ～を疑う",I expect that he will win the game.,彼は試合に勝つと予想している。,共通テスト
+Fundamental (1-600),decide,～を決める,"～を許す, ～を尋ねる, ～を隠す",She decided to study abroad.,彼女は留学することを決めた。,青山学院大
+Fundamental (1-600),develop,～を発達させる、開発する,"～を破壊する, ～を縮小する, ～を維持する",Science has developed rapidly.,科学は急速に発達した。,慶應義塾大
+Fundamental (1-600),provide,～を供給する、与える,"～を奪う, ～を捨てる, ～を拒む",They provide us with clean water.,彼らは私たちにきれいな水を供給してくれる。,共通テスト
+Fundamental (1-600),continue,～を続ける,"～をやめる, ～を変える, ～を壊す",We decided to continue the meeting.,私たちは会議を続けることにした。,法政大
+Fundamental (1-600),include,～を含む,"～を除く, ～を好む, ～を放す",The price includes tax.,価格は税金を含んでいる。,共通テスト
+Fundamental (1-600),remain,～のままでいる、残る,"～に変わる, ～を去る, ～を忘れる",The situation remains serious.,状況は深刻なままである。,上智大
+Fundamental (1-600),reach,～に到着する、届く,"～を出発する, ～を失う, ～を投げる",The news reached every corner of the world.,そのニュースは世界の隅々まで届いた。,共通テスト
+Fundamental (1-600),allow,～を許可する、許す,"～を禁止する, ～を叱る, ～を壊す",Smoking is not allowed here.,ここでの喫煙は許可されていない。,中央大
+Fundamental (1-600),force,～を強制する,"～を助ける, ～を勧める, ～を認める",He was forced to sign the contract.,彼は契約書への署名を強制された。,早稲田大
+Fundamental (1-600),offer,～を申し出る、提供する,"～を断る, ～を盗む, ～を隠す",He offered to help me with my work.,彼は私の仕事を手伝うと申し出てくれた。,共通テスト
+Fundamental (1-600),realize,～を悟る、実現する,"～を無視する, ～を疑う, ～を忘れる",I realized how important health is.,私は健康がいかに重要かを悟った。,同志社大
+Fundamental (1-600),suggest,～を提案する、暗示する,"～を命令する, ～を拒否する, ～を隠す",What does the writer suggest in this text?,筆者は本文中で何を暗示していますか？,共通テスト
+Fundamental (1-600),require,～を必要とする,"～を捨てる, ～を許す, ～を忘れる",The job requires a lot of experience.,その仕事には多くの経験が必要だ。,慶應義塾大
+Fundamental (1-600),worry,心配する,"安心する, 怒る, 喜ぶ",Don't worry about small things.,小さなことを心配するな。,共通テスト
+Fundamental (1-600),wonder,～かなと思う,"～を確信する, ～を恐れる, ～を認める",I wonder why she is so late.,なぜ彼女はあんなに遅れているのかな。,明治大
+Fundamental (1-600),cost,（費用）がかかる,"（金）を稼ぐ, ～を支払う, ～を借りる",This computer cost a lot of money.,このコンピュータは多額の費用がかかった。,共通テスト
+Fundamental (1-600),tend,～しがちである,"～を避ける, ～を止める, ～を決める",Young people tend to sleep late.,若者は夜更かししがちだ。,日本大
+Fundamental (1-600),depend,～に依存する、次第だ,"～から独立する, ～を支配する, ～を助ける",Success depends on your effort.,成功は君の努力次第だ。,共通テスト
+Fundamental (1-600),share,～を共有する,"～を独占する, ～を隠す, ～を壊す",Let's share the information.,情報を共有しよう。,関西大
+Fundamental (1-600),demand,～を要求する,"～に応じる, ～を捨てる, ～を許す",They demanded higher wages.,彼らは賃上げを要求した。,共通テスト
+Fundamental (1-600),support,～を支持する、養う,"～に反対する, ～を攻撃する, ～を疑う",I will support your plan.,私は君の計画を支持するよ。,学習院大
+Fundamental (1-600),hire,～を雇う,"～を解雇する, ～を叱る, ～を訓練する",The company hired new staff.,その会社は新しいスタッフを雇った。,共通テスト
+Fundamental (1-600),regard,～をみなす,"～を無視する, ～を嫌う, ～を忘れる",I regard him as a good friend.,私は彼を親友だと思っている。,京都大
+Fundamental (1-600),base,～の基礎を置く,"～を壊す, ～を終わらせる, ～を隠す",This story is based on facts.,この物語は事実に基づいている。,共通テスト
+Fundamental (1-600),improve,～を向上させる,"～を悪化させる, ～を止める, ～を壊す",I want to improve my English.,英語力を向上させたい。,大阪大
+Fundamental (1-600),recognize,～を認める、識別する,"～を忘れる, ～を無視する, ～を疑う",I recognized her at once.,私はすぐに彼女だとわかった。,共通テスト
+Fundamental (1-600),notice,～に気づく,"～を見逃す, ～を忘れる, ～を疑う",Did you notice the change?,変化に気づきましたか？,共通テスト
+Fundamental (1-600),suppose,～と思う、仮定する,"～を知っている, ～を否定する, ～を隠す",What are we supposed to do?,私たちは何をすることになっているの？,明治大
+Fundamental (1-600),raise,～を上げる、育てる,"～を下げる, ～を壊す, ～を捨てる",Please raise your hand.,手を挙げてください。,共通テスト
+Fundamental (1-600),prefer,～を好む,"～を嫌う, ～を避ける, ～を忘れる",I prefer coffee to tea.,紅茶よりコーヒーが好きだ。,共通テスト
+Fundamental (1-600),cheer,～を励ます,"～を悲しませる, ～を叱る, ～を黙らせる",We cheered for our team.,私たちはチームに声援を送った。,駒澤大
+Fundamental (1-600),suffer,苦しむ,"楽しむ, 癒える, 避ける",Many people suffer from hunger.,多くの人が飢えに苦しんでいる。,共通テスト
+Fundamental (1-600),describe,～を描写する、特徴を述べる,"～を隠す, ～を壊す, ～を忘れる",Please describe the man.,その男の特徴を述べてください。,東北大
+Fundamental (1-600),prevent,～を妨げる、防ぐ,"～を助ける, ～を許す, ～を促す",Rain prevented us from going out.,雨のせいで外出できなかった。,共通テスト
+Fundamental (1-600),reduce,～を減らす,"～を増やす, ～を広げる, ～を壊す",We must reduce waste.,私たちはゴミを減らさなければならない。,共通テスト
+Fundamental (1-600),mistake,～を間違える,"～を理解する, ～に成功する, ～を覚える",Don't mistake him for his brother.,彼をお兄さんと間違えるな。,近畿大
+Fundamental (1-600),prepare,～を準備する,"～を片付ける, ～を壊す, ～を忘れる",I must prepare for the exam.,試験の準備をしなければならない。,共通テスト
+Fundamental (1-600),encourage,～を励ます,"～を妨げる, ～を叱る, ～を失望させる",My teacher encouraged me.,先生は私を励ましてくれた。,成城大
+Fundamental (1-600),prove,～を証明する、～と判明する,"～を隠す, ～を疑う, 嘘をつく",The rumor proved to be true.,その噂は本当だと分かった。,共通テスト
+Fundamental (1-600),treat,～を扱う、治療する,"～を無視する, ～を壊す, ～を捨てる",He treats everyone kindly.,彼は誰にでも親切に接する。,早稲田大
+Fundamental (1-600),establish,～を設立する、確立する,"～を破壊する, ～を隠す, ～を忘れる",They established a new club.,彼らは新しいクラブを設立した。,東京大
+Fundamental (1-600),relate,～を関連づける,"～を切り離す, ～を隠す, ～を壊す",How are the two events related?,2つの出来事はどう関連している？,共通テスト
+Fundamental (1-600),compare,～を比較する,"～を同一視する, ～を無視する, ～を捨てる",compare the city with the country.,都市と田舎を比較する。,共通テスト
+Fundamental (1-600),spread,～を広げる、広がる,"～を縮める, ～を隠す, ～を止める",The news spread quickly.,ニュースは素早く広まった。,共通テスト
+Fundamental (1-600),refer,～を参照する、言及する,"～を無視する, ～を隠す, ～を忘れる",Please refer to the dictionary.,辞書を参照してください。,共通テスト
+Fundamental (1-600),supply,～を供給する,"～を消費する, ～を奪う, ～を捨てる",They supply food to the city.,彼らは市に食料を供給している。,共通テスト
+Fundamental (1-600),gain,～を得る、～を増す,"～を失う, ～を捨てる, ～を避ける",They hope to gain more experience.,彼らはより多くの経験を得たいと願っている。,共通テスト
+Fundamental (1-600),destroy,～を破壊する,"～を造る, ～を保護する, ～を育てる",The fire destroyed the whole building.,火災で建物全体が破壊された。,慶應義塾大
+Fundamental (1-600),apply,申し込む、～を適用する,"～を断る, ～を止める, ～を隠す",I want to apply for the scholarship.,私は奨学金に申し込みたい。,青山学院大
+Fundamental (1-600),seek,～を求める、～を探す,"～を隠す, ～を捨てる, ～を破壊する",They seek a way to solve the problem.,彼らは問題解決の方法を求めている。,共通テスト
+Fundamental (1-600),search,～を捜す、～を調べる,"～を見つける, ～を隠す, ～を破壊する",I searched the room for my keys.,私は鍵を求めて部屋を捜した。,共通テスト
+Fundamental (1-600),claim,～と主張する、～を要求する,"～を認める, ～を隠す, ～を拒絶する",He claimed that he was innocent.,彼は自分が無実だと主張した。,中央大
+Fundamental (1-600),draw,～を引く、～を描く,"～を押す, ～を消す, ～を投げる",She draws a picture of her cat.,彼女は猫の絵を描いている。,共通テスト
+Fundamental (1-600),refuse,～を断る,"～を承諾する, ～を与える, ～を忘れる",She refused to answer the question.,彼女はその質問に答えるのを断った。,法政大
+Fundamental (1-600),respond,反応する、答える,"～を無視する, ～から逃げる, ～を隠す",He didn't respond to my email.,彼は私のメールに返信しなかった。,共通テスト
+Fundamental (1-600),mention,～に言及する、～と言う,"～を黙秘する, ～を隠す, ～を忘れる",Don't mention it to anyone.,誰にもそのことを言わないで。,早稲田大
+Fundamental (1-600),judge,～を判断する,"～を疑う, ～を忘れる, ～を破壊する",Don't judge a book by its cover.,外見で人を判断してはいけない。,共通テスト
+Fundamental (1-600),approach,～に近づく,"～から離れる, ～から逃げる, ～を止める",A car was approaching from behind.,車が後ろから近づいてきた。,共通テスト
+Fundamental (1-600),admit,～を認める,"～を否定する, ～を隠す, ～を忘れる",He admitted that he was wrong.,彼は自分が間違っていたと認めた。,立教大
+Fundamental (1-600),reflect,～を反映する、～を反射する,"～を吸収する, ～を破壊する, ～を隠す",The lake reflects the mountains.,湖が山々を映し出している。,東京大
+Fundamental (1-600),perform,～を行う、～を遂行する,"～を中断する, ～を破壊する, ～を忘れる",Doctors performed a difficult operation.,医師たちは難しい手術を行った。,共通テスト
+Fundamental (1-600),bore,～をうんざりさせる,"～を楽しませる, ～を驚かせる, ～を励ます",His long speech bored the audience.,彼の長い話は聴衆を退屈させた。,共通テスト
+Fundamental (1-600),survive,生き残る、～を切り抜ける,"～で死ぬ, ～を滅ぼす, ～を忘れる",Only a few people survived the crash.,その墜落事故で数名だけが生き残った。,同志社大
+Fundamental (1-600),represent,～を表す、～を代表する,"～を隠す, ～を破壊する, ～を無視する",What does this symbol represent?,この記号は何を表していますか？,共通テスト
+Fundamental (1-600),argue,～と主張する、論じる,"～に同意する, ～を黙認する, ～を隠す",Scientists argue about the cause.,科学者たちは原因について議論している。,明治大
+Fundamental (1-600),grant,～を認める、～を与える,"～を奪う, ～を拒否する, ～を隠す",My wish was finally granted.,私の願いはようやく聞き届けられた。,慶應義塾大
+Fundamental (1-600),indicate,～を指し示す,"～を隠す, ～を破壊する, ～を忘れる",The report indicates a new trend.,報告書は新しい傾向を指し示している。,共通テスト
+Fundamental (1-600),belong,所属している,"～から離れる, ～を捨てる, ～を破壊する",Does this bag belong to you?,このバッグはあなたのですか？,共通テスト
+Fundamental (1-600),acquire,～を習得する、～を得る,"～を失う, ～を捨てる, ～を忘れる",It takes time to acquire a language.,言語を習得するには時間がかかる。,大阪大
+Fundamental (1-600),reply,返事をする,"～を無視する, ～から逃げる, ～を隠す",I'll reply to your letter soon.,すぐにお手紙の返事を出します。,共通テスト
+Fundamental (1-600),feed,～にエサをやる、～を養う,"～を飢えさせる, ～を奪う, ～を壊す",Don't feed the wild animals.,野生動物にエサをやってはいけない。,共通テスト
+Fundamental (1-600),escape,逃げる,"捕まる, 留まる, 入る",The bird escapeed from the cage.,鳥がカゴから逃げた。,共通テスト
+Fundamental (1-600),replace,～に取って代わる、～を取り替える,"～を破壊する, ～を維持する, ～を隠す",Machines will replace human labor.,機械が人間の労働に取って代わるだろう。,立命館大
+Fundamental (1-600),reveal,～を明らかにする、～を見せる,"～を隠す, ～を偽る, ～を忘れる",The survey revealed a shocking fact.,調査は衝撃的な事実を明らかにした。,共通テスト
+Fundamental (1-600),surround,～を取り囲む,"～から離れる, ～を破壊する, ～を隠す",The house is surrounded by trees.,その家は木々に囲まれている。,共通テスト
+Fundamental (1-600),suit,～に似合う、～に適する,"～を損なう, ～を破壊する, ～を隠す",That blue dress suits you well.,あの青いドレスはあなたによく似合う。,共通テスト
+Fundamental (1-600),estimate,～を見積もる、～と推定する,"～を無視する, ～を確定する, ～を破壊する","Experts estimate the cost at $1,000.",専門家は費用を1000ドルと見積もっている。,共通テスト
+Fundamental (1-600),aim,狙う、～を目標とする,"～から逸らす, ～を諦める, ～を壊す",This program aims to help children.,このプログラムは子供を助けることを目的としている。,共通テスト
+Fundamental (1-600),earn,～を稼ぐ、～を得る,"～を支払う, ～を失う, ～を捨てる",He earns a lot of money every month.,彼は毎月多額のお金を稼いでいる。,共通テスト
+Fundamental (1-600),decline,衰退する、～を断る,"成長する, ～を承諾する, 増える",The number of children is declineing.,子供の数が減少している。,日本大
+Fundamental (1-600),afford,～する余裕がある,"貧乏である, ～を破壊する, ～を捨てる",We can't afford to buy a house.,私たちには家を買う余裕がない。,共通テスト
+Fundamental (1-600),confuse,～を混乱させる、～を混同する,"～を整理する, ～を助ける, ～を教える",The signs confused the tourists.,標識が観光客を混乱させた。,共通テスト
+Fundamental (1-600),graduate,卒業する,"入学する, 退学する, 休む",I will graduate from high school.,私は高校を卒業する。,共通テスト
+Fundamental (1-600),vary,変わる、様々である,"固定される, 止まる, 壊す",Prices vary from shop to shop.,価格は店によって様々だ。,共通テスト
+Fundamental (1-600),remove,～を取り除く、～を脱ぐ,"～を置く, ～を付け加える, ～を隠す",Please remove your shoes here.,ここで靴を脱いでください。,共通テスト
+Fundamental (1-600),insist,～と主張する、～を言い張る,"～を断念する, ～を黙認する, ～に同意する",He insisted on his innocence.,彼は自分の無実を主張した。,共通テスト
+Fundamental (1-600),examine,～を調査する、～を診察する,"～を無視する, ～を破壊する, ～を忘れる",The doctor examined the patient.,医者は患者を診察した。,共通テスト
+Fundamental (1-600),remind,～に思い出させる,"～を忘れさせる, ～を隠す, ～を破壊する",This song reminds me of my home.,この歌は私に故郷を思い出させる。,共通テスト
+Fundamental (1-600),contribute,貢献する、～を寄付する,"～を妨げる, ～を奪う, ～を壊す",He contributed money to the charity.,彼はチャリティに寄付した。,上智大
+Fundamental (1-600),warn,～に警告する,"～を励ます, ～を騙す, ～を忘れる",They warned us about the danger.,彼らは私たちに危険を警告した。,共通テスト
+Fundamental (1-600),connect,～をつなぐ,"～を切り離す, ～を破壊する, ～を隠す",The bridge connects the two islands.,その橋は2つの島をつないでいる。,共通テスト
+Fundamental (1-600),match,～に匹敵する、～と調和する,"～を損なう, ～を破壊する, ～を隠す",This tie doesn't match your shirt.,このネクタイはシャツに合っていない。,共通テスト
+Fundamental (1-600),focus,焦点を合わせる、集中する,"～をそらす, ～を無視する, ～を破壊する",You should focus on your study.,勉強に集中すべきだ。,共通テスト
+Fundamental (1-600),reject,～を拒絶する,"～を受け入れる, ～を認める, ～を助ける",The plan was rejected by the board.,その計画は委員会によって拒絶された。,早稲田大
+Fundamental (1-600),convince,～を納得させる、～を確信させる,"～を疑わせる, ～を騙す, ～を忘れる",I am convinced of his success.,私は彼の成功を確信している。,共通テスト
+Fundamental (1-600),associate,～を連想する、～を関連づける,"～を切り離す, ～を忘れる, ～を隠す",I associate summer with the sea.,私は夏といえば海を連想する。,共通テスト
+Fundamental (1-600),rush,急いで行く、～を急がせる,"～を止める, ～を隠す, ～を破壊する",We had to rush to the airport.,私たちは空港へ急いで行かなければならなかった。,共通テスト
+Fundamental (1-600),stress,～を強調する、～に重点を置く,"～を隠す, ～を忘れる, ～を軽視する",The teacher stressed the importance of health.,先生は健康の重要性を強調した。,慶應義塾大
+Fundamental (1-600),attract,～を惹きつける、～を魅了する,"～を遠ざける, ～を捨てる, ～を攻撃する",The flower attracts many bees.,その花はたくさんの蜂を惹きつける。,共通テスト
+Fundamental (1-600),rely,頼る、～を信頼する,"～を疑う, ～を避ける, ～を批判する",You can rely on his help.,彼の助けを当てにしてもいい（信頼していい）よ。,共通テスト
+Fundamental (1-600),regret,～を後悔する、～を残念に思う,"～を喜ぶ, ～を忘れる, ～を期待する",I regret saying such a thing to her.,彼女にあんなことを言ったのを後悔している。,立教大
+Fundamental (1-600),adopt,～を採用する、～を養子にする,"～を捨てる, ～を拒否する, ～を批判する",They decided to adopt a new system.,彼らは新しいシステムの採用を決めた。,共通テスト
+Fundamental (1-600),shake,～を振る、揺れる,"～を止める, ～を固める, ～を支える",He shakes his head in disagreement.,彼は反対して首を横に振った。,共通テスト
+Fundamental (1-600),hurt,～を傷つける、痛む,"～を癒やす, ～を助ける, ～を守る",My new shoes hurt my feet.,新しい靴のせいで足が痛い（傷ついている）。,共通テスト
+Fundamental (1-600),operate,作動する、～を操作する、手術する,"～を止める, ～を破壊する, ～を放置する",How do you operate this machine?,この機械はどうやって操作するのですか？,共通テスト
+Fundamental (1-600),extend,～を広げる、～を延長する,"～を縮める, ～を止める, ～を限定する",We need to extend the deadline.,締め切りを延長する必要がある。,共通テスト
+Fundamental (1-600),blame,～を非難する、～のせいにする,"～を褒める, ～を許す, ～を助ける",Don't blame others for your mistakes.,自分のミスを他人のせいにするな。,早稲田大
+Fundamental (1-600),consist,～で構成されている,"～を破壊する, ～から分離する, ～を隠す",The team consists of ten members.,そのチームは10人のメンバーで構成されている。,共通テスト
+Fundamental (1-600),persuade,～を説得する,"～を騙す, ～を諦める, ～を脅かす",I persuaded him to join the club.,私は彼を説得してクラブに入らせた。,法政大
+Fundamental (1-600),admire,～に感嘆する、～を賞賛する,"～を軽蔑する, ～を忘れる, ～を批判する",I admire your courage.,君の勇気には感服する（賞賛する）よ。,共通テスト
+Fundamental (1-600),disappoint,～を失望させる,"～を喜ばせる, ～を助ける, ～を納得させる",The result disappointed his parents.,結果は彼の両親を失望させた。,共通テスト
+Fundamental (1-600),expand,拡大する、～を膨張させる,"縮小する, 止まる, 壊れる",Our business is expanding rapidly.,我々のビジネスは急速に拡大している。,共通テスト
+Fundamental (1-600),preserve,～を保護する、～を保存する,"～を破壊する, ～を捨てる, ～を汚染する",We must preserve the environment.,私たちは環境を保護しなければならない。,共通テスト
+Fundamental (1-600),struggle,苦闘する、もがく,"楽しむ, 休む, 成功する",He struggled to solve the problem.,彼は問題解決のために苦闘した。,共通テスト
+Fundamental (1-600),arrange,～を手配する、～を整える,"～を壊す, ～を散らかす, ～を無視する",I'll arrange a meeting for next week.,来週の会議を手配しておきます。,共通テスト
+Fundamental (1-600),disturb,～を妨げる、～を不安にさせる,"～を助ける, ～を落ち着かせる, ～を励ます",Don't disturb me while I'm working.,仕事中に邪魔をしないでください。,共通テスト
+Fundamental (1-600),employ,～を雇う、～を用いる,"～を解雇する, ～を捨てる, ～を批判する",The factory employs 500 workers.,その工場は500人の労働を雇っている。,共通テスト
+Fundamental (1-600),engage,従事する、～を惹きつける,"～から離れる, ～を止める, ～を拒絶する",He is engaged in medical research.,彼は医学研究に従事している。,明治大
+Fundamental (1-600),abandon,～を捨てる、～を放棄する,"～を守る, ～を拾う, ～を維持する",They had to abandon the sinking ship.,彼らは沈みゆく船を捨てなければならなかった。,共通テスト
+Fundamental (1-600),display,～を展示する、～を表す,"～を隠す, ～を破壊する, ～を偽る",The museum displays old paintings.,美術館は古い絵画を展示している。,共通テスト
+Fundamental (1-600),encounter,～に遭遇する,"～を避ける, ～を忘れる, ～を予期する",I encountered an old friend today.,今日、旧友に偶然遭遇した。,共通テスト
+Fundamental (1-600),amuse,～を楽しませる,"～を退屈させる, ～を怒らせる, ～を疲れさせる",Her stories amused everyone.,彼女の話はみんなを楽しませた。,共通テスト
+Fundamental (1-600),bother,～に面倒をかける、～を困らせる,"～を助ける, ～を喜ばせる, ～を無視する","Sorry to bother you, but can you help?",お忙しいところすみませんが、手伝ってくれますか？,共通テスト
+Fundamental (1-600),concentrate,集中する,"～を逸らす, 休む, 忘れる",Please concentrate on your work.,仕事に集中してください。,共通テスト
+Fundamental (1-600),adapt,～を適応させる、適応する,"～を拒む, ～を変える, ～を破壊する",We must adapt to the new environment.,私たちは新しい環境に適応しなければならない。,共通テスト
+Fundamental (1-600),puzzle,～を困惑させる,"～を納得させる, ～を助ける, ～を喜ばせる",The difficult question puzzled me.,その難問は私を困惑させた。,共通テスト
+Fundamental (1-600),appeal,訴える、～を惹きつける,"～を拒む, ～を無視する, ～を非難する",This book appeals to young readers.,この本は若い読者に受けている（惹きつけている）。,共通テスト
+Fundamental (1-600),combine,～を組み合わせる,"～を切り離す, ～を破壊する, ～を分ける",You should combine theory with practice.,理論と実践を組み合わせるべきだ。,共通テスト
+Fundamental (1-600),delay,～を遅らせる,"～を急がせる, ～を始める, ～を早める",The heavy snow delayed the flight.,大雪で飛行機が遅れた。,共通テスト
+Fundamental (1-600),repair,～を修理する,"～を壊す, ～を捨てる, ～を汚す",Can you repair this broken toy?,この壊れたおもちゃを修理できますか？,共通テスト
+Fundamental (1-600),fascinate,～を魅了する,"～を退屈させる, ～を嫌わせる, ～を怖がらせる",Space travel fascinates many children.,宇宙旅行は多くの子供たちを魅了する。,共通テスト
+Fundamental (1-600),pardon,～を許す,"～を責める, ～を怒る, ～を罰する",Pardon me for being late.,遅れたことをお許しください。,共通テスト
+Fundamental (1-600),import,～を輸入する,"～を輸出する, ～を捨てる, ～を製造する",Japan imports oil from many countries.,日本は多くの国から石油を輸入している。,共通テスト
+Fundamental (1-600),remark,～と述べる、言う,"～を黙秘する, ～を隠す, ～を忘れる",He remarked that the food was good.,彼は食べ物が美味しいと述べた。,共通テスト
+Fundamental (1-600),reserve,～を予約する、～を取っておく,"～を解約する, ～を捨てる, ～を公開する",I want to reserve a table for two.,2人用のテーブルを予約したい。,共通テスト
+Fundamental (1-600),amaze,～を驚かせる,"～を納得させる, ～を退屈させる, ～を呆れさせる",The news amazed the whole world.,そのニュースは全世界を驚かせた。,共通テスト
+Fundamental (1-600),frighten,～を怖がらせる,"～を安心させる, ～を喜ばせる, ～を励ます",The loud noise frightened the baby.,大きな音が赤ん坊を怖がらせた。,共通テスト
+Fundamental (1-600),release,～を解放する、～を発売する,"～を捕まえる, ～を隠す, ～を拘束する",The movie was released last week.,その映画は先週公開（発売）された。,共通テスト
+Fundamental (1-600),rent,～を賃借りする,"～を貸す, ～を売る, ～を所有する",We decided to rent an apartment.,私たちはアパートを借りることにした。,共通テスト
+Fundamental (1-600),recover,回復する、～を取り戻す,"悪化する, ～を失う, 倒れる",He is recovering from a bad cold.,彼はひどい風邪から回復しつつある。,共通テスト
+Fundamental (1-600),suspect,～ではないかと思う、～を疑う,"～を信じる, ～を忘れる, ～を確信する",I suspect that he is telling a lie.,彼は嘘をついているのではないかと思う。,共通テスト
+Fundamental (1-600),deliver,～を配達する、～を渡す,"～を受け取る, ～を捨てる, ～を隠す",The postman delivers letters every day.,郵便屋さんは毎日手紙を配達する。,共通テスト
+Fundamental (1-600),identify,～を特定する、～を確認する,"～を見逃す, ～を忘れる, ～を混同する",It was difficult to identify the owner.,持ち主を特定するのは難しかった。,共通テスト
+Fundamental (1-600),locate,～の場所を突き止める,"～を見失う, ～を捨てる, ～を隠す",They tried to locate the lost child.,彼らは迷子の場所を突き止めようとした。,共通テスト
+Fundamental (1-600),manufacture,～を製造する,"～を破壊する, ～を捨てる, ～を修理する",This company manufactures car parts.,この会社は車の部品を製造している。,共通テスト
+Fundamental (1-600),occupy,～を占める、～を占領する,"～を開放する, ～を捨てる, ～を去る",Reading occupys most of his time.,読書が彼の時間の大部分を占めている。,共通テスト
+Fundamental (1-600),own,～を所有している,"～を借りている, ～を失う, ～を売る",He owns several expensive cars.,彼は数台の高級車を所有している。,共通テスト
+Fundamental (1-600),expose,～をさらす,"～を隠す, ～を保護する, ～を固定する",Don't expose your skin to the sun.,肌を日光にさらしてはいけない。,慶應義塾大
+Fundamental (1-600),translate,～を翻訳する,"～を複写する, ～を出版する, ～を隠す",I'll translate this letter into Japanese.,この手紙を日本語に翻訳しましょう。,共通テスト
+Fundamental (1-600),cure,～を治療する,"～を悪化させる, ～を傷つける, ～を放置する",This medicine will cure your cold.,この薬は君の風邪を治してくれるだろう。,日本大
+Fundamental (1-600),perceive,～に気づく,"～を無視する, ～を忘れる, ～を誤解する",We perceive the world through our senses.,私たちは五感を通して世界を知覚する。,名古屋大
+Fundamental (1-600),adjust,～を調節する,"～を壊す, ～を無視する, ～を汚す",You should adjust the volume.,音量を調節すべきだ。,共通テスト
+Fundamental (1-600),alarm,～を驚かせる,"～を喜ばせる, ～を静める, ～を助ける",The news alarmed the whole nation.,そのニュースは国民全体を驚かせた。,共通テスト
+Fundamental (1-600),assist,～を助ける,"～を妨げる, ～を攻撃する, ～を叱る",My son assisted me in the kitchen.,息子は台所で私を手伝ってくれた。,共通テスト
+Fundamental (1-600),freeze,凍る,"溶ける, 燃える, 蒸発する",The lake freezes in winter.,その湖は冬には凍る。,共通テスト
+Fundamental (1-600),spoil,～を台無しにする,"～を完成させる, ～を守る, ～を育てる",The rain spoiled our picnic.,雨のせいでピクニックが台無しになった。,共通テスト
+Fundamental (1-600),shift,～を変える、移る,"～を維持する, ～を止める, ～を隠す",He shifted his weight to the left.,彼は体重を左に移した。,共通テスト
+Fundamental (1-600),embarrass,～を困惑させる,"～を喜ばせる, ～を褒める, ～を助ける",His question embarrassed her.,彼の質問は彼女を困惑させた。,共通テスト
+Fundamental (1-600),approve,～を承認する,"～を拒否する, ～を疑う, ～を叱る",My father didn't approve of my plan.,父は私の計画を承認しなかった。,法政大
+Fundamental (1-600),weigh,～の重さがある,"～を数える, ～を測る, ～を失う",How much do you weigh?,体重はどれくらいありますか？,共通テスト
+Fundamental (1-600),stretch,～を広げる,"～を縮める, ～を壊す, ～を止める",She stretched her arms out.,彼女は両腕を広げた。,共通テスト
+Fundamental (1-600),participate,参加する,"～を避ける, ～を止める, ～を隠す",He decided to participate in the race.,彼はレースに参加することに決めた。,共通テスト
+Fundamental (1-600),exhibit,～を展示する,"～を隠す, ～を壊す, ～を忘れる",They exhibited new works of art.,彼らは新しい芸術作品を展示した。,共通テスト
+Fundamental (1-600),owe,～に借金がある,"～を貸している, ～を稼ぐ, ～を支払う",I owe him ten dollars.,私は彼に10ドルの借りがある。,共通テスト
+Fundamental (1-600),celebrate,～を祝う,"～を嘆く, ～を忘れる, ～を壊す",We celebrated his birthday.,私たちは彼の誕生日を祝った。,共通テスト
+Fundamental (1-600),decorate,～を装飾する,"～を汚す, ～を壊す, ～を隠す",We decorated the room with flowers.,私たちは花で部屋を飾った。,共通テスト
+Fundamental (1-600),forgive,～を許す,"～を責める, ～を罰する, ～を叱る",Please forgive me for being late.,遅れたことを許してください。,共通テスト
+Fundamental (1-600),seat,～を座らせる,"～を立たせる, ～を歩かせる, ～を運ぶ",Please be seated.,お座りください。,共通テスト
+Fundamental (1-600),injure,～を傷つける,"～を治す, ～を守る, ～を助ける",He injured his leg in the game.,彼は試合で足を負傷した。,共通テスト
+Fundamental (1-600),sew,～を縫う,"～を切る, ～を洗う, ～を捨てる",She is sewing a new dress.,彼女は新しいドレスを縫っている。,共通テスト
+Fundamental (1-600),result,結果として生じる,"～を止める, ～を隠す, ～を壊す",The accident resulted from a mistake.,その事故はミスから生じた。,共通テスト
+Fundamental (1-600),feature,～を特徴とする,"～を隠す, ～を壊す, ～を無視する",This phone features a great camera.,この電話は優れたカメラを特徴としている。,共通テスト
+Fundamental (1-600),society,社会,"個人, 家族, 秘密",We live in a modern society.,私たちは現代社会に住んでいる。,共通テスト
+Fundamental (1-600),wheel,車輪,"翼, 窓, 扉",One of the wheels came off.,車輪の一つが外れた。,共通テスト
+Fundamental (1-600),value,価値,"損害, 費用, 欠点",Education is of great value.,教育は大きな価値がある。,共通テスト
+Fundamental (1-600),effect,効果、影響,"原因, 理由, 失敗",The medicine had a quick effect.,その薬はすぐに効果があった。,共通テスト
+Fundamental (1-600),individual,個人,"社会, 集団, 家族",Respect the rights of the individual.,個人の権利を尊重しなさい。,共通テスト
+Fundamental (1-600),influence,影響,"無視, 妨害, 停止",He has a strong influence on me.,彼は私に強い影響を与えている。,共通テスト
+Fundamental (1-600),fee,料金,"利益, 貯金, 給与",The entrance fee is five dollars.,入場料は5ドルです。,共通テスト
+Fundamental (1-600),rate,割合、速度,"数量, 距離, 時間",The birth rate is decreasing.,出生率が低下している。,共通テスト
+Fundamental (1-600),sign,兆候、記号,"秘密, 過去, 偽物",There is no sign of life here.,ここには生命の兆候がない。,共通テスト
+Fundamental (1-600),service,奉仕、公共事業,"支配, 営業, 秘密",The city has a good bus service.,その市はバスの便（サービス）が良い。,共通テスト
+Fundamental (1-600),advance,前進、進歩,"後退, 停止, 失敗",Great advances have been made.,大きな進歩が遂げられた。,共通テスト
+Fundamental (1-600),laughter,笑い,"怒り, 悲しみ, 絶望",The room was filled with laughter.,部屋は笑いで満たされていた。,共通テスト
+Fundamental (1-600),material,材料、資料,"精神, 道具, 結果",Wood is a common building material.,木材は一般的な建築材料だ。,共通テスト
+Fundamental (1-600),industry,産業、工業,"農業, 遊び, 怠慢",The car industry is important.,自動車産業は重要だ。,共通テスト
+Fundamental (1-600),attempt,試み,"成功, 拒絶, 終了",He failed in his attempt.,彼は試みに失敗した。,共通テスト
+Fundamental (1-600),trade,貿易、商売,"農業, 遊び, 秘密",trade with other countries.,他国との貿易。,共通テスト
+Fundamental (1-600),progress,進歩,"衰退, 停止, 過去",Science makes daily progress.,科学は日進月歩している。,共通テスト
+Fundamental (1-600),excuse,言い訳,"真実, 理由, 成功",He made a poor excuse.,彼は下手な言い訳をした。,共通テスト
+Fundamental (1-600),custom,習慣,"法律, 流行, 偶然",It is a Japanese custom.,それは日本の習慣だ。,共通テスト
+Fundamental (1-600),passage,通路、（文章の）一節,"壁, 秘密, 終わり",Read this passage carefully.,この一節を注意深く読みなさい。,共通テスト
+Fundamental (1-600),economy,経済,"政治, 遊び, 浪費",The world economy is changing.,世界経済は変化している。,共通テスト
+Fundamental (1-600),track,足跡、小道,"目的地, 建物, 嘘",I followed the track of the deer.,私は鹿の足跡を追った。,共通テスト
+Fundamental (1-600),transportation,交通機関,"建物, 秘密, 停止",Public transportation is convenient.,公共の交通機関は便利だ。,共通テスト
+Fundamental (1-600),official,公務員、役人,"民間人, 学生, 犯罪者",He is a government official.,彼は政府の役人だ。,共通テスト
+Fundamental (1-600),sight,視力、光景,"聴覚, 闇, 秘密",My sight is getting weak.,視力が弱まってきている。,共通テスト
+Fundamental (1-600),taste,味、好み,"香り, 音, 感触",This soup has a good taste.,このスープは良い味がする。,共通テスト
+Fundamental (1-600),range,範囲,"中心, 限界, 一点",A wide range of colors.,幅広い範囲の色。,共通テスト
+Fundamental (1-600),appointment,約束、予約,"偶然, 秘密, 拒絶",I have an appointment at three.,3時に約束がある。,共通テスト
+Fundamental (1-600),patient,患者,"医者, 看護師, 健康な人",The patient is getting better.,その患者は快方に向かっている。,共通テスト
+Fundamental (1-600),project,計画,"偶然, 遊び, 過去",A new housing project.,新しい住宅計画。,共通テスト
+Fundamental (1-600),favor,親切、お願い,"意地悪, 命令, 秘密",Can you do me a favor?,お願いを聞いてくれますか？,共通テスト
+Fundamental (1-600),appearance,外見、出現,"内面, 秘密, 消失",Don't judge by appearance.,外見で判断するな。,共通テスト
+Fundamental (1-600),risk,危険,"安全, 成功, 保証",It is a big risk.,それは大きなリスクだ。,共通テスト
+Fundamental (1-600),benefit,利益、恩恵,"損害, 費用, 欠点",The benefits of modern medicine.,現代医学の恩恵。,共通テスト
+Fundamental (1-600),resident,住民、居住者,"訪問者, 観光客, 浮浪者",The local residents are against the plan.,地元住民はその計画に反対している。,共通テスト
+Fundamental (1-600),relative,親戚、相対的な,"友人, 隣人, 絶対的な",He has no relatives in this city.,彼にはこの街に親戚がいない。,共通テスト
+Fundamental (1-600),region,地域、地方,"境界, 都会, 中心部",It is the coldest region in Japan.,そこは日本で最も寒い地域だ。,共通テスト
+Fundamental (1-600),characteristic,特徴、特性,"欠点, 噂, 共通点",A unique characteristic of this animal.,この動物のユニークな特徴。,慶應義塾大
+Fundamental (1-600),pain,痛み、苦痛,"喜び, 成功, 快感",He felt a sharp pain in his back.,彼は背中に鋭い痛みを感じた。,共通テスト
+Fundamental (1-600),twin,双子の一方,"兄弟, 親子, 従兄弟",She is my twin sister.,彼女は私の双子の姉（妹）だ。,共通テスト
+Fundamental (1-600),occasion,場合、機会、行事,"偶然, 過去, 目的地",On this special occasion.,この特別な機会（行事）に。,早稲田大
+Fundamental (1-600),principle,原理、原則、主義,"感情, 偶然, 習慣",The basic principles of physics.,物理学の基本原理。,共通テスト
+Fundamental (1-600),department,部門、学科、売り場,"会社, 市場, 組合",The sales department.,販売部門。,共通テスト
+Fundamental (1-600),duty,義務、関税,"権利, 遊び, 趣味",It is my duty to help you.,あなたを助けるのが私の義務だ。,共通テスト
+Fundamental (1-600),scene,場面、現場、景色,"過去, 偽物, 想像",The police arrived at the scene.,警察が現場に到着した。,共通テスト
+Fundamental (1-600),jam,渋滞、詰め込み,"道路, 自由, 空間",A heavy traffic jam.,ひどい交通渋滞。,共通テスト
+Fundamental (1-600),spirit,精神、魂、気分,"身体, 物質, 外見",The Olympic spirit.,オリンピック精神。,共通テスト
+Fundamental (1-600),medium,媒体、手段、中間の,"終わり, 極端, 限界",English as a medium of communication.,意思疎通の媒体としての英語。,共通テスト
+Fundamental (1-600),mass,集団、質量、多量,"個人, 欠点, 唯一",A mass of people gathered there.,大勢（集団）の人がそこに集まった。,立教大
+Fundamental (1-600),audience,聴衆、観客,"著者, 演奏者, 敵",The audience enjoyed the concert.,聴衆はコンサートを楽しんだ。,共通テスト
+Fundamental (1-600),element,要素、成分,"全体, 混合物, 終わり",Water is an essential element for life.,水は生命にとって不可欠な要素だ。,明治大
+Fundamental (1-600),climate,気候,"天気, 嵐, 季節",The climate is getting warmer.,気候が温暖化している。,共通テスト
+Fundamental (1-600),revolution,革命、回転,"平和, 停止, 伝統",The Industrial revolution.,産業革命。,共通テスト
+Fundamental (1-600),quarter,4分の1、15分,"半分, 全部, 3分の1",It's a quarter past ten.,10時15分です。,共通テスト
+Fundamental (1-600),furniture,家具,"道具, 建物, 家電",I bought some new furniture.,私は新しい家具をいくつか買った。,共通テスト
+Fundamental (1-600),brain,脳、頭脳,"心臓, 筋肉, 骨格",The human brain is complex.,人間の脳は複雑だ。,共通テスト
+Fundamental (1-600),atmosphere,雰囲気、大気,"地面, 沈黙, 騒音",A friendly atmosphere in the class.,クラスの親しみやすい雰囲気。,青山学院大
+Fundamental (1-600),property,財産、特性,"借金, 損失, 負債",This land is private property.,この土地は私有財産だ。,共通テスト
+Fundamental (1-600),reward,報酬、褒美,"罰, 損失, 義務",A reward for finding the dog.,犬を見つけたことへの報酬。,共通テスト
+Fundamental (1-600),security,安全、警備,"危険, 自由, 不安",High levels of security.,高いレベルの警備。,共通テスト
+Fundamental (1-600),delight,歓喜、大喜び,"悲しみ, 怒り, 絶望","To my great delight, I passed.",非常に嬉しいことに、合格した。,共通テスト
+Fundamental (1-600),desert,砂漠,"森林, 海面, 湿地",Life in the Sahara desert.,サハラ砂漠での生活。,共通テスト
+Fundamental (1-600),background,背景、経歴,"未来, 中心, 結末",A person from a different background.,異なる経歴（背景）を持つ人。,共通テスト
+Fundamental (1-600),trend,傾向、流行,"過去, 固定, 伝統",A recent trend in fashion.,ファッションの最近の傾向（流行）。,共通テスト
+Fundamental (1-600),vote,投票,"拒絶, 命令, 辞退",The right to vote.,投票する権利（参政権）。,共通テスト
+Fundamental (1-600),impact,影響、衝撃,"無視, 停止, 緩和",A major impact on the environment.,環境への重大な影響。,共通テスト
+Fundamental (1-600),institution,機構、施設、制度,"会社, 市場, 公園",A medical institution.,医療機関（施設）。,関西大
+Fundamental (1-600),interaction,交流、相互作用,"孤立, 停止, 拒絶",interaction between teachers and students.,教師と生徒の交流。,同志社大
+Fundamental (1-600),alternative,代わりの（もの）,"固定の, 過去の, 唯一の",An alternative energy source.,代替（代わりの）エネルギー源。,慶應義塾大
+Fundamental (1-600),harm,害、損害,"利益, 救済, 恩恵",It does more harm than good.,それは利益よりも害の方が多い。,共通テスト
+Fundamental (1-600),agency,代理店、政府機関,"支店, 本部, 顧客",A travel agency.,旅行代理店。,共通テスト
+Fundamental (1-600),capacity,容量、能力,"限界, 空虚, 欠点",The capacity of the stadium.,スタジアムの収容能力（容量）。,共通テスト
+Fundamental (1-600),minister,大臣、牧師,"役人, 王様, 召使い",The Prime minister.,総理大臣。,共通テスト
+Fundamental (1-600),volunteer,ボランティア、志願者,"被雇用者, 犯罪者, 強制参加者",Work as a volunteer.,ボランティアとして働く。,共通テスト
+Fundamental (1-600),access,アクセス、利用する権利,"禁止, 遠方, 拒否",Easy access to information.,情報への容易なアクセス。,共通テスト
+Fundamental (1-600),quantity,量,"質, 重さ, 割合",Quality is more important than quantity.,量より質が重要だ。,共通テスト
+Fundamental (1-600),branch,枝、支店、部門,"幹, 根っこ, 本部",A cherry branch.,桜の枝。,共通テスト
+Fundamental (1-600),common,共通の、普通の,"珍しい, 専門の, 固有の",A common mistake.,よくある（普通の）間違い。,共通テスト
+Fundamental (1-600),rough,粗い、荒っぽい,"滑らかな, 正確な, 穏やかな",A rough sketch.,大まかなスケッチ。,共通テスト
+Fundamental (1-600),likely,ありそうな,"ありそうにない, 過去の, 確定した",It is likely to rain.,雨が降りそうだ（ありそうだ）。,共通テスト
+Fundamental (1-600),serious,深刻な、真剣な,"軽薄な, 陽気な, 些細な",A serious problem.,深刻な問題。,共通テスト
+Fundamental (1-600),particular,特定の、好みがうるさい,"一般的な, 共通の, 曖昧な",In this particular case.,この特定のケースでは。,共通テスト
+Fundamental (1-600),available,利用できる、手に入る,"利用できない, 壊れた, 売り切れの",Is this room available?,この部屋は空いていますか（利用できますか）？,共通テスト
+Fundamental (1-600),bilingual,2言語を使える,"1言語の, 無学な, 無口な",He is bilingual in English and French.,彼は英語とフランス語のバイリンガルだ。,共通テスト
+Fundamental (1-600),ready,準備ができた,"準備ができていない, 疲れた, 飽きた",Are you ready to go?,行く準備はできましたか？,共通テスト
+Fundamental (1-600),correct,正しい,"間違った, 古い, 醜い",The correct answer.,正しい答え。,共通テスト
+Fundamental (1-600),familiar,熟知している、親しい,"未知の, 怖い, 珍しい",I am familiar with this city.,私はこの街をよく知っている。,共通テスト
+Fundamental (1-600),physical,身体の、物質的な,"精神的な, 想像上の, 霊的な",physical exercise.,身体的な運動。,共通テスト
+Fundamental (1-600),worth,～の価値がある,"価値がない, 無料の, 安価な",This book is worth reading.,この本は読む価値がある。,中央大
+Fundamental (1-600),involved,関わっている,"無関係な, 孤立した, 自由な",He was involved in the project.,彼はそのプロジェクトに関わっていた。,共通テスト
+Fundamental (1-600),fantastic,すばらしい,"ひどい, 普通の, 退屈な",A fantastic idea.,すばらしい考え。,共通テスト
+Fundamental (1-600),private,私的な、民間の,"公的な, 共通の, 開放的な",A private letter.,私信（私的な手紙）。,共通テスト
+Fundamental (1-600),obvious,明らかな,"疑わしい, 隠れた, 複雑な",It is obvious that he is lying.,彼が嘘をついているのは明らかだ。,共通テスト
+Fundamental (1-600),native,母国の、地元の,"外国の, 遠い, 偽の",My native language is Japanese.,私の母語（母国語）は日本語だ。,共通テスト
+Fundamental (1-600),complex,複雑な,"単純な, 壊れた, 鋭い",A complex problem.,複雑な問題。,共通テスト
+Fundamental (1-600),willing,～するのをいとわない,"嫌がる, 無能な, 強制的な",I am willing to help you.,喜んで（いとわずに）あなたを助けましょう。,上智大
+Fundamental (1-600),current,現在の、最新の,"過去の, 未来の, 永遠の",The current situation.,現在の状況。,共通テスト
+Fundamental (1-600),male,男性の,"女性の, 子供の, 高齢の",A male student.,男子学生。,共通テスト
+Fundamental (1-600),proper,適切な、ふさわしい,"不適切な, 汚い, 珍しい",proper behavior.,適切な（ふさわしい）振る舞い。,共通テスト
+Fundamental (1-600),capable,能力がある,"能力がない, 怠惰な, 臆病な",He is capable of doing it.,彼はそれをする能力がある。,共通テスト
+Fundamental (1-600),independent,独立した,"依存した, 弱い, 孤立した",Become independent of one's parents.,親から独立する。,共通テスト
+Fundamental (1-600),positive,肯定的な、積極的な,"否定的な, 疑わしい, 控えめな",A positive attitude.,前向きな（肯定的な）態度。,共通テスト
+Fundamental (1-600),pleasant,楽しい、心地よい,"不快な, 悲しい, 恐ろしい",A pleasant trip.,楽しい旅行。,共通テスト
+Fundamental (1-600),significant,重要な、かなりの,"無意味な, わずかな, 以前の",A significant change.,重要な変化。,共通テスト
+Fundamental (1-600),former,前の、昔の,"未来の, 永遠の, 共通の",The former president.,前（元）大統領。,共通テスト
+Fundamental (1-600),chemical,化学の、化学物質,"物理の, 生物の, 天然の",chemical reactions.,化学反応。,共通テスト
+Fundamental (1-600),upset,～を動揺させる、腹を立てた,"～を喜ばせる, ～を静める, ～を褒める",She was deeply upset by the news.,彼女はそのニュースに深く動揺した。,立教大
+Fundamental (1-600),previous,以前の、前の,"次の, 未来の, 永遠の",My previous job.,私の前（以前）の仕事。,共通テスト
+Fundamental (1-600),calm,落ち着いた、穏やかな,"興奮した, 騒がしい, 荒い",Please stay calm.,落ち着いてください。,共通テスト
+Fundamental (1-600),specific,特定の、具体的な,"一般的な, 曖昧な, 共通の",For a specific purpose.,特定の目的のために。,早稲田大
+Fundamental (1-600),conscious,意識している、気づいている,"無意識の, 眠っている, 忘れている",Be conscious of the danger.,危険を意識しなさい。,慶應義塾大
+Fundamental (1-600),superior,優れている,"劣っている, 等しい, 壊れた",This model is superior to that one.,このモデルはあちらより優れている。,共通テスト
+Fundamental (1-600),efficient,効率的な,"無駄な, 遅い, 複雑な",An efficient way of working.,効率的な仕事のやり方。,共通テスト
+Fundamental (1-600),fundamental,基本的な、根本的な,"些細な, 表面的な, 終わりの",fundamental human rights.,基本的人権。,共通テスト
+Fundamental (1-600),narrow,狭い,"広い, 高い, 長い",A narrow street.,狭い通り。,共通テスト
+Fundamental (1-600),reasonable,理にかなった、手頃な,"不当な, 高価な, 愚かな",A reasonable price.,手頃な（納得のいく）価格。,共通テスト
+Fundamental (1-600),nervous,緊張している、不安な,"自信満々な, 穏やかな, 鈍い",I feel nervous before exams.,試験の前は緊張する。,共通テスト
+Fundamental (1-600),alike,似ている,"異なっている, 離れている, 反対の",The two brothers are very alike.,その二人の兄弟はとてもよく似ている。,共通テスト
+Fundamental (1-600),domestic,国内の、家庭の,"国際的な, 外国の, 都市の",domestic flights.,国内便。,共通テスト
+Fundamental (1-600),negative,否定的な、消極的な,"肯定的な, 積極的な, 確実な",A negative answer.,否定的な返答。,共通テスト
+Fundamental (1-600),moral,道徳的な,"不道徳な, 法律の, 身体的な",moral responsibility.,道徳的な責任。,共通テスト
+Fundamental (1-600),eager,熱望して、熱心な,"無関心な, 嫌がっている, 飽きている",He is eager to learn.,彼は学ぶことに熱心だ。,共通テスト
+Fundamental (1-600),remarkable,注目すべき、著しい,"平凡な, 些細な, 醜い",A remarkable progress.,著しい進歩。,明治大
+Fundamental (1-600),evil,邪悪な,"神聖な, 善良な, 賢い",An evil plan.,邪悪な計画。,共通テスト
+Fundamental (1-600),awake,目を覚まして,"眠って, 疲れて, 死んで",Is he still awake?,彼はまだ起きていますか？,共通テスト
+Fundamental (1-600),aged,年老いた、～歳の,"若い, 生まれたての, 元気な",Care for aged people.,お年寄り（年老いた人々）の世話をする。,共通テスト
+Fundamental (1-600),anxious,心配して、切望して,"安心した, 無関心な, 満足した",I am anxious about the future.,私は将来が不安だ（心配だ）。,共通テスト
+Fundamental (1-600),tough,たくましい、骨の折れる,"弱い, 簡単な, 柔らかい",A tough guy.,たくましい（タフな）男。,共通テスト
+Fundamental (1-600),nuclear,核の、原子力の,"火力の, 太陽光の, 化学の",nuclear energy.,原子力（核）エネルギー。,共通テスト
+Fundamental (1-600),legal,法律の、合法的な,"違法の, 私的な, 伝統的な",Seek legal advice.,法的な助言を求める。,慶應義塾大
+Fundamental (1-600),curious,好奇心が強い、奇妙な,"無関心な, 普通の, 飽きている",Children are curious about everything.,子供は何にでも好奇心を持つ。,共通テスト
+Fundamental (1-600),civil,市民の、民間の,"軍事的な, 公的な, 宗教的な",civil rights.,市民権（公民権）。,共通テスト
+Fundamental (1-600),recent,最近の,"昔の, 未来の, 永遠の",A recent study shows...,最近の研究によると…。,共通テスト
+Fundamental (1-600),senior,年上の、上位の,"年下の, 新人の, 劣った",He is senior to me.,彼は私より年上（先輩）だ。,共通テスト
+Fundamental (1-600),afterward,後で、その後,"前に, すぐに, 永遠に",We had dinner afterward.,私たちはその後で夕食を食べた。,共通テスト
+Fundamental (1-600),nearly,ほとんど、あやうく～する,"全く, 決して～ない, 遠くに",It's nearly ten o'clock.,ほとんど10時だ。,共通テスト
+Fundamental (1-600),therefore,それゆえに、したがって,"しかしながら, それでも, あるいは","I think, therefore I am.",我思う、ゆえに我あり。,共通テスト
+Fundamental (1-600),exactly,正確に、まさに,"大体, 間違って, おそらく",Tell me exactly what happened.,何が起きたか正確に話しなさい。,共通テスト
+Fundamental (1-600),possibly,ひょっとすると、どうしても（～ない）,"確かに, 決して, 正確に",I can't possibly do that.,それはどうしても（到底）できません。,共通テスト
+Fundamental (1-600),contrary,反対に,"同様に, 確かに, 以前に","On the contrary, it's easy.",それどころか（反対に）、それは簡単だ。,共通テスト
+Fundamental (1-600),occasionally,時々,"常に, 決して～ない, 頻繁に",We meet occasionally.,私たちは時々会う。,共通テスト
+Fundamental (1-600),somehow,どうにかして、どういうわけか,"簡単に, 決して, 正確に",I'll finish it somehow.,どうにかして（何とかして）終わらせる。,共通テスト
+Fundamental (1-600),seldom,めったに～ない,"しばしば, 常に, 以前に",He seldom goes out.,彼はめったに外出しない。,共通テスト
+Fundamental (1-600),thus,したがって、このように,"しかし, あるいは, 前に",thus far.,今までのところ（このようにして遠くまで）。,共通テスト
+Fundamental (1-600),throughout,～の間ずっと、～の至る所に,"～の前に, ～の後に, ～を除いて",throughout the year.,一年中（一年間ずっと）。,共通テスト
+Fundamental (1-600),unlike,～と違って,"～と同様に, ～の近くに, ～の代わりに",unlike my brother.,兄と違って。,共通テスト
+Fundamental (1-600),besides,～に加えて、その上,"～を除いて, ～の代わりに, ～の前に",What do you like besides music?,音楽のほかに（に加えて）何が好きですか？,共通テスト
+Fundamental (1-600),beyond,～を越えて,"～の手前に, ～の下に, ～の中で",beyond description.,言葉では表せない（説明を越えている）。,共通テスト
+Fundamental (1-600),within,～以内に、～の中に,"～の外に, ～の後に, ～を越えて",within an hour.,1時間以内に。,共通テスト
+Fundamental (1-600),nor,～もまた～ない,"～もまた, しかし, あるいは",Neither he nor I.,彼も私も～ない。,共通テスト
+Fundamental (1-600),unless,～でない限り,"～ならば, ～なので, ～にもかかわらず",unless it rains.,雨が降らない限り。,共通テスト
+Fundamental (1-600),except,～を除いて,"～に加えて, ～と同様に, ～の中で",Everyone except me.,私を除いて全員。,共通テスト
+Fundamental (1-600),ought,～すべきである,"～してもよい, ～に違いない, ～するつもりだ",You ought to go.,君は行くべきだ。,共通テスト
+Fundamental (1-600),in spite of,～にもかかわらず,"～のおかげで, ～のせいで, ～の代わりに",in spite of the rain.,雨にもかかわらず。,共通テスト
+Fundamental (1-600),whether,～かどうか、～であろうとなかろうと,"～のとき, ～なので, ～の間に",whether or not.,～かどうか。,共通テスト
+Fundamental (1-600),explain,～を説明する,"～を隠す, ～を忘れる, ～を疑う",Can you explain this?,これを説明できますか？,共通テスト
+Fundamental (1-600),accept,～を受け入れる,"～を拒否する, ～を壊す, ～を盗む",accept an offer.,申し出を受け入れる。,共通テスト
+Fundamental (1-600),produce,～を生産する、産出する,"～を消費する, ～を破壊する, ～を失う",The factory produces cars.,その工場は車を生産している。,共通テスト
+Fundamental (1-600),exist,存在する,"消滅する, 隠れる, 壊れる",Does life exist on Mars?,火星に生命は存在しますか？,共通テスト
+Fundamental (1-600),express,～を表現する,"～を隠す, ～を忘れる, ～を止める",express my feelings.,自分の気持ちを表現する。,共通テスト
+Fundamental (1-600),add,～を加える,"～を引く, ～を捨てる, ～を壊す",add some sugar.,砂糖を少し加える。,共通テスト
+Fundamental (1-600),avoid,～を避ける,"～に立ち向かう, ～を好む, ～を探す",avoid a mistake.,ミスを避ける。,共通テスト
+Fundamental (1-600),marry,～と結婚する,"～と別れる, ～を助ける, ～を呼ぶ",Will you marry me?,私と結婚してくれますか？,共通テスト
+Fundamental (1-600),protect,～を保護する、守る,"～を攻撃する, ～を壊す, ～を捨てる",protect the environment.,環境を保護する（守る）。,共通テスト
+Fundamental (1-600),affect,～に影響を与える,"～を無視する, ～を直す, ～を止める",Smoking affects health.,喫煙は健康に影響を与える。,共通テスト
+Fundamental (1-600),determine,～を決定する、決心する,"～を迷う, ～を無視する, ～を忘れる",determine the price.,価格を決定する。,慶應義塾大
+Fundamental (1-600),solve,～を解決する、解く,"～を悪化させる, ～を隠す, ～を忘れる",solve the problem.,その問題を解決する。,共通テスト
+Fundamental (1-600),contain,～を含んでいる,"～を除外する, ～を捨てる, ～を壊す",This box contains books.,この箱には本が入っている（を含んでいる）。,共通テスト
+Fundamental (1-600),discuss,～を議論する,"～を黙認する, ～を忘れる, ～を隠す",discuss the matter.,その件について議論する。,共通テスト
+Fundamental (1-600),ignore,～を無視する,"～に気づく, ～を尊敬する, ～を助ける",Don't ignore me.,私を無視するな。,共通テスト
+Fundamental (1-600),guess,～を推測する,"～を知っている, ～を忘れる, ～を隠す",guess the answer.,答えを推測する。,共通テスト
+Fundamental (1-600),exchange,～を交換する,"～を維持する, ～を捨てる, ～を隠す",exchange yen for dollars.,円をドルに交換する。,共通テスト
+Fundamental (1-600),satisfy,～を満足させる,"～を失望させる, ～を怒らせる, ～を疲れさせる",satisfy the customers.,顧客を満足させる。,共通テスト
+Fundamental (1-600),complain,不平を言う,"感謝する, 褒める, 黙る",complain about the food.,食べ物について不平を言う。,共通テスト
+Fundamental (1-600),achieve,～を達成する,"～を諦める, ～に失敗する, ～を忘れる",achieve a goal.,目標を達成する。,共通テスト
+Fundamental (1-600),enable,～を可能にする,"～を妨げる, ～を止める, ～を壊す",Tools enable us to work.,道具は私たちが働くことを可能にする。,共通テスト
+Fundamental (1-600),intend,～するつもりだ,"～を諦める, ～を忘れる, ～を後悔する",I intend to stay here.,私はここに滞在するつもりだ。,共通テスト
+Fundamental (1-600),obtain,～を手に入れる,"～を失う, ～を捨てる, ～を避ける",obtain information.,情報を手に入れる。,共通テスト
+Fundamental (1-600),divide,～を分ける,"～を合わせる, ～を壊す, ～を隠す",divide the cake.,ケーキを分ける。,共通テスト
+Fundamental (1-600),annoy,～をいらだたせる,"～を喜ばせる, ～を静める, ～を助ける",The noise annoys me.,その騒音が私をいらだたせる。,共通テスト
+Fundamental (1-600),differ,異なる,"似ている, 従う, 議論する",Customs differ from country to country.,習慣は国によって異なる。,共通テスト
+Fundamental (1-600),educate,～を教育する,"～を雇う, ～を無視する, ～を罰する",educate children at home.,家庭で子供たちを教育する。,共通テスト
+Fundamental (1-600),borrow,～を借りる,"～を貸す, ～を盗む, ～を買う",May I borrow your pen?,ペンを借りてもいいですか？,共通テスト
+Fundamental (1-600),invent,～を発明する,"～を発見する, ～を壊す, ～を真似る",Who invented the telephone?,誰が電話を発明したのですか？,共通テスト
+Fundamental (1-600),promote,～を促進する、昇進させる,"～を妨げる, ～を降格させる, ～を無視する",promote world peace.,世界平和を促進する。,立教大
+Fundamental (1-600),advise,～に忠告する、アドバイスする,"～を非難する, ～を命令する, ～を褒める",He advised me to rest.,彼は私に休むよう忠告した。,共通テスト
+Fundamental (1-600),retire,辞める、引退する,"雇われる, 昇進する, 続ける",He retired from politics.,彼は政界を引退した（辞めた）。,共通テスト
+Fundamental (1-600),permit,～を許す、許可する,"～を禁止する, ～を罰する, ～を疑う",We cannot permit smoking here.,ここでの喫煙は許可できません。,共通テスト
+Fundamental (1-600),recommend,～を勧める,"～を批判する, ～を拒否する, ～を隠す",I recommend this book.,この本をお勧めします。,共通テスト
+Fundamental (1-600),apologize,謝る,"許す, 褒める, 不平を言う",You should apologize to her.,彼女に謝るべきだ。,共通テスト
+Fundamental (1-600),inform,～に知らせる,"～を隠す, ～を騙す, ～を忘れる",inform him of the news.,彼にそのニュースを知らせる。,共通テスト
+Fundamental (1-600),oppose,～に反対する,"～に賛成する, ～を提案する, ～を無視する",Many people oppose the plan.,多くの人がその計画に反対している。,共通テスト
+Fundamental (1-600),trust,～を信用する,"～を疑う, ～を裏切る, ～を恐れる",You can trust him.,彼は信用できる。,共通テスト
+Fundamental (1-600),select,～を選ぶ,"～を捨てる, ～を無視する, ～を混ぜる",select the best candidate.,最良の候補者を選ぶ。,共通テスト
+Fundamental (1-600),praise,～をほめる,"～を叱る, ～を非難する, ～を無視する",The teacher praised her.,先生は彼女をほめた。,共通テスト
+Fundamental (1-600),handle,～に対処する、～を扱う,"～を避ける, ～を壊す, ～を無視する",How to handle stress.,ストレスへの対処法。,共通テスト
+Fundamental (1-600),propose,～を提案する,"～を拒否する, ～を隠す, ～を期待する",propose a new plan.,新しい計画を提案する。,青山学院大
+Fundamental (1-600),breathe,呼吸する、～を吸う,"止める, 飲み込む, 吐き出す",It's hard to breathe here.,ここは息苦しい（呼吸しにくい）。,共通テスト
+Fundamental (1-600),criticize,～を非難する、批評する,"～を褒める, ～を許す, ～を助ける",Don't criticize others.,他人を非難してはいけない。,共通テスト
+Fundamental (1-600),overcome,～に打ち勝つ、～を克服する,"～に屈する, ～を避ける, ～を忘れる",overcome many difficulties.,多くの困難を克服する。,共通テスト
+Fundamental (1-600),possess,～を持っている,"～を欠いている, ～を捨てる, ～を借りる",He possesses great talent.,彼は素晴らしい才能を持っている。,慶應義塾大
+Fundamental (1-600),predict,～を予言する、予測する,"～を回想する, ～を無視する, ～を疑う",predict the future.,未来を予言する。,共通テスト
+Fundamental (1-600),publish,～を出版する、発表する,"～を隠す, ～を検閲する, ～を読む",publish a magazine.,雑誌を出版する。,共通テスト
+Fundamental (1-600),float,浮かぶ、～を浮かべる,"沈む, 飛ぶ, 走る",Wood floats on water.,木は水に浮かぶ。,共通テスト
+Fundamental (1-600),recall,～を思い出す、呼び戻す,"～を忘れる, ～を無視する, ～を予言する",I can't recall his name.,彼の名前が思い出せない。,共通テスト
+Fundamental (1-600),explore,～を探検する、調査する,"～を守る, ～を隠す, ～を壊す",explore the cave.,洞窟を探検する。,共通テスト
+Fundamental (1-600),pretend,ふりをする,"隠す, 認める, 証明する",pretend to be asleep.,眠っているふりをする。,法政大
+Fundamental (1-600),absorb,～を吸収する,"～を放出する, ～を反射する, ～を弾く",Plants absorb water.,植物は水を吸収する。,共通テスト
+Fundamental (1-600),resemble,～に似ている,"～と異なる, ～を追い越す, ～を無視する",He resembles his father.,彼は父親に似ている。,共通テスト
+Fundamental (1-600),tear,～を引き裂く,"～を縫う, ～を洗う, ～を隠す",tear the letter into pieces.,手紙を粉々に引き裂く。,共通テスト
+Fundamental (1-600),consume,～を消費する,"～を生産する, ～を蓄える, ～を節約する",consume a lot of energy.,大量のエネルギーを消費する。,共通テスト
+Fundamental (1-600),compete,競争する,"協力する, 諦める, 避ける",compete with each other.,お互いに競争する。,共通テスト
+Fundamental (1-600),quit,～をやめる,"～を始める, ～を続ける, ～を雇う",quit smoking.,禁煙する（タバコをやめる）。,共通テスト
+Fundamental (1-600),announce,～を発表する,"～を隠す, ～を忘れる, ～を囁く",announce the winner.,勝者を発表する。,共通テスト
+Fundamental (1-600),react,反応する,"無視する, 停止する, 逃げる",react to the medicine.,薬に反応する。,共通テスト
+Fundamental (1-600),wander,歩き回る、さまよう,"立ち止まる, 走る, 急ぐ",wander through the forest.,森の中を歩き回る。,共通テスト
+Fundamental (1-600),text,メールを送る,"電話をかける, 手紙を書く, 無視する",She texted me later.,彼女は後でメールをくれた。,共通テスト
+Fundamental (1-600),generate,～を生み出す、発生させる,"～を破壊する, ～を止める, ～を隠す",generate electricity.,電気を生み出す（発電する）。,共通テスト
+Fundamental (1-600),score,～（点数）を取る,"～を失う, ～を外す, ～を守る",score a goal.,ゴールを決める（点取る）。,共通テスト
+Fundamental (1-600),government,政府,"市場, 家族, 企業",The Japanese government.,日本政府。,共通テスト
+Fundamental (1-600),knowledge,知識,"無知, 想像, 秘密",A thirst for knowledge.,知識への渇望。,共通テスト
+Fundamental (1-600),nation,国、国家、国民,"都市, 家族, 組織",The entire nation.,国民全体。,共通テスト
+Fundamental (1-600),effort,努力,"怠慢, 運, 結果",Make an effort to win.,勝つために努力する。,共通テスト
+Fundamental (1-600),period,時代、期間,"瞬間, 未来, 永遠",A period of economic growth.,経済成長の期間（時代）。,共通テスト
+Fundamental (1-600),population,人口,"面積, 収入, 出生率",A rapid increase in population.,急激な人口増加。,共通テスト
+Fundamental (1-600),purpose,目的,"偶然, 理由, 結果",What is your purpose?,あなたの目的は何ですか？,共通テスト
+Fundamental (1-600),behavior,行動、振る舞い,"思想, 外見, 計画",Human behavior.,人間の行動。,共通テスト
+Fundamental (1-600),lack,不足,"過剰, 豊富, 満足",A lack of sleep.,睡眠不足。,共通テスト
+Fundamental (1-600),skill,技術、技能,"才能, 道具, 知識",A highly valued skill.,高く評価される技術。,共通テスト
+Fundamental (1-600),quality,質、品質,"量, 価格, 外見",The quality of education.,教育の質。,共通テスト
+Fundamental (1-600),environment,環境,"遺伝, 都会, 室内",Protect the natural environment.,自然環境を守る。,共通テスト
+Fundamental (1-600),role,役割,"主役, 責任, 職業",Play an important role.,重要な役割を果たす。,共通テスト
+Fundamental (1-600),attitude,態度,"意見, 感情, 性格",A positive attitude.,前向きな態度。,共通テスト
+Fundamental (1-600),author,筆者、著者,"読者, 編集者, 登場人物",Who is the author of this book?,この本の著者は誰ですか？,共通テスト
+Fundamental (1-600),research,研究、調査,"実践, 遊び, 噂",Scientific research.,科学的研究。,共通テスト
+Fundamental (1-600),opportunity,機会,"危機, 過去, 偶然",A great opportunity.,絶好の機会。,共通テスト
+Fundamental (1-600),source,源、情報源,"終わり, 目的地, 秘密",A source of energy.,エネルギー源。,共通テスト
+Fundamental (1-600),carbon,炭素,"酸素, 水素, 窒素",carbon dioxide.,二酸化炭素。,共通テスト
+Fundamental (1-600),shape,形,"重さ, 色, 素材",The shape of the moon.,月の形。,共通テスト
+Fundamental (1-600),advantage,利点,"欠点, 損害, 費用",Take advantage of this chance.,このチャンスを利用（利点を享受）する。,共通テスト
+Fundamental (1-600),method,方法,"理論, 結果, 道具",A new method of teaching.,新しい教授法（方法）。,共通テスト
+Fundamental (1-600),habit,習慣、癖,"伝統, 法律, 流行",A bad habit.,悪い癖（習慣）。,共通テスト
+Fundamental (1-600),detail,細部、詳細,"全体, 概要, 秘密",Tell me the details.,詳細を教えてください。,共通テスト
+Fundamental (1-600),distance,距離,"速度, 時間, 面積",A long distance.,長い距離。,共通テスト
+Fundamental (1-600),crowd,群衆、人混み,"孤独, 静寂, 少数",A large crowd.,大勢の群衆。,共通テスト
+Fundamental (1-600),instance,例、場合,"理由, 偶然, 終わり","For instance, consider this.",例えば（例として）、これを考えてみて。,共通テスト
+Fundamental (1-600),desire,願望、欲求,"嫌悪, 満足, 無関心",A strong desire for success.,成功への強い願望。,同志社大
+Fundamental (1-600),standard,水準、基準、標準,"限界, 例外, 流行",The standard of living.,生活水準。,早稲田大
+Fundamental (1-600),task,仕事、任務,"遊び, 休憩, 趣味",A difficult task.,難しい仕事。,共通テスト
+Fundamental (1-600),generation,世代,"過去, 未来, 家族",The younger generation.,若い世代。,共通テスト
+Fundamental (1-600),responsibility,責任,"権利, 自由, 逃避",Take responsibility for it.,それに対して責任を取る。,共通テスト
+Fundamental (1-600),experiment,実験,"理論, 事実, 遊び",Scientific experiments.,科学的実験。,共通テスト
+Fundamental (1-600),athlete,運動選手,"審判, 観客, コーチ",A professional athlete.,プロの運動選手。,共通テスト
+Fundamental (1-600),decade,10年,"1年, 100年, 1世紀",For more than a decade.,10年以上もの間。,共通テスト
+Fundamental (1-600),loss,損失,"利益, 獲得, 成功",A heavy loss.,大きな損失。,共通テスト
+Fundamental (1-600),fever,熱,"寒気, 痛み, 咳",I have a high fever.,高熱がある。,共通テスト
+Fundamental (1-600),theory,理論,"実践, 想像, 噂","In theory, it is possible.",理論上、それは可能だ。,明治大
+Fundamental (1-600),statement,記述、声明,"沈黙, 質問, 秘密",Make an official statement.,公式声明（記述）を出す。,共通テスト
+Fundamental (1-600),professor,教授,"学生, 助手, 校長",A college professor.,大学教授。,共通テスト
+Fundamental (1-600),function,機能,"故障, 外見, 名前",The function of the brain.,脳の機能。,共通テスト
+Fundamental (1-600),surface,表面,"内部, 底, 中心",The surface of the earth.,地球の表面。,共通テスト
+Fundamental (1-600),envelope,封筒,"切手, 便箋, 箱",Put a letter in an envelope.,手紙を封筒に入れる。,共通テスト
+Fundamental (1-600),organization,組織、団体,"個人, 解散, 混乱",An international organization.,国際組織。,共通テスト
+Fundamental (1-600),policy,政策、方針,"偶然, 伝統, 噂",Foreign policy.,外交政策。,共通テスト
+Fundamental (1-600),resource,資源、財源,"廃棄物, 限界, 負債",Natural resources.,天然資源。,共通テスト
+Fundamental (1-600),contrast,対比,"同一, 類似, 混同",In contrast to him.,彼との対比（対照）において。,共通テスト
+Fundamental (1-600),flood,洪水,"干ばつ, 嵐, 地震",The village was hit by a flood.,村は洪水に見舞われた。,共通テスト
+Fundamental (1-600),mate,連れ合い、仲間,"敵, 他人, 主人",My soul mate.,私のソウルメイト（魂の伴侶）。,共通テスト
+Fundamental (1-600),goods,商品,"サービス, 原料, 廃棄物",Exported goods.,輸出商品。,共通テスト
+Fundamental (1-600),creature,動物、生き物,"植物, 鉱物, 幽霊",Sea creatures.,海の生き物（動物）。,共通テスト
+Fundamental (1-600),structure,構造、建築物,"破壊, 材料, 表面",The structure of the DNA.,DNAの構造。,共通テスト
+Fundamental (1-600),tradition,伝統,"流行, 法律, 偶然",Follow the family tradition.,家族の伝統に従う。,共通テスト
+Fundamental (1-600),weight,体重、重さ,"身長, 速度, 面積",Lose weight.,体重を減らす。,共通テスト
+Fundamental (1-600),charity,慈善,"営利, 利己心, 贅沢",A charity concert.,慈善コンサート。,共通テスト
+Fundamental (1-600),citizen,市民,"役人, 観光客, 犯罪者",Rights of every citizen.,全ての市民の権利。,共通テスト
+Fundamental (1-600),impression,印象,"事実, 誤解, 記憶",First impression is important.,第一印象は重要だ。,共通テスト
+Fundamental (1-600),cartoon,マンガ、風刺画,"小説, ニュース, 写真",He likes Japanese cartoons.,彼は日本のマンガが好きだ。,共通テスト
+Fundamental (1-600),career,経歴、職業,"趣味, 休憩, 学歴",A long career in teaching.,教職での長い経歴。,共通テスト
+Fundamental (1-600),site,用地、場所,"建物, 地図, 噂",The construction site.,建設用地（現場）。,共通テスト
+Fundamental (1-600),passenger,乗客,"運転手, 歩行者, 乗組員",A plane with 200 passengers.,200人の乗客を乗せた飛行機。,共通
+Fundamental (1-600),violence,暴力,"平和, 慈しみ, 忍耐",Non-violence movement.,非暴力運動。,共通テスト
+Fundamental (1-600),income,所得、収入,"支出, 貯金, 税金",A high annual income.,高い年収（年間所得）。,共通テスト
+Fundamental (1-600),temperature,気温、温度、体温,"湿度, 気圧, 天候",The temperature is rising.,気温が上がっている。,共通テスト
+Fundamental (1-600),majority,大多数、過半数,"少数派, 全員, 欠席者",The majority of students.,大多数の学生。,共通テスト
+Fundamental (1-600),origin,起源、生まれ,"結末, 目的地, 未来",The origin of the universe.,宇宙の起源。,共通テスト
+Fundamental (1-600),literature,文学,"科学, 芸術, 歴史",English literature.,英文学。,共通テスト
+Fundamental (1-600),equipment,設備、用具,"消耗品, 原料, 建物",Medical equipment.,医療設備（器具）。,共通テスト
+Fundamental (1-600),stranger,見知らぬ人,"友人, 隣人, 親戚",Don't talk to strangers.,知らない人（見知らぬ人）に話しかけてはいけない。,共通テスト
+Fundamental (1-600),strength,強さ、力、長所,"弱さ, 欠点, 短気",Mental strength.,精神的な強さ。,共通テスト
+Fundamental (1-600),planet,惑星,"恒星, 衛星, 彗星",The third planet from the sun.,太陽から3番目の惑星。,共通テスト
+Fundamental (1-600),fiction,小説、作り話,"事実, 自叙伝, 歴史",Science fiction.,空想科学小説（SF）。,共通テスト
+Fundamental (1-600),religion,宗教,"科学, 哲学, 道徳",Freedom of religion.,宗教の自由。,共通テスト
+Fundamental (1-600),pollution,汚染,"浄化, 衛生, 自然",Air pollution.,大気汚染。,共通テスト
+Fundamental (1-600),wealth,富、財産,"貧困, 借金, 損失",He gained great wealth.,彼は莫大な富を築いた。,共通テスト
+Fundamental (1-600),document,文書、書類,"写真, 噂, 秘密",Legal documents.,法的文書（書類）。,共通テスト
+Fundamental (1-600),profit,もうけ、利益,"損失, 費用, 負債",Make a huge profit.,巨額の利益（もうけ）を出す。,共通テスト
+Fundamental (1-600),technique,技術、手法,"才能, 道具, 原理",A new cooking technique.,新しい料理技術（手法）。,共通テスト
+Fundamental (1-600),emotion,感情,"理性, 知識, 沈黙",Express one's emotions.,感情を表現する。,共通テスト
+Fundamental (1-600),phenomenon,現象,"本質, 幻想, 規則",A natural phenomenon.,自然現象。,慶應義塾大
+Fundamental (1-600),horror,恐怖、ホラー,"歓喜, 安心, 勇敢",Look in horror.,恐怖に目を見開く。,共通テスト
+Fundamental (1-600),ladder,はしご,"階段, 坂道, エレベーター",Climb up a ladder.,はしごを登る。,共通テスト
+Fundamental (1-600),billion,十億,"百万, 一兆, 千",Seven billion people.,70億の人々。,共通テスト
+Fundamental (1-600),status,地位、状態,"職業, 過去, 偽名",Social status.,社会的地位。,共通テスト
+Fundamental (1-600),youth,若者、青春,"老人, 子供, 過去",In my youth.,私の若い頃（青春時代）に。,共通テスト
+Fundamental (1-600),confidence,自信、信頼,"不安, 疑い, 恐怖",Have confidence in yourself.,自分に自信を持ちなさい。,共通テスト
+Fundamental (1-600),edge,周辺、端、刃,"中心, 底, 表面",The edge of the table.,テーブルの端（周辺）。,共通テスト
+Fundamental (1-600),household,家庭、世帯,"企業, 独身, 学校",household chores.,家事（家庭の雑用）。,共通テスト
+Fundamental (1-600),scholar,学者,"弟子, 文盲, 職人",A Greek scholar.,ギリシャ学の学者。,共通テスト
+Fundamental (1-600),survey,調査,"憶測, 放置, 秘密",A recent survey shows...,最近の調査によると…。,共通テスト
+Fundamental (1-600),vocabulary,語彙,"文法, 発音, 綴り",Increase your vocabulary.,語彙を増やす。,共通テスト
+Fundamental (1-600),enemy,敵,"味方, 友人, 家族",A common enemy.,共通の敵。,共通テスト
+Fundamental (1-600),construction,建設,"破壊, 放置, 設計",Under construction.,建設中。,共通テスト
+Fundamental (1-600),lecture,講義,"遊び, 実習, 試験",Attend a lecture.,講義に出席する。,共通テスト
+Fundamental (1-600),instruction,指示、教育,"質問, 禁止, 無視",Follow the instructions.,指示に従う。,共通テスト
+Fundamental (1-600),crisis,危機,"平和, 安定, 絶頂",An economic crisis.,経済危機。,共通テスト
+Fundamental (1-600),instrument,器具、楽器,"玩具, 材料, 消耗品",A musical instrument.,楽器（器具）。,共通テスト
+Fundamental (1-600),crop,作物、収穫高,"雑草, 土壌, 肥料",A good crop of rice.,米の豊作（良い収穫）。,共通テスト
+Fundamental (1-600),weapon,兵器、武器,"防具, 盾, 道具",Nuclear weapons.,核兵器。,共通テスト
+Fundamental (1-600),device,装置、工夫,"部品, 原料, 故障",A mobile device.,モバイル端末（装置）。,共通テスト
+Fundamental (1-600),path,道、小道,"広場, 壁, 終点",A mountain path.,山道。,共通テスト
+Fundamental (1-600),earthquake,地震,"洪水, 噴火, 嵐",A powerful earthquake.,強力な地震。,共通テスト
+Fundamental (1-600),stream,小川、流れ,"海, 湖, 滝",A mountain stream.,山の小川。,共通テスト
+Fundamental (1-600),notion,概念、考え,"事実, 偏見, 無知",A general notion.,一般的な概念（考え）。,早稲田大
+Fundamental (1-600),yard,庭、ヤード（単位）,"室内, 道路, 屋上",Play in the yard.,庭で遊ぶ。,共通テスト
+Fundamental (1-600),victim,犠牲者,"加害者, 傍観者, 英雄",A victim of the war.,戦争の犠牲者。,共通テスト
+Fundamental (1-600),fuel,燃料,"排気, 灰, 水",Fossil fuels.,化石燃料。,共通テスト
+Fundamental (1-600),ancestor,祖先,"子孫, 友人, 他人",Our common ancestor.,私たちの共通の祖先。,共通テスト
+Fundamental (1-600),soil,土壌、土,"空, 海, 宇宙",Fertile soil.,肥沃な土壌。,共通テスト
+Fundamental (1-600),debate,討論,"談笑, 独り言, 沈黙",A public debate.,公開討論。,共通テスト
+Fundamental (1-600),crime,犯罪,"法律, 善行, 罰",Commit a crime.,犯罪を犯す。,共通テスト
+Fundamental (1-600),colleague,同僚,"上司, 部下, 家族",Work with my colleagues.,同僚と働く。,共通テスト
+Fundamental (1-600),shelf,棚,"床, 壁, 天井",Put books on the shelf.,本を棚に置く。,共通テスト
+Fundamental (1-600),analysis,分析,"統合, 放置, 憶測",A careful analysis.,注意深い分析。,共通テスト
+Fundamental (1-600),universe,宇宙,"地球, 原子, 室内",The origin of the universe.,宇宙の起源。,共通テスト
+Fundamental (1-600),electricity,電気,"ガス, 水道, 薪",Generate electricity.,電気を生み出す（発電する）。,共通テスト
+Fundamental (1-600),insect,昆虫,"哺乳類, 鳥類, 植物",A rare insect.,珍しい昆虫。,共通テスト
+Fundamental (1-600),web,巣（クモの）、網,"穴, 枝, 罠",A spider's web.,クモの巣。,共通テスト
+Fundamental (1-600),storm,嵐,"快晴, 凪, 霧",A severe storm.,激しい嵐。,共通テスト
+Fundamental (1-600),plenty,十分な、たっぷり,"不足した, わずかな, 空っぽの",plenty of time.,たっぷりの（十分な）時間。,共通テスト
+Fundamental (1-600),agriculture,農業,"工業, 商業, 漁業",Modern agriculture.,現代農業。,共通テスト
+Fundamental (1-600),gene,遺伝子,"筋肉, 血液, 骨",Study human genes.,人間の遺伝子を研究する。,共通テスト
+Fundamental (1-600),evidence,証拠,"噂, 推測, 否定",Scientific evidence.,科学的証拠。,共通テスト
+Fundamental (1-600),consequence,結果,"原因, 過程, 始まり",As a consequence of it.,その結果として。,慶應義塾大
+Fundamental (1-600),infant,幼児,"成人, 老人, 胎児",An infant's health.,幼児の健康。,共通テスト
+Fundamental (1-600),leisure,暇、余暇,"仕事, 義務, 睡眠",leisure activities.,余暇（暇な時間）の活動。,共通テスト
+Fundamental (1-600),cell,細胞、小部屋,"全体, 器官, 組織",Blood cells.,血球（血液の細胞）。,共通テスト
+Fundamental (1-600),talent,才能,"努力, 欠点, 平凡",A musical talent.,音楽の才能。,共通テスト
+Fundamental (1-600),advertising,広告,"隠蔽, 放送, 販売",advertising agency.,広告代理店。,共通テスト
+Fundamental (1-600),extent,程度、範囲,"中心, 終わり, 始まり",To some extent.,ある程度まで。,共通テスト
+Fundamental (1-600),garbage,ごみ,"資源, 宝物, 燃料",Collect garbage.,ごみを集める。,共通テスト
+Fundamental (1-600),general,一般的な、全体的な,"特殊な, 個別の, 珍しい",A general rule.,一般的な規則。,共通テスト
+Fundamental (1-600),various,さまざまな,"同一の, 唯一の, 限られた",various kinds of food.,さまざまな種類の食べ物。,共通テスト
+Fundamental (1-600),similar,似ている,"異なっている, 同一の, 離れた",similar to each other.,お互いに似ている。,共通テスト
+Fundamental (1-600),complete,完全な、完成した,"不完全な, 途中の, 壊れた",A complete set of tools.,工具の完全なセット。,共通テスト
+Fundamental (1-600),sharp,急激な、鋭い,"緩やかな, 鈍い, 平らな",A sharp increase.,急激な増加。,共通テスト
+Fundamental (1-600),expensive,高価な,"安価な, 手頃な, 無料の",An expensive watch.,高価な時計。,共通テスト
+Fundamental (1-600),political,政治的な,"経済的な, 個人の, 宗教的な",political leader.,政治的リーダー。,共通テスト
+Fundamental (1-600),aware,気づいている,"気づいていない, 忘れている, 無関心な",Be aware of the risk.,リスクに気づいている。,共通テスト
+Fundamental (1-600),ancient,古代の,"現代の, 最新の, 未来の",ancient history.,古代史。,共通テスト
+Fundamental (1-600),medical,医学の,"法律の, 政治の, 芸術の",medical treatment.,医学的治療。,共通テスト
+Fundamental (1-600),essential,不可欠だ、本質的な,"不要な, 些細な, 外部の",essential to success.,成功に不可欠だ。,共通テスト
+Fundamental (1-600),huge,巨大な,"とても小さな, 普通の, 狭い",A huge building.,巨大な建物。,共通テスト
+Fundamental (1-600),terrible,ひどい、恐ろしい,"素晴らしい, 穏やかな, 些細な",A terrible accident.,ひどい事故。,共通テスト
+Fundamental (1-600),practical,実用的な,"理論的な, 理想的な, 想像上の",practical experience.,実用的な経験。,共通テスト
+Fundamental (1-600),entire,全、全体の,"部分的な, 外側の, わずかな",The entire day.,一日中（全日）。,共通テスト
+Fundamental (1-600),favorite,いちばん好きな,"嫌いな, 普通の, 以前の",My favorite song.,私のいちばん好きな歌。,共通テスト
+Fundamental (1-600),comfortable,快適な、心地よい,"不快な, 痛い, 狭い",A comfortable sofa.,快適なソファ。,共通テスト
+Fundamental (1-600),minor,小さい、重要でない,"主要な, 巨大な, 深刻な",A minor mistake.,小さい（重要でない）間違い。,共通テスト
+Fundamental (1-600),typical,典型的な,"珍しい, 現代的な, 例外的な",A typical example.,典型的な例。,共通テスト
+Fundamental (1-600),ideal,理想的な,"現実的な, 最悪の, 共通の",The ideal place to live.,住むのに理想的な場所。,共通テスト
+Fundamental (1-600),principal,主要な,"些細な, 補助的な, 終わりの",The principal reason.,主要な理由。,立教大
+Fundamental (1-600),appropriate,適切な,"不適切な, 汚い, 珍しい",appropriate for children.,子供に適切な（ふさわしい）。,共通テスト
+Fundamental (1-600),empty,からの、空の,"満杯の, 混雑した, 重い",An empty bottle.,からの（空の）ボトル。,共通テスト
+Fundamental (1-600),rapid,急速な,"緩やかな, 停滞した, 過去の",rapid economic growth.,急速な経済成長。,共通テスト
+Fundamental (1-600),mental,精神の,"肉体の, 物質的な, 視覚的な",mental health.,精神の（メンタル）健康。,共通テスト
+Fundamental (1-600),excellent,すばらしい,"ひどい, 普通の, まあまあの",An excellent idea.,すばらしい考え。,共通テスト
+Fundamental (1-600),convenient,都合がいい、便利な,"不便な, 遠い, 複雑な",A convenient time.,都合がいい時間。,共通テスト
+Fundamental (1-600),potential,潜在的な、可能性がある,"顕在化した, 過去の, 不可能な",A potential risk.,潜在的なリスク。,共通テスト
+Fundamental (1-600),financial,財政的な、金融の,"政治的な, 個人の, 芸術的な",financial crisis.,財政的な危機。,共通テスト
+Fundamental (1-600),enormous,莫大な,"わずかな, 狭い, 低い",An enormous amount of money.,莫大な金額。,共通テスト
+Fundamental (1-600),rare,珍しい、まれな,"普通の, 頻繁な, 安価な",A rare animal.,珍しい動物。,共通テスト
+Fundamental (1-600),artificial,人工の、不自然な,"天然の, 誠実な, 本物の",artificial intelligence.,人工知能（AI）。,共通テスト
+Fundamental (1-600),tiny,ちっちゃな、ごくわずかな,"巨大な, 重い, 広い",A tiny hole.,ちっちゃな穴。,共通テスト
+Fundamental (1-600),considerable,かなりの、相当な,"わずかな, 無視できる, 以前の",A considerable amount.,かなりの量。,共通テスト
+Fundamental (1-600),sensitive,敏感な,"鈍感な, 冷淡な, 強い",sensitive skin.,敏感な肌。,共通テスト
+Fundamental (1-600),intellectual,知的な,"肉体的な, 感情的な, 愚かな",intellectual property.,知的財産。,共通テスト
+Fundamental (1-600),thirsty,のどが渇く,"満腹だ, 疲れた, 眠い",I'm so thirsty.,とても（のどが）渇いた。,共通テスト
+Fundamental (1-600),polite,礼儀正しい,"無礼な, 騒がしい, 怠惰な",A polite young man.,礼儀正しい若者。,共通テスト
+Fundamental (1-600),accurate,正確な,"不正確な, 曖昧な, 偽の",An accurate clock.,正確な時計。,共通テスト
+Fundamental (1-600),rude,失礼な、不作法な,"礼儀正しい, 親切な, 賢い",A rude remark.,失礼な発言。,共通テスト
+Fundamental (1-600),sufficient,十分な,"不足している, 乏しい, 過剰な",sufficient evidence.,十分な証拠。,共通テスト
+Fundamental (1-600),urban,都会の,"田舎の, 農業の, 商業の",urban areas.,都会の地域。,共通テスト
+Fundamental (1-600),temporary,一時的な,"永久の, 過去の, 頻繁な",A temporary job.,一時的な仕事。,共通テスト
+Fundamental (1-600),primitive,原始的な,"現代的な, 文明的な, 複雑な",primitive life.,原始的な生活。,共通テスト
+Fundamental (1-600),permanent,永久の,"一時的な, 壊れやすい, 短い",permanent address.,永久の（本籍）住所。,共通テスト
+Fundamental (1-600),elderly,高齢の,"若い, 幼児の, 元気な",Help elderly people.,高齢の人々を助ける。,共通テスト
+Fundamental (1-600),severe,厳しい、深刻な,"寛大な, 穏やかな, 些細な",A severe winter.,厳しい冬。,共通テスト
+Fundamental (1-600),brief,簡潔な、短い,"長い, 複雑な, 詳細な",A brief history.,簡潔な歴史。,共通テスト
+Fundamental (1-600),mobile,流動的な、移動式の,"固定された, 壊れた, 重い",A mobile phone.,携帯（移動式）電話。,共通テスト
+Fundamental (1-600),latest,最新の,"最古の, 以前の, 未来の",The latest news.,最新のニュース。,共通テスト
+Fundamental (1-600),military,軍事的な,"平和的な, 民間の, 宗教的な",military service.,兵役（軍事的な務め）。,共通テスト
+Fundamental (1-600),strict,厳しい、厳格な,"寛大な, 曖昧な, 優しい",A strict rule.,厳しい規則。,共通テスト
+Fundamental (1-600),solid,固体の、堅実な,"液体の, 気体の, 柔らかい",Ice is solid water.,氷は固体の水だ。,共通テスト
+Fundamental (1-600),stupid,ばかな,"賢い, 勤勉な, 慎重な",A stupid mistake.,ばかな間違い。,共通テスト
+Fundamental (1-600),biological,生物学の,"化学の, 物理の, 人工の",biological clock.,体内時計（生物学的な時計）。,共通テスト
+Fundamental (1-600),probably,おそらく,"絶対に, 決して～ない, まれに",probably true.,おそらく本当だ。,共通テスト
+Fundamental (1-600),hardly,ほとんど～ない,"しばしば, 完全に, 非常に",I hardly know him.,彼のことはほとんど知らない。,共通テスト
+Fundamental (1-600),immediately,すぐに、即座に,"後で, 徐々に, 時々",Leave immediately.,すぐに去る。,共通テスト
+Fundamental (1-600),eventually,ついに、結局は,"最初は, 決して～ない, すぐに",eventually succeeded.,ついに（結局は）成功した。,共通テスト
+Fundamental (1-600),frequently,しばしば、頻繁に,"まれに, 決して～ない, 以前は",Visit frequently.,頻繁に（しばしば）訪れる。,共通テスト
+Fundamental (1-600),extremely,非常に,"わずかに, 適度に, 全く～ない",extremely hot.,非常に暑い。,共通テスト
+Fundamental (1-600),gradually,だんだん、徐々に,"突然, 急激に, すぐに",gradually improve.,だんだん（徐々に）良くなる。,共通テスト
+Fundamental (1-600),instantly,すぐに、即座に,"後で, 徐々に, 永久に",Killed instantly.,即死（即座に殺害）した。,共通テスト
+Fundamental (1-600),nevertheless,それにもかかわらず,"それゆえに, さらに, しかし","nevertheless, he won.",それにもかかわらず、彼は勝った。,共通テスト
+Fundamental (1-600),moreover,その上、さらに,"しかしながら, 結局, 以前に","moreover, it's free.",その上（さらに）、それは無料だ。,共通テスト
+Fundamental (1-600),relatively,比較的,"絶対的に, 非常に, 全く",relatively cheap.,比較的安い。,共通テスト
+Fundamental (1-600),apparently,一見、どうやら～らしい,"確かに, 密かに, 以前は",apparently easy.,一見（見たところ）簡単そうだ。,共通テスト
+Fundamental (1-600),definitely,絶対に、はっきりと,"多分, 決して～ない, 曖昧に",definitely yes.,絶対にそうです。,共通テスト
+Fundamental (1-600),largely,主に、大部分は,"わずかに, 均等に, 決して～ない",largely due to luck.,主に運のおかげだ。,共通テスト
+Fundamental (1-600),mostly,大部分は、たいてい,"少しだけ, 決して～ない, 以前は",mostly sunny.,大部分は（たいてい）晴れ。,共通テスト
+Fundamental (1-600),approximately,およそ,"正確に, 少なくとも, 以上に",approximately 100 km.,およそ100キロ。,共通テスト
+Fundamental (1-600),overnight,一晩、一晩中,"日中に, 瞬時に, 永遠に",Stay overnight.,一晩（泊まりで）滞在する。,共通テスト
+Fundamental (1-600),accidentally,偶然、誤って,"意図的に, 正確に, 必然的に",accidentally met her.,彼女に偶然会った。,共通テスト
+Fundamental (1-600),despite,にもかかわらず,"おかげで, せいで, 以前は",despite the rain.,雨にもかかわらず。,共通テスト
+Essential (601-1200),proceed,進む、続行する,"戻る, 停止する, 延期する",proceed with the plan.,計画を続行する（進める）。,共通テスト
+Essential (601-1200),ensure,～を確実にする、保証する,"～を疑う, ～を無視する, ～を危険にさらす",ensure the safety of passengers.,乗客の安全を確実にする。,共通テスト
+Essential (601-1200),interpret,～を解釈する、通訳する,"～を誤解する, ～を批判する, ～を隠す",interpret his silence.,彼の沈黙を解釈する。,青山学院大
+Essential (601-1200),cease,～しなくなる、～をやめる,"～を始める, ～を続ける, ～を繰り返す",The rain has ceased.,雨が止んだ（しなくなった）。,慶應義塾大
+Essential (601-1200),ban,～を禁止する,"～を許可する, ～を勧める, ～を公表する",ban smoking in public.,公共の場での喫煙を禁止する。,共通テスト
+Essential (601-1200),obey,～に従う,"～に背く, ～を無視する, ～を疑う",obey the law.,法律に従う。,共通テスト
+Essential (601-1200),eliminate,～を除去する、排除する,"～を加える, ～を維持する, ～を保護する",eliminate a threat.,脅威を除去する。,明治大
+Essential (601-1200),resist,～に抵抗する、耐える,"～に屈する, ～を歓迎する, ～を無視する",resist temptation.,誘惑に抵抗する（耐える）。,共通テスト
+Essential (601-1200),accompany,～に同伴する、～に付随する,"～を捨てる, ～を避ける, ～を追い越す",accompany a friend.,友人に同伴する。,共通テスト
+Essential (601-1200),commit,～を犯す、～をゆだねる,"～を防ぐ, ～を褒める, ～を隠す",commit a crime.,罪を犯す。,共通テスト
+Essential (601-1200),pursue,～を追求する、追跡する,"～を諦める, ～を避ける, ～を無視する",pursue a career.,経歴（キャリア）を追求する。,共通テスト
+Essential (601-1200),demonstrate,～を明らかに示す、証明する,"～を隠す, ～を疑う, ～を忘れる",demonstrate the theory.,その理論を明らかに示す（証明する）。,早稲田大
+Essential (601-1200),bet,きっと～だと思う、～を賭ける,"～を疑う, ～を否定する, ～を恐れる",I bet it will rain.,きっと雨が降ると思う。,共通テスト
+Essential (601-1200),ruin,～を台無しにする、破壊する,"～を直す, ～を建てる, ～を保護する",ruin the relationship.,関係を台無しにする。,共通テスト
+Essential (601-1200),threaten,～を脅迫する、～の恐れがある,"～を助ける, ～を褒める, ～をなだめる",threaten to call the police.,警察を呼ぶと脅す（脅迫する）。,共通テスト
+Essential (601-1200),attach,AをBにくっつける、添付する,"AをBから外す, AをBに売る, AをBで壊す",attach a file.,ファイルを添付する（くっつける）。,共通テスト
+Essential (601-1200),reverse,～を反対にする、逆転する,"～を維持する, ～を続ける, ～を加速させる",reverse the decision.,決定を覆す（逆転させる）。,共通テスト
+Essential (601-1200),restrict,～を制限する,"～を広げる, ～を許可する, ～を無視する",restrict the use of water.,水の使用を制限する。,共通テスト
+Essential (601-1200),compose,～を組み立てる、構成する,"～を解体する, ～を壊す, ～を捨てる",compose a poem.,詩を作る（組み立てる）。,共通テスト
+Essential (601-1200),lean,よりかかる、もたれる,"立ち上がる, 離れる, 座る",lean against the wall.,壁によりかかる。,共通テスト
+Essential (601-1200),substitute,～を代わりに用いる,"～を維持する, ～を捨てる, ～を修理する",substitute butter with oil.,バターの代わりに油を用いる。,上智大
+Essential (601-1200),trace,～の跡をたどる,"～を見失う, ～を隠す, ～を壊す",trace the origin.,起源をたどる。,共通テスト
+Essential (601-1200),interrupt,～を妨げる、中断する,"～を続ける, ～を助ける, ～を褒める",Don't interrupt me.,私の邪魔を（話を妨げ）しないで。,共通テスト
+Essential (601-1200),confront,～に立ち向かう、直面する,"～を避ける, ～を無視する, ～を忘れる",confront a problem.,問題に立ち向かう。,法政大
+Essential (601-1200),illustrate,～を（例で）説明する,"～を隠す, ～を疑う, ～を汚す",illustrate with examples.,例を挙げて説明する。,共通テスト
+Essential (601-1200),arrest,～を逮捕する,"～を解放する, ～を雇う, ～を褒める",arrest the thief.,泥棒を逮捕する。,共通テスト
+Essential (601-1200),stimulate,～を刺激する,"～を抑える, ～を静める, ～を無視する",stimulate the economy.,経済を刺激する。,立教大
+Essential (601-1200),assure,～を保証する、安心させる,"～を不安にさせる, ～を疑う, ～を非難する",I assure you that...,～であることを保証します（安心させて言う）。,共通テスト
+Essential (601-1200),consult,～に相談する、参照する,"～を無視する, ～を命令する, ～を隠す",consult a doctor.,医者に相談する。,共通テスト
+Essential (601-1200),depress,～を憂鬱にさせる,"～を励ます, ～を笑わせる, ～を褒める",The news depressed me.,そのニュースは私を憂鬱にさせた。,共通テスト
+Essential (601-1200),crash,激突する、墜落する,"浮く, 離陸する, 止まる",The plane crashed.,飛行機が墜落した。,共通テスト
+Essential (601-1200),inspire,～を奮起させる、やる気にさせる,"～を失望させる, ～を疲れさせる, ～を怖がらせる",inspire the students.,学生を奮起させる。,共通テスト
+Essential (601-1200),specialize,Aを専門にする、専攻する,"Aを諦める, Aを無視する, Aを隠す",specialize in history.,歴史を専門にする。,共通テスト
+Essential (601-1200),cultivate,～を栽培する、育む,"～を放置する, ～を枯らす, ～を壊す",cultivate vegetables.,野菜を栽培する。,共通テスト
+Essential (601-1200),fulfill,～を果たす、満たす,"～を破る, ～を諦める, ～を忘れる",fulfill a promise.,約束を果たす。,共通テスト
+Essential (601-1200),transmit,～を送る、伝える,"～を受け取る, ～を止める, ～を隠す",transmit data.,データを送る（伝える）。,共通テスト
+Essential (601-1200),found,～を創立する、設立する,"～を解散する, ～を壊す, ～を無視する",found a company.,会社を設立する。,共通テスト
+Essential (601-1200),clap,手をたたく,"足を鳴らす, 手を振る, 握手する",clap one's hands.,手をたたく。,共通テスト
+Essential (601-1200),burst,破裂する、突然～しだす,"縮む, 固まる, 止まる",burst into tears.,突然泣き出す。,共通テスト
+Essential (601-1200),bow,おじぎする,"威張る, 座る, 跳ねる",bow to the audience.,聴衆におじぎする。,共通テスト
+Essential (601-1200),dismiss,～を無視する、解雇する,"～を雇う, ～を考慮する, ～を褒める",dismiss the idea.,その考えを無視する（退ける）。,慶應義塾大
+Essential (601-1200),breed,～を繁殖させる、飼育する,"～を絶滅させる, ～を狩る, ～を食べる",breed horses.,馬を飼育する（繁殖させる）。,共通テスト
+Essential (601-1200),prohibit,～を禁じる,"～を許可する, ～を勧める, ～を教える",prohibit parking.,駐車を禁止する。,共通テスト
+Essential (601-1200),oblige,～に強いる、義務づける,"～を免除する, ～を助ける, ～を褒める",Be obliged to pay.,支払いを強いられる。,共通テスト
+Essential (601-1200),qualify,Aに適任である、資格がある,"Aを失格する, Aを無視する, Aを探す",qualify for the job.,その仕事に適任である。,共通テスト
+Essential (601-1200),invest,～を投資する,"～を消費する, ～を失う, ～を隠す",invest in stocks.,株に投資する。,共通テスト
+Essential (601-1200),grasp,～を理解する、つかむ,"～を誤解する, ～を離す, ～を隠す",grasp the meaning.,意味を理解する。,共通テスト
+Essential (601-1200),collapse,崩壊する、倒れる,"完成する, 建つ, 浮く",The building collapsed.,建物が崩壊した。,共通テスト
+Essential (601-1200),overlook,～を見落とす、見逃す,"～に気づく, ～を調査する, ～を隠す",overlook a mistake.,ミスを見落とす。,共通テスト
+Essential (601-1200),accuse,～を非難する、告訴する,"～を褒める, ～を弁護する, ～を許す",accuse him of lying.,彼を嘘で非難する。,同志社大
+Essential (601-1200),frustrate,～を欲求不満にさせる、挫折させる,"～を満足させる, ～を喜ばせる, ～を助ける",frustrate his plans.,彼の計画を挫折させる。,共通テスト
+Essential (601-1200),deprive,AからBを奪う,"AにBを与える, AにBを教える, AにBを頼む",deprive him of his rights.,彼から権利を奪う。,共通テスト
+Essential (601-1200),astonish,～を驚嘆させる,"～を納得させる, ～を退屈させる, ～を褒める",The news astonished everyone.,そのニュースは全員を驚かせた。,共通テスト
+Essential (601-1200),register,～を登録する,"～を削除する, ～を忘れる, ～を隠す",register for the course.,コースに登録する。,共通テスト
+Essential (601-1200),correspond,一致する、連絡を取り合う,"矛盾する, 異なる, 邪魔する",correspond to the facts.,事実と一致する。,共通テスト
+Essential (601-1200),cast,～を投げる,"～を拾う, ～を隠す, ～を壊す",cast a shadow.,影を落とす（投げる）。,共通テスト
+Essential (601-1200),attribute,AはBのおかげだと思う、せいにする,"AはBのせいではないと思う, AをBに与える, AをBから隠す",attribute success to luck.,成功は運のおかげだと思う。,慶應義塾大
+Essential (601-1200),neglect,～を無視する、怠る,"～を大切にする, ～を注意する, ～を誇る",neglect one's duties.,義務を怠る。,共通テスト
+Essential (601-1200),starve,飢える,"満腹になる, 太る, 食べる",starve to death.,飢え死にする。,共通テスト
+Essential (601-1200),resolve,～を解決する、決心する,"～を悪化させる, ～を迷う, ～を忘れる",resolve the conflict.,紛争を解決する。,早稲田大
+Essential (601-1200),impose,AをBに課す、押し付ける,"AをBから取り除く, AをBに勧める, AをBから隠す",impose a tax on tobacco.,タバコに税金を課す。,共通テスト
+Essential (601-1200),convert,～を転換する、変える,"～を維持する, ～を壊す, ～を隠す",convert coal into oil.,石炭を石油に変える。,共通テスト
+Essential (601-1200),scare,～をおびえさせる,"～を安心させる, ～を喜ばせる, ～を助ける",The noise scared me.,その音に私はおびえた。,共通テスト
+Essential (601-1200),constitute,～を構成する、占める,"～を解体する, ～を壊す, ～を無視する",This constitutes a crime.,これは犯罪を構成する。,中央大
+Essential (601-1200),appoint,～を任命する,"～を罷免（解雇）する, ～を推薦する, ～を避ける",appoint him as manager.,彼をマネージャーに任命する。,共通テスト
+Essential (601-1200),imply,～を（暗に）意味する、暗示する,"～をはっきり言う, ～を否定する, ～を忘れる",What do you imply?,何を暗示しているのですか？,共通テスト
+Essential (601-1200),assign,～を割り当てる,"～を没収する, ～を隠す, ～を断る",assign a task to him.,彼に仕事を割り当てる。,共通テスト
+Essential (601-1200),nod,うなずく,"首を振る（否定）, 怒る, 叫ぶ",He nodded in agreement.,彼は賛成してうなずいた。,共通テスト
+Essential (601-1200),elect,～を選挙で選ぶ,"～を罷免する, ～を任命する, ～を捨てる",elect a president.,大統領を選挙で選ぶ。,共通テスト
+Essential (601-1200),transfer,～を移す、転勤する,"～を維持する, ～を捨てる, ～を止める",transfer to another office.,別の事務所に移る（転勤する）。,共通テスト
+Essential (601-1200),rob,AからBを奪う,"AにBを与える, AにBを貸す, AにBを売る",rob the bank of money.,銀行から金を奪う。,共通テスト
+Essential (601-1200),capture,～を捕らえる,"～を逃がす, ～を隠す, ～を殺す",capture the thief.,泥棒を捕らえる。,共通テスト
+Essential (601-1200),undertake,～を引き受ける,"～を断る, ～を忘れる, ～を任せる",undertake a task.,仕事を引き受ける。,共通テスト
+Essential (601-1200),drown,おぼれ死ぬ,"泳ぎ切る, 浮く, 助かる",He almost drowned.,彼はあやうくおぼれ死ぬところだった。,共通テスト
+Essential (601-1200),split,～を割る、分裂する,"～を結合する, ～を維持する, ～を隠す",split the log.,丸太を割る。,共通テスト
+Essential (601-1200),resort,Aに訴える、Aを手段にする,"Aを避ける, Aを禁止する, Aを隠す",resort to violence.,暴力に訴える。,共通テスト
+Essential (601-1200),descend,下る、降りる,"登る, 飛ぶ, 走る",descend the stairs.,階段を降りる。,共通テスト
+Essential (601-1200),irritate,～をいらだたせる,"～をなだめる, ～を喜ばせる, ～を褒める",The noise irritates me.,その騒音にいらだつ。,共通テスト
+Essential (601-1200),pronounce,～を発音する、宣言する,"～を綴る, ～を隠す, ～を聞く",pronounce the word.,その単語を発音する。,共通テスト
+Essential (601-1200),equip,～を装備させる,"～を奪う, ～を壊す, ～を捨てる",equip the car with GPS.,車にGPSを装備させる。,共通テスト
+Essential (601-1200),cheat,いかさまをする、騙す,"正直にふるまう, 助ける, 褒める",cheat on the exam.,試験でカンニング（いかさま）をする。,共通テスト
+Essential (601-1200),emerge,現れる,"消える, 隠れる, 止まる",A new problem emerged.,新しい問題が現れた。,早稲田大
+Essential (601-1200),devote,～をささげる,"～を奪う, ～を無視する, ～を浪費する",devote one's life to art.,芸術に人生をささげる。,共通テスト
+Essential (601-1200),heal,～を治す、治る,"～を悪化させる, ～を傷つける, ～を忘れる",heal the wound.,傷を治す。,共通テスト
+Essential (601-1200),urge,～に強く促す、説得する,"～を止める, ～を禁止する, ～を非難する",urge him to go.,彼に行くよう強く促す。,共通テスト
+Essential (601-1200),envy,～をうらやむ,"～を蔑む, ～を褒める, ～を無視する",I envy your success.,あなたの成功がうらやましい。,共通テスト
+Essential (601-1200),chase,～を追いかける,"～から逃げる, ～を待つ, ～を避ける",chase a cat.,猫を追いかける。,共通テスト
+Essential (601-1200),prompt,～を促す、刺激する,"～を妨げる, ～を遅らせる, ～を止める",prompt him to action.,彼に行動を促す。,共通テスト
+Essential (601-1200),withdraw,～を引き出す、撤退する,"～を預ける, ～を進める, ～を維持する",withdraw money from the bank.,銀行から金を引き出す。,共通テスト
+Essential (601-1200),detect,～を探知する、見つける,"～を見逃す, ～を隠す, ～を壊す",detect a lie.,嘘を見破る（探知する）。,共通テスト
+Essential (601-1200),interfere,邪魔する、干渉する,"助ける, 放っておく, 褒める",interfere with my work.,私の仕事の邪魔をする。,共通テスト
+Essential (601-1200),kid,冗談を言う、からかう,"本気で言う, 叱る, 褒める",I'm only kidding.,冗談を言っているだけだよ。,共通テスト
+Essential (601-1200),launch,～を打ち上げる、開始する,"～を中止する, ～を終える, ～を壊す",launch a rocket.,ロケットを打ち上げる。,共通テスト
+Essential (601-1200),endanger,～を危険にさらす,"～を保護する, ～を助ける, ～を隠す",endanger wild animals.,野生動物を危険にさらす。,共通テスト
+Essential (601-1200),foster,～を促進する、育成する,"～を妨げる, ～を無視する, ～を捨てる",foster international cooperation.,国際協力を促進する。,共通テスト
+Essential (601-1200),diminish,減少する、～を減らす,"増加する, 拡大する, 維持する",His influence diminished.,彼の影響力が減少した。,立教大
+Essential (601-1200),spill,～をこぼす,"～を注ぐ, ～を拭く, ～を隠す",spill coffee on the rug.,絨毯にコーヒーをこぼす。,共通テスト
+Essential (601-1200),infect,～に感染させる,"～を消毒する, ～を治す, ～を避ける",infect others with the flu.,インフルエンザを他人に感染させる。,共通テスト
+Essential (601-1200),stem,Aから生じる、由来する,"Aで終わる, Aを隠す, Aを止める",Problems stemming from poverty.,貧困から生じている問題。,共通テスト
+Essential (601-1200),tap,～を軽くたたく,"～を強く打つ, ～をさする, ～を投げる",tap on the shoulder.,肩を軽くたたく。,共通テスト
+Essential (601-1200),embrace,受け入れる、含む,"拒絶する, 誤解する, 批判する",embrace a new idea.,新しい考えを受け入れる。,共通テスト
+Essential (601-1200),proportion,比率、割合,"面積, 距離, 速度",The proportion of women.,女性の比率（割合）。,共通テスト
+Essential (601-1200),contract,契約,"自由, 破壊, 偶然",Sign a contract.,契約に署名する。,共通テスト
+Essential (601-1200),chest,胸、箱,"胃, 腕, 肩",A pain in the chest.,胸の痛み。,共通テスト
+Essential (601-1200),treasure,財宝、宝物,"負債, 労働, 知識",A buried treasure.,埋められた財宝。,共通テスト
+Essential (601-1200),stock,株、在庫,"借金, 利益, 給与",stock market.,株式市場。,共通テスト
+Essential (601-1200),facility,設備、施設,"技術, 自然, 障害",Public facility.,公共施設（設備）。,共通テスト
+Essential (601-1200),sum,金額、合計,"差, 商, 零",A large sum of money.,多額の金額。,共通テスト
+Essential (601-1200),rank,地位、階級,"名前, 国籍, 趣味",A high social rank.,高い社会的地位。,共通テスト
+Essential (601-1200),democracy,民主主義,"独裁, 王制, 無政府",The birth of democracy.,民主主義の誕生。,共通テスト
+Essential (601-1200),emergency,緊急事態,"日常, 休暇, 平和",In an emergency.,緊急時に（緊急事態において）。,共通テスト
+Essential (601-1200),protest,抗議,"賛成, 妥協, 沈黙",A protest against war.,戦争に対する抗議。,共通テスト
+Essential (601-1200),immigrant,移民,"観光客, 住民, 原住民",immigrant workers.,移民労働者。,共通テスト
+Essential (601-1200),vehicle,乗り物、手段,"徒歩, 燃料, 道路",Electric vehicle.,電気自動車（乗り物）。,共通テスト
+Essential (601-1200),routine,日課、決まりきった仕事,"冒険, 事件, 奇跡",Daily routine.,毎日の日課。,共通テスト
+Essential (601-1200),stuff,物、材料,"心, 影, 嘘",What is this stuff?,この物は何ですか？,共通テスト
+Essential (601-1200),row,列,"円, 点, 影",Three rows of seats.,3列の座席。,共通テスト
+Essential (601-1200),profile,プロフィール、横顔,"全身, 後ろ姿, 内面",Her beautiful profile.,彼女の美しい横顔。,共通テスト
+Essential (601-1200),dawn,夜明け,"夕暮れ, 深夜, 真昼",At dawn.,夜明けに。,共通テスト
+Essential (601-1200),welfare,福祉、幸福,"不幸, 犯罪, 贅沢",Social welfare.,社会福祉。,共通テスト
+Essential (601-1200),perspective,見方、観点、遠近法,"事実, 偏見, 結論",From a global perspective.,地球規模の見方（観点）から。,慶應義塾大
+Essential (601-1200),enthusiasm,熱意、情熱,"無関心, 嫌悪, 恐怖",With great enthusiasm.,素晴らしい熱意を持って。,共通テスト
+Essential (601-1200),faith,信頼、信仰,"疑い, 裏切り, 絶望",Have faith in God.,神への信仰（信頼）を持つ。,共通テスト
+Essential (601-1200),occupation,職業、占領,"休暇, 趣味, 引退",What is your occupation?,あなたの職業は何ですか？,共通テスト
+Essential (601-1200),witness,目撃者、証人,"犯人, 被害者, 警察官",An eye witness.,目撃者。,共通テスト
+Essential (601-1200),kingdom,王国,"共和国, 都市, 村",The United Kingdom.,連合王国（イギリス）。,共通テスト
+Essential (601-1200),equivalent,同等のもの、相当するもの,"異なるもの, 偽物, 過去のもの",The equivalent of $100.,100ドルに相当するもの。,上智大
+Essential (601-1200),objective,目的、客観的な,"主観的な, 偏見, 偶然",Achieve our objective.,目的を達成する。,共通テスト
+Essential (601-1200),pile,積み重ね、山,"穴, 平地, 破片",A pile of books.,本の山（積み重ね）。,共通テスト
+Essential (601-1200),shelter,避難（所）,"危険, 攻撃, 露出",Take shelter from rain.,雨を避けて避難する。,共通テスト
+Essential (601-1200),trial,試み、裁判,"成功, 確定, 平和",Trial and error.,試行錯誤（試みと失敗）。,共通テスト
+Essential (601-1200),honor,名誉,"恥, 罪, 無視",It is an honor.,それは名誉です。,共通テスト
+Essential (601-1200),territory,領土、縄張り,"公海, 空港, 宇宙",Animals' territory.,動物の縄張り（領土）。,共通テスト
+Essential (601-1200),frame,枠、骨組み,"中身, 表面, 背景",A picture frame.,写真の枠（額縁）。,共通テスト
+Essential (601-1200),border,国境、境界,"中心, 内部, 都市",Cross the border.,国境を越える。,共通テスト
+Essential (601-1200),statistics,統計（学）,"憶測, 噂, 伝承",According to statistics.,統計によると。,共通テスト
+Essential (601-1200),enterprise,企業、事業,"個人, 慈善, 趣味",A private enterprise.,民間企業。,共通テスト
+Essential (601-1200),context,文脈、状況,"単語, 物理, 沈黙",In this context.,この文脈において。,慶應義塾大
+Essential (601-1200),load,荷物、負担,"空っぽ, 利益, 道具",A heavy load.,重い荷物。,共通テスト
+Essential (601-1200),grain,穀物、粒,"肉, 液体, 金属",grain production.,穀物生産。,共通テスト
+Essential (601-1200),review,再検討、復習、批評,"放置, 予習, 忘却",A book review.,書評（批評）。,共通テスト
+Essential (601-1200),prejudice,偏見,"公平, 事実, 知識",Racial prejudice.,人種的偏見。,共通テスト
+Essential (601-1200),strain,負担、緊張,"緩和, 喜び, 休息",Under great strain.,大きな負担（緊張）の下で。,共通テスト
+Essential (601-1200),trap,わな,"出口, 鍵, 自由",Set a trap.,わなを仕掛ける。,共通テスト
+Essential (601-1200),temper,気性、機嫌,"知能, 体格, 運",Lose one's temper.,腹を立てる（機嫌を損なう）。,共通テスト
+Essential (601-1200),slave,奴隷,"主人, 自由人, 雇い主",Buy a slave.,奴隷を買う。,共通テスト
+Essential (601-1200),wound,傷,"健康, 薬, 幸福",A deep wound.,深い傷。,共通テスト
+Essential (601-1200),divorce,離婚,"結婚, 誕生, 養子",Get a divorce.,離婚する。,共通テスト
+Essential (601-1200),tune,曲、メロディ,"歌詞, 楽器, 雑音",Hum a tune.,曲を口ずさむ。,共通テスト
+Essential (601-1200),height,高さ、最盛期,"幅, 重さ, 深さ",At the height of summer.,夏の最盛期に。,共通テスト
+Essential (601-1200),faculty,学部、能力,"学生, 建物, 休暇",The faculty of medicine.,医学部。,共通テスト
+Essential (601-1200),span,期間、長さ,"瞬間, 点, 終わり",Life span.,寿命（命の期間）。,共通テスト
+Essential (601-1200),dimension,側面、次元,"全体, 物理, 影",A new dimension.,新しい側面（次元）。,早稲田大
+Essential (601-1200),version,型、版、説明,"原本, 噂, 嘘",The latest version.,最新版（型）。,共通テスト
+Essential (601-1200),parallel,類似（物）、平行の,"異なるもの, 垂直の, 逆の",A parallel between the cases.,事件の間の類似点。,共通テスト
+Essential (601-1200),horizon,地平線、視野,"真上, 中心, 背後",Below the horizon.,地平線の下に。,共通テスト
+Essential (601-1200),acquaintance,知人、知面,"親友, 家族, 敵",A business acquaintance.,仕事の知人。,共通テスト
+Essential (601-1200),burden,重荷、負担,"喜び, 利益, 道具",A financial burden.,財政的な負担（重荷）。,共通テスト
+Essential (601-1200),basis,基礎、根拠,"頂上, 偶然, 終わり",On a regular basis.,定期的な基礎（習慣）で。,共通テスト
+Essential (601-1200),poison,毒,"薬, 食べ物, 水",Deadly poison.,猛毒。,共通テスト
+Essential (601-1200),constitution,憲法、構成,"法律, 反乱, 独裁",The Japanese Constitution.,日本国憲法。,共通テスト
+Essential (601-1200),administration,経営、行政、管理,"労働, 趣味, 破壊",Business administration.,経営学（ビジネス管理）。,共通テスト
+Essential (601-1200),charm,魅力、まじない,"嫌悪, 退屈, 恐怖",Her personal charm.,彼女の個人的な魅力。,共通テスト
+Essential (601-1200),organ,臓器、器官、オルガン,"筋肉, 骨, 影",Internal organs.,内臓（内部の臓器）。,共通テスト
+Essential (601-1200),prey,獲物、えじき,"捕食者, 仲間, 植物",Fall prey to.,～のえじきになる。,共通テスト
+Essential (601-1200),venture,冒険的事業、冒険,"安全, 安定, 日課",A joint venture.,合弁事業（共同の冒険的事業）。,共通テスト
+Essential (601-1200),mission,使命、任務,"遊び, 趣味, 休暇",A secret mission.,秘密の任務。,共通テスト
+Essential (601-1200),inquiry,調査、問い合わせ,"放置, 確信, 回答",Make an inquiry.,問い合わせ（調査）をする。,共通テスト
+Essential (601-1200),award,賞,"罰, 損失, 借金",Win an award.,賞を取る。,共通テスト
+Essential (601-1200),strip,細長い一片、～を脱ぐ,"円形, 巨大な塊, 覆い",A strip of paper.,細長い紙の一片。,共通テスト
+Essential (601-1200),distress,苦しみ、苦難,"喜び, 安心, 勝利",Mental distress.,精神的苦痛（苦しみ）。,共通テスト
+Essential (601-1200),circulation,循環、流通、発行部数,"停止, 蓄積, 秘密",Blood circulation.,血液循環。,共通テスト
+Essential (601-1200),shade,陰、日陰、色合い,"日なた, 中心, 闇",In the shade.,日陰で。,共通テスト
+Essential (601-1200),stereotype,固定観念、類型,"個性, 真実, 新発見",A racial stereotype.,人種的な固定観念。,共通テスト
+Essential (601-1200),client,依頼人、顧客,"店主, 友人, 家族",Meet a client.,依頼人に会う。,共通テスト
+Essential (601-1200),output,生産高、出力,"入力, 損失, 資源",Industrial output.,工業生産高。,共通テスト
+Essential (601-1200),lord,神、領主,"奴隷, 平民, 悪魔",The Lord God.,主なる神。,共通テスト
+Essential (601-1200),convention,慣習、会議,"流行, 違反, 孤独",Social conventions.,社会的慣習。,慶應義塾大
+Essential (601-1200),mine,鉱山、地雷、私のもの,"工場, 畑, 宇宙",A gold mine.,金山（金の鉱山）。,共通テスト
+Essential (601-1200),craft,工芸、技術、船,"遊び, 自然, 破壊",Traditional crafts.,伝統工芸。,共通テスト
+Essential (601-1200),core,中心、核,"表面, 端, 外部",The core of the issue.,問題の核心（中心）。,共通テスト
+Essential (601-1200),stroke,脳卒中、打撃、なでること,"健康, 休息, 幸運",A sudden stroke.,突然の脳卒中。,共通テスト
+Essential (601-1200),frontier,国境、辺境、最前線,"中心, 都市, 過去",Science frontier.,科学の最前線（国境）。,共通テスト
+Essential (601-1200),peer,同僚、仲間、じっと見る,"上司, 部下, 敵",peer pressure.,同調（仲間からの）圧力。,共通テスト
+Essential (601-1200),vessel,船、血管、器,"道路, 筋肉, 影",A sailing vessel.,帆船（船）。,共通テスト
+Essential (601-1200),disability,障害,"能力, 健康, 幸福",Learning disability.,学習障害。,共通テスト
+Essential (601-1200),gravity,重力、重大さ,"浮力, 軽薄, 喜び",The law of gravity.,重力の法則。,共通テスト
+Essential (601-1200),ethic,倫理、道徳,"法律, 欲望, 利益",Medical ethics.,医療倫理。,共通テスト
+Essential (601-1200),terminal,終点、末期の,"始点, 中間, 健康な",A bus terminal.,バスターミナル（終点）。,共通テスト
+Essential (601-1200),tide,潮流、潮の干満,"波, 嵐, 池",The low tide.,干潮（低い潮流）。,共通テスト
+Essential (601-1200),abuse,虐待、酷使,"保護, 愛情, 尊重",Child abuse.,児童虐待。,共通テスト
+Essential (601-1200),guilty,有罪の、罪の意識がある,"無実の, 正しい, 幸福な",Feel guilty.,罪の意識がある。,共通テスト
+Essential (601-1200),vital,極めて重要な、活気のある,"不要な, 些細な, 死んだ",vital role.,極めて重要な役割。,共通テスト
+Essential (601-1200),fellow,仲間の、男,"敵の, 孤独な, 赤の他人の",My fellow citizens.,私の仲間の市民。,共通テスト
+Essential (601-1200),contemporary,現代の、同時代の,"古代の, 未来の, 永遠の",contemporary art.,現代アート。,青山学院大
+Essential (601-1200),annual,年に一度の、一年間の,"毎日の, 毎月の, 永遠の",annual event.,年に一度の行事。,共通テスト
+Essential (601-1200),accustomed,慣れた,"初めての, 驚いた, 嫌いな",Get accustomed to.,～に慣れる。,共通テスト
+Essential (601-1200),steady,しっかりした、一定の,"不安定な, 変化する, 壊れた",A steady income.,一定の（しっかりした）収入。,共通テスト
+Essential (601-1200),dull,退屈な、鈍い,"面白い, 鋭い, 明るい",A dull lecture.,退屈な講義。,共通テスト
+Essential (601-1200),keen,熱望して、鋭い,"無関心な, 鈍い, 嫌いな",Be keen on music.,音楽に熱心（熱望）である。,共通テスト
+Essential (601-1200),loose,ゆるい、解き放たれた,"きつい, 固定された, 狭い",loose clothing.,ゆるい服。,共通テスト
+Essential (601-1200),delicate,繊細な、微妙な,"頑丈な, 単純な, 粗末な",A delicate problem.,微妙な（繊細な）問題。,共通テスト
+Essential (601-1200),internal,内部の、国内の,"外部の, 国際的な, 表面の",internal organs.,内臓（内部の器官）。,共通テスト
+Essential (601-1200),casual,形式ばらない、気楽な,"形式的な, 深刻な, 重要な",casual wear.,カジュアルな服（形式ばらない服）。,共通テスト
+Essential (601-1200),mature,成熟した,"未熟な, 幼い, 枯れた",A mature student.,成熟した（大人の）学生。,共通テスト
+Essential (601-1200),concrete,具体的な、コンクリート,"抽象的な, 曖昧な, 想像上の",concrete evidence.,具体的な証拠。,共通テスト
+Essential (601-1200),awful,ひどい、恐ろしい,"素晴らしい, 些細な, 楽しい",Feel awful.,ひどい気分だ。,共通テスト
+Essential (601-1200),exhausted,疲れ切った,"元気な, 暇な, 満足した",I am exhausted.,私は疲れ切っている。,共通テスト
+Essential (601-1200),overall,全面的な、全体的な,"部分的な, 外部の, 些細な",The overall cost.,全体の（全面的な）費用。,共通テスト
+Essential (601-1200),tight,引き締まった、きつい,"ゆるい, 広い, 自由な",tight shoes.,きつい靴。,共通テスト
+Essential (601-1200),prime,最も重要な、主要な,"些細な, 二次的な, 最後の",The prime suspect.,主な（最も重要な）容疑者。,共通テスト
+Essential (601-1200),genuine,本物の、真の,"偽物の, 想像上の, 一時的な",genuine leather.,本物の革。,共通テスト
+Essential (601-1200),modest,控えめな、謙虚な,"傲慢な, 派手な, 巨大な",A modest house.,控えめな（わずかな）家。,共通テスト
+Essential (601-1200),intimate,親密な,"疎遠な, 敵対的な, 公の",An intimate friend.,親密な友人。,共通テスト
+Essential (601-1200),minimum,最小限の,"最大限の, 普通の, 膨大な",minimum wage.,最低（最小限）賃金。,共通テスト
+Essential (601-1200),sophisticated,高度な、洗練された,"単純な, 原始的な, 下品な",sophisticated system.,高度なシステム。,共通テスト
+Essential (601-1200),latter,後者の,"前者の, 最初の, 過去の",The latter half.,後半（後者の半分）。,共通テスト
+Essential (601-1200),bitter,苦い、つらい,"甘い, 楽しい, 辛い",A bitter experience.,つらい（苦い）経験。,共通テスト
+Essential (601-1200),peculiar,独特の、固有の,"共通の, 普通の, 正常な",peculiar to Japan.,日本に独特の。,共通テスト
+Essential (601-1200),passive,受動的な、消極的な,"能動的な, 積極的な, 激しい",passive attitude.,消極的な（受動的な）態度。,共通テスト
+Essential (601-1200),ethnic,民族の、民族的な,"国家の, 宗教の, 普遍的な",ethnic food.,民族（的）料理。,共通テスト
+Essential (601-1200),noble,高貴な、気高い,"下品な, 貧しい, 臆病な",noble family.,高貴な家族。,共通テスト
+Essential (601-1200),vain,無駄な、虚栄心の強い,"有益な, 成功した, 謙虚な",In vain.,無駄に。,共通テスト
+Essential (601-1200),innocent,無罪の、無邪気な,"有罪の, 邪悪な, 経験豊富な",An innocent child.,無邪気な（罪のない）子供。,共通テスト
+Essential (601-1200),underlying,根本的な、潜在的な,"表面的な, 些細な, 外部の",The underlying cause.,根本的な原因。,共通テスト
+Essential (601-1200),alien,外国の、異質な,"国内の, 共通の, 本物の",alien culture.,異質な（外国の）文化。,共通テスト
+Essential (601-1200),relevant,関連のある,"無関係な, 過去の, 抽象的な",relevant information.,関連のある情報。,共通テスト
+Essential (601-1200),inclined,～したい気がする、傾向がある,"～したくない, 反対の, 中立の",Be inclined to agree.,賛成したい気がする。,共通テスト
+Essential (601-1200),awkward,気まずい、不器用な,"快適な, 器用な, 自然な",An awkward silence.,気まずい沈黙。,共通テスト
+Essential (601-1200),brilliant,すばらしい、輝かしい,"ひどい, 暗い, 愚かな",A brilliant idea.,すばらしい考え。,共通テスト
+Essential (601-1200),desperate,必死の、絶望的な,"余裕のある, 希望に満ちた, 冷静な",A desperate effort.,必死の努力。,共通テスト
+Essential (601-1200),refreshing,さわやかな,"退屈な, 暑苦しい, 汚い",A refreshing drink.,さわやかな飲み物。,共通テスト
+Essential (601-1200),thrilled,とてもうれしい、ワクワクして,"失望した, 退屈した, 怒った",I'm thrilled to hear that.,それを聞いてとてもうれしい。,共通テスト
+Essential (601-1200),inner,内側の、精神的な,"外側の, 相当な, その間に",inner peace.,内面の（精神的な）平和。,共通テスト
+Essential (601-1200),consistent,矛盾のない、一致した,"矛盾した, 好みの, 完全に",consistent with the facts.,事実と一致している。,慶應義塾大
+Essential (601-1200),plain,明白な、わかりやすい,"誤った, 最近, 複雑な",speak in plain English.,わかりやすい英語で話す。,共通テスト
+Essential (601-1200),vivid,鮮やかな、鮮明な,"怠惰な, かろうじて, ぼやけた",vivid memories.,鮮明な記憶。,共通テスト
+Essential (601-1200),miserable,惨めな、ひどく不幸な,"幸福な, 正確な, ほとんど～ない",feel miserable.,惨めな気分だ。,共通テスト
+Essential (601-1200),substantial,相当な、多大な,"わずかな, その間に, 相応に",a substantial amount.,相当な量。,上智大
+Essential (601-1200),fond,～が好きだ,"～が嫌いだ, 完全に, わざと",be fond of animals.,動物が好きだ。,共通テスト
+Essential (601-1200),FALSE,誤った、まちがいの,"正しい, 最近, ～の下で",false information.,誤った情報。,共通テスト
+Essential (601-1200),lazy,怠惰な,"勤勉な, かろうじて, ～だが一方",a lazy afternoon.,怠惰な午後。,共通テスト
+Essential (601-1200),precisely,正確に、まさに,"大体, ほとんど～ない, ～を宣言する",at 10 o'clock precisely.,10時ちょうどに。,共通テスト
+Essential (601-1200),meanwhile,その間に、一方では,"その前に, 相応に, ～を変える","meanwhile, at home...",その間に家では…。,共通テスト
+Essential (601-1200),altogether,完全に、合計で,"部分的に, わざと, 生じる",stop altogether.,完全に止まる。,共通テスト
+Essential (601-1200),lately,最近,"以前は, ～の下で, 変える",I haven't seen him lately.,最近彼に会っていない。,共通テスト
+Essential (601-1200),barely,かろうじて、ほとんど～ない,"容易に, ～だが一方, ～を打ち負かす",barely escaped.,かろうじて逃げた。,共通テスト
+Essential (601-1200),scarcely,ほとんど～ない,"非常に, ～を宣言する, ～を調査する",I could scarcely believe it.,ほとんど信じられなかった。,共通テスト
+Essential (601-1200),accordingly,それ相応に、したがって,"逆に, ～を変える, ～を見分ける",act accordingly.,それ相応に行動する。,共通テスト
+Essential (601-1200),deliberately,わざと、慎重に,"偶然に, 生じる, ～を埋める",deliberately broke it.,わざとそれを壊した。,共通テスト
+Essential (601-1200),beneath,～の下に、～の下で,"～の上に, 変える, 対処する",beneath the surface.,表面の下に。,共通テスト
+Essential (601-1200),whereas,～である一方で,"～なので, ～を打ち負かす, 起こる",whereas he is rich...,彼は金持ちである一方で…。,立教大
+Essential (601-1200),declare,～を宣言する,"～を隠す, ～を調査する, ～をやりとげる",declare war.,戦争を宣言する。,共通テスト
+Essential (601-1200),alter,～を変える,"～を見分ける, ためらう, 維持する",alter the plan.,計画を変える。,青山学院大
+Essential (601-1200),arise,生じる、起こる,"消える, ～を埋める, ～に耐える",Problems arise.,問題が生じる。,共通テスト
+Essential (601-1200),transform,～を変える、変質させる,"対処する, 結論づける, 維持する",transform the city.,都市の姿を変える。,共通テスト
+Essential (601-1200),defeat,～を打ち負かす,"～に負ける, 起こる, ～を保証する",defeat the enemy.,敵を打ち負かす。,共通テスト
+Essential (601-1200),investigate,～を調査する,"～をやりとげる, ～を支配する, 放置する",investigate the cause.,原因を調査する。,共通テスト
+Essential (601-1200),distinguish,～を見分ける、区別する,"ためらう, ～を裏付ける, 混ぜる",distinguish A from B.,AをBと見分ける。,共通テスト
+Essential (601-1200),bury,～を埋める、埋葬する,"～に耐える, ～にあいさつする, 掘り出す",bury a treasure.,宝を埋める。,共通テスト
+Essential (601-1200),cope,うまく対処する,"結論づける, 楽しませる, 避ける",cope with stress.,ストレスにうまく対処する。,共通テスト
+Essential (601-1200),occur,起こる,"消える, ～を保証する, ～を守る",An accident occurred.,事故が起こった。,共通テスト
+Essential (601-1200),accomplish,～をやりとげる,"支配する, 禁じる, 失敗する",accomplish a goal.,目標をやりとげる。,共通テスト
+Essential (601-1200),hesitate,ためらう,"裏付ける, 放送する, 決断する",hesitate to speak.,話すのをためらう。,共通テスト
+Essential (601-1200),endure,～に耐える,"あいさつする, 犠牲にする, 屈服する",endure the pain.,痛みに耐える。,共通テスト
+Essential (601-1200),conclude,～と結論づける,"楽しませる, 罰する, 始める",conclude that...,～だと結論づける。,共通テスト
+Essential (601-1200),guarantee,～を保証する,"守る, ちらりと見る, 疑う",guarantee quality.,品実を保証する。,共通テスト
+Essential (601-1200),dominate,～を支配する,"禁じる, 保持する, 従う",dominate the market.,市場を支配する。,共通テスト
+Essential (601-1200),confirm,～を裏付ける、確認する,"放送する, 計算する, 否定する",confirm the fact.,事実を裏付ける。,共通テスト
+Essential (601-1200),greet,～にあいさつする,"犠牲にする, 沈む, 無視する",greet a friend.,友人にあいさつする。,共通テスト
+Essential (601-1200),entertain,～を楽しませる,"罰する, 救助する, 退屈させる",entertain guests.,客を楽しませる。,共通テスト
+Essential (601-1200),defend,～を守る,"ちらりと見る, 乞う, 攻撃する",defend the country.,国を守る。,共通テスト
+Essential (601-1200),forbid,～を禁じる,"保持する, 定義する, 許可する",forbid entering.,立ち入りを禁じる。,共通テスト
+Essential (601-1200),broadcast,～を放送する,"計算する, だます, 隠す",broadcast news.,ニュースを放送する。,共通テスト
+Essential (601-1200),sacrifice,～を犠牲にする,"沈む, 伝える, 大切にする",sacrifice time.,時間を犠牲にする。,共通テスト
+Essential (601-1200),punish,～を罰する,"救助する, 維持する, 褒める",punish the thief.,泥棒を罰する。,共通テスト
+Essential (601-1200),glance,ちらりと見る,"乞う, 購入する, 凝視する",glance at a watch.,時計をちらりと見る。,共通テスト
+Essential (601-1200),retain,～を保持する、保つ,"定義する, 薄れる, 放す",retain information.,情報を保持する。,早稲田大
+Essential (601-1200),calculate,～を計算する,"だます, 規制する, 推測する",calculate costs.,費用を計算する。,共通テスト
+Essential (601-1200),sink,沈む,"伝える, 分配する, 浮く",The ship sinks.,船が沈む。,共通テスト
+Essential (601-1200),rescue,～を救助する,"維持する, 向上させる, 見捨てる",rescue the child.,子供を救助する。,共通テスト
+Essential (601-1200),beg,～と乞う、頼む,"購入する, おしゃべりする, 命じる",beg for help.,助けを乞う。,共通テスト
+Essential (601-1200),define,～を定義する,"薄れる, 超える, 曖昧にする",define the word.,単語を定義する。,共通テスト
+Essential (601-1200),deceive,～をだます,"規制する, ふく, 信じる",deceive the public.,大衆をだます。,共通テスト
+Essential (601-1200),convey,～を伝える,"分配する, 協力する, 隠す",convey feelings.,感情を伝える。,共通テスト
+Essential (601-1200),sustain,～を維持する,"向上させる, 受け継ぐ, 壊す",sustain growth.,成長を維持する。,慶應義塾大
+Essential (601-1200),purchase,～を購入する,"おしゃべりする, 団結させる, 売る",purchase a car.,車を購入する。,共通テスト
+Essential (601-1200),fade,薄れる、衰える,"超える, 跳ぶ, 鮮やかになる",Memories fade.,記憶が薄れる。,共通テスト
+Essential (601-1200),regulate,～を規制する,"ふく, 誇張する, 放任する",regulate traffic.,交通を規制する,共通テスト
+Essential (601-1200),distribute,～を分配する、配布する,"協力する, 征服する, 集める",distribute food.,食料を分配する。,共通テスト
+Essential (601-1200),enhance,～を向上させる,"受け継ぐ, 溶ける, 低下させる",enhance the quality.,質を向上させる。,共通テスト
+Essential (601-1200),chat,おしゃべりする,"団結させる, 侵入する, 黙る",chat with him.,彼とおしゃべりする。,共通テスト
+Essential (601-1200),exceed,～を超える,"跳ぶ, 修正する, 下回る",exceed the speed.,速度を超える。,共通テスト
+Essential (601-1200),wipe,～をふく,"誇張する, ばらまく, 汚す",wipe the window.,窓をふく。,共通テスト
+Essential (601-1200),cooperate,協力する,"征服する, 経験する, 邪魔する",cooperate on a project.,計画で協力する。,共通テスト
+Essential (601-1200),inherit,～を受け継ぐ,"溶ける, 評価する, 譲る",inherit a fortune.,財産を受け継ぐ。,共通テスト
+Essential (601-1200),unite,～を団結させる,"侵入する, 身をかがめる, 分離する",unite the team.,チームを団結させる。,共通テスト
+Essential (601-1200),leap,跳ぶ,"修正する, 由来する, 座る",Look before you leap.,跳ぶ前に見よ。,共通テスト
+Essential (601-1200),exaggerate,～を誇張する,"ばらまく, 悲鳴をあげる, 過小評価する",exaggerate the risk.,リスクを誇張する。,共通テスト
+Essential (601-1200),conquer,～を征服する、克服する,"経験する, 見つめる, 屈服する",conquer a fear.,恐怖を克服する。,共通テスト
+Essential (601-1200),melt,溶ける,"評価する, 祈る, 固まる",Ice melts.,氷が溶ける。,共通テスト
+Essential (601-1200),invade,～に侵入する,"身をかがめる, 磨く, 守る",invade a country.,国に侵入する。,共通テスト
+Essential (601-1200),modify,～を修正する,"由来する, 分類する, 維持する",modify the plan.,計画を修正する。,共通テスト
+Essential (601-1200),scatter,～をばらまく,"悲鳴をあげる, 主張する, 集める",scatter seeds.,種をまく。,共通テスト
+Essential (601-1200),undergo,～を経験する、受ける,"見つめる, つかむ, 避ける",undergo surgery.,手術を受ける。,共通テスト
+Essential (601-1200),evaluate,～を評価する,"祈る, 折りたたむ, 放置する",evaluate results.,結果を評価する。,共通テスト
+Essential (601-1200),bend,身をかがめる、曲げる,"磨く, 掃く, 伸ばす",bend down.,身をかがめる。,共通テスト
+Essential (601-1200),derive,由来する、引き出す,"分類する, ささやく, 消失する",derive pleasure from...,～から喜びを引き出す。,法政大
+Essential (601-1200),scream,悲鳴をあげる,"主張する, まねる, ささやく",scream loudly.,大声で悲鳴をあげる。,共通テスト
+Essential (601-1200),gaze,見つめる,"つかむ, じっと見る, ちらりと見る",gaze at the sea.,海を見つめる。,共通テスト
+Essential (601-1200),pray,祈る,"折りたたむ, 強調する, 呪う",pray for peace.,平和を祈る。,共通テスト
+Essential (601-1200),polish,～を磨く,"掃く, 取り除く, 汚す",polish the floor.,床を磨く。,共通テスト
+Essential (601-1200),classify,～を分類する,"ささやく, 注ぐ, 混ぜる",classify items.,項目を分類する。,共通テスト
+Essential (601-1200),assert,～と主張する,"まねる, 消える, 否定する",assert one's rights.,権利を主張する。,慶應義塾大
+Essential (601-1200),grab,～をつかむ,"じっと見る, 修復する, 離す",grab a chance.,チャンスをつかむ。,共通テスト
+Essential (601-1200),fold,～を折りたたむ,"強調する, 当然だ, 広げる",fold a map.,地図を折りたたむ。,共通テスト
+Essential (601-1200),sweep,～を掃く,"取り除く, 研究所, 汚す",sweep the street.,通りを掃く。,共通テスト
+Essential (601-1200),whisper,ささやく,"注ぐ, 会議, 叫ぶ",whisper a secret.,秘密をささやく。,共通テスト
+Essential (601-1200),imitate,～をまねる,"消える, 大陸, 創造する",imitate a voice.,声をまねる。,共通テスト
+Essential (601-1200),stare,じっと見る,"修復する, 保険, ちらりと見る",stare at him.,彼をじっと見る。,共通テスト
+Essential (601-1200),emphasize,～を強調する,"当然だ, 乗組員, 軽視する",emphasize a point.,点を強調する。,共通テスト
+Essential (601-1200),rid,～を取り除く,"研究所, 貧乏, 加える",Get rid of it.,それを取り除く。,共通テスト
+Essential (601-1200),pour,～を注ぐ,"会議, 不足, 吸う",pour water.,水を注ぐ。,共通テスト
+Essential (601-1200),vanish,消える,"大陸, 情勢, 現れる",vanish into air.,跡形もなく消える。,共通テスト
+Essential (601-1200),restore,～を修復する,"保険, 例外, 破壊する",restore order.,秩序を修復する。,共通テスト
+Essential (601-1200),deserve,～に値する、当然だ,"乗組員, 賃金, 値しない",deserve a prize.,賞に値する。,共通テスト
+Essential (601-1200),laboratory,研究所,"貧乏, 知恵, 教室",a research laboratory.,研究所。,共通テスト
+Essential (601-1200),conference,会議,"不足, 税金, 休暇",attend a conference.,会議に出席する。,共通テスト
+Essential (601-1200),continent,大陸,"情勢, 進化, 島",the African continent.,アフリカ大陸。,共通テスト
+Essential (601-1200),insurance,保険,"例外, 壁, 負債",health insurance.,健康保険。,共通テスト
+Essential (601-1200),crew,乗組員,"賃金, 範ちゅう, 観客",a ship's crew.,船の乗組員。,共通テスト
+Essential (601-1200),poverty,貧乏、貧困,"知恵, 単位, 富",live in poverty.,貧困の中で暮らす。,共通テスト
+Essential (601-1200),shortage,不足,"税金, 評判, 過剰",a food shortage.,食料不足。,共通テスト
+Essential (601-1200),affair,情勢、事件,"進化, 美徳, 平穏",foreign affairs.,外交情勢。,共通テスト
+Essential (601-1200),exception,例外,"壁, 勇気, 規則",No exceptions.,例外なし。,共通テスト
+Essential (601-1200),wage,賃金,"範ちゅう, 同情, 寄付",high wages.,高い賃金。,共通テスト
+Essential (601-1200),wisdom,知恵,"単位, 組合, 愚かさ",ancestral wisdom.,先祖の知恵。,共通テスト
+Essential (601-1200),tax,税金,"評判, 文明, 利益",pay income tax.,所得税（税金）を払う。,共通テスト
+Essential (601-1200),evolution,進化,"美徳, 冊, 革命",the evolution of humans.,人類の進化。,共通テスト
+Essential (601-1200),barrier,壁、障壁,"勇気, 花, 基礎",a language barrier.,言葉の壁（障壁）。,共通テスト
+Essential (601-1200),category,範疇、カテゴリー,"同情, 時代, 順序",fall into this category.,この範疇に入る。,共通テスト
+Essential (601-1200),unit,単位,"組合, 紛争, 合計",a unit of currency.,通貨の単位。,共通テスト
+Essential (601-1200),reputation,評判,"文明, 観光, 噂",a good reputation.,良い評判。,共通テスト
+Essential (601-1200),virtue,美徳、長所,"冊, 人類, 欠点",Patience is a virtue.,忍耐は美徳である。,慶應義塾大
+Essential (601-1200),courage,勇気,"花, 殺人, 恐怖",have the courage to speak.,話す勇気を持つ。,共通テスト
+Essential (601-1200),sympathy,同情、共感,"時代, 風景, 嫌悪",feel sympathy for her.,彼女に同情する。,共通テスト
+Essential (601-1200),union,組合、結合,"紛争, 目的地, 分離",a labor union.,労働組合。,共通テスト
+Essential (601-1200),civilization,文明,"観光, 話, 野蛮",ancient civilization.,古代文明。,共通テスト
+Essential (601-1200),volume,冊、容積、音量,"人類, 改革, 密度",a three-volume novel.,3冊から成る小説。,共通テスト
+Essential (601-1200),blossom,花、開花,"殺人, 筋肉, 根",cherry blossoms.,桜の花。,共通テスト
+Essential (601-1200),era,時代,"風景, 見通し, 瞬間",the Edo era.,江戸時代。,共通テスト
+Essential (601-1200),dispute,紛争、論争,"目的地, 企業, 合意",a territorial dispute.,領土紛争。,共通テスト
+Essential (601-1200),tourism,観光,"話, 植民地, 農業",develop tourism.,観光を振興する。,共通テスト
+Essential (601-1200),m mankind,人類,"改革, 口論, 宇宙",the history of mankind.,人類の歴史。,共通テスト
+Essential (601-1200),murder,殺人,"筋肉, 職業, 盗難",commit murder.,殺人を犯す。,共通テスト
+Essential (601-1200),landscape,風景,"見通し, 側面, 肖像",a beautiful landscape.,美しい風景。,共通テスト
+Essential (601-1200),destination,目的地,"企業, 休止, 出発地",reach the destination.,目的地に到着する。,共通テスト
+Essential (601-1200),tale,話、物語,"植民地, 対立, 事実",a fairy tale.,おとぎ話。,共通テスト
+Essential (601-1200),reform,改革,"口論, 特権, 伝統",social reform.,社会改革。,共通テスト
+Essential (601-1200),muscle,筋肉,"職業, 繁栄, 骨",build muscle.,筋肉を鍛える。,共通テスト
+Essential (601-1200),prospect,見通し、展望,"側面, 天才, 過去",a prospect of success.,成功の見通し。,共通テスト
+Essential (601-1200),corporation,企業、法人,"休止, 種, 個人",a large corporation.,大企業。,共通テスト
+Essential (601-1200),colony,植民地、群生,"対立, 症状, 独立国",a British colony.,イギリスの植民地。,共通テスト
+Essential (601-1200),quarrel,口論,"特権, 長所, 握手",have a quarrel.,口論をする。,共通テスト
+Essential (601-1200),profession,職業,"繁栄, 層, 趣味",the medical profession.,医療職（職業）。,共通テスト
+Essential (601-1200),aspect,側面,"天才, 手がかり, 全体",every aspect of life.,生活のあらゆる側面。,共通テスト
+Essential (601-1200),pause,休止,"種, 状況, 継続",without a pause.,休止することなく。,共通テスト
+Essential (601-1200),conflict,対立、紛争,"症状, 地区, 協力",a mental conflict.,心の葛藤（対立）。,共通テスト
+Essential (601-1200),privilege,特権,"長所, 刑務所, 義務",a special privilege.,特別な特権。,共通テスト
+Essential (601-1200),prosperity,繁栄,"層, 仲間, 衰退",economic prosperity.,経済的繁栄。,共通テスト
+Essential (601-1200),genius,天才,"手がかり, 重役, 凡人",a mathematical genius.,数学の天才。,共通テスト
+Essential (601-1200),seed,種,"状況, 正義, 根",sow seeds.,種をまく。,共通テスト
+Essential (601-1200),symptom,症状、兆候,"地区, 刑務所, 原因",common symptoms.,よくある症状。,共通テスト
+Essential (601-1200),merit,長所、利点,"刑務所, 仲間, 欠点",merits and demerits.,長所と短所。,共通テスト
+Essential (601-1200),layer,層,"仲間, 天国, 芯",the ozone layer.,オゾン層。,共通テスト
+Essential (601-1200),clue,手がかり,"重役, 贅沢, 迷宮",a clue to the mystery.,謎を解く手がかり。,共通テスト
+Essential (601-1200),circumstances,状況、事情,"正義, 酸素, 意志",under the circumstances.,このような状況下で。,共通テスト
+Essential (601-1200),district,地区,"手続き, 光線, 中央",a business district.,商業地区。,共通テスト
+Essential (601-1200),prison,刑務所,"光線, 主題, 自由",go to prison.,刑務所に入る。,共通テスト
+Essential (601-1200),companion,仲間、付き添い,"天国, 贅沢, 敵",a traveling companion.,旅の仲間。,共通テスト
+Essential (601-1200),executive,重役、執行部,"贅沢, 熱望, 部下",an executive officer.,重役（執行官）。,共通テスト
+Essential (601-1200),justice,正義、司法,"酸素, 予報, 不正",social justice.,社会正義。,共通テスト
+Essential (601-1200),procedure,手続き,"資金, 主題, 習慣",follow the procedure.,手続きに従う。,共通テスト
+Essential (601-1200),ray,光線,"主題, 境界, 影",a ray of light.,一筋の光（光線）。,共通テスト
+Essential (601-1200),heaven,天国,"境界, 熱望, 地獄",a gift from heaven.,天国からの贈り物。,共通テスト
+Essential (601-1200),luxury,贅沢,"熱望, 予報, 節約",live in luxury.,贅沢に暮らす。,共通テスト
+Essential (601-1200),oxygen,酸素,"予報, 心理学, 二酸化炭素",lack of oxygen.,酸素不足。,共通テスト
+Essential (601-1200),fund,資金、基金,"心理学, 労働, 借金",a scholarship fund.,奨学基金（資金）。,共通テスト
+Essential (601-1200),theme,主題、テーマ,"労働, 委員会, 結論",the main theme.,主なテーマ（主題）。,共通テスト
+Essential (601-1200),boundary,境界,"委員会, 医者, 内部",a national boundary.,国境（境界）。,共通テスト
+Essential (601-1200),ambition,熱望、野心,"医者, 哲学, 無関心",full of ambition.,野心（熱望）に満ちて。,共通テスト
+Essential (601-1200),forecast,予報、予測,"哲学, 愛情, 回想",a weather forecast.,天気予報。,共通テスト
+Essential (601-1200),psychology,心理学,"愛情, 候補, 物理学",educational psychology.,教育心理学。,共通テスト
+Essential (601-1200),labor,労働,"候補, 爆弾, 休息",manual labor.,肉体労働。,共通テスト
+Essential (601-1200),committee,委員会,"爆弾, 優先, 議会",a special committee.,特別委員会。,共通テスト
+Essential (601-1200),physician,医者（内科医）,"優先, 障害, 患者",consult a physician.,医者に相談する。,共通テスト
+Essential (601-1200),philosophy,哲学,"障害, 食欲, 科学",Greek philosophy.,ギリシャ哲学。,共通テスト
+Essential (601-1200),affection,愛情,"食欲, 緊張, 憎しみ",feel affection for him.,彼に愛情を感じる。,共通テスト
+Essential (601-1200),candidate,候補,"緊張, 部族, 当選者",a presidential candidate.,大統領候補。,共通テスト
+Essential (601-1200),bomb,爆弾,"部族, 予算, 盾",an atomic bomb.,原子爆弾。,共通テスト
+Essential (601-1200),priority,優先（事項）,"予算, 運動, 後回し",top priority.,最優先。,共通テスト
+Essential (601-1200),obstacle,障害,"運動, 悲しみ, 助け",an obstacle to peace.,平和への障害。,共通テスト
+Essential (601-1200),appetite,食欲,"悲しみ, 衛星, 満腹",lose one's appetite.,食欲をなくす。,共通テスト
+Essential (601-1200),tension,緊張,"衛星, 洞察, 緩和",relieve tension.,緊張を和らげる。,共通テスト
+Essential (601-1200),tribe,部族,"洞察, せき, 都会",a native tribe.,先住民の部族。,共通テスト
+Essential (601-1200),budget,予算,"せき, 運命, 決算",a tight budget.,厳しい予算。,共通テスト
+Essential (601-1200),campaign,運動、キャンペーン,"運命, 計画, 休暇",a sales campaign.,販売運動（キャンペーン）。,共通テスト
+Essential (601-1200),sorrow,悲しみ,"計画, 侮辱, 喜び",feel great sorrow.,深い悲しみを感じる。,共通テスト
+Essential (601-1200),satellite,衛星,"侮辱, 住民, 恒星",a weather satellite.,気象衛星。,共通テスト
+Essential (601-1200),insight,洞察,"住民, 化石, 無知",deep insight.,深い洞察。,共通テスト
+Essential (601-1200),cough,せき,"化石, 動機, くしゃみ",have a bad cough.,ひどいせきが出る。,共通テスト
+Essential (601-1200),fate,運命,"動機, 本能, 偶然",a tragic fate.,悲劇的な運命。,共通テスト
+Essential (601-1200),scheme,計画,"本能, 伝説, 混乱",a grand scheme.,壮大な計画。,共通テスト
+Essential (601-1200),insult,侮辱,"伝説, 帝国, 賞賛",a personal insult.,個人的な侮辱。,共通テスト
+Essential (601-1200),inhabitant,住民,"帝国, 郊外, 余所者",local inhabitants.,地元の住民。,共通テスト
+Essential (601-1200),fossil,化石,"郊外, 建築, 現生種",fossil fuels.,化石燃料。,共通テスト
+Essential (601-1200),motive,動機,"建築, 情熱, 結果",a motive for murder.,殺人の動機。,共通テスト
+Essential (601-1200),instinct,本能,"情熱, ガン, 理性",by instinct.,本能的に。,共通テスト
+Essential (601-1200),legend,伝説,"ガン, 論理, 事実",an ancient legend.,古代の伝説。,共通テスト
+Essential (601-1200),empire,帝国,"論理, ダース, 共和国",the Roman Empire.,ローマ帝国。,共通テスト
+Essential (601-1200),suburb,郊外,"ダース, 収穫, 都心",live in the suburbs.,郊外に住む。,共通テスト
+Essential (601-1200),architecture,建築、建築様式,"収穫, 材料, 彫刻",modern architecture.,近代建築。,共通テスト
+Essential (601-1200),passion,情熱,"材料, 仮説, 冷淡",a passion for music.,音楽への情熱。,共通テスト
+Essential (601-1200),cancer,ガン,"仮説, 航海, 健康",lung cancer.,肺ガン。,共通テスト
+Essential (601-1200),logic,論理,"航海, 編集者, 感情",basic logic.,基本的な論理。,共通テスト
+Essential (601-1200),dozen,ダース（12個）,"編集者, 選択の自由, 10個",a dozen eggs.,1ダースの卵。,共通テスト
+Essential (601-1200),harvest,収穫,"選択の自由, 半球, 凶作",a good harvest.,豊作（良い収穫）。,共通テスト
+Essential (601-1200),ingredient,材料、成分,"半球, 仕組み, 完成品",natural ingredients.,天然成分（材料）。,共通テスト
+Essential (601-1200),hypothesis,仮説,"仕組み, 人類学者, 真実",test a hypothesis.,仮説を検証する。,共通テスト
+Essential (601-1200),voyage,航海,"人類学者, 悲劇, 散歩",a long voyage.,長い航海。,共通テスト
+Essential (601-1200),editor,編集者,"悲劇, 抗生物質, 著者",a newspaper editor.,新聞の編集者。,共通テスト
+Essential (601-1200),option,選択の自由、選択肢,"抗生物質, 運賃, 強制",have no other option.,他に選択肢がない。,共通テスト
+Essential (601-1200),hemisphere,半球,"運賃, 借金, 球体",the Northern Hemisphere.,北半球。,共通テスト
+Essential (601-1200),mechanism,仕組み、機構,"借金, 教育課程, 混乱",the mechanism of a watch.,時計の仕組み。,共通テスト
+Essential (601-1200),anthropologist,人類学者,"教育課程, 構成要素, 考古学者",a famous anthropologist.,有名な人類学者。,共通テスト
+Essential (601-1200),tragedy,悲劇,"構成要素, 小麦, 喜劇",a Greek tragedy.,ギリシャ悲劇。,共通テスト
+Essential (601-1200),antibiotic,抗生物質,"小麦, 語法, ビタミン剤",take antibiotics.,抗生物質を飲む。,共通テスト
+Essential (601-1200),fare,運賃,"語法, 民族, 罰金",bus fare.,バスの運賃。,共通テスト
+Essential (601-1200),debt,借金、負債,"城, 爆発, 貯金",pay off a debt.,借金を返済する。,共通テスト
+Essential (601-1200),curriculum,教育課程、カリキュラム,"飢饉, 部分, 授業",the school curriculum.,学校の教育課程。,共通テスト
+Essential (601-1200),component,構成要素、部品,"絶滅, 生物, 全体",a key component.,主要な構成要素。,慶應義塾大
+Essential (601-1200),wheat,小麦,"財布, 商人, 米",wheat flour.,小麦粉。,共通テスト
+Essential (601-1200),usage,語法、慣法,"民族, 神話, 意味",English usage.,英語の語法。,共通テスト
+Essential (601-1200),castle,城,"爆発, 出来事, 寺院",an old castle.,古い城。,共通テスト
+Essential (601-1200),famine,飢饉,"部分, 野生生物, 豊作",die of famine.,飢饉で亡くなる。,共通テスト
+Essential (601-1200),extinction,絶滅,"生物, 議会, 生存",on the verge of extinction.,絶滅の危機に瀕して。,共通テスト
+Essential (601-1200),purse,財布、ハンドバッグ,"商人, 湾, 鍵",lose a purse.,財布を失くす。,共通テスト
+Essential (601-1200),folk,民族、人々,"神話, 刑, 個人",folk music.,民族音楽。,共通テスト
+Essential (601-1200),explosion,爆発,"出来事, 遺産, 沈黙",a gas explosion.,ガス爆発。,共通テスト
+Essential (601-1200),portion,部分、分け前,"野生生物, 多様性, 全体",a large portion.,大きな部分。,共通テスト
+Essential (601-1200),organism,生物、有機体,"議会, 親指, 無機物",a living organism.,生きた生物。,共通テスト
+Essential (601-1200),merchant,商人,"湾, 地理, 客",a wine merchant.,ワイン商人。,共通テスト
+Essential (601-1200),myth,神話、作り話,"刑, 要因, 事実",Greek myths.,ギリシャ神話。,共通テスト
+Essential (601-1200),incident,出来事、事件,"遺産, 差別, 偶然",a strange incident.,奇妙な出来事。,共通テスト
+Essential (601-1200),wildlife,野生生物,"多様性, ウイルス, 家畜",protect wildlife.,野生生物を保護する。,共通テスト
+Essential (601-1200),congress,議会、会議,"親指, 像, 法律",the U.S. Congress.,米国議会。,共通テスト
+Essential (601-1200),bay,湾,"地理, 神父, 海岸",Tokyo Bay.,東京湾。,共通テスト
+Essential (601-1200),penalty,刑、刑罰、罰金,"要因, 先駆者, 報酬",the death penalty.,死刑（刑罰）。,共通テスト
+Essential (601-1200),heritage,遺産、伝統,"差別, 特徴, 負債",World Heritage.,世界遺産。,共通テスト
+Essential (601-1200),diversity,多様性,"ウイルス, きずな, 単一性",cultural diversity.,文化的多様性。,共通テスト
+Essential (601-1200),thumb,親指,"像, 食料品, 手首",a green thumb.,園芸の才（親指）。,共通テスト
+Essential (601-1200),geography,地理、地理学,"神父, 秘書, 歴史",Japanese geography.,日本の地理。,共通テスト
+Essential (601-1200),factor,要因、要素,"先駆者, 方言, 結果",a deciding factor.,決定的な要因。,共通テスト
+Essential (601-1200),discrimination,差別,"特徴, 天文学, 平等",racial discrimination.,人種差別。,共通テスト
+Essential (601-1200),virus,ウイルス,"きずな, 子供, 細菌",a computer virus.,コンピュータウイルス。,共通テスト
+Essential (601-1200),statue,像、彫像,"食料品, 物質, 法律",a bronze statue.,ブロンズ像。,共通テスト
+Essential (601-1200),priest,神父、聖職者,"秘書, 発見, 罪人",a Catholic priest.,カトリックの神父。,共通テスト
+Essential (601-1200),pioneer,先駆者、開拓者,"方言, 戦略, 模倣者",a pioneer in space.,宇宙開発の先駆者。,共通テスト
+Essential (601-1200),trait,特徴、特性,"天文学, 肺, 欠点",a personality trait.,性格上の特徴。,共通テスト
+Essential (601-1200),bond,きずな、結束,"子供, 敵, 分離",a family bond.,家族のきずな。,共通テスト
+Essential (601-1200),grocery,食料品、食料品店,"物質, 儀式, 宝石",a grocery store.,食料品店。,共通テスト
+Essential (601-1200),secretary,秘書、長官,"発見, 結果, 上司",a private secretary.,私設秘書。,共通テスト
+Essential (601-1200),dialect,方言,"戦略, 環境保護, 標準語",speak a dialect.,方言を話す。,共通テスト
+Essential (601-1200),astronomy,天文学,"肺, 哺乳類, 占星術",study astronomy.,天文学を学ぶ。,共通テスト
+Essential (601-1200),youngster,子供、若者,"敵, 望遠鏡, 老人",youngsters today.,今時の子供たち（若者）。,共通テスト
+Essential (601-1200),substance,物質、実体,"儀式, 難民, 精神",a toxic substance.,有毒物質。,共通テスト
+Essential (601-1200),finding,発見、調査結果,"結果, 規則, 紛失",recent findings.,最近の発見（調査結果）。,共通テスト
+Essential (601-1200),strategy,戦略,"環境保護, 風味, 計画",a marketing strategy.,販売戦略。,共通テスト
+Essential (601-1200),lung,肺,"哺乳類, 粒子, 心臓",lung cancer.,肺ガン。,共通テスト
+Essential (601-1200),opponent,敵、相手,"望遠鏡, 看護, 味方",a political opponent.,政治的な敵（相手）。,共通テスト
+Essential (601-1200),ritual,儀式,"難民, 自殺, 習慣",a daily ritual.,日々の儀式（習慣）。,共通テスト
+Essential (601-1200),outcome,結果、成果,"規則, 生息地, 原因",the final outcome.,最終的な結果。,共通テスト
+Essential (601-1200),conservation,環境保護、保存,"風味, いじめ, 破壊",nature conservation.,自然保護。,共通テスト
+Essential (601-1200),mammal,哺乳類,"粒子, 恐竜, 爬虫類",Marine mammals.,海の哺乳類。,共通テスト
+Essential (601-1200),telescope,望遠鏡,"看護, 議会, 顕微鏡",look through a telescope.,望遠鏡をのぞく。,共通テスト
+Essential (601-1200),refugee,難民,"自殺, 性別, 移住者",a refugee camp.,難民キャンプ。,共通テスト
+Essential (601-1200),code,規則、規範、暗号,"生息地, 手術, 自由",a dress code.,服装規定（規則）。,共通テスト
+Essential (601-1200),flavor,風味、味,"いじめ, 革新, 香り",a unique flavor.,独特の風味。,共通テスト
+Essential (601-1200),particle,粒子,"恐竜, タンパク質, 塊",dust particles.,ほこりの粒子。,立教大
+Essential (601-1200),nursing,看護,"議会, 栄養, 治療",the nursing profession.,看護職。,共通テスト
+Essential (601-1200),suicide,自殺,"性別, 災害, 殺人",commit suicide.,自殺を図る。,共通テスト
+Essential (601-1200),habitat,生息地,"手術, 排出, 絶滅",natural habitat.,自然の生息地。,共通テスト
+Essential (601-1200),bullying,いじめ,"革新, 類人猿, 友情",stop bullying.,いじめをやめる。,共通テスト
+Essential (601-1200),dinosaur,恐竜,"タンパク質, 分子, 化石",extinct dinosaurs.,絶滅した恐竜。,共通テスト
+Essential (601-1200),council,議会、会議,"栄養, 汗, 委員会",a city council.,市議会。,共通テスト
+Essential (601-1200),gender,性別,"災害, 移植, 年齢",gender equality.,男女平等（性別）。,共通テスト
+Essential (601-1200),surgery,手術,"排出, 種, 薬",undergo surgery.,手術を受ける。,共通テスト
+Essential (601-1200),innovation,革新,"類人猿, 先, 伝統",technical innovation.,技術革新。,共通テスト
+Essential (601-1200),protein,タンパク質,"分子, 牛, 脂肪",high in protein.,タンパク質が豊富な。,共通テスト
+Essential (601-1200),nutrition,栄養,"汗, 密度, 食料",poor nutrition.,栄養不足。,共通テスト
+Essential (601-1200),disaster,災害、惨事,"移植, 概念, 幸運",a natural disaster.,自然災害。,共通テスト
+Essential (601-1200),emission,排出,"種, 青白い, 吸収",gas emissions.,ガスの排出。,共通テスト
+Essential (601-1200),ape,類人猿,"先, 貴重な, 猿",great apes.,大型類人猿。,共通テスト
+Essential (601-1200),molecule,分子,"牛, 忠実な, 原子",water molecules.,水分子。,青山学院大
+Essential (601-1200),sweat,汗,"密度, 孤立している, 涙",covered in sweat.,汗だくで。,共通テスト
+Essential (601-1200),transplant,移植,"概念, 気前のよい, 削除",a heart transplant.,心臓移植。,共通テスト
+Essential (601-1200),species,種,"青白い, 熱帯, 個体",an endangered species.,絶滅危惧種。,共通テスト
+Essential (601-1200),tip,先、助言、チップ,"貴重な, したがらない, 根",the tip of the finger.,指の先。,共通テスト
+Essential (601-1200),cattle,牛（の群れ）,"忠実な, 漠然とした, 羊",raise cattle.,牛を育てる。,共通テスト
+Essential (601-1200),density,密度,"孤立している, 広大な, 面積",population density.,人口密度。,共通テスト
+Essential (601-1200),concept,概念,"気前のよい, たくさんの, 事実",a basic concept.,基本的な概念。,共通テスト
+Essential (601-1200),pale,青白い,"熱帯, 田舎の, 鮮やかな",turn pale.,青白くなる。,共通テスト
+Essential (601-1200),precious,貴重な,"したがらない, 広まっている, 安価な",precious stones.,宝石（貴重な石）。,共通テスト
+Essential (601-1200),loyal,忠実な,"漠然とした, 複雑な, 不実な",a loyal friend.,忠実な友人。,共通テスト
+Essential (601-1200),isolated,孤立している,"広大な, 目に見える, 混雑した",an isolated village.,孤立している村。,共通テスト
+Essential (601-1200),generous,気前のよい、寛大な,"たくさんの, 生の, けちな",a generous man.,気前のよい男。,共通テスト
+Essential (601-1200),tropical,熱帯の,"田舎の, へんぴな, 寒帯の",a tropical forest.,熱帯の森。,共通テスト
+Essential (601-1200),reluctant,～したがらない,"広まっている, 緊急の, 熱心な",feel reluctant to go.,行きたがらない。,共通テスト
+Essential (601-1200),vague,漠然とした、曖昧な,"複雑な, ばかな, 明確な",a vague answer.,漠然とした答え。,共通テスト
+Essential (601-1200),vast,広大な、膨大な,"目に見える, いちじるしい, 狭い",the vast ocean.,広大な海。,共通テスト
+Essential (601-1200),numerous,たくさんの、多数の,"生の, 十分な, わずかな",numerous times.,たくさんの回数。,共通テスト
+Essential (601-1200),rural,田舎の,"へんぴな, 並外れた, 都会の",a rural area.,田舎の地域。,共通テスト
+Essential (601-1200),widespread,広まっている,"緊急の, おかしな, 限定的な",a widespread rumor.,広まっている噂。,共通テスト
+Essential (601-1200),complicated,複雑な,"ばかな, 抽象的な, 単純な",a complicated problem.,複雑な問題。,共通テスト
+Essential (601-1200),visible,目に見える,"いちじるしい, 相互の, 透明な",visible light.,可視光（目に見える光）。,共通テスト
+Essential (601-1200),raw,生の、未加工の,"十分な, 過度の, 調理された",raw fish.,生の魚。,共通テスト
+Essential (601-1200),remote,遠く離れた、へんぴな,"近い, 並外れた, 恥ずかしい",a remote village.,へんぴな（遠く離れた）村。,共通テスト
+Essential (601-1200),urgent,緊急の、急を要する,"緩やかな, おかしな, とてつもない",an urgent message.,緊急のメッセージ。,共通テスト
+Essential (601-1200),silly,ばかな、愚かな,"賢い, 抽象的な, 避けられない",a silly mistake.,ばかな間違い。,共通テスト
+Essential (601-1200),striking,いちじるしい、目立つ,"わずかな, 相互の, 純粋な",a striking contrast.,いちじるしい対照。,共通テスト
+Essential (601-1200),adequate,十分な、適切な,"不十分な, 過度の, 安定した",adequate sleep.,十分な睡眠。,共通テスト
+Essential (601-1200),extraordinary,並外れた、異常な,"普通の, 恥ずかしい, 無関心な",an extraordinary talent.,並外れた才能。,共通テスト
+Essential (601-1200),odd,おかしな、奇妙な,"普通の, とてつもない, 攻撃的な",an odd noise.,おかしな（奇妙な）音。,共通テスト
+Essential (601-1200),abstract,抽象的な,"具体的な, 避けられない, 究極の",abstract art.,抽象芸術。,共通テスト
+Essential (601-1200),mutual,相互の,"一方的な, 純粋な, 内気な",mutual understanding.,相互理解。,共通テスト
+Essential (601-1200),excessive,過度の,"適度な, 安定した, 太陽の",excessive drinking.,過度の飲酒。,共通テスト
+Essential (601-1200),ashamed,恥ずかしくて,"誇らしい, 無関心な, 深い",feel ashamed of...,～を恥ずかしく思う。,共通テスト
+Essential (601-1200),tremendous,とてつもない、巨大な,"わずかな, 攻撃的な, 微妙な",a tremendous success.,とてつもない成功。,共通テスト
+Essential (601-1200),inevitable,避けられない,"避けられる, 究極の, 保守的な",an inevitable result.,避けられない結果。,共通テスト
+Essential (601-1200),pure,純粋な,"混ざった, 内気な, 勇敢な",pure water.,純粋な水。,共通テスト
+Essential (601-1200),stable,安定した,"不安定な, 太陽の, 強烈な",a stable economy.,安定した経済。,共通テスト
+Essential (601-1200),indifferent,無関心な,"熱心な, 深い, アルコールの",be indifferent to politics.,政治に無関心だ。,慶應義塾大
+Essential (601-1200),aggressive,攻撃的な,"穏やかな, 微妙な, 手作業の",aggressive behavior.,攻撃的な行動。,共通テスト
+Essential (601-1200),ultimate,究極の、最終的な,"最初の, 保守的な, 残酷な",the ultimate goal.,究極の目標。,共通テスト
+Essential (601-1200),shy,内気な,"社交的な, 勇敢な, 理性的な",a shy girl.,内気な少女。,共通テスト
+Essential (601-1200),solar,太陽の,"月の, 強烈な, 最初の",solar energy.,太陽エネルギー。,共通テスト
+Essential (601-1200),profound,深い、重大な,"浅い, アルコールの, 免疫の",a profound effect.,深い（重大な）影響。,共通テスト
+Essential (601-1200),subtle,微妙な、かすかな,"明確な, 手作業の, 言語の",a subtle difference.,微妙な違い。,共通テスト
+Essential (601-1200),conservative,保守的な,"進歩的な, 残酷な, 重大な",a conservative party.,保守的な政党。,共通テスト
+Essential (601-1200),brave,勇敢な,"臆病な, 理性的な, 言葉による",a brave soldier.,勇敢な兵士。,共通テスト
+Essential (601-1200),intense,強烈な、激しい,"穏やかな, 最初の, 楽観的な",intense heat.,強烈な暑さ。,共通テスト
+Essential (601-1200),alcoholic,アルコールの,"ノンアルコールの, 免疫の, 柔軟な",alcoholic drinks.,アルコール飲料。,共通テスト
+Essential (601-1200),manual,手を使う、手動の,"自動の, 言語の, 感謝している",manual labor.,肉体労働（手を使う労働）。,共通テスト
+Essential (601-1200),cruel,残酷な,"優しい, 重大な, 生き生きとした",a cruel fate.,残酷な運命。,共通テスト
+Essential (601-1200),rational,理性的な,"感情的な, 言葉による, 圧倒的な",a rational decision.,理性的な決定。,共通テスト
+Essential (601-1200),initial,最初の,"最後の, 楽観的な, 豊富な",the initial stage.,最初の段階。,共通テスト
+Essential (601-1200),immune,免疫の、免除された,"感染しやすい, 柔軟な, 利己的な",the immune system.,免疫システム。,共通テスト
+Essential (601-1200),linguistic,言語の、言語学の,"身体の, 感謝している, みにくい",linguistic skills.,言語能力。,共通テスト
+Essential (601-1200),crucial,重大な、決定的な,"些細な, 生き生きとした, 人種の",a crucial point.,重大な点。,共通テスト
+Essential (601-1200),verbal,言葉による,"非言語の, 圧倒的な, 有名な",verbal communication.,言葉によるコミュニケーション。,共通テスト
+Essential (601-1200),optimistic,楽観的な,"悲観的な, 豊富な, 物議を呼ぶ",be optimistic about...,～について楽観的だ。,共通テスト
+Essential (601-1200),flexible,柔軟な,"頑固な, 利己的な, 連邦の",a flexible schedule.,柔軟な予定。,共通テスト
+Essential (601-1200),grateful,感謝している,"不満な, みにくい, ばかげた",feel grateful for...,～に感謝している。,共通テスト
+Essential (601-1200),lively,生き生きとした,"活気のない, 人種の, 架空の",a lively discussion.,生き生きとした（活発な）議論。,共通テスト
+Essential (601-1200),overwhelming,圧倒的な,"わずかな, 有名な, 厳しい",overwhelming power.,圧倒的な力。,共通テスト
+Essential (601-1200),abundant,豊富な,"乏しい, 物議を呼ぶ, 無作為な",abundant resources.,豊富な資源。,共通テスト
+Essential (601-1200),selfish,利己的な,"無私の, 連邦の, 思春期の",a selfish person.,利己的な人。,共通テスト
+Essential (601-1200),ugly,みにくい,"美しい, ばかげた, 最新の",an ugly sight.,みにくい光景。,共通テスト
+Essential (601-1200),racial,人種の,"宗教の, 架空の, 自由主義の",racial equality.,人種間の平等。,共通テスト
+Essential (601-1200),prominent,有名な、卓越した,"無名の, 厳しい, 前の",a prominent scientist.,有名な（卓越した）科学者。,共通テスト
+Essential (601-1200),controversial,物議を呼ぶ,"異論のない, 無作為な, 適度な",a controversial issue.,物議を呼ぶ問題。,共通テスト
+Essential (601-1200),federal,連邦の,"地方の, 思春期の, 流ちょうな",the federal government.,連邦政府。,共通テスト
+Essential (601-1200),ridiculous,ばかげた,"理にかなった, 最新の, 手の込んだ",a ridiculous idea.,ばかげた考え。,共通テスト
+Essential (601-1200),imaginary,架空の、想像上の,"実在の, 自由主義の, 信じられない",an imaginary animal.,架空の動物。,共通テスト
+Essential (601-1200),harsh,厳しい、残酷な,"優しい, 前の, 根本的な",harsh conditions.,厳しい条件。,共通テスト
+Essential (601-1200),random,無作為な、手当たり次第の,"意図的な, 適度な, 酸性の",in random order.,無作為な順序で。,共通テスト
+Essential (601-1200),adolescent,思春期の、若者の,"成人の, 流ちょうな, 耳が不自由な",an adolescent boy.,思春期の少年。,共通テスト
+Essential (601-1200),up-to-date,最新の,"時代遅れの, 手の込んだ, 中世の",up-to-date news.,最新のニュース。,共通テスト
+Essential (601-1200),liberal,自由主義の、寛大な,"保守的な, 信じられない, 生態の",a liberal education.,教養（自由主義的）教育。,共通テスト
+Essential (601-1200),prior,前の、優先的な,"後の, 根本的な, 少しの",prior experience.,前の（事前の）経験。,共通テスト
+Essential (601-1200),moderate,適度な、控えめな,"極端な, 酸性の, 無知な",moderate exercise.,適度な運動。,共通テスト
+Essential (601-1200),fluent,流ちょうな,"たどたどしい, 耳が不自由な, 認知の",fluent in English.,英語が流ちょうな。,共通テスト
+Essential (601-1200),elaborate,手の込んだ、精巧な,"単純な, 中世の, 絶対に",an elaborate plan.,手の込んだ計画。,共通テスト
+Essential (601-1200),incredible,信じられない,"ありそうな, 生態の, ほとんど",an incredible story.,信じられない話。,共通テスト
+Essential (601-1200),radical,根本的な、過激な,"表面的な, 少しの, 多少",a radical change.,根本的な変化。,共通テスト
+Essential (601-1200),acid,酸性の,"アルカリ性の, 無知な, 単に",acid rain.,酸性雨。,共通テスト
+Essential (601-1200),deaf,耳が不自由な,"目が不自由な, 認知の, 文字通り",a deaf person.,耳が不自由な人。,共通テスト
+Essential (601-1200),medieval,中世の,"現代の, 絶対に, 一見",medieval history.,中世の歴史。,共通テスト
+Essential (601-1200),ecological,生態の、環境保護の,"非環境的な, ほとんど, 関係なく",ecological systems.,生態系。,共通テスト
+Essential (601-1200),slight,少しの、わずかな,"かなりの, 多少, 徹底的に",a slight cold.,少しの（軽い）風邪。,共通テスト
+Essential (601-1200),ignorant,無知な,"知っている, 単に, 従う",be ignorant of facts.,事実を知らない（無知だ）。,共通テスト
+Essential (601-1200),cognitive,認知の,"身体の, 文字通り, 辞職する",cognitive science.,認知科学。,共通テスト
+Essential (601-1200),absolutely,絶対に,"おそらく, 一見, ほとんど",absolutely right.,絶対に正しい。,共通テスト
+Essential (601-1200),virtually,ほとんど、実質的に,"全く～ない, 関係なく, 限定する",virtually impossible.,ほとんど不可能だ。,共通テスト
+Essential (601-1200),somewhat,多少、いくぶん,"全く, 徹底的に, 組み立てる",somewhat better.,いくぶん（多少）マシだ。,共通テスト
+Essential (601-1200),merely,単に、～にすぎない,"特に, 服従する, ささげる",merely a joke.,単なる冗談。,共通テスト
+Essential (601-1200),literally,文字通り,"比喩的に, 誘惑する, 主張する",literally true.,文字通り本当だ。,共通テスト
+Essential (601-1200),seemingly,一見、見たところ,"実際は, 辞職する, 繁栄する",seemingly easy.,一見簡単そうな。,共通テスト
+Essential (601-1200),regardless,関係なく,"考慮して, 従う, 引き起こす",regardless of age.,年齢に関係なく。,共通テスト
+Essential (601-1200),thoroughly,徹底的に,"適当に, 限定する, 忘れる",clean thoroughly.,徹底的に掃除する。,共通テスト
+Advanced (1201-1700),submit,提出する、服従する,"組み立てる, 命じる, 拒否する",submit a report.,レポートを提出する。,共通テスト
+Advanced (1201-1700),tempt,誘惑する、～する気にさせる,"ささげる, 利用する, 遠ざける",be tempted to buy.,買いたい誘惑にかられる。,上智大
+Advanced (1201-1700),resign,辞職する、辞める,"主張する, 降伏する, 採用する",resign as mayor.,市長を辞職する。,共通テスト
+Advanced (1201-1700),conform,従う、一致する,"繁栄する, 再生する, 反抗する",conform to rules.,規則に従う。,立教大
+Advanced (1201-1700),confine,限定する、閉じ込める,"引き起こす, 認める, 解放する",be confined to bed.,寝たきりになる（ベッドに限定される）。,慶應義塾大
+Advanced (1201-1700),assemble,組み立てる、集まる,"命じる, ふくらむ, 分解する",assemble furniture.,家具を組み立てる。,共通テスト
+Advanced (1201-1700),dedicate,ささげる,"利用する, 落とす, 無駄にする",dedicate life to art.,芸術に人生をささげる。,共通テスト
+Advanced (1201-1700),advocate,主張する、支持する,"降伏する, 曲がる, 反対する",advocate peace.,平和を主張する。,早稲田大
+Advanced (1201-1700),thrive,繁栄する,"再生する, 引き合いに出す, 衰退する",thrive on stress.,ストレスを糧に（元気に）やっていく。,青山学院大
+Advanced (1201-1700),provoke,引き起こす、怒らせる,"認める, 消化する, 鎮める",provoke a reaction.,反応を引き起こす。,法政大
+Advanced (1201-1700),dictate,命じる、要求する,"ふくらむ, とばす, 従う",dictate terms.,条件を命じる。,共通テスト
+Advanced (1201-1700),exploit,利用する、開発する,"落とす, 縛る, 保護する",exploit resources.,資源を開発する。,共通テスト
+Advanced (1201-1700),surrender,降伏する、引き渡す,"曲がる, 溶解する, 抵抗する",surrender to the enemy.,敵に降伏する。,共通テスト
+Advanced (1201-1700),reproduce,再生する、繁殖する,"引き合いに出す, 実行する, 絶滅する",reproduce cells.,細胞を再生する。,共通テスト
+Advanced (1201-1700),acknowledge,認める,"消化する, 操縦する, 否定する",acknowledge a mistake.,間違いを認める。,慶應義塾大
+Advanced (1201-1700),swell,ふくらむ、増大する,"とばす, 祝福する, 縮む",The population swells.,人口が増大する（ふくらむ）。,共通テスト
+Advanced (1201-1700),shed,（涙などを）流す、落とす,"縛る, 指定する, 吸い込む",shed tears.,涙を流す。,共通テスト
+Advanced (1201-1700),wind,曲がる、巻く,"溶解する, 破る, 直進する",a winding road.,曲がりくねった道。,共通テスト
+Advanced (1201-1700),cite,引き合いに出す、引用する,"実行する, 推定する, 無視する",cite an example.,例を引き合いに出す。,中央大
+Advanced (1201-1700),digest,消化する,"操縦する, 入れる, 排出する",digest food.,食べ物を消化する。,共通テスト
+Advanced (1201-1700),skip,とばす、抜かす,"祝福する, 重なる, 参加する",skip breakfast.,朝食を抜く。,共通テスト
+Advanced (1201-1700),bind,縛る、束縛する,"指定する, 施行する, 解放する",be binding on all.,全員を拘束する（縛る）。,共通テスト
+Advanced (1201-1700),dissolve,溶解する、解散する,"破る, 追い出す, 固める",dissolve sugar.,砂糖を溶かす。,共通テスト
+Advanced (1201-1700),implement,実行する,"推定する, 縮む, 中止する",implement a policy.,政策を実行する。,慶應義塾大
+Advanced (1201-1700),steer,操縦する、導く,"入れる, 裏切る, 迷わせる",steer a car.,車を操縦する。,共通テスト
+Advanced (1201-1700),congratulate,祝福する,"重なる, 構成する, けなす",congratulate him.,彼を祝福する。,共通テスト
+Advanced (1201-1700),designate,指定する,"施行する, ふける, 除外する",designate a site.,跡地を指定する。,共通テスト
+Advanced (1201-1700),violate,破る、違反する,"追い出す, 入り込む, 守る",violate the law.,法律に違反する。,共通テスト
+Advanced (1201-1700),presume,推定する、思う,"縮む, 壊滅させる, 確信する",presume innocence.,無罪と推定する。,共通テスト
+Advanced (1201-1700),recruit,（新人を）入れる、採用する,"裏切る, 突っ込む, 解雇する",recruit new staff.,新人を採用する。,共通テスト
+Advanced (1201-1700),coincide,同時に起きる、重なる,"構成する, はね返る, 逸れる",coincide with...,～と同時に起きる。,立教大
+Advanced (1201-1700),enforce,施行する、強いる,"ふける, 矛盾する, 廃止する",enforce a law.,法律を施行する。,共通テスト
+Advanced (1201-1700),displace,取って代わる、追い出す,"入り込む, 処方する, 設置する",displace workers.,労働者に取って代わる。,共通テスト
+Advanced (1201-1700),shrink,縮む、減る,"壊滅させる, しいたげる, 増える",shrink in size.,サイズが縮む。,共通テスト
+Advanced (1201-1700),betray,裏切る、漏らす,"突っ込む, 胸に抱く, 守る",betray a secret.,秘密を漏らす（裏切る）。,共通テスト
+Advanced (1201-1700),comprise,構成される、～から成る,"はね返る, 照らす, 除外する",be comprised of...,～から構成される。,明治大
+Advanced (1201-1700),indulge,ふける、楽しむ,"矛盾する, きっかけになる, 控える",indulge in a hobby.,趣味にふける。,慶應義塾大
+Advanced (1201-1700),penetrate,入り込む、貫く,"処方する, 通学する, 退く",penetrate the market.,市場に入り込む。,共通テスト
+Advanced (1201-1700),devastate,壊滅させる,"しいたげる, 誘う, 救う",be devastated by war.,戦争で壊滅する。,共通テスト
+Advanced (1201-1700),plunge,突っ込む、急落する,"胸に抱く, 利用する, 上昇する",plunge into water.,水に突っ込む。,共通テスト
+Advanced (1201-1700),bounce,はね返る,"照らす, ポキンと折れる, 吸収する",A ball bounces.,ボールがはね返る。,共通テスト
+Advanced (1201-1700),contradict,矛盾する,"きっかけになる, 提供する, 一致する",contradict each other.,互いに矛盾する。,共通テスト
+Advanced (1201-1700),prescribe,処方する、規定する,"通学する, かえす, 放置する",prescribe medicine.,薬を処方する。,共通テスト
+Advanced (1201-1700),oppress,しいたげる、圧迫する,"誘う, 囲む, 解放する",oppress the poor.,貧しい人をしいたげる。,共通テスト
+Advanced (1201-1700),cherish,胸に抱く、大切にする,"利用する, 普及している, 捨てる",cherish memories.,思い出を胸に抱く。,共通テスト
+Advanced (1201-1700),illuminate,照らす、解明する,"ポキンと折れる, ため息をつく, 暗くする",illuminate the room.,部屋を照らす。,共通テスト
+Advanced (1201-1700),trigger,きっかけになる、誘発する,"提供する, 漏れる, 阻止する",trigger a crisis.,危機を引き起こす（きっかけになる）。,共通テスト
+Advanced (1201-1700),commute,通勤する、通学する,"かえす, 強制する, 欠席する",commute to work.,仕事に通勤する。,共通テスト
+Advanced (1201-1700),induce,誘う、～する気にさせる,"囲む, 押しつぶす, 妨げる",induce sleep.,眠りを誘う。,立教大
+Advanced (1201-1700),utilize,利用する,"普及している, 理解する, 浪費する",utilize skills.,技術を利用する。,共通テスト
+Advanced (1201-1700),snap,ポキンと折れる,"ため息をつく, 交渉する, 伸ばす",snap a twig.,小枝をポキンと折る。,共通テスト
+Advanced (1201-1700),donate,提供する、寄付する,"漏れる, 持続する, 奪う",donate blood.,献血する（血液を提供する）。,共通テスト
+Advanced (1201-1700),hatch,（卵が）かえる,"強制する, 増やす, 死ぬ",Chickens hatch.,鶏が（卵から）かえる。,共通テスト
+Advanced (1201-1700),enclose,囲む、同封する,"押しつぶす, 想像する, 開放する",enclose a photo.,写真を同封する（囲む）。,共通テスト
+Advanced (1201-1700),prevail,普及している、勝る,"理解する, 埋め合わせる, 廃れる",prevailing wind.,卓越風（普及している風）。,共通テスト
+Advanced (1201-1700),sigh,ため息をつく,"交渉する, 中止する, 微笑む",sigh with relief.,安心のため息をつく。,共通テスト
+Advanced (1201-1700),leak,漏れる、漏らす,"持続する, かきたてる, 密閉する",A pipe leaks.,パイプが漏れる。,共通テスト
+Advanced (1201-1700),compel,強制する,"増やす, 浸す, 勧める",be compelled to go.,行かざるを得ない（強制される）。,慶應義塾大
+Advanced (1201-1700),crush,押しつぶす,"想像する, 洗練する, 支える",crush a can.,缶を押しつぶす。,共通テスト
+Advanced (1201-1700),comprehend,理解する,"埋め合わせる, 刺激する, 誤解する",comprehend the law.,法律を理解する。,共通テスト
+Advanced (1201-1700),negotiate,交渉する,"中止する, 先行する, 命令する",negotiate a deal.,取引を交渉する。,共通テスト
+Advanced (1201-1700),persist,持続する、固執する,"かきたてる, 変える, 諦める",persist in asking.,しつこく（固執して）尋ねる。,共通テスト
+Advanced (1201-1700),multiply,増やす、掛ける,"浸す, 想像する, 減らす",multiply numbers.,数を掛ける（増やす）。,共通テスト
+Advanced (1201-1700),conceive,想像する、考える,"洗練する, 退く, 忘れる",conceive a plan.,計画を思いつく（想像する）。,共通テスト
+Advanced (1201-1700),compensate,埋め合わせる、補償する,"刺激する, 驚かせる, 損なう",compensate for loss.,損失を埋め合わせる。,共通テスト
+Advanced (1201-1700),suspend,中止する、つるす,"先行する, する勇気がある, 再開する",suspend judgment.,判断を保留する（中止する）。,共通テスト
+Advanced (1201-1700),stir,かきたてる、かき混ぜる,"変える, 先行する, 落ち着かせる",stir the soup.,スープをかき混ぜる。,共通テスト
+Advanced (1201-1700),soak,浸す、吸収する,"乗る, 組み立てる, 乾かす",soak in water.,水に浸す。,共通テスト
+Advanced (1201-1700),refine,洗練する、磨きをかける,"退く, 想像する, 汚す",refine the design.,デザインを洗練する。,共通テスト
+Advanced (1201-1700),arouse,刺激する、かき立てる,"驚かせる, 理解する, 眠らせる",arouse interest.,興味をかき立てる。,共通テスト
+Advanced (1201-1700),precede,先行する,"する勇気がある, 命じる, 後続する",precede the speech.,スピーチに先行する。,共通テスト
+Advanced (1201-1700),render,OをCにする、変える,"驚かせる, 組み立てる, 維持する",render it possible.,それを可能にする。,早稲田大
+Advanced (1201-1700),mount,据え付ける、乗る,"連続, 縮む, 取り外す",mount a camera.,カメラを据え付ける。,共通テスト
+Advanced (1201-1700),retreat,退く、撤退する,"預金, 筋, 前進する",retreat from battle.,戦いから退く。,共通テスト
+Advanced (1201-1700),startle,驚かせる,"撃つ, 飼育する, 落ち着かせる",startle the bird.,鳥を驚かせる。,共通テスト
+Advanced (1201-1700),dare,～する勇気がある,"用心, 規範, 恐れる",dare to speak out.,思い切って（勇気を出して）発言する。,共通テスト
+Advanced (1201-1700),sphere,領域、範囲、球体,"激怒, 嫌悪, 平面",a social sphere.,社会的な領域（範囲）。,慶應義塾大
+Advanced (1201-1700),sequence,連続、順番,"公式, 妥協, 混乱",the gene sequence.,遺伝子配列（連続）。,共通テスト
+Advanced (1201-1700),deposit,預金、頭金、堆積物,"筋, 監督者, 引き出し",a bank deposit.,銀行預金。,共通テスト
+Advanced (1201-1700),poll,世論調査、投票,"範囲, 逆説, 統計",a public opinion poll.,世論調査。,共通テスト
+Advanced (1201-1700),caution,用心、警告,"規範, 組織, 油断",drive with caution.,用心して運転する。,共通テスト
+Advanced (1201-1700),rage,激怒、怒り,"嫌悪, 崩壊, 喜び",fly into a rage.,激怒する。,共通テスト
+Advanced (1201-1700),formula,式、方法、解決策,"妥協, 主導権, 問題",a magic formula.,魔法の呪文（方法）。,共通テスト
+Advanced (1201-1700),plot,筋、たくらみ,"監督者, 織物, 事実",the plot of the movie.,映画の筋（ストーリー）。,共通テスト
+Advanced (1201-1700),scope,範囲,"逆説, 宣伝, 限界",the scope of research.,調査の範囲。,共通テスト
+Advanced (1201-1700),norm,規範、標準,"組織, 頂上, 逸脱",social norms.,社会的規範。,共通テスト
+Advanced (1201-1700),disgust,嫌悪,"崩壊, 群れ, 好感",feel disgust.,嫌悪感を感じる。,共通テスト
+Advanced (1201-1700),compromise,妥協,"主導権, 疫病, 固執",reach a compromise.,妥協に至る。,共通テスト
+Advanced (1201-1700),supervisor,監督者,"織物, 急ぐこと, 部下",a factory supervisor.,工場の監督者。,共通テスト
+Advanced (1201-1700),paradox,逆説、パラドックス,"宣伝, うたた寝, 真理",a strange paradox.,奇妙な逆説。,共通テスト
+Advanced (1201-1700),tissue,（生物の）組織,"頂上, 同盟国, 細胞",muscle tissue.,筋肉組織。,共通テスト
+Advanced (1201-1700),breakdown,崩壊、故障,"群れ, 下書き, 建設",a nervous breakdown.,神経衰弱（崩壊）。,共通テスト
+Advanced (1201-1700),initiative,主導権、構想,"疫病, 光景, 受動",take the initiative.,主導権を握る。,共通テスト
+Advanced (1201-1700),fabric,織物、布、構造,"急ぐこと, 前提, 鉄鋼",cotton fabric.,綿の織物（布）。,共通テスト
+Advanced (1201-1700),publicity,宣伝、広告,"うたた寝, 財産, 秘密",bad publicity.,悪い評判（宣伝）。,共通テスト
+Advanced (1201-1700),summit,頂上、首脳会議,"同盟国, 遅れ, 麓",reach the summit.,頂上に達する。,共通テスト
+Advanced (1201-1700),flock,群れ,"下書き, 療法, 個体",a flock of sheep.,羊の群れ。,共通テスト
+Advanced (1201-1700),plague,疫病,"光景, もてなし, 健康",the Great Plague.,大疫病。,共通テスト
+Advanced (1201-1700),haste,急ぐこと,"前提, 化合物, 遅延",haste makes waste.,急がば回れ（急ぐことは無駄を作る）。,共通テスト
+Advanced (1201-1700),nap,うたた寝,"財産, 恵み, 熟睡",take a nap.,うたた寝をする。,共通テスト
+Advanced (1201-1700),ally,同盟国、協力者,"遅れ, 感覚, 敵国",a powerful ally.,強力な同盟国。,共通テスト
+Advanced (1201-1700),draft,下書き、草稿,"療法, 不景気, 完成品",the first draft.,最初の草稿（下書き）。,共通テスト
+Advanced (1201-1700),spectacle,光景、壮観,"もてなし, 棒, 闇",a magnificent spectacle.,壮大な光景。,共通テスト
+Advanced (1201-1700),premise,前提,"化合物, 態度, 結論",a basic premise.,基本的な前提。,共通テスト
+Advanced (1201-1700),asset,財産、長所,"恵み, 活動, 負債",a valuable asset.,貴重な財産。,共通テスト
+Advanced (1201-1700),lag,遅れ,"感覚, 慈悲, 前進",jet lag.,時差ぼけ（遅れ）。,共通テスト
+Advanced (1201-1700),therapy,療法、治療法,"不景気, 相当するもの, 診断",speech therapy.,言語療法。,共通テスト
+Advanced (1201-1700),reception,もてなし、歓迎会,"棒, 態度, 拒絶",a warm reception.,温かいもてなし。,共通テスト
+Advanced (1201-1700),compound,化合物,"態度, 変動範囲, 単体",a chemical compound.,化学化合物。,共通テスト
+Advanced (1201-1700),blessing,ありがたいもの、恵み,"活動, くず, 災い",a blessing in disguise.,不幸に見えて実はありがたいもの。,共通テスト
+Advanced (1201-1700),sensation,感覚、感じ,"慈悲, 相当するもの, 無感覚",a burning sensation.,焼けるような感覚。,共通テスト
+Advanced (1201-1700),recession,不景気、不況,"相当するもの, 傾向, 好景気",economic recession.,経済不況。,共通テスト
+Advanced (1201-1700),pole,棒、極,"討論, 粗末な, 穴",the North Pole.,北極（極）。,共通テスト
+Advanced (1201-1700),outlook,態度、見通し,"変動範囲, 権利, 回顧",a positive outlook.,前向きな態度（見通し）。,共通テスト
+Advanced (1201-1700),endeavor,活動、努力,"くず, 妥当な, 怠慢",human endeavor.,人間の活動（努力）。,早稲田大
+Advanced (1201-1700),mercy,慈悲、情け,"崇拝, かすかな, 残酷",show mercy.,慈悲を見せる。,共通テスト
+Advanced (1201-1700),counterpart,相当するもの,"傾向, 粗末な, 全く違うもの",Japanese counterpart.,日本の対応する人（相当するもの）。,共通テスト
+Advanced (1201-1700),session,期間、討論,"謙虚な, わかりにくい, 休憩",a training session.,研修期間（セッション）。,共通テスト
+Advanced (1201-1700),spectrum,変動範囲、領域,"権利, 激しい, 固定点",the whole spectrum.,全範囲（領域）。,共通テスト
+Advanced (1201-1700),junk,くず、がらくた,"妥当な, 深刻な, 宝物",junk mail.,迷惑メール（がらくたメール）。,共通テスト
+Advanced (1201-1700),worship,崇拝,"かすかな, 何もしていない, 軽蔑",ancestor worship.,先祖崇拝。,共通テスト
+Advanced (1201-1700),apt,しがちである,"堅い, 粗末な, しそうにない",be apt to forget.,忘れがちである。,共通テスト
+Advanced (1201-1700),humble,謙虚な、粗末な,"わかりにくい, 嫉妬深い, 傲慢な",my humble opinion.,私の卑見（謙虚な意見）。,共通テスト
+Advanced (1201-1700),entitled,得る権利がある,"激しい, 妊娠している, 禁止された",be entitled to vote.,投票する権利がある。,共通テスト
+Advanced (1201-1700),valid,妥当な、正当な,"深刻な, 可能性が高い, 無効な",a valid reason.,妥当な理由。,共通テスト
+Advanced (1201-1700),faint,かすかな,"何もしていない, 頑固な, はっきりした",a faint smell.,かすかな匂い。,共通テスト
+Advanced (1201-1700),stiff,堅い,"粗末な, まともな, 柔らかい",a stiff neck.,肩こり（堅い首）。,共通テスト
+Advanced (1201-1700),obscure,わかりにくい、無名の,"嫉妬深い, 驚くべき, 明快な",an obscure poet.,無名の詩人。,共通テスト
+Advanced (1201-1700),fierce,激しい,"妊娠している, 誤解を招く, 穏やかな",fierce competition.,激しい競争。,共通テスト
+Advanced (1201-1700),acute,深刻な、鋭い,"可能性が高い, 合成の, 鈍い",an acute problem.,深刻な問題。,共通テスト
+Advanced (1201-1700),idle,何もしていない、暇な,"頑固な, クラシックの, 勤勉な",sit idle.,何もせず座っている。,共通テスト
+Advanced (1201-1700),crude,粗末な、生の,"まともな, イスラム教の, 洗練された",crude oil.,原油（生の石油）。,共通テスト
+Advanced (1201-1700),jealous,嫉妬深い,"驚くべき, 予想する, 寛大な",be jealous of him.,彼を嫉妬している。,共通テスト
+Advanced (1201-1700),pregnant,妊娠している,"誤解を招く, こする,",a pregnant woman.,妊娠している女性。,共通テスト
+Advanced (1201-1700),liable,しがちである、責任がある,"合成の, 処理する, 免除された",be liable to break.,壊れがちである。,共通テスト
+Advanced (1201-1700),stubborn,頑固な,"クラシックの, 控える, 柔軟な",a stubborn child.,頑固な子供。,共通テスト
+Advanced (1201-1700),decent,まともな、礼儀正しい,"イスラム教の, 蓄積する, 不適切な",a decent job.,まともな仕事。,共通テスト
+Advanced (1201-1700),marvelous,驚くべき、素晴らしい,"予想する, 活気づける, ひどい",a marvelous idea.,驚くべき（素晴らしい）考え。,共通テスト
+Advanced (1201-1700),misleading,誤解を招く,"こする, 引きずる, 正確な",a misleading ad.,誤解を招く広告。,共通テスト
+Advanced (1201-1700),synthetic,合成の,"処理する, 修正する, 天然の",synthetic rubber.,合成ゴム。,共通テスト
+Advanced (1201-1700),classical,クラシックの、古典的な,"控える, かく, 現代的な",classical music.,クラシック音楽。,共通テスト
+Advanced (1201-1700),Muslim,イスラム教の,"蓄積する, ほえる,",Muslim world.,イスラム教の世界。,共通テスト
+Advanced (1201-1700),anticipate,予想する,"活気づける, 引用する, 振り返る",anticipate changes.,変化を予想する。,共通テスト
+Advanced (1201-1700),rub,こする,"引きずる, 咲く, 叩く",rub one's eyes.,目をこする。,共通テスト
+Advanced (1201-1700),dispose,処理する、配置する,"修正する, 差し込む, 保管する",dispose of waste.,ゴミを処理する。,共通テスト
+Advanced (1201-1700),refrain,控える,"かく, 待つ, 続ける",refrain from smoking.,喫煙を控える。,共通テスト
+Advanced (1201-1700),accumulate,蓄積する,"ほえる, 恐れる, 消費する",accumulate wealth.,富を蓄積する。,共通テスト
+Advanced (1201-1700),boost,活気づける、高める,"引用する, 隠す, 下げる",boost sales.,売上を活気づける（高める）。,共通テスト
+Advanced (1201-1700),drag,引きずる,"咲く, 豊かにする, 持ち上げる",drag the box.,箱を引きずる。,共通テスト
+Advanced (1201-1700),revise,修正する、改訂する,"差し込む, 固執する, 放置する",revise a plan.,計画を修正する。,共通テスト
+Advanced (1201-1700),scratch,かく,"待つ, まさる, 撫でる",scratch one's head.,頭をかく。,共通テスト
+Advanced (1201-1700),roar,ほえる、うなる,"恐れる, 抑える, 囁く",A lion roars.,ライオンがほえる。,共通テスト
+Advanced (1201-1700),quote,引用する,"隠す, 描く, 創作する",quote a poem.,詩を引用する。,共通テスト
+Advanced (1201-1700),bloom,咲く,"豊かにする, 急上昇する, 枯れる",Flowers bloom.,花が咲く。,共通テスト
+Advanced (1201-1700),insert,差し込む,"固執する, 排出する, 抜く",insert a coin.,コインを差し込む。,共通テスト
+Advanced (1201-1700),awaiting,待つ,"まさる, ボーッと光る, 出発する",awaiting a reply.,返信を待つ。,共通テスト
+Advanced (1201-1700),dread,恐れる,"抑える, 移住する, 望む",dread the exam.,試験を恐れる。,共通テスト
+Advanced (1201-1700),conceal,隠す,"描く, 叫ぶ, 明かす",conceal a secret.,秘密を隠す。,慶應義塾大
+Advanced (1201-1700),enrich,豊かにする,"急上昇する, 及ぼす, 貧しくする",enrich life.,人生を豊かにする。,共通テスト
+Advanced (1201-1700),cling,固執する、しがみつく,"排出する, 隠す, 離れる",cling to hope.,希望に固執する。,共通テスト
+Advanced (1201-1700),surpass,まさる、超える,"ボーッと光る, 加速する, 劣る",surpass others.,他人にまさる。,共通テスト
+Advanced (1201-1700),suppress,抑える、鎮圧する,"移住する, 住む, 煽る",suppress anger.,怒りを抑える。,共通テスト
+Advanced (1201-1700),portray,描く、描写する,"叫ぶ, 融けこませる, 隠す",portray a hero.,ヒーローを描く。,共通テスト
+Advanced (1201-1700),soaring,急上昇する,"及ぼす, 泣く, 下落する",soaring prices.,急上昇する価格。,共通テスト
+Advanced (1201-1700),exert,及ぼす、使う,"抑える, 叫ぶ, 隠す",exert influence.,影響を及ぼす。,慶應義塾大
+Advanced (1201-1700),drain,排出する、流出させる,"加速する, 融けこませる, 蓄積する",drain the water.,水を排出する。,共通テスト
+Advanced (1201-1700),glow,ボーッと光る、赤らむ,"及ぼす, 泣く, 消える",glow in the dark.,暗闇でボーッと光る。,共通テスト
+Advanced (1201-1700),migrate,移住する、（鳥が）渡る,"固執する, 驚かせる, 留まる",migrate to the south.,南へ移住する。,共通テスト
+Advanced (1201-1700),exclaim,叫ぶ,"描写する, 抑える, 囁く",Wait! he exclaimed.,「待て！」と彼は叫んだ。,共通テスト
+Advanced (1201-1700),blend,融けこませる、混ぜる,"排出する, 及ぼす, 分離する",blend into the crowd.,群衆に融けこむ。,共通テスト
+Advanced (1201-1700),weep,泣く,"輝く, 移住する, 笑う",weep for joy.,喜びで泣く。,共通テスト
+Advanced (1201-1700),accelerate,加速する,"排水する, 固執する, 減速する",accelerate the process.,プロセスを加速する。,共通テスト
+Advanced (1201-1700),dwell,住む、居住する,"叫ぶ, 豊かにする, 去る",dwell in the city.,その都市に住む。,共通テスト
+Advanced (1201-1700),startle,驚かせる,"喜ばせる, 描写する, 落ち着かせる",be startled by the noise.,その音に驚かされる。,共通テスト
+Advanced (1201-1700),abandon,捨てる、あきらめる,"守る, 蓄積する, 採用する",abandon the plan.,計画をあきらめる。,共通テスト
+Advanced (1201-1700),cherish,大切にする、心に抱く,"捨てる, 無視する, 攻撃する",cherish the hope.,希望を心に抱く。,共通テスト
+Advanced (1201-1700),displace,取って代わる、追いやる,"設置する, 維持する, 歓迎する",be displaced by AI.,AIに取って代わられる。,共通テスト
+Advanced (1201-1700),classify,分類する,"混乱させる, 破壊する, 放置する",classify books.,本を分類する。,共通テスト
+Advanced (1201-1700),surpass,まさる、超える,"劣る, 従う, 留まる",surpass expectations.,期待を超える。,共通テスト
+Advanced (1201-1700),distort,歪める,"整える, 説明する, 真実を言う",distort the facts.,事実を歪める。,早稲田大
+Advanced (1201-1700),exploit,利用する、開発する,"保護する, 無駄にする, 放置する",exploit natural resources.,天然資源を開発する。,共通テスト
+Advanced (1201-1700),enforce,施行する、強いる,"廃止する, 提案する, 許す",enforce the law.,法律を施行する。,共通テスト
+Advanced (1201-1700),overwhelm,圧倒する,"励ます, 敗れる, 軽視する",be overwhelmed by work.,仕事に圧倒される。,共通テスト
+Advanced (1201-1700),comprise,構成する、～から成る,"除外する, 破壊する, 散らす",The team is comprised of ten members.,チームは10名で構成されている。,明治大
+Advanced (1201-1700),prolong,延ばす,"短縮する, 止める, 忘れる",prolong life.,寿命を延ばす。,共通テスト
+Advanced (1201-1700),derive,由来する、引き出す,"消える, 拒絶する, 蓄える",derive pleasure from reading.,読書から喜びを引き出す。,慶應義塾大
+Advanced (1201-1700),acknowledge,認める,"否定する, 隠す, 忘れる",acknowledge the truth.,真実を認める。,共通テスト
+Advanced (1201-1700),halt,止める、止まる,"始める, 加速する, 続ける",halt production.,生産を止める。,共通テスト
+Advanced (1201-1700),specialize,専門にする,"広める, 学ぶ, 無視する",specialize in history.,歴史を専門にする。,共通テスト
+Advanced (1201-1700),convene,招集する、開催する,"解散する, 延期する, 隠す",convene a meeting.,会議を招集する。,慶應義塾大
+Advanced (1201-1700),moderate,節制する、和らげる,"強める, 無視する, 放置する",moderate one's speech.,言葉を和らげる（節制する）。,共通テスト
+Advanced (1201-1700),prosper,繁栄する,"衰退する, 止まる, 競う",The business prospered.,そのビジネスは繁栄した。,共通テスト
+Advanced (1201-1700),initiate,始める、着手する,"終える, 妨げる, 待つ",initiate a new project.,新しいプロジェクトを始める。,共通テスト
+Advanced (1201-1700),scrutinize,詳細に調べる,"無視する, ちらっと見る, 壊す",scrutinize the document.,書類を詳細に調べる。,上智大
+Advanced (1201-1700),subsidize,補助金を出す,"課税する, 奪う, 借りる",subsidize public transport.,公共交通機関に補助金を出す。,青山学院大
+Advanced (1201-1700),induce,誘発する、～する気にさせる,"止める, 避ける, 忘れる",induce a change.,変化を誘発する。,立教大
+Advanced (1201-1700),implement,実行する,"計画する, 延期する, 諦める",implement a strategy.,戦略を実行する。,共通テスト
+Advanced (1201-1700),originate,起こる、由来する,"終わる, 隠れる, 留まる",originate in India.,インドで起こる（由来する）。,共通テスト
+Advanced (1201-1700),reinforce,強化する,"弱める, 無視する, 壊す",reinforce a structure.,構造を強化する。,共通テスト
+Advanced (1201-1700),strive,努力する、励む,"諦める, 怠ける, 避ける",strive for success.,成功を目指して努力する。,共通テスト
+Advanced (1201-1700),coordinate,調整する,"混乱させる, 無視する, 壊す",coordinate activities.,活動を調整する。,共通テスト
+Advanced (1201-1700),stimulate,刺激する,"抑える, 飽きさせる, 無視する",stimulate the economy.,経済を刺激する。,共通テスト
+Advanced (1201-1700),violate,違反する,"守る, 制定する, 忘れる",violate a rule.,規則に違反する。,共通テスト
+Advanced (1201-1700),facilitate,促進する、容易にする,"妨げる, 止める, 遅らせる",facilitate learning.,学習を促進する。,立教大
+Advanced (1201-1700),diminish,減少する、減らす,"増やす, 維持する, 止める",diminish in value.,価値が減少する。,共通テスト
+Advanced (1201-1700),advocate,支持する、主張する,"反対する, 黙る, 拒絶する",advocate a new law.,新法を支持する。,共通テスト
+Advanced (1201-1700),contemplate,熟考する,"忘れる, 無視する, 衝動買いする",contemplate a career change.,転職を熟考する。,慶應義塾大
+Advanced (1201-1700),precede,先行する,"続く, 遅れる, 止まる",A precedes B.,AがBに先行する。,共通テスト
+Advanced (1201-1700),neutralize,無効にする、中和する,"強化する, 始める, 混ぜる",neutralize a threat.,脅威を無効にする。,共通テスト
+Advanced (1201-1700),render,（ある状態に）する、与える,"奪う, 壊す, 放置する",render it impossible.,それを不可能にする。,早稲田大
+Advanced (1201-1700),prolong,延ばす,"廃止する, 怒らせる, 短縮する",prolong the meeting.,会議を延ばす。,共通テスト
+Advanced (1201-1700),execute,処刑する、実行する,"しかる, 告白する, 救う",execute a plan.,計画を実行する。,慶應義塾大
+Advanced (1201-1700),uncover,明らかにする,"達成する, 延期する, 隠す",uncover the truth.,真実を明らかにする。,共通テスト
+Advanced (1201-1700),tremble,震える,"発する, 漂う, 止まる",tremble with fear.,恐怖で震える。,共通テスト
+Advanced (1201-1700),seize,つかむ,"逃げる, 織る, 放す",seize the opportunity.,機会をつかむ。,共通テスト
+Advanced (1201-1700),abolish,廃止する,"怒らせる, 備えつける, 制定する",abolish slavery.,奴隷制度を廃止する。,共通テスト
+Advanced (1201-1700),scold,しかる,"告白する, ねじ曲げる, ほめる",scold a child.,子供をしかる。,共通テスト
+Advanced (1201-1700),attain,達成する,"延期する, 取り出す, 失敗する",attain a goal.,目標を達成する。,共通テスト
+Advanced (1201-1700),utter,発する、口に出す,"漂う, ぶつかる, 黙る",utter a word.,言葉を発する。,共通テスト
+Advanced (1201-1700),flee,逃げる,"織る, 軽蔑する, 留まる",flee from danger.,危険から逃げる。,共通テスト
+Advanced (1201-1700),offend,怒らせる,"備えつける, 我慢する, 喜ばせる",offend the audience.,聴衆を怒らせる。,共通テスト
+Advanced (1201-1700),confess,告白する,"ねじ曲げる, 自慢する, 隠す",confess a crime.,罪を告白する。,共通テスト
+Advanced (1201-1700),postpone,延期する,"取り出す, 無視する, 始める",postpone the game.,試合を延期する。,共通テスト
+Advanced (1201-1700),drift,漂う,"ぶつかる, 無視する, 沈む",drift on the sea.,海を漂う。,共通テスト
+Advanced (1201-1700),weave,織る,"軽蔑する, からかう, 壊す",weave a basket.,かごを織る（編む）。,共通テスト
+Advanced (1201-1700),install,備えつける,"我慢する, 強める, 取り外す",install software.,ソフトを備えつける。,共通テスト
+Advanced (1201-1700),twist,ねじ曲げる,"自慢する, 努力する, 伸ばす",twist the truth.,真実をねじ曲げる。,共通テスト
+Advanced (1201-1700),extract,取り出す、抽出する,"合わせる, 驚かせる, 埋める",extract oil.,油を抽出する（取り出す）。,共通テスト
+Advanced (1201-1700),bump,ぶつかる,"無視する, あくびをする, 避ける",bump into a friend.,友人に（偶然）ぶつかる。,共通テスト
+Advanced (1201-1700),despise,軽蔑する,"からかう, 抱きしめる, 尊敬する",despise a coward.,臆病者を軽蔑する。,共通テスト
+Advanced (1201-1700),tolerate,我慢する、許容する,"強める, 戦う, 拒む",tolerate noise.,騒音を我慢する。,早稲田大
+Advanced (1201-1700),boast,自慢する,"努力する, 編む, 恥じる",boast of success.,成功を自慢する。,共通テスト
+Advanced (1201-1700),flourish,栄えている,"合わせる, 疲れる, 衰退する",A flourishing city.,栄えている都市。,共通テスト
+Advanced (1201-1700),disregard,無視する,"あくびをする, 抱きしめる, 注意する",disregard rules.,規則を無視する。,上智大
+Advanced (1201-1700),tease,からかう,"抱きしめる, 戦う, 慰める",tease a friend.,友人をからかう。,共通テスト
+Advanced (1201-1700),fatigue,疲労,"干ばつ, 絶望, 活力",suffer from fatigue.,疲労に苦しむ。,共通テスト
+Advanced (1201-1700),fame,名声,"絶望, 破片, 悪評",achieve fame.,名声を得る。,共通テスト
+Advanced (1201-1700),mess,めちゃくちゃ（な状態）,"間隔, 野獣, 秩序",a messy room.,めちゃくちゃな部屋。,共通テスト
+Advanced (1201-1700),dignity,尊厳,"荷物, 迷信, 屈辱",human dignity.,人間の尊厳。,共通テスト
+Advanced (1201-1700),canal,運河,"代表, 衝動, 道路",the Panama Canal.,パナマ運河。,共通テスト
+Advanced (1201-1700),drought,干ばつ,"衝動, 糸, 洪水",a severe drought.,深刻な干ばつ。,共通テスト
+Advanced (1201-1700),despair,絶望,"破片, 摂取量, 希望",in despair.,絶望して。,共通テスト
+Advanced (1201-1700),interval,間隔,"野獣, 宴会, 連続",a short interval.,短い間隔。,共通テスト
+Advanced (1201-1700),luggage,荷物,"迷信, 移り変わり, 空港",carry luggage.,荷物を運ぶ。,共通テスト
+Advanced (1201-1700),behalf,代表,"幻想, 悲惨さ, 個人",on behalf of...,～を代表して。,共通テスト
+Advanced (1201-1700),impulse,衝動,"糸, 放射線, 理性",on impulse.,衝動的に。,共通テスト
+Advanced (1201-1700),debris,破片、残骸,"摂取量, 丸太, 全体",space debris.,宇宙ゴミ（破片）。,共通テスト
+Advanced (1201-1700),beast,野獣,"宴会, 合意, 家畜",a wild beast.,野獣。,共通テスト
+Advanced (1201-1700),superstition,迷信,"移り変わり, 行い, 科学的根拠",an old superstition.,古い迷信。,共通テスト
+Advanced (1201-1700),illusion,幻想、錯覚,"悲惨さ, ことわざ, 現実",optical illusion.,錯視（目の錯覚）。,共通テスト
+Advanced (1201-1700),thread,糸,"放射線, ほめ言葉, 針",a needle and thread.,針と糸。,共通テスト
+Advanced (1201-1700),intake,摂取量,"丸太, 炎, 消費量",daily calorie intake.,1日のカロリー摂取量。,共通テスト
+Advanced (1201-1700),feast,宴会,"合意, 記念日, 絶食",a wedding feast.,結婚の宴会。,共通テスト
+Advanced (1201-1700),transition,移り変わり、移行,"行い, 良心, 固定",a smooth transition.,スムーズな移り変わり。,共通テスト
+Advanced (1201-1700),misery,悲惨さ、不幸,"ことわざ, 探検, 幸福",live in misery.,悲惨な生活を送る。,共通テスト
+Advanced (1201-1700),radiation,放射線,"ほめ言葉, 子孫, 太陽光",solar radiation.,太陽放射線。,共通テスト
+Advanced (1201-1700),log,丸太、記録,"炎, こづかい, 枝",a log cabin.,丸太小屋。,共通テスト
+Advanced (1201-1700),consensus,合意,"記念日, 大見出し, 反対",reach a consensus.,合意に達する。,共通テスト
+Advanced (1201-1700),deed,行い,"良心, 条約, 言葉",a good deed.,良い行い。,共通テスト
+Advanced (1201-1700),proverb,ことわざ,"探検, 記念碑, 噂",a Japanese proverb.,日本のことわざ。,共通テスト
+Advanced (1201-1700),compliment,ほめ言葉,"子孫, こづかい, 悪口",pay a compliment.,ほめ言葉を述べる。,共通テスト
+Advanced (1201-1700),flame,炎,"こづかい, 大見出し, 氷",a bright flame.,明るい炎。,共通テスト
+Advanced (1201-1700),anniversary,記念日,"大見出し, 条約, 平日",wedding anniversary.,結婚記念日。,共通テスト
+Advanced (1201-1700),conscience,良心,"条約, 記念碑, 悪意",a guilty conscience.,罪悪感（やましい良心）。,共通テスト
+Advanced (1201-1700),expedition,探検、遠征,"記念碑, 子孫, 留守",an Antarctic expedition.,南極探検。,共通テスト
+Advanced (1201-1700),offspring,子孫,"虫, 治療法, 先祖",produce offspring.,子孫を残す。,共通テスト
+Advanced (1201-1700),allowance,こづかい、手当,"治療法, 百科事典, 貯金",monthly allowance.,月のおこづかい。,共通テスト
+Advanced (1201-1700),headline,大見出し,"百科事典, ちらり, 本文",news headlines.,ニュースの大見出し。,共通テスト
+Advanced (1201-1700),treaty,条約,"ちらり, 職員, 喧嘩",sign a treaty.,条約に署名する。,共通テスト
+Advanced (1201-1700),monument,記念碑,"職員, 勝利, 墓",a stone monument.,石の記念碑。,共通テスト
+Advanced (1201-1700),worm,虫,"勝利, 算数, 鳥",an earthworm.,ミミズ（土の虫）。,共通テスト
+Advanced (1201-1700),remedy,治療法、救済策,"算数, 自尊心, 病気",a natural remedy.,自然治療法。,共通テスト
+Advanced (1201-1700),encyclopedia,百科事典,"自尊心, 微生物, 雑誌",a medical encyclopedia.,医学百科事典。,共通テスト
+Advanced (1201-1700),glimpse,ちらりと見えること,"微生物, 可能性, 注視",catch a glimpse.,ちらりと見る。,共通テスト
+Advanced (1201-1700),personnel,職員、人事部,"可能性, 混沌, 顧客",medical personnel.,医療職員。,共通テスト
+Advanced (1201-1700),triumph,勝利,"混沌, 運命, 敗北",a great triumph.,大勝利。,共通テスト
+Advanced (1201-1700),arithmetic,算数,"運命, 直径, 歴史",mental arithmetic.,暗算（暗記の算数）。,共通テスト
+Advanced (1201-1700),self-esteem,自尊心,"直径, 宝くじ, 劣等感",low self-esteem.,低い自尊心。,共通テスト
+Advanced (1201-1700),microbe,微生物,"宝くじ, みやげ物, 巨獣",harmful microbes.,有害な微生物。,立教大
+Advanced (1201-1700),odds,可能性、見込み,"みやげ物, 小道, 確信",The odds are...,可能性は〜だ。,共通テスト
+Advanced (1201-1700),chaos,混沌、無秩序,"小道, 比率, 秩序",complete chaos.,完全な混沌。,共通テスト
+Advanced (1201-1700),destiny,運命,"比率, 剣, 偶然",human destiny.,人間の運命。,共通テスト
+Advanced (1201-1700),diameter,直径,"剣, 笛, 半径",10cm in diameter.,直径10cm。,共通テスト
+Advanced (1201-1700),lottery,宝くじ,"笛, 感情, 寄付",win the lottery.,宝くじに当たる。,共通テスト
+Advanced (1201-1700),souvenir,みやげ物,"感情, 雑用, 必需品",buy a souvenir.,みやげ物を買う。,共通テスト
+Advanced (1201-1700),trail,小道、跡,"雑用, 礼儀, 大通り",a mountain trail.,山の小道。,共通テスト
+Advanced (1201-1700),ratio,比率,"礼儀, 市長, 合計",a high ratio.,高い比率。,共通テスト
+Advanced (1201-1700),sword,剣,"市長, 監視, 盾",a sharp sword.,鋭い剣。,共通テスト
+Advanced (1201-1700),whistle,笛,"監視, ごみ, 鐘",blow a whistle.,笛を吹く。,共通テスト
+Advanced (1201-1700),sentiment,感情、心情,"ごみ, 名声, 理屈",public sentiment.,民衆の感情。,共通テスト
+Advanced (1201-1700),chore,雑用、日課,"名声, 共和国, 娯楽",household chores.,家の雑用（家事）。,共通テスト
+Advanced (1201-1700),courtesy,礼儀、厚意,"本部, 荒野, 失礼",by courtesy of...,～の厚意（礼儀）により。,共通テスト
+Advanced (1201-1700),mayor,市長,"荒野, 軌道, 市民",the city mayor.,市長。,共通テスト
+Advanced (1201-1700),surveillance,監視、見張り,"軌道, 破片, 放置",surveillance camera.,監視カメラ。,共通テスト
+Advanced (1201-1700),trash,ごみ,"偏見, 星雲, 資源",take out the trash.,ごみを出す。,共通テスト
+Advanced (1201-1700),prestige,名声、威信,"共和国, 膝, 悪評",gain social prestige.,社会的名声を得る。,立教大
+Advanced (1201-1700),headquarters,本部、本社,"掘り出し物, 締め切り, 支店",the company headquarters.,会社の本部（本社）。,慶應義塾大
+Advanced (1201-1700),wilderness,荒野、原生地域,"領域, 弾丸, 都会",a trip to the wilderness.,荒野への旅。,共通テスト
+Advanced (1201-1700),orbit,軌道,"破片, 歩行者, 直線",the moon's orbit.,月の軌道。,共通テスト
+Advanced (1201-1700),bias,偏見、先入観,"星雲, 機知, 公平",personal bias.,個人的な偏見。,共通テスト
+Advanced (1201-1700),republic,共和国,"膝, 迷惑, 王国",the Republic of France.,フランス共和国。,共通テスト
+Advanced (1201-1700),bargain,掘り出し物、安売り,"締め切り, 基準, 損失",a real bargain.,本当の掘り出し物。,共通テスト
+Advanced (1201-1700),domain,領域、分野,"弾丸, 苦難, 境界",in the public domain.,公有（領域）に属する。,早稲田大
+Advanced (1201-1700),fragment,破片、断片,"歩行者, 栄光, 全体",a fragment of glass.,ガラスの破片。,共通テスト
+Advanced (1201-1700),galaxy,銀河、星雲,"機知, 歩道, 惑星",the Milky Way galaxy.,天の川銀河。,共通テスト
+Advanced (1201-1700),lap,膝、(トラックの)一周,"迷惑, 海軍, 肩",sit on her lap.,彼女の膝に乗る。,共通テスト
+Advanced (1201-1700),deadline,締め切り,"基準, 台本, 延期",meet the deadline.,締め切りに間に合わせる。,共通テスト
+Advanced (1201-1700),bullet,弾丸,"苦難, 年金, 弓矢",a silver bullet.,特効薬（銀の弾丸）。,共通テスト
+Advanced (1201-1700),pedestrian,歩行者,"栄光, 州, 運転手",pedestrian safety.,歩行者の安全。,共通テスト
+Advanced (1201-1700),wit,機知、知恵,"歩道, 余剰, 愚かさ",a man of wit.,機知に富んだ男。,共通テスト
+Advanced (1201-1700),nuisance,迷惑（なもの）,"海軍, 水分, 恩恵",a public nuisance.,公衆への迷惑。,共通テスト
+Advanced (1201-1700),criteria,基準,"台本, 苦難, 例外",evaluation criteria.,評価基準。,上智大
+Advanced (1201-1700),hardship,苦難、困窮,"年金, 州, 繁栄",economic hardship.,経済的苦難。,共通テスト
+Advanced (1201-1700),glory,栄光,"州, 授業料, 恥辱",give glory to God.,神に栄光を帰す。,共通テスト
+Advanced (1201-1700),pavement,歩道、舗装道路,"余剰, 水分, 車道",walk on the pavement.,歩道を歩く。,共通テスト
+Advanced (1201-1700),navy,海軍,"水分, 霊長類, 陸軍",the Royal Navy.,王立海軍。,共通テスト
+Advanced (1201-1700),script,台本、脚本,"あて布, 年金, 原作",read the script.,台本を読。,共通テスト
+Advanced (1201-1700),pension,年金,"高度, 州, 給料",receive a pension.,年金を受け取る。,共通テスト
+Advanced (1201-1700),province,州、省、地方,"温度計, 授業料, 首都",Ontario Province.,オンタリオ州。,共通テスト
+Advanced (1201-1700),surplus,余剰、黒字,"授業料, 軍隊, 不足",a budget surplus.,予算の黒字（余剰）。,共通テスト
+Advanced (1201-1700),moisture,水分、湿気,"軍隊, 霊長類, 乾燥",retain moisture.,水分を保持する。,共通テスト
+Advanced (1201-1700),patch,あて布、継ぎ,"霊長類, 欠陥, 全体",a patch on the elbow.,肘のあて布。,共通テスト
+Advanced (1201-1700),altitude,高度、標高,"欠陥, 甥, 緯度",fly at a high altitude.,高い高度で飛ぶ。,共通テスト
+Advanced (1201-1700),thermometer,温度計,"甥, 衣服, 気圧計",check the thermometer.,温度計をチェックする。,共通テスト
+Advanced (1201-1700),tuition,授業料,"衣服, 診断, 奨学金",pay university tuition.,大学の授業料を払う。,共通テスト
+Advanced (1201-1700),troop,軍隊、部隊,"診断, 商業, 市民",send in troops.,軍隊を派遣する。,共通テスト
+Advanced (1201-1700),primate,霊長類,"商業, 欠陥, 爬虫類",humans and other primates.,人間と他の霊長類。,青山学院大
+Advanced (1201-1700),flaw,欠陥、傷,"古代, 証明書, 美点",a character flaw.,性格上の欠陥。,慶應義塾大
+Advanced (1201-1700),nephew,甥,"ほんの一部, 腐敗, 姪","my brother's son, my nephew.",兄の息子、つまり私の甥。,共通テスト
+Advanced (1201-1700),garment,衣服、衣類,"皮肉, 浸食, 裸",a silk garment.,絹の衣服。,共通テスト
+Advanced (1201-1700),diagnosis,診断,"悪夢, 秘けつ, 治療",a medical diagnosis.,医学的診断。,共通テスト
+Advanced (1201-1700),commerce,商業、貿易,"欠陥, 証明書, 農業",international commerce.,国際商業（貿易）。,共通テスト
+Advanced (1201-1700),antiquity,古代,"証明書, 腐敗, 現代",from antiquity to the present.,古代から現代まで。,共通テスト
+Advanced (1201-1700),fraction,ほんの一部、分数,"腐敗, 浸食, 全体",a tiny fraction.,ごくほんの一部。,共通テスト
+Advanced (1201-1700),irony,皮肉,"浸食, 秘けつ, 賛辞",the irony of fate.,運命の皮肉。,共通テスト
+Advanced (1201-1700),nightmare,悪夢,"秘けつ, 骨格, 正夢",have a nightmare.,悪夢を見る。,共通テスト
+Advanced (1201-1700),defect,欠陥、不足,"骨格, 優雅さ, 完璧",a genetic defect.,遺伝的欠陥。,共通テスト
+Advanced (1201-1700),certificate,証明書,"優雅さ, 名所, 偽造品",a birth certificate.,出生証明書。,共通テスト
+Advanced (1201-1700),decay,腐敗、衰退,"名所, 認知症, 繁栄",tooth decay.,虫歯（歯の腐敗）。,共通テスト
+Advanced (1201-1700),erosion,浸食、腐食,"認知症, 肉, 堆積",soil erosion.,土壌の浸食。,共通テスト
+Advanced (1201-1700),recipe,秘けつ、調理法,"肉, 飛躍的進歩, 失敗",a recipe for success.,成功の秘けつ。,共通テスト
+Advanced (1201-1700),skeleton,骨格、骸骨,"衝突, 革, 筋肉",a human skeleton.,ヒトの骨格。,共通テスト
+Advanced (1201-1700),grace,優雅さ、しなやかさ,"危険なもの, 宝石, 粗野",social grace.,社交的な優雅さ。,共通テスト
+Advanced (1201-1700),landmark,名所、重要な目印,"墓, 注射, 脇道",a famous landmark.,有名な名所。,共通テスト
+Advanced (1201-1700),dementia,認知症,"注射, 飛躍的進歩, 健康",suffer from dementia.,認知症を患う。,共通テスト
+Advanced (1201-1700),flesh,肉、肉体,"飛躍的進歩, 革, 魂",fish with white flesh.,白身（肉）の魚。,共通テスト
+Advanced (1201-1700),collision,衝突、対立,"革, 宝石, 調和",a mid-air collision.,空中衝突。,共通テスト
+Advanced (1201-1700),hazard,危険（なもの）,"宝石, 合図, 安全",health hazard.,健康への危険。,共通テスト
+Advanced (1201-1700),tomb,墓,"合図, 救急車, 出生",an ancient tomb.,古代の墓。,共通テスト
+Advanced (1201-1700),injection,注射,"救急車, 不動産, 内服",give an injection.,注射をする。,共通テスト
+Advanced (1201-1700),breakthrough,飛躍的進歩、打開,"不動産, 商品, 行き詰まり",a major breakthrough.,大きな飛躍的進歩。,共通テスト
+Advanced (1201-1700),leather,革、革製品,"商品, 出発, 布",a leather jacket.,革ジャン。,共通テスト
+Advanced (1201-1700),jewelry,宝石、装身具,"出発, 段階, 衣類",expensive jewelry.,高価な宝石。,共通テスト
+Advanced (1201-1700),cue,合図,"段階, 泥棒, 無視",take a cue from...,～を合図にする（からヒントを得る）。,共通テスト
+Advanced (1201-1700),ambulance,救急車,"泥棒, 聖, 消防車",call an ambulance.,救急車を呼ぶ。,共通テスト
+Advanced (1201-1700),estate,不動産、財産,"聖, 彫刻, 借金",a real estate agent.,不動産業者。,共通テスト
+Advanced (1201-1700),commodity,商品、産物,"彫刻, 悲しみ, 芸術品",primary commodity.,一次産品（商品）。,慶應義塾大
+Advanced (1201-1700),departure,出発,"悲しみ, 車線, 到着",departure time.,出発時刻。,共通テスト
+Advanced (1201-1700),phase,段階、局面,"車線, 捕食動物, 全体",a new phase.,新しい段階。,共通テスト
+Advanced (1201-1700),thief,泥棒,"捕食動物, 流体, 警察",a car thief.,車泥棒。,共通テスト
+Advanced (1201-1700),saint,聖人、聖,"流体, はげみ, 悪人",Saint Peter.,聖ペテロ。,共通テスト
+Advanced (1201-1700),sculpture,彫刻,"はげみ, 花嫁, 絵画",a stone sculpture.,石の彫刻。,共通テスト
+Advanced (1201-1700),grief,悲しみ,"花嫁, 介入, 喜び",die of grief.,悲しみのあまり死ぬ。,共通テスト
+Advanced (1201-1700),lane,車線、小道,"介入, 反逆者, 広場",a bicycle lane.,自転車用車線。,共通テスト
+Advanced (1201-1700),predator,捕食動物,"差, 比喩, 被食者",natural predator.,天敵（自然の捕食動物）。,共通テスト
+Advanced (1201-1700),fluid,流体、液体,"伝記, 法律, 固体",bodily fluids.,体液（流体）。,共通テスト
+Advanced (1201-1700),incentive,はげみ、動機、報奨金,"同意, 雷, 罰",a tax incentive.,税制上の優遇措置（はげみ）。,共通テスト
+Advanced (1201-1700),bride,花嫁,"火山, 反逆者, 花婿",a beautiful bride.,美しい花嫁。,共通テスト
+Advanced (1201-1700),intervention,介入、干渉,"反逆者, 比喩, 放置",government intervention.,政府の介入。,共通テスト
+Advanced (1201-1700),margin,差、縁、余白,"比喩, 法律, 合計",by a narrow margin.,わずかな差で。,共通テスト
+Advanced (1201-1700),biography,伝記,"法律, 雷, 自叙伝",a biography of Lincoln.,リンカーンの伝記。,共通テスト
+Advanced (1201-1700),consent,同意、承諾,"雷, 殺虫剤, 拒絶",by mutual consent.,相互の同意によって。,早稲田大
+Advanced (1201-1700),volcano,火山,"殺虫剤, コラム, 氷河",an active volcano.,活火山。,共通テスト
+Advanced (1201-1700),rebel,反逆者,"コラム, うわさ, 信奉者",a rebel leader.,反逆者のリーダー。,共通テスト
+Advanced (1201-1700),metaphor,比喩,"うわさ, ほこり, 直喩",a poetic metaphor.,詩的な比喩。,共通テスト
+Advanced (1201-1700),legislation,法律、立法,"ほこり, 対話, 無秩序",labor legislation.,労働法（法律）。,共通テスト
+Advanced (1201-1700),lightning,雷,"対話, 幼稚園, 晴天",struck by lightning.,雷に打たれる。,共通テスト
+Advanced (1201-1700),pesticide,殺虫剤,"幼稚園, 糖尿病, 肥料",use of pesticides.,殺虫剤の使用。,共通テスト
+Advanced (1201-1700),column,コラム、円柱、列,"糖尿病, 肥満, 本文",a newspaper column.,新聞のコラム。,共通テスト
+Advanced (1201-1700),rumor,うわさ,"肥満, 特許, 事実",spread a rumor.,うわさを広める。,共通テスト
+Advanced (1201-1700),dust,ほこり、ちり,"特許, 章, 宝石",covered in dust.,ほこりにまみれた。,共通テスト
+Advanced (1201-1700),dialogue,対話,"章, 宮殿, 沈黙",North-South dialogue.,南北対話。,共通テスト
+Advanced (1201-1700),kindergarten,幼稚園,"宮殿, 考古学者, 図書館",go to kindergarten.,幼稚園に通う。,共通テスト
+Advanced (1201-1700),diabetes,糖尿病,"洗濯, 腐敗, 感染症",suffer from diabetes.,糖尿病を患う。,共通テスト
+Advanced (1201-1700),obesity,肥満,"病棟, 細菌, 栄養失調",childhood obesity.,子供の肥満。,共通テスト
+Advanced (1201-1700),patent,特許,"ぼっ発, 収入, 著作権",apply for a patent.,特許を申請する。,慶應義塾大
+Advanced (1201-1700),chapter,章,"方程式, 配偶者, 序文",the final chapter.,最終章。,共通テスト
+Advanced (1201-1700),palace,宮殿,"考古学者, 流行, 別荘",Buckingham Palace.,バッキンガム宮殿。,共通テスト
+Advanced (1201-1700),laundry,洗濯,"腐敗, 死亡, 掃除",do the laundry.,洗濯をする。,共通テスト
+Advanced (1201-1700),ward,病棟,"細菌, 症候群, 診察室",the surgical ward.,外科病棟。,共通テスト
+Advanced (1201-1700),outbreak,ぼっ発,"収入, 小売り, 終息",a flu outbreak.,インフルエンザのぼっ発。,共通テスト
+Advanced (1201-1700),equation,方程式,"配偶者, 量, 公式",a simple equation.,簡単な方程式。,共通テスト
+Advanced (1201-1700),archaeologist,考古学者,"流行, 飲み物, 心理学者",a famous archaeologist.,有名な考古学者。,共通テスト
+Advanced (1201-1700),corruption,腐敗、汚職,"死亡, 新陳代謝, 誠実",political corruption.,政治的腐敗。,共通テスト
+Advanced (1201-1700),germ,細菌,"症候群, 交配種, 免疫",kill germs.,細菌を殺す。,共通テスト
+Advanced (1201-1700),revenue,収入、歳入,"小売り, 香り, 支出",annual revenue.,年間収入。,慶應義塾大
+Advanced (1201-1700),spouse,配偶者,"量, 炎症, 親戚",your spouse and children.,あなたの配偶者と子供。,共通テスト
+Advanced (1201-1700),epidemic,流行、伝染病,"飲み物, 薬, 予防",an epidemic of cholera.,コレラの流行。,共通テスト
+Advanced (1201-1700),mortality,死亡、死ぬ運命,"新陳代謝, 香り, 出生",mortality rate.,死亡率。,共通テスト
+Advanced (1201-1700),syndrome,症候群,"交配種, 薬, 完治",Down syndrome.,ダウン症候群。,共通テスト
+Advanced (1201-1700),retail,小売り,"香り, 炎症, 卸売り",a retail store.,小売店。,共通テスト
+Advanced (1201-1700),dose,（薬の）量,"炎症, 薬, 欠乏",a high dose.,多量（の薬）。,共通テスト
+Advanced (1201-1700),beverage,飲み物,"薬, 香り, 食料",alcoholic beverages.,アルコール飲料（飲み物）。,共通テスト
+Advanced (1201-1700),metabolism,新陳代謝,"炎症, 薬, 消化",slow metabolism.,遅い新陳代謝。,早稲田大
+Advanced (1201-1700),hybrid,交配種、ハイブリッド,"香り, 炎症, 純血",a hybrid car.,ハイブリッド車。,共通テスト
+Advanced (1201-1700),scent,香り,"炎症, 薬, 悪臭",the scent of roses.,バラの香り。,共通テスト
+Advanced (1201-1700),inflammation,炎症,"薬, 飲み物, 冷却",reduce inflammation.,炎症を抑える。,立教大
+Advanced (1201-1700),pill,薬、錠剤,"飲み物, 香り, 診断",take a sleeping pill.,睡眠薬（錠剤）を飲む。,共通テスト
+Advanced (1201-1700),grave,重大な、墓,"すばらしい, 大胆な, 些細な",a grave situation.,重大な状況。,共通テスト
+Advanced (1201-1700),fertile,肥えた、多産な,"有能な, 不安な, 枯れた",fertile soil.,肥えた土壌。,共通テスト
+Advanced (1201-1700),hostile,反感を持つ、敵意のある,"最高の, きちんとした, 友好的な",a hostile attitude.,敵意のある（反感を持つ）態度。,共通テスト
+Advanced (1201-1700),indispensable,不可欠な,"わかりやすい, 浅い, 不要な",an indispensable tool.,不可欠な道具。,共通テスト
+Advanced (1201-1700),oriented,志向の、関心がある,"聖, 偽物の, 過去の",future-oriented.,未来志向の。,共通テスト
+Advanced (1201-1700),splendid,すばらしい,"大胆な, 表面的な, ひどい",a splendid view.,すばらしい眺め。,共通テスト
+Advanced (1201-1700),competent,有能な、適格な,"不安な, ばかげた, 無能な",a competent lawyer.,有能な弁護士。,共通テスト
+Advanced (1201-1700),supreme,最高の,"きちんとした, 壊れやすい, 最低の",the Supreme Court.,最高裁判所。,共通テスト
+Advanced (1201-1700),straightforward,わかりやすい、素直な,"浅い, ちゃんとした, 複雑な",a straightforward answer.,わかりやすい（率直な）答え。,共通テスト
+Advanced (1201-1700),sacred,聖、神聖な,"偽物の, すばらしい, 世俗的な",a sacred place.,聖なる場所。,共通テスト
+Advanced (1201-1700),bold,大胆な,"表面的な, 無限の, 臆病な",a bold move.,大胆な行動。,共通テスト
+Advanced (1201-1700),uneasy,不安な,"ばかげた, 包括的な, 安心した",feel uneasy about...,～について不安に感じる。,共通テスト
+Advanced (1201-1700),neat,きちんとした,"壊れやすい, 険しい, だらしない",a neat room.,きちんとした部屋。,共通テスト
+Advanced (1201-1700),shallow,浅い,"ちゃんとした, 総, 深い",a shallow river.,浅い川。,共通テスト
+Advanced (1201-1700),fake,偽物の,"すばらしい, 次に起こる, 本物の",fake fur.,偽物の毛皮。,共通テスト
+Advanced (1201-1700),superficial,表面的な,"無限の, 心からの, 深い",a superficial wound.,表面的な傷。,上智大
+Advanced (1201-1700),absurd,ばかげた,"包括的な, 有毒な, 理にかなった",an absurd idea.,ばかげた考え。,共通テスト
+Advanced (1201-1700),fragile,壊れやすい,"険しい, 中立の, 丈夫な",a fragile glass.,壊れやすいグラス。,共通テスト
+Advanced (1201-1700),respectable,ちゃんとした、立派な,"総, 勤勉な, 恥ずべき",a respectable family.,ちゃんとした（立派な）家庭。,共通テスト
+Advanced (1201-1700),magnificent,すばらしい、壮大な,"次に起こる, 痛い, 粗末な",a magnificent building.,すばらしい（壮大な）建物。,共通テスト
+Advanced (1201-1700),infinite,無限の,"心からの, 汚染された, 有限の",infinite space.,無限の宇宙。,共通テスト
+Advanced (1201-1700),comprehensive,包括的な,"有毒な, あいまいな, 部分的な",a comprehensive study.,包括的な研究。,慶應義塾大
+Advanced (1201-1700),steep,険しい、急な,"中立の, 口述の, 緩やかな",a steep hill.,険しい（急な）坂。,共通テスト
+Advanced (1201-1700),gross,総、全体、ひどい,"勤勉な, 落ち着かない, 正味の",gross domestic product.,国内総生産。,共通テスト
+Advanced (1201-1700),subsequent,次に起こる、後の,"痛い, 腐った, 前の",subsequent events.,次に起こる（その後の）出来事。,共通テスト
+Advanced (1201-1700),sincere,心からの、誠実な,"汚染された, 精力的な, 偽りの",sincere apology.,心からの謝罪。,共通テスト
+Advanced (1201-1700),toxic,有毒な,"あいまいな, 莫大な, 無害な",toxic waste.,有毒廃棄物。,共通テスト
+Advanced (1201-1700),neutral,中立の,"口述の, 大都市の, 偏った",neutral ground.,中立の立場。,共通テスト
+Advanced (1201-1700),diligent,勤勉な,"落ち着かない, 時間をきっちり守る, 怠惰な",a diligent student.,勤勉な学生。,共通テスト
+Advanced (1201-1700),sore,痛い,"腐った, 孤独な, 快い",a sore throat.,喉の痛み。,共通テスト
+Advanced (1201-1700),contaminated,汚染された,"精力的な, 集団, 清潔な",contaminated water.,汚染された水。,共通テスト
+Advanced (1201-1700),ambiguous,あいまいな,"莫大な, 外交の, 明快な",an ambiguous phrase.,あいまいな表現。,早稲田大
+Advanced (1201-1700),oral,口述の、口の,"大都市の, 不快な, 筆記の",an oral exam.,口述試験。,共通テスト
+Advanced (1201-1700),restless,落ち着かない,"時間をきっちり守る, 無力な, 穏やかな",a restless night.,落ち着かない夜。,共通テスト
+Advanced (1201-1700),rotten,腐った,"孤独な, 明確な, 新鮮な",rotten apples.,腐ったリンゴ。,共通テスト
+Advanced (1201-1700),vigorous,精力的な、活発な,"集団, 破産した, 弱々しい",vigorous exercise.,活発な（精力的な）運動。,共通テスト
+Advanced (1201-1700),immense,莫大な,"外交の, 永遠の, わずかな",an immense sum of money.,莫大な金額。,共通テスト
+Advanced (1201-1700),metropolitan,大都市の,"不快な, 唯一の, 地方の",the metropolitan area.,大都市圏。,共通テスト
+Advanced (1201-1700),punctual,時間をきっちり守る,"無力な, すっぱい, 遅れがちな",be punctual for meetings.,会議の時間をきっちり守る。,共通テスト
+Advanced (1201-1700),solitary,孤独な、ただ一つの,"明確な, 注目すべき, 社交的な",a solitary traveler.,孤独な旅人。,共通テスト
+Advanced (1201-1700),collective,集団、共同の,"破産した, 永遠の, 個別の",collective responsibility.,集団（連帯）責任。,共通テスト
+Advanced (1201-1700),diplomatic,外交の,"永遠の, 唯一の, 国内の",diplomatic relations.,外交関係。,共通テスト
+Advanced (1201-1700),nasty,不快な、嫌な,"唯一の, 発声, 心地よい",a nasty smell.,不快な臭い。,共通テスト
+Advanced (1201-1700),helpless,無力な,"すっぱい, 女性の, 有能な",feel helpless.,無力さを感じる。,共通テスト
+Advanced (1201-1700),explicit,明確な、はっきりした,"注目すべき, 空いている, 暗黙の",explicit instructions.,明確な指示。,慶應義塾大
+Advanced (1201-1700),bankrupt,破産した,"裕福な, 裸の, 黒字の",go bankrupt.,破産する。,共通テスト
+Advanced (1201-1700),eternal,永遠の,"裸の, 厳格な, 一時的な",eternal life.,永遠の命。,共通テスト
+Advanced (1201-1700),sole,唯一の,"発声, 蒸し暑い, 多数の",the sole reason.,唯一の理由。,共通テスト
+Advanced (1201-1700),sour,すっぱい,"女性の, 注目すべき, 甘い",a sour lemon.,すっぱいレモン。,共通テスト
+Advanced (1201-1700),notable,注目すべき、著名な,"空いている, 外来の, 平凡な",a notable change.,注目すべき変化。,共通テスト
+Advanced (1201-1700),affluent,裕福な,"外来の, 厳格な, 貧しい",an affluent neighborhood.,裕福な近隣地域。,青山学院大
+Advanced (1201-1700),naked,裸の,"厳格な, 蒸し暑い, 服を着た",the naked eye.,肉眼（裸の目）。,共通テスト
+Advanced (1201-1700),vocal,発声、声の、うるさい,"蒸し暑い, 注目すべき, 無口な",vocal cords.,声帯（発声のひも）。,共通テスト
+Advanced (1201-1700),feminine,女性の、女性らしい,"注目すべき, 空いている, 男性の",feminine intuition.,女性の直感。,共通テスト
+Advanced (1201-1700),vacant,空いている,"中毒である, 受けやすい, 満室の",a vacant seat.,空いている席。,共通テスト
+Advanced (1201-1700),exotic,外来の、異国情緒のある,"受けやすい, 自然に起こる, 土着の",exotic plants.,外来植物。,共通テスト
+Advanced (1201-1700),rigid,厳格な、硬い,"自然に起こる, 貪欲な, 柔軟な",rigid rules.,厳格な規則。,共通テスト
+Advanced (1201-1700),humid,蒸し暑い、多湿な,"貪欲な, 傑出した, 乾燥した",humid climate.,蒸し暑い（多湿な）気候。,共通テスト
+Advanced (1201-1700),naked,裸の、むき出しの,"厳格な, 自然に起こる, 装飾された",the naked eye.,肉眼（裸の目）。,共通テスト
+Advanced (1201-1700),vocal,発声の、声の、うるさい,"蒸し暑い, 貪欲な, 無口な",vocal music.,声楽（発声の音楽）。,共通テスト
+Advanced (1201-1700),feminine,女性の、女性らしい,"傑出した, ささいな, 男性の",feminine characteristics.,女性の特徴。,共通テスト
+Advanced (1201-1700),vacant,空いている、空席の,"中毒である, 一人当たりの, 満室の",a vacant lot.,空き地。,慶應義塾大
+Advanced (1201-1700),exotic,外来の、異国情緒のある,"受けやすい, 元から伴う, 国内の",exotic fruit.,外来の（珍しい）果物。,共通テスト
+Advanced (1201-1700),rigid,厳格な、硬い,"自然に起こる, 前途有望な, 柔軟な",a rigid schedule.,厳格なスケジュール。,共通テスト
+Advanced (1201-1700),humid,蒸し暑い、多湿な,"貪欲な, 生理的な, 乾燥した",humid air.,湿った（蒸し暑い）空気。,共通テスト
+Advanced (1201-1700),outstanding,傑出した、目立った,"ささいな, 臨床の, 平凡な",an outstanding player.,傑出した選手。,共通テスト
+Advanced (1201-1700),addicted,中毒である,"一人当たりの, 慢性の, 健康な",be addicted to gaming.,ゲーム中毒である。,共通テスト
+Advanced (1201-1700),vulnerable,受けやすい、脆弱な,"元から伴う, 地質学的な, 安全な",vulnerable to attack.,攻撃を受けやすい。,早稲田大
+Advanced (1201-1700),spontaneous,自然に起こる、自発的な,"前途有望な, 無数の, 強制的な",spontaneous applause.,自然にわき起こる拍手。,慶應義塾大
+Advanced (1201-1700),greedy,貪欲な,"生理的な, 先天的な, 無欲な",be greedy for power.,権力に対して貪欲だ。,共通テスト
+Advanced (1201-1700),trivial,ささいな、ありふれた,"臨床の, 用心深い, 重大な",a trivial matter.,ささいな事柄。,共通テスト
+Advanced (1201-1700),per capita,一人当たりの,"慢性の, 自動の, 全体の",GDP per capita.,一人当たりの国内総生産。,共通テスト
+Advanced (1201-1700),inherent,元から伴う、固有の,"地質学的な, 同時の, 後天的な",inherent risks.,元から伴うリスク。,慶應義塾大
+Advanced (1201-1700),promising,前途有望な,"無数の, 全くの, 絶望的な",a promising youth.,前途有望な若者。,共通テスト
+Advanced (1201-1700),physiological,生理的な,"先天的な, 劇的な, 精神的な",physiological needs.,生理的欲求。,共通テスト
+Advanced (1201-1700),clinical,臨床の、客観的な,"用心深い, 慢性の, 空想の",clinical trials.,臨床試験。,共通テスト
+Advanced (1201-1700),chronic,慢性の,"自動の, 同時の, 一時的な",chronic disease.,慢性疾患。,共通テスト
+Advanced (1201-1700),geological,地質学的な,"同時の, 劇的な, 天文学的な",a geological survey.,地質学的調査。,共通テスト
+Advanced (1201-1700),countless,無数の,"全くの, 率直な, わずかな",countless stars.,無数の星。,共通テスト
+Advanced (1201-1700),innate,先天的な、固有の,"劇的な, 必然的な, 後天的な",innate ability.,先天的な能力。,上智大
+Advanced (1201-1700),alert,用心深い、機敏な,"必然的な, 劇的な, 不注意な",be alert to danger.,危険に用心する。,共通テスト
+Advanced (1201-1700),autonomous,自動運転の、自律した,"同時の, 率直な, 依存した",an autonomous vehicle.,自動運転車。,慶應義塾大
+Advanced (1201-1700),simultaneously,同時に,"率直に, 劇的に, 別々に",occur simultaneously.,同時に起こる。,共通テスト
+Advanced (1201-1700),utterly,まったく、完全に,"すなわち, 劇的に, 部分的に",utterly different.,まったく異なる。,共通テスト
+Advanced (1201-1700),drastically,劇的に,"だから, 率直に, 徐々に",change drastically.,劇的に変化する。,共通テスト
+Advanced (1201-1700),necessarily,必ずしも,"経由で, まったく, 偶然に",not necessarily true.,必ずしも真実ではない。,共通テスト
+Advanced (1201-1700),thereby,そうすることで,"のために, 率直に, 以前は",thereby reducing costs.,そうすることでコストを減らす。,慶應義塾大
+Advanced (1201-1700),frankly,率直に,"すなわち, まったく, 間接的に",frankly speaking.,率直に言って。,共通テスト
+Advanced (1201-1700),namely,すなわち,"だから, 劇的に, おそらく","three colors, namely...",3色、すなわち…。,共通テスト
+Advanced (1201-1700),hence,だから、したがって,"経由で, 率直に, しかし",hence the name.,だからその名前なのだ。,共通テスト
+Advanced (1201-1700),via,経由で,"のために, すなわち, 以前に",via London.,ロンドン経由で。,共通テスト
+Advanced (1201-1700),owing,～のために(to),"だから, まったく, ～にもかかわらず",owing to the rain.,雨のために。,共通テスト
+Final(1701-2027),clarify,明らかにする,"残る, 叩く, ぼやかす",clarify the meaning.,意味を明らかにする。,共通テスト
+Final(1701-2027),smash,粉々に砕く,"嘆く, 主張する, 組み立てる",smash the record.,記録を粉々に砕く（塗り替える）。,共通テスト
+Final(1701-2027),mourn,悲しむ、悼む,"恵まれる, 誓う, 祝う",mourn the loss.,損失を悲しむ（死を悼む）。,慶應義塾大
+Final(1701-2027),summon,呼ぶ、召喚する,"喜ぶ, 識別する, 追い出す",summon help.,助けを呼ぶ。,共通テスト
+Final(1701-2027),shatter,粉々にする,"配分する, 悪化させる, 結合する",shatter the glass.,ガラスを粉々にする。,共通テスト
+Final(1701-2027),linger,残る、居残る,"叩く, 築く, 立ち去る",The doubt lingers.,疑念が残る。,共通テスト
+Final(1701-2027),lament,嘆く,"主張する, 証言する, 喜ぶ",lament the change.,変化を嘆く。,早稲田大
+Final(1701-2027),endowed,恵まれる,"誓う, 駆りたてる, 欠けている",endowed with beauty.,美しさに恵まれている。,慶應義塾大
+Final(1701-2027),rejoice,喜ぶ,"識別する, 歩き回る, 絶望する",rejoice in victory.,勝利を喜ぶ。,共通テスト
+Final(1701-2027),allocate,配分する、割り当てる,"悪化させる, 眉をひそめる, 独占する",allocate funds.,資金を配分する。,慶應義塾大
+Final(1701-2027),slap,ピシャリと叩く,"築く, 呼び込む, 撫でる",slap the table.,テーブルをピシャリと叩く。,共通テスト
+Final(1701-2027),contend,主張する、競う,"証言する, 逆らう, 認める",contend with a rival.,ライバルと競う（主張する）。,早稲田大
+Final(1701-2027),swear,誓う、罵る,"駆りたてる, ぶらつく, 騙す",swear an oath.,誓いを立てる。,共通テスト
+Final(1701-2027),discern,識別する、見分ける,"歩き回る, がたがた鳴らす, 見失う",discern a pattern.,パターンを識別する。,慶應義塾大
+Final(1701-2027),degrade,悪化させる、下げる,"眉をひそめる, 調和させる, 高める",degrade the quality.,品質を悪化させる。,共通テスト
+Final(1701-2027),erect,築く、建てる,"呼び込む, ぼやかす, 倒す",erect a building.,建物に築く（建てる）。,共通テスト
+Final(1701-2027),testify,証言する,"逆らう, なだめる, 隠蔽する",testify to the facts.,事実を証言する。,共通テスト
+Final(1701-2027),spur,駆りたてる,"ぶらつく, 低下させる, 抑制する",spur the imagination.,想像力を駆りたてる。,共通テスト
+Final(1701-2027),roam,歩き回る、放浪する,"がたがた鳴らす, 従う, 定住する",roam around the world.,世界中を歩き回る。,共通テスト
+Final(1701-2027),frown,眉をひそめる,"調和させる, 穴をあける, 微笑む",frown at the news.,ニュースに眉をひそめる。,共通テスト
+Final(1701-2027),lure,呼び込む、誘惑する,"ぼやかす, つまずく, 追い払う",lure someone into a trap.,罠に呼び込む。,共通テスト
+Final(1701-2027),defy,逆らう、拒む,"なだめる, 妨げる, 従う",defy the law.,法律に逆らう。,早稲田大
+Final(1701-2027),stroll,ぶらつく、散策する,"低下させる, あざける, 走る",stroll along the beach.,海辺をぶらつく。,共通テスト
+Final(1701-2027),rattle,がたがた鳴らす,"従う, 具現する, 静める",The wind rattled the door.,風がドアをがたがた鳴らした。,共通テスト
+Final(1701-2027),reconcile,調和させる、和解させる,"穴をあける, 忍び寄る, 対立させる",reconcile work and life.,仕事と生活を調和させる。,慶應義塾大
+Final(1701-2027),blur,ぼやかす,"つまずく, 宣言する, 明確にする",Tears blurred my eyes.,涙で目がぼやけた。,共通テスト
+Final(1701-2027),soothe,なだめる、和らげる,"妨げる, 拍手する, 荒らす",soothe the pain.,痛みを和らげる。,共通テスト
+Final(1701-2027),impair,低下させる、害する,"あざける, 与える, 改善する",impair the function.,機能を低下させる。,慶應義塾大
+Final(1701-2027),comply,従う、応じる,"具現する, 合併する, 違反する",comply with the law.,法律に従う。,共通テスト
+Final(1701-2027),pierce,穴をあける、貫く,"忍び寄る, 避難する, 塞ぐ",pierce the skin.,皮膚に穴をあける。,共通テスト
+Final(1701-2027),stumble,つまずく,"宣言する, 元に戻る, 滑走する",stumble over a root.,根っこにつまずく。,共通テスト
+Final(1701-2027),hinder,妨げる,"拍手する, 突く, 促進する",hinder the investigation.,調査を妨げる。,共通テスト
+Final(1701-2027),mock,あざける、模造の,"与える, つきまとわれる, 尊敬する",mock his accent.,彼の訛りをあざける。,共通テスト
+Final(1701-2027),embody,具現する、具体化する,"合併する, 固く守る, 抽象化する",embody an idea.,考えを具現する。,慶應義塾大
+Final(1701-2027),stalk,忍び寄る,"避難する, まとめる, 逃げる",stalk a deer.,鹿に忍び寄る。,共通テスト
+Final(1701-2027),proclaim,宣言する、公表する,"元に戻る, しぼむ, 隠す",proclaim victory.,勝利を宣言する。,共通テスト
+Final(1701-2027),applaud,拍手する、賞賛する,"突く, びっくりさせる, 批判する",applaud the decision.,決定を賞賛する（に拍手する）。,共通テスト
+Final(1701-2027),inflict,（苦痛を）与える,"つきまとわれる, 喉がつまる, 癒やす",inflict a wound.,傷を負わせる（与える）。,早稲田大
+Final(1701-2027),merge,合併する、融合する,"固く守る, 悪化する, 分離する",The two companies merged.,その2社は合併した。,共通テスト
+Final(1701-2027),evacuated,避難した,"まとめる, 捨てる, 戻った",be evacuated from the city.,街から避難した。,共通テスト
+Final(1701-2027),undone,元に戻る、解けた,"しぼむ, つぶやく, 完成した",come undone.,（紐などが）解ける（元に戻る）。,共通テスト
+Final(1701-2027),poke,突く、つつく,"びっくりさせる, 削除する, 引く",poke a finger.,指で突く。,共通テスト
+Final(1701-2027),haunted,つきまとわれる,"喉がつまる, 阻害する, 忘れられた",be haunted by memories.,思い出につきまとわれる。,共通テスト
+Final(1701-2027),adhere,固く守る、接着する,"悪化する, そらす, 破る",adhere to the policy.,方針を固く守る。,慶應義塾大
+Final(1701-2027),compile,まとめる、編集する,"捨てる, 飼いならす, 分散させる",compile a report.,報告書をまとめる。,共通テスト
+Final(1701-2027),wither,しぼむ、衰える,"つぶやく, 手に入れる, 繁栄する",Flowers wither.,花がしぼむ。,共通テスト
+Final(1701-2027),stun,びっくりさせる、気絶させる,"削除する, 断言する, 落ち着かせる",be stunned by the news.,ニュースにびっくりする。,共通テスト
+Final(1701-2027),choke,喉がつまる、窒息させる,"阻害する, 浸る, 呼吸する",choke on a bone.,骨で喉がつまる。,共通テスト
+Final(1701-2027),deteriorate,悪化する,"そらす, 期限が切れる, 改善する",Health deteriorates.,健康状態が悪化する。,早稲田大
+Final(1701-2027),dump,捨てる,"飼いならす, 乗り出す, 拾う",dump waste.,ゴミを捨てる。,共通テスト
+Final(1701-2027),murmur,つぶやく,"手に入れる, 誓う, 叫ぶ",murmur to oneself.,独り言をつぶやく。,共通テスト
+Final(1701-2027),delete,削除する,"断言する, 予知する, 保存する",delete a file.,ファイルを削除する。,共通テスト
+Final(1701-2027),inhibit,阻害する、抑制する,"浸る, 崇拝する, 促進する",inhibit growth.,成長を阻害する。,慶應義塾大
+Final(1701-2027),divert,そらす、転換する,"期限が切れる, 切望する, 集中させる",divert attention.,注意をそらす。,共通テスト
+Final(1701-2027),tame,飼いならす、手なずける,"乗り出す, 弱める, 野生化させる",tame a wild animal.,野生動物を飼いならす。,共通テスト
+Final(1701-2027),reap,手に入れる、収穫する,"誓う, 吸う, 蒔く",reap the rewards.,報酬を手に入れる。,共通テスト
+Final(1701-2027),affirm,断言する、肯定する,"予知する, 誓う, 否定する",affirm the truth.,真実を断言する。,共通テスト
+Final(1701-2027),immersed,浸る、没頭する,"崇拝する, 立ち入る, 離れる",be immersed in a book.,本に没頭する（浸る）。,共通テスト
+Final(1701-2027),expire,期限が切れる,"切望する, 訴える, 更新する",My passport will expire.,パスポートの期限が切れる。,共通テスト
+Final(1701-2027),embark,乗り出す、乗船する,"弱める, 歪曲する, 躊躇する",embark on a new project.,新しいプロジェクトに乗り出す。,慶應義塾大
+Final(1701-2027),vow,誓う,"吸う, 消す, 拒む",vow to seek revenge.,復讐を誓う。,共通テスト
+Final(1701-2027),foresee,予知する,"説教する, 立ち入る, 忘れる",foresee the future.,未来を予知する。,共通テスト
+Final(1701-2027),adore,崇拝する、大好きだ,"抑制する, 訴える, 憎む",I adore this city.,私はこの街が大好きだ（崇拝している）。,共通テスト
+Final(1701-2027),yearn,切望する,"訴える, 耐える, 満足する",yearn for peace.,平和を切望する。,早稲田大
+Final(1701-2027),undermine,弱める、むしばむ,"歪曲する, 浸す, 強化する",undermine his authority.,彼の権威を弱める。,慶應義塾大
+Final(1701-2027),suck,吸う,"消す, 暗唱する, 吐き出す",suck juice through a straw.,ストローでジュースを吸う。,共通テスト
+Final(1701-2027),pledge,誓う、約束する,"説教する, 押し込む, 破る",pledge allegiance.,忠誠を誓う。,共通テスト
+Final(1701-2027),intrude,立ち入る、邪魔する,"抑制する, 嘆願する, 歓迎する",intrude on privacy.,プライバシーに立ち入る。,共通テスト
+Final(1701-2027),sue,訴える、告訴する,"耐える, 恥をかかせる, 許す",sue for damages.,損害賠償を求めて訴える。,共通テスト
+Final(1701-2027),distort,歪曲する、ゆがめる,"浸す, 放出する, 修正する",distort the facts.,事実を歪曲する。,共通テスト
+Final(1701-2027),extinguish,消す,"暗唱する, 非難する, 点火する",extinguish a fire.,火を消す。,共通テスト
+Final(1701-2027),preach,説教する,"押し込む, 検索する, 聞き入る",preach to the congregation.,会衆に説教する。,共通テスト
+Final(1701-2027),curb,抑制する,"嘆願する, 肩をすくめる, 促進する",curb inflation.,インフレを抑制する。,慶應義塾大
+Final(1701-2027),withstand,耐える、抵抗する,"恥をかかせる, 呼び起こす, 屈する",withstand pressure.,圧力に耐える。,共通テスト
+Final(1701-2027),dip,浸す、突っ込む,"放出する, 取ってくる, 乾かす",dip a pen in ink.,ペンをインクに浸す。,共通テスト
+Final(1701-2027),recite,暗唱する、詳述する,"非難する, お世辞を言う, 黙る",recite a poem.,詩を暗唱する。,共通テスト
+Final(1701-2027),thrust,押し込む、突く,"検索する, 呼び起こす, 引き抜く",thrust a sword.,剣を突き出す（押し込む）。,共通テスト
+Final(1701-2027),plead,嘆願する、弁解する,"肩をすくめる, 取ってくる, 命令する",plead for mercy.,慈悲を嘆願する。,共通テスト
+Final(1701-2027),humiliate,恥をかかせる,"呼び起こす, 放出する, 褒める",be humiliated in public.,公衆の面前で恥をかかされる。,共通テスト
+Final(1701-2027),discharge,放出する、解雇する,"取ってくる, お世辞を言う, 吸収する",discharge chemical waste.,化学廃棄物を放出する。,共通テスト
+Final(1701-2027),condemn,非難する,"お世辞を言う, 検索する, 称賛する",condemn violence.,暴力を非難する。,早稲田大
+Final(1701-2027),retrieve,検索する、取り出す,"呼び起こす, 肩をすくめる, 紛失する",retrieve data.,データを検索する（取り出す）。,共通テスト
+Final(1701-2027),shrug,肩をすくめる,"呼び起こす, 取ってくる, 頷く",shrug one's shoulders.,肩をすくめる。,共通テスト
+Final(1701-2027),evoke,呼び起こす,"お世辞を言う, 検索する, 忘れる",evoke memories.,思い出を呼び起こす。,慶應義塾大
+Final(1701-2027),fetch,取ってくる,"お世辞を言う, 放出する, 捨てる",fetch some water.,水を取ってくる。,共通テスト
+Final(1701-2027),flatter,お世辞を言う,"呼び起こす, 検索する, 侮辱する",flatter the boss.,上司にお世辞を言う。,共通テスト
+Final(1701-2027),prose,散文,"織物, 材木, 韻文",written in prose.,散文で書かれた。,共通テスト
+Final(1701-2027),textile,織物、布地,"材木, 傑作, 鋼鉄",the textile industry.,織物（繊維）産業。,共通テスト
+Final(1701-2027),timber,材木,"傑作, 暴動, 石材",cut down timber.,材木を切り出す。,共通テスト
+Final(1701-2027),masterpiece,傑作,"暴動, 車両, 駄作",a literary masterpiece.,文学の傑作。,共通テスト
+Final(1701-2027),riot,暴動,"車両, 装置, 平和",cause a riot.,暴動を引き起こす。,共通テスト
+Final(1701-2027),carriage,車両、馬車,"装置, 大騒ぎ, 徒歩",a railway carriage.,鉄道車両。,共通テスト
+Final(1701-2027),apparatus,装置、器具,"大騒ぎ, 欠乏, 部品",heating apparatus.,暖房装置。,共通テスト
+Final(1701-2027),fuss,大騒ぎ,"欠乏, 相続人, 沈黙",make a fuss.,大騒ぎをする。,共通テスト
+Final(1701-2027),deficiency,欠乏、不足,"相続人, 赤道, 過剰",vitamin deficiency.,ビタミン欠乏。,上智大
+Final(1701-2027),heir,相続人,"赤道, 石油, 先祖",the heir to the throne.,王位継承者（相続人）。,共通テスト
+Final(1701-2027),equator,赤道,"石油, 魔女, 北極",cross the equator.,赤道を越える。,共通テスト
+Final(1701-2027),petroleum,石油,"魔女, 蒸気, 石炭",petroleum products.,石油製品。,共通テスト
+Final(1701-2027),witch,魔女,"蒸気, 探査機, 妖精",a wicked witch.,邪悪な魔女。,共通テスト
+Final(1701-2027),vapor,蒸気,"探査機, 専門知識, 液体",water vapor.,水蒸気。,共通テスト
+Final(1701-2027),probe,探査機、精査,"専門知識, 軽蔑, 放置",a space probe.,宇宙探査機。,共通テスト
+Final(1701-2027),expertise,専門知識,"軽蔑, 預言者, 素人",technical expertise.,技術的な専門知識。,共通テスト
+Final(1701-2027),scorn,軽蔑,"預言者, そよ風, 尊敬",feel scorn for him.,彼に軽蔑を感じる。,共通テスト
+Final(1701-2027),prophet,預言者,"そよ風, 罪, 凡人",the prophet Muhammad.,預言者ムハンマド。,共通テスト
+Final(1701-2027),breeze,そよ風,"罪, 急増, 暴風",a gentle breeze.,穏やかなそよ風。,共通テスト
+Final(1701-2027),sin,罪,"急増, 補うもの, 善行",commit a sin.,罪を犯す。,共通テスト
+Final(1701-2027),surge,急増、急上昇,"補うもの, 列, 下落",a surge in prices.,物価の急騰（急増）。,慶應義塾大
+Final(1701-2027),complement,補うもの、補完,"列, 賭け金, 妨げ",a perfect complement.,完璧に補うもの。,青山学院大
+Final(1701-2027),queue,列,"賭け金, 大使, 空白",wait in a queue.,列に並んで待つ。,共通テスト
+Final(1701-2027),stake,賭け金、利害関係,"大使, 陪審員, 寄付",high stakes.,高い賭け金（重大な利害）。,共通テスト
+Final(1701-2027),ambassador,大使,"陪審員, 集団, 庶民",a Japanese ambassador.,日本の大使。,共通テスト
+Final(1701-2027),jury,陪審員,"集団, こぶ, 被告",trial by jury.,陪審員による裁判。,共通テスト
+Final(1701-2027),cluster,集団、群れ,"こぶ, 牧草地, 個体",a cluster of stars.,星団（星の集団）。,共通テスト
+Final(1701-2027),lump,こぶ、塊,"牧草地, 偉業, 平面",a lump in the throat.,喉の塊（こぶ）。,共通テスト
+Final(1701-2027),meadow,牧草地,"偉業, 気質, 砂漠",cows in the meadow.,牧草地の牛。,共通テスト
+Final(1701-2027),feat,偉業,"気質, もてなし, 失敗",a remarkable feat.,注目すべき偉業。,共通テスト
+Final(1701-2027),temperament,気質、気性,"もてなし, 制約, 外見",artistic temperament.,芸術家的気質。,共通テスト
+Final(1701-2027),chill,寒気、冷え,"話, 改正, 暖かさ",feel a chill.,寒気を感じる。,共通テスト
+Final(1701-2027),appliance,器具、電化製品,"部分, 宇宙, 道具",electric appliances.,電気器具（電化製品）。,共通テスト
+Final(1701-2027),predecessor,前任者,"大災害, 通路, 後継者",his predecessor.,彼の前任者。,慶應義塾大
+Final(1701-2027),entity,存在、実体,"君主, 階級制度, 虚構",a legal entity.,法人（法的な実体）。,早稲田大
+Final(1701-2027),hospitality,もてなし、歓待,"制約, 通行料, 無愛想",show hospitality.,もてなしの心を見せる。,共通テスト
+Final(1701-2027),narrative,話、物語,"改正, 取引, 事実",a historical narrative.,歴史的な物語（話）。,慶應義塾大
+Final(1701-2027),segment,部分、区分,"宇宙, 強盗, 全体",a segment of society.,社会の一部分。,共通テスト
+Final(1701-2027),catastrophe,大災害、破局,"通路, 圧政, 幸運",a natural catastrophe.,自然大災害。,早稲田大
+Final(1701-2027),monarch,君主、皇帝,"階級制度, 寄生生物, 臣下",a powerful monarch.,強大な君主。,共通テスト
+Final(1701-2027),constraint,制約、束縛,"通行料, 直感, 自由",budget constraints.,予算の制約。,慶應義塾大
+Final(1701-2027),amendment,改正、修正,"取引, 共産主義, 放置",a constitutional amendment.,憲法改正。,共通テスト
+Final(1701-2027),cosmos,宇宙,"強盗, 遺産, 地球",the laws of the cosmos.,宇宙の法則。,共通テスト
+Final(1701-2027),aisle,通路,"圧政, 静脈, 座席",an aisle seat.,通路側の席。,共通テスト
+Final(1701-2027),hierarchy,階級制度、ヒエラルキー,"寄生生物, 論説, 平等",social hierarchy.,社会的階級制度。,早稲田大
+Final(1701-2027),toll,通行料、死傷者数,"直感, 乳製品, 無料",a toll road.,有料道路（通行料が必要な道）。,共通テスト
+Final(1701-2027),transaction,取引,"共産主義, 工芸品, 拒絶",a cash transaction.,現金取引。,共通テスト
+Final(1701-2027),burglar,強盗、泥棒,"遺産, はけ口, 警察",catch a burglar.,強盗を捕まえる。,共通テスト
+Final(1701-2027),tyranny,圧政、専制政治,"静脈, 不安, 民主主義",fight against tyranny.,圧政と戦う。,慶應義塾大
+Final(1701-2027),parasite,寄生生物,"論説, 憂うつ, 宿主",a social parasite.,社会の寄生虫（寄生生物）。,共通テスト
+Final(1701-2027),intuition,直感,"乳製品, 目新しさ, 論理",feminine intuition.,女性の直感。,共通テスト
+Final(1701-2027),communist,共産主義の（人）,"工芸品, 標本, 資本主義",a communist state.,共産主義国家。,共通テスト
+Final(1701-2027),legacy,遺産,"はけ口, 衛生, 負債",a cultural legacy.,文化遺産。,共通テスト
+Final(1701-2027),vein,静脈,"不安, 戦術, 動脈",blood in the veins.,静脈の中の血。,共通テスト
+Final(1701-2027),discourse,論説、談話,"憂うつ, 独占, 沈黙",political discourse.,政治的論説。,慶應義塾大
+Final(1701-2027),dairy,乳製品、酪農,"目新しさ, 印, 肉製品",dairy products.,乳製品。,共通テスト
+Final(1701-2027),artifact,工芸品、遺物,"標本, 貴族階級, 自然物",ancient artifacts.,古代の工芸品（遺物）。,共通テスト
+Final(1701-2027),outlet,はけ口、出口、直販店,"衛生, 復讐, 入り口",an outlet for stress.,ストレスのはけ口。,共通テスト
+Final(1701-2027),apprehension,不安、懸念,"戦術, 活動家, 安心",feel apprehension.,不安を感じる。,慶應義塾大
+Final(1701-2027),melancholy,憂うつ,"独占, 美辞麗句, 歓喜",a deep melancholy.,深い憂うつ。,共通テスト
+Final(1701-2027),novelty,目新しさ,"印, 起業家, 退屈",the novelty of the idea.,そのアイデアの目新しさ。,共通テスト
+Final(1701-2027),specimen,標本、試料,"貴族階級, 国勢調査, 全体",a biological specimen.,生物学の標本。,共通テスト
+Final(1701-2027),hygiene,衛生,"復讐, 瀬戸際, 不潔",personal hygiene.,個人の衛生。,共通テスト
+Final(1701-2027),tactics,戦術,"活動家, 出現, 戦略",change tactics.,戦術を変える。,共通テスト
+Final(1701-2027),monopoly,独占,"美辞麗句, 類似点, 競争",a tobacco monopoly.,タバコの独占。,共通テスト
+Final(1701-2027),token,印、しるし,"起業家, 灌漑, 本物",a token of gratitude.,感謝の印。,共通テスト
+Final(1701-2027),aristocracy,貴族階級,"国勢調査, 報道, 庶民",a member of the aristocracy.,貴族階級の一員。,共通テスト
+Final(1701-2027),revenge,復讐,"瀬戸際, 料理, 許し",take revenge on...,～に復讐する。,共通テスト
+Final(1701-2027),activist,活動家,"出現, 脅威, 傍観者",an environmental activist.,環境活動家。,共通テスト
+Final(1701-2027),rhetoric,美辞麗句、修辞学,"類似点, 危険, 真実",political rhetoric.,政治的な美辞麗句。,早稲田大
+Final(1701-2027),entrepreneur,起業家,"灌漑, 手足, 従業員",a young entrepreneur.,若き起業家。,共通テスト
+Final(1701-2027),census,国勢調査,"報道, 攻撃, 予測",take a census.,国勢調査を行う。,共通テスト
+Final(1701-2027),verge,瀬戸際、間際,"料理, 憎しみ, 中心",on the verge of death.,死の瀬戸際で。,共通テスト
+Final(1701-2027),advent,出現、到来,"脅威, 自主性, 終焉",the advent of the internet.,インターネットの出現（到来）。,慶應義塾大
+Final(1701-2027),analogy,類似点、類推,"危険, 塾, 相違点",draw an analogy.,類似点を見出す。,早稲田大
+Final(1701-2027),irrigation,灌漑,"手足, 補助金, 乾燥",an irrigation system.,灌漑システム。,共通テスト
+Final(1701-2027),coverage,報道、取材範囲,"攻撃, 共感, 沈黙",media coverage.,メディアの報道。,共通テスト
+Final(1701-2027),cuisine,料理,"憎しみ, 自主性, 原料",French cuisine.,フランス料理。,共通テスト
+Final(1701-2027),menace,脅威,"自主性, 塾, 安全",a menace to society.,社会への脅威。,共通テスト
+Final(1701-2027),peril,危険,"塾, イデオロギー, 安全",be in peril.,危険な状態にある。,慶應義塾大
+Final(1701-2027),limb,手足,"補助金, 災いのもと, 胴体",artificial limbs.,義肢（人工の手足）。,共通テスト
+Final(1701-2027),assault,攻撃、暴行,"共感, 俗語, 防衛",a physical assault.,身体的攻撃。,共通テスト
+Final(1701-2027),hatred,憎しみ,"俗語, 姿勢, 愛",fill with hatred.,憎しみでいっぱいになる。,共通テスト
+Final(1701-2027),autonomy,自主性、自治,"姿勢, イデオロギー, 依存",individual autonomy.,個人の自主性。,慶應義塾大
+Final(1701-2027),cram,塾（詰め込み）,"イデオロギー, 災いのもと, 遊び",a cram school.,学習塾。,共通テスト
+Final(1701-2027),subsidy,補助金,"災いのもと, 用心, 税金",government subsidy.,政府の補助金。,慶應義塾大
+Final(1701-2027),empathy,共感、感情移入,"腫瘍, 交差点, 冷淡",feel empathy for...,～に共感を感じる。,共通テスト
+Final(1701-2027),slang,俗語、スラング,"交差点, 期間, 標準語",use slang.,俗語（スラング）を使う。,共通テスト
+Final(1701-2027),posture,姿勢,"期間, 森林破壊, 態度",good posture.,良い姿勢。,共通テスト
+Final(1701-2027),ideology,イデオロギー,"森林破壊, 用心, 事実",political ideology.,政治的イデオロギー。,共通テスト
+Final(1701-2027),curse,災いのもと、呪い,"用心, ひとたばの, 祝福",the curse of poverty.,貧困という災いのもと。,共通テスト
+Final(1701-2027),tumor,腫瘍,"ひとたばの, 欠点, 健全",a brain tumor.,脳腫瘍。,共通テスト
+Final(1701-2027),intersection,交差点,"欠点, 熱望, 直線",a busy intersection.,混雑した交差点。,共通テスト
+Final(1701-2027),duration,期間,"熱望, 精神科医, 瞬間",the duration of the flight.,飛行期間。,共通テスト
+Final(1701-2027),deforestation,森林破壊,"精神科医, 発送, 植林",cause deforestation.,森林破壊を引き起こす。,共通テスト
+Final(1701-2027),precaution,用心、予防措置,"発送, 上院議員, 油断",take precautions.,用心する（予防措置を講じる）。,共通テスト
+Final(1701-2027),bunch,ひとたばの、集まり,"上院議員, 政治家, 一つ",a bunch of flowers.,花の一束。,共通テスト
+Final(1701-2027),shortcoming,欠点、短所,"政治家, 部下, 長所",overcome shortcomings.,欠点を克服する。,共通テスト
+Final(1701-2027),aspiration,熱望、野望,"部下, 空白, 絶望",high aspirations.,高い熱望（志）。,慶應義塾大
+Final(1701-2027),psychiatrist,精神科医,"空白, 探究, 内科医",see a psychiatrist.,精神科医に診てもらう。,共通テスト
+Final(1701-2027),shipping,発送、輸送,"探究, 瞑想, 受取",free shipping.,送料無料（発送無料）。,共通テスト
+Final(1701-2027),senator,上院議員,"瞑想, 加入者, 知事",a US senator.,アメリカの上院議員。,共通テスト
+Final(1701-2027),statesman,政治家（優れた）,"加入者, 謎, 独裁者",a great statesman.,偉大な政治家。,共通テスト
+Final(1701-2027),subordinate,部下、下位の人,"謎, ぼろ, 上司",a loyal subordinate.,忠実な部下。,共通テスト
+Final(1701-2027),vacuum,空白、真空,"ぼろ, さび, 充満",a power vacuum.,権力の空白。,共通テスト
+Final(1701-2027),quest,探究、追求,"さび, 衛生, 放棄",a quest for truth.,真実の探究。,共通テスト
+Final(1701-2027),meditation,瞑想,"衛生, まっただ中, 思考",daily meditation.,日々の瞑想。,共通テスト
+Final(1701-2027),subscriber,加入者、購読者,"まっただ中, いたずら, 退会者",a new subscriber.,新規加入者。,共通テスト
+Final(1701-2027),riddle,謎,"いたずら, 検定, 正解",solve a riddle.,謎を解く。,共通テスト
+Final(1701-2027),rag,ぼろ、ぼろきれ,"検定, 記憶, 新品",a piece of rag.,ぼろきれの一片。,共通テスト
+Final(1701-2027),rust,さび,"記憶, 緯, 光沢",remove rust.,さびを落とす。,共通テスト
+Final(1701-2027),sanitation,衛生,"緯度, 構造, 不潔",public sanitation.,公衆衛生。,共通テスト
+Final(1701-2027),midst,まっただ中,"摩擦, 誠実, 端",in the midst of the war.,戦争のまっただ中に。,共通テスト
+Final(1701-2027),mischief,いたずら、悪ふざけ,"植物学者, 貨物, 善行",keep out of mischief.,いたずらをしない。,共通テスト
+Final(1701-2027),proficiency,習熟、検定、熟達,"遺伝, わいろ, 未熟",language proficiency.,語学の習熟度（検定）。,慶應義塾大
+Final(1701-2027),recollection,記憶、回想,"軽蔑, 噴火, 忘却",have no recollection.,記憶にない。,共通テスト
+Final(1701-2027),latitude,緯度,"構造, 葬式, 経度",high latitudes.,高緯度地域。,共通テスト
+Final(1701-2027),friction,摩擦,"誠実, 赤字, 滑らかさ",reduce friction.,摩擦を減らす。,共通テスト
+Final(1701-2027),botanist,植物学者,"貨物, 大部分, 動物学者",a famous botanist.,有名な植物学者。,共通テスト
+Final(1701-2027),heredity,遺伝,"わいろ, 百万長者, 環境",the laws of heredity.,遺伝の法則。,早稲田大
+Final(1701-2027),contempt,軽蔑,"噴火, 灰, 尊敬",show contempt for him.,彼に軽蔑を示す。,慶應義塾大
+Final(1701-2027),anatomy,構造、解剖学,"葬式, 領域, 表面",human anatomy.,人体の構造（解剖学的構造）。,共通テスト
+Final(1701-2027),integrity,誠実、完全、整合性,"赤字, 農園, 腐敗",a man of integrity.,誠実な人。,慶應義塾大
+Final(1701-2027),cargo,貨物、積荷,"大部分, すき, 乗客",a cargo ship.,貨物船。,共通テスト
+Final(1701-2027),bribe,わいろ,"百万長者, 販売, 報酬",accept a bribe.,わいろを受け取る。,共通テスト
+Final(1701-2027),eruption,噴火,"灰, 孤児, 沈静",a volcanic eruption.,火山の噴火。,共通テスト
+Final(1701-2027),funeral,葬式,"領域, 神経細胞, 結婚式",attend a funeral.,葬式に参列する。,共通テスト
+Final(1701-2027),deficit,赤字、不足,"農園, 植生, 黒字",a trade deficit.,貿易赤字。,共通テスト
+Final(1701-2027),bulk,大部分、巨体,"すき, 戦士, 少量",the bulk of the work.,仕事の大部分。,共通テスト
+Final(1701-2027),millionaire,百万長者,"販売, 突然変異, 貧困層",self-made millionaire.,自力で成功した百万長者。,共通テスト
+Final(1701-2027),ash,灰,"孤児, 下水, 炎",volcanic ash.,火山灰。,共通テスト
+Final(1701-2027),realm,領域、範囲、王国,"神経細胞, 理論的枠組, 境界",in the realm of science.,科学の領域で。,慶應義塾大
+Final(1701-2027),plantation,農園,"植生, 議定書, 工場",a coffee plantation.,コーヒー農園。,共通テスト
+Final(1701-2027),plow,すき（農具）,"戦士, 高層ビル, 収穫機",a plow for farming.,農耕用のすき。,共通テスト
+Final(1701-2027),vending,販売,"突然変異, 一致, 購入",a vending machine.,自動販売機。,共通テスト
+Final(1701-2027),orphan,孤児,"下水, 官僚, 両親",an orphan child.,孤児。,共通テスト
+Final(1701-2027),neuron,神経細胞,"理論的枠組, 多彩, 筋肉細胞",neurons in the brain.,脳の神経細胞。,共通テスト
+Final(1701-2027),vegetation,植生,"議定書, 衝突, 砂漠化",lush vegetation.,青々とした植生。,共通テスト
+Final(1701-2027),warrior,戦士,"高層ビル, 拷問, 平和主義者",a brave warrior.,勇敢な戦士。,共通テスト
+Final(1701-2027),mutation,突然変異,"一致, 統治, 正常",genetic mutation.,遺伝子の突然変異。,共通テスト
+Final(1701-2027),sewage,下水,"官僚, 論文, 上水",sewage disposal.,下水処理。,共通テスト
+Final(1701-2027),paradigm,理論的枠組、パラダイム,"多彩, 桁, 無秩序",a paradigm shift.,理論的枠組（パラダイム）の転換。,早稲田大
+Final(1701-2027),protocol,議定書、プロトコル,"衝突, 課題, 違反",diplomatic protocol.,外交儀礼（議定書）。,共通テスト
+Final(1701-2027),skyscraper,高層ビル,"拷問, 発症, 小屋",a city of skyscrapers.,高層ビルの街。,共通テスト
+Final(1701-2027),accord,一致、合意,"統治, 小作農, 対立",of one's own accord.,自発的に（自分自身の一致から）。,共通テスト
+Final(1701-2027),bureaucrat,官僚,"論文, 紫外, 市民",a high-ranking bureaucrat.,高官（官僚）。,共通テスト
+Final(1701-2027),array,多彩、配列、ずらりと並んだ,"桁, 課題, 単一",a wide array of options.,多彩な選択肢。,共通テスト
+Final(1701-2027),clash,衝突,"課題, 発症, 調和",a clash of opinions.,意見の衝突。,共通テスト
+Final(1701-2027),torture,拷問、苦痛,"発症, 小作農, 快楽",a mental torture.,精神的拷問（苦痛）。,共通テスト
+Final(1701-2027),reign,統治、君臨,"小作農, 紫外, 亡命",during the reign of...,～の統治期間中に。,共通テスト
+Final(1701-2027),thesis,論文,"紫外, 桁, 小説",a doctoral thesis.,博士論文。,共通テスト
+Final(1701-2027),digit,桁、数字,"有名な, 透き通った, 文字",a four-digit number.,4桁の数字。,共通テスト
+Final(1701-2027),agenda,課題、予定、協議事項,"透き通った, 薄暗い, 過去",on the agenda.,協議事項（課題）になって。,共通テスト
+Final(1701-2027),onset,発症、始まり,"薄暗い, 正当な, 終息",the onset of winter.,冬の始まり（発症）。,慶應義塾大
+Final(1701-2027),peasant,小作農,"正当な, 紫外, 貴族",a poor peasant.,貧しい小作農。,共通テスト
+Final(1701-2027),ultraviolet,紫外の,"悪の, すばやい, 赤外の",ultraviolet rays.,紫外線。,共通テスト
+Final(1701-2027),renowned,有名な,"すばやい, 世間知らずの, 無名の",a renowned artist.,有名な芸術家。,共通テスト
+Final(1701-2027),transparent,透き通った、透明な,"世間知らずの, ばかな, 不透明な",transparent glass.,透き通ったガラス。,共通テスト
+Final(1701-2027),dim,薄暗い,"ばかな, 正当な, 明るい",a dim light.,薄暗い光。,共通テスト
+Final(1701-2027),legitimate,正当な、合法的な,"暗い, 悪の, 違法な",a legitimate reason.,正当な理由。,早稲田大
+Final(1701-2027),adverse,悪影響の、逆の,"激怒した, まじめな, 好都合な",adverse effects.,悪影響（逆効果）。,慶應義塾大
+Final(1701-2027),swift,すばやい,"まじめな, すばらしい, 緩やかな",a swift response.,すばやい対応。,共通テスト
+Final(1701-2027),naive,世間知らずの、うぶな,"すばらしい, 垂直な, 老練な",a naive young man.,世間知らずの青年。,共通テスト
+Final(1701-2027),dumb,ばかな、口のきけない,"垂直な, 邪悪な, 賢い",a dumb question.,ばかな質問。,共通テスト
+Final(1701-2027),gloomy,暗い、陰気な,"邪悪な, 主観的な, 陽気な",a gloomy future.,暗い未来。,共通テスト
+Final(1701-2027),furious,激怒した,"主観的な, 進んだ考えの, 穏やかな",be furious with him.,彼に激怒している。,共通テスト
+Final(1701-2027),earnest,まじめな、真剣な,"進んだ考えの, 本物の, 不真面目な",an earnest student.,まじめな学生。,共通テスト
+Final(1701-2027),terrific,すばらしい、ものすごい,"本物の, 残忍な, ひどい",a terrific idea.,すばらしいアイデア。,共通テスト
+Final(1701-2027),vertical,垂直な,"残忍な, めまいのする, 水平な",a vertical line.,垂直な線。,共通テスト
+Final(1701-2027),wicked,邪悪な,"めまいのする, 全くの, 聖なる",a wicked witch.,邪悪な魔女。,共通テスト
+Final(1701-2027),subjective,主観的な,"まったくの, いたずらな, 客観的な",a subjective opinion.,主観的な意見。,共通テスト
+Final(1701-2027),enlightened,進んだ考えの、賢明な,"いたずらな, 湿った, 独善的な",an enlightened policy.,進んだ考え（賢明な）の政策。,共通テスト
+Final(1701-2027),authentic,本物の、本場の,"湿った, 静的な, 偽物の",authentic Italian food.,本物の（本場の）イタリア料理。,共通テスト
+Final(1701-2027),brutal,残忍な,"静的な, 運命にある, 慈悲深い",a brutal murder.,残忍な殺人。,共通テスト
+Final(1701-2027),dizzy,めまいのする,"運命にある, 呼吸器の, 正気な",feel dizzy.,めまいがする。,共通テスト
+Final(1701-2027),sheer,まったくの、純然たる,"呼吸器の, 無数の, 部分的な",by sheer luck.,まったくの幸運で。,早稲田大
+Final(1701-2027),naughty,いたずらな,"無数の, 不器用な, お行儀の良い",a naughty boy.,いたずらな男の子。,共通テスト
+Final(1701-2027),damp,湿った,"不器用な, 美的な, 乾いた",damp clothes.,湿った服。,共通テスト
+Final(1701-2027),static,静的な、変化のない,"美的な, 切り離された, 動的な",a static society.,静的な（変化のない）社会。,共通テスト
+Final(1701-2027),doomed,運命にある（悪い）,"とりつかれている, 懐疑的な, 恵まれた",be doomed to failure.,失敗する運命にある。,共通テスト
+Final(1701-2027),respiratory,呼吸器に関する,"切り離された, 顕著な, 消化器の",respiratory system.,呼吸器系。,共通テスト
+Final(1701-2027),innumerable,無数の,"難破した, すらりとした, わずかな",innumerable stars.,無数の星。,共通テスト
+Final(1701-2027),clumsy,不器用な,"無謀な, 明らかな, 器用な",a clumsy waiter.,不器用なウェイター。,共通テスト
+Final(1701-2027),aesthetic,美的な、審美的な,"傲慢な, きちんとした, 実用的な",aesthetic values.,美的な価値。,慶應義塾大
+Final(1701-2027),obsessed,とりつかれている、頭がいっぱいだ,"頭がいっぱいだ, 懐疑的な, 無関心な",be obsessed with money.,お金のことで頭がいっぱいだ。,共通テスト
+Final(1701-2027),detached,切り離された、客観的な,"巨大な, 悪名高い, 執着した",a detached house.,戸建て（切り離された）住宅。,共通テスト
+Final(1701-2027),wrecked,難破した、壊れた,"顕著な, 匿名の, 修復された",a wrecked ship.,難破船。,共通テスト
+Final(1701-2027),reckless,無謀な,"すらりとした, 単調な, 慎重な",reckless driving.,無謀な運転。,共通テスト
+Final(1701-2027),arrogant,傲慢な,"明らかな, 豊富に, 謙虚な",an arrogant attitude.,傲慢な態度。,共通テスト
+Final(1701-2027),preoccupied,頭がいっぱいだ,"きちんと, こぎれいな, 暇な",be preoccupied with work.,仕事で頭がいっぱいだ。,共通テスト
+Final(1701-2027),gigantic,巨大な,"懐疑的な, 野蛮な, 非常に小さい",a gigantic building.,巨大なビル。,共通テスト
+Final(1701-2027),conspicuous,顕著な、目立つ,"悪名高い, 一貫した, 目立たない",a conspicuous error.,顕著な（目立つ）間違い。,早稲田大
+Final(1701-2027),slender,すらりとした、細長い,"匿名の, 雄弁な, 太った",a slender figure.,すらりとした体つき。,共通テスト
+Final(1701-2027),manifest,明らかな,"単調な, 不快な, 曖昧な",a manifest error.,明らかな間違い。,慶應義塾大
+Final(1701-2027),tidy,きちんと、こぎれいな,"豊富に, 壊れやすい, 散らかった",a tidy room.,こぎれいな（整頓された）部屋。,共通テスト
+Final(1701-2027),skeptical,懐疑的な,"こぎれいな, 青少年の, 確実な",be skeptical of the news.,そのニュースに懐疑的だ。,慶應義塾大
+Final(1701-2027),notorious,悪名高い,"野蛮な, 義務的な, 有名な",be notorious for crime.,犯罪で悪名高い。,共通テスト
+Final(1701-2027),anonymous,匿名の,"一貫した, かかりやすい, 有名な",an anonymous donor.,匿名の寄付者。,共通テスト
+Final(1701-2027),monotonous,単調な,"雄弁な, 勝手な, 多彩な",a monotonous task.,単調な作業。,共通テスト
+Final(1701-2027),ample,豊富な、十分な,"不快な, 独創的な, 不足した",ample opportunity.,豊富な機会。,慶應義塾大
+Final(1701-2027),trim,こぎれいな、整った,"青少年の, 神聖なる, 乱れた",a trim garden.,こぎれいな庭。,共通テスト
+Final(1701-2027),savage,野蛮な、残酷な,"義務的な, やさしい, 文明的な",a savage beast.,野蛮な獣。,共通テスト
+Final(1701-2027),coherent,一貫した、筋の通った,"かかりやすい, 憤慨した, 矛盾した",a coherent argument.,一貫した議論。,早稲田大
+Final(1701-2027),eloquent,雄弁な,"勝手な, 本来の, 口下手な",an eloquent speech.,雄弁な演説。,共通テスト
+Final(1701-2027),foul,不快な、汚い,"独創的な, 麻痺した, 清潔な",a foul odor.,不快な臭い。,共通テスト
+Final(1701-2027),juvenile,青少年の、少年の,"神聖なる, 適合する, 成人の",juvenile delinquency.,非行（青少年の犯罪）。,共通テスト
+Final(1701-2027),compulsory,義務的な、強制的な,"やさしい, 愛国的な, 自由な",compulsory education.,義務教育。,共通テスト
+Final(1701-2027),prone,～しやすい、傾向がある,"憤慨した, 名高い, 免疫のある",be prone to accidents.,事故を起こしやすい。,慶應義塾大
+Final(1701-2027),arbitrary,勝手な、恣意的な,"本来の, 強力な, 合理的な",an arbitrary decision.,勝手な（恣意的な）決定。,早稲田大
+Final(1701-2027),ingenious,独創的な、巧みな,"麻痺した, 正気でない, 平凡な",an ingenious device.,独創的な装置。,慶應義塾大
+Final(1701-2027),divine,神聖なる、神の,"適合する, 主要な, 人間的な",divine intervention.,神聖なる介入（神の助け）。,共通テスト
+Final(1701-2027),tender,やさしい、柔らかい,"愛国的な, 間接的な, 厳しい",tender meat.,柔らかい肉。,共通テスト
+Final(1701-2027),outraged,憤慨している,"名高い, 先住の, 満足した",be outraged by the tax.,税金に憤慨している。,共通テスト
+Final(1701-2027),intrinsic,本来の、固有の,"強力な, 最もな, 外的な",intrinsic value.,本来の価値。,慶應義塾大
+Final(1701-2027),paralyzed,麻痺している,"正気でない, 不可欠な, 活発な",be paralyzed with fear.,恐怖で麻痺している。,共通テスト
+Final(1701-2027),compatible,適合する、互換性のある,"主要な, 複雑な, 相容れない",be compatible with PC.,PCと適合する（互換性がある）。,共通テスト
+Final(1701-2027),patriotic,愛国的な,"間接的な, 人口統計の, 反逆的な",patriotic songs.,愛国的な歌。,共通テスト
+Final(1701-2027),eminent,名高い、著名な,"先住の, 強力な, 無名の",an eminent scholar.,名高い（著名な）学者。,慶應義塾大
+Final(1701-2027),potent,強力な、影響力のある,"最もな, 無傷の, 無力な",a potent medicine.,強力な薬。,共通テスト
+Final(1701-2027),insane,正気を失っている,"不可欠な, 決意した, 正気な",go insane.,正気を失う。,共通テスト
+Final(1701-2027),staple,主要な、基本の,"複雑な, 興味深い, ささいな",staple food.,主食（主要な食べ物）。,共通テスト
+Final(1701-2027),secondhand,間接の、中古の,"人口統計の, 陽気な, 直接の",secondhand information.,間接的な情報（また聞き）。,共通テスト
+Final(1701-2027),indigenous,先住の、固有の,"強力な, 永続する, 外来の",indigenous people.,先住民。,早稲田大
+Final(1701-2027),utmost,最も、最大の,"無傷の, 脊椎の, 最小の",the utmost importance.,最も重要なこと。,共通テスト
+Final(1701-2027),integral,不可欠な、完全な,"決意した, かかりやすい, 不要な",an integral part.,不可欠な部分。,慶應義塾大
+Final(1701-2027),intricate,複雑な,"興味深い, 義務的な, 単純な",an intricate design.,複雑なデザイン。,共通テスト
+Final(1701-2027),demographics,人口統計の,"陽気な, 直立した, 心理的な",change in demographics.,人口統計の変化。,共通テスト
+Final(1701-2027),mighty,強力な、巨大な,"永続する, 不意の, 弱い",a mighty river.,強力な（雄大な）川。,共通テスト
+Final(1701-2027),intact,無傷の、そのままの,"脊椎の, 逆の, 壊れた",remain intact.,無傷のまま残る。,共通テスト
+Final(1701-2027),intent,決意している、熱心な,"かかりやすい, 主に, 無関心な",be intent on winning.,勝利を決意している。,共通テスト
+Final(1701-2027),intriguing,興味深い,"義務的な, 直立した, 退屈な",an intriguing story.,興味深い話。,共通テスト
+Final(1701-2027),merry,陽気な,"直立した, 間接的な, 悲しい",a merry Christmas.,陽気な（楽しい）クリスマス。,共通テスト
+Final(1701-2027),perpetual,永続する、絶え間ない,"不意の, 先住の, 一時的な",perpetual peace.,永続する平和。,早稲田大
+Final(1701-2027),spinal,脊椎の,"逆の, 最もな, 筋肉の",the spinal cord.,脊髄（脊椎のひも）。,共通テスト
+Final(1701-2027),susceptible,かかりやすい,"主に, 不可欠な, 強い",be susceptible to disease.,病気にかかりやすい。,慶應義塾大
+Final(1701-2027),mandatory,義務的な、強制的な,"不意の, 複雑な, 任意の",a mandatory meeting.,出席義務のある会議。,共通テスト
+Final(1701-2027),upright,まっすぐに,"陽気に, 不意に, 横たわって",stand upright.,まっすぐに立つ。,共通テスト
+Final(1701-2027),abruptly,不意に、突然,"永続的に, 強力に, 徐々に",stop abruptly.,不意に止まる。,共通テスト
+Final(1701-2027),conversely,逆に,"脊椎に, 無傷で, 同様に","conversely, some agree.",逆に、賛成する人もいる。,共通テスト
+Final(1701-2027),predominantly,主に,"決意して, 不意に, わずかに",predominantly female.,主に女性の。,慶應義塾大
+Final(1701-2027),lest,～しないように,"なので, だけれども, もし～なら",lest you should fail.,あなたが失敗しないように。,共通テスト
