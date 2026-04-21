@@ -8,14 +8,26 @@ st.set_page_config(page_title="文系科目は、ゆずれない", layout="cente
 
 st.markdown("""
     <style>
-    .stApp { background-color: #FFF9FB !important; }
-    [data-testid="stSidebar"], [data-testid="stSidebarContent"], [data-testid="stSidebarNav"] {
+    /* メイン背景：さらに淡いサクラ色 */
+    .stApp {
+        background-color: #FFF9FB !important;
+    }
+    
+    /* サイドバー：爽やかな水色 */
+    [data-testid="stSidebar"], 
+    [data-testid="stSidebarContent"],
+    [data-testid="stSidebarNav"] {
         background-color: #E0F7FA !important; 
         background: #E0F7FA !important;
     }
-    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label, [data-testid="stSidebar"] * {
+
+    /* テキストはすべて「黒」 */
+    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label,
+    [data-testid="stSidebar"] * {
         color: #000000 !important;
     }
+
+    /* 問題文ボックス */
     .sentence-box {
         background-color: #FFFFFF !important; 
         color: #000000 !important;
@@ -26,14 +38,23 @@ st.markdown("""
         border-left: 10px solid;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.05);
     }
+
+    /* 選択肢ボタン */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
         border: 2px solid #000000 !important;
         font-weight: bold !important;
     }
-    button[kind="primaryFormSubmit"] { background-color: #00796B !important; color: #FFFFFF !important; }
     
+    /* 日本史解答ボタン */
+    button[kind="primaryFormSubmit"] {
+        background-color: #00796B !important; 
+        color: #FFFFFF !important;
+        border: none !important;
+    }
+
+    /* ハイライト */
     .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline !important; }
     .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 3px solid #1B5E20 !important; }
     </style>
@@ -41,6 +62,7 @@ st.markdown("""
 
 st.title("🔥 文系科目は、ゆずれない")
 
+# --- 2. データ読み込み ---
 @st.cache_data
 def load_raw_data(subject):
     files = {"英単語": "final_tango_list.csv", "古文単語": "kobun350.csv", "日本史一問一答": "nihonshi.csv"}
@@ -56,6 +78,7 @@ def load_raw_data(subject):
 
 selected_subject = st.sidebar.selectbox("学習する科目を選択", ["選択してください", "英単語", "古文単語", "日本史一問一答"])
 
+# --- 3. メインロジック ---
 if selected_subject != "選択してください":
     raw_df = load_raw_data(selected_subject)
     if raw_df is not None:
@@ -69,8 +92,10 @@ if selected_subject != "選択してください":
             sub_color = "#00796B"
 
         if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
-            st.session_state.active_sub, st.session_state.active_level = selected_subject, sel_level
-            st.session_state.idx, st.session_state.answered = 0, False
+            st.session_state.active_sub = selected_subject
+            st.session_state.active_level = sel_level
+            st.session_state.idx = 0
+            st.session_state.answered = False
             st.session_state.q_df = current_df.sample(frac=1).reset_index(drop=True)
             if 'choices' in st.session_state: del st.session_state.choices
 
@@ -83,7 +108,7 @@ if selected_subject != "選択してください":
                 q, ans = str(row.iloc[0]), str(row.iloc[1]).strip()
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><h3>問題：{q}</h3></div>', unsafe_allow_html=True)
                 with st.form(key='hist_form'):
-                    u_in = st.text_input("答えを入力")
+                    u_in = st.text_input("答えを入力（漢字）")
                     if st.form_submit_button("解答する", type="primary"):
                         st.session_state.answered, st.session_state.u_ans = True, u_in.strip()
                 if st.session_state.answered:
@@ -95,34 +120,28 @@ if selected_subject != "選択してください":
                         st.rerun()
             else:
                 if selected_subject == "英単語":
-                    word, correct = str(row['question']).strip(), str(row['all_answers']).strip()
+                    word = str(row['question']).strip()
+                    correct = str(row['all_answers']).strip()
                     dummy_raw, sentence, trans = str(row['dummy_pool']), str(row['sentence']), str(row['translation'])
                     hl_class = "hl-red"
                 else:
-                    word, correct, dummy_raw = str(row.iloc[0]).strip(), str(row.iloc[1]).strip(), str(row.iloc[2])
+                    word = str(row.iloc[0]).strip()
+                    correct = str(row.iloc[1]).strip()
+                    dummy_raw = str(row.iloc[2])
                     sentence, trans = str(row.iloc[3]), str(row.iloc[4])
                     hl_class = "hl-green"
 
+                # 【共通修正】正解選択肢を「先頭の意味」に固定
                 sel_correct = [c.strip() for c in correct.split(',') if c.strip()][0]
 
-                # --- 誤作動防止型ハイライト ---
-                # 記号を除去した純粋な単語（検索用）
-                clean_word = re.sub(r'[^\w]', '', word)
-                
-                disp_sentence = sentence if (sentence and sentence.lower() not in ["nan", "sentence", ""]) else ""
-
-                if not disp_sentence:
-                    disp = f"意味を答えよ： <span class='{hl_class}'>{word}</span>"
+                # ハイライトロジック
+                if not sentence or sentence.lower() in ["nan", "sentence", ""]:
+                    disp = f"この単語の意味は？： <span class='{hl_class}'>{word}</span>"
                 else:
-                    # 1. 完全一致
-                    if word in disp_sentence:
-                        disp = disp_sentence.replace(word, f'<span class="{hl_class}">{word}</span>', 1)
-                    # 2. 記号抜き単語が3文字以上ならマッチを試みる（短すぎると誤爆するため）
-                    elif len(clean_word) >= 2 and clean_word in disp_sentence:
-                        disp = disp_sentence.replace(clean_word, f'<span class="{hl_class}">{clean_word}</span>', 1)
-                    # 3. それ以外は無理に置換せず、文末にターゲットを出す
-                    else:
-                        disp = f"{disp_sentence}<br><br>ターゲット単語： <span class='{hl_class}'>{word}</span>"
+                    disp = re.sub(re.escape(word), f'<span class="{hl_class}">{word}</span>', sentence, flags=re.IGNORECASE)
+                    if f'class="{hl_class}"' not in disp and len(word) > 1:
+                        short_word = word[:-1]
+                        disp = re.sub(re.escape(short_word), f'<span class="{hl_class}">{short_word}</span>', sentence, flags=re.IGNORECASE)
 
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><p style="font-size:22px;">{disp}</p></div>', unsafe_allow_html=True)
 
@@ -147,6 +166,6 @@ if selected_subject != "選択してください":
                         st.rerun()
         else:
             st.balloons()
-            if st.button("最初から"):
+            if st.button("全問終了！最初から"):
                 st.session_state.idx = 0
                 st.rerun()
