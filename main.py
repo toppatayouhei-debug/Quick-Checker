@@ -3,20 +3,20 @@ import pandas as pd
 import random
 import re
 
-# --- 1. 画面設定（薄ピンク × 漆黒文字で視認性MAX） ---
+# --- 1. 画面設定（さらに淡いサクラ色 × 漆黒文字） ---
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 st.markdown("""
     <style>
-    /* 1. 全体を薄いピンクに固定 */
+    /* 1. 全体をさらに淡いピンクに固定 */
     .stApp, 
     [data-testid="stSidebar"], 
     [data-testid="stSidebarContent"],
     header, 
     [data-testid="stHeader"],
     [data-testid="stSidebarNav"] {
-        background-color: #FFF0F5 !important; /* ラベンダーピンク */
-        background: #FFF0F5 !important;
+        background-color: #FFF9FB !important; /* 極めて淡いサクラ色 */
+        background: #FFF9FB !important;
     }
 
     /* 2. すべてのテキストを「黒」に強制 */
@@ -25,54 +25,41 @@ st.markdown("""
         color: #000000 !important;
     }
 
-    /* 3. サイドバーの入力欄（白背景でクッキリ） */
-    .stSelectbox div[data-baseweb="select"] > div {
-        background-color: #FFFFFF !important;
-        color: #000000 !important;
-        border: 1px solid #FFC0CB !important;
-    }
-
-    /* 4. 問題文ボックス（少し濃いめのピンクで強調） */
+    /* 3. 問題文ボックス（淡いミスティローズ） */
     .sentence-box {
-        background-color: #FFE4E1 !important; /* ミスティローズ */
+        background-color: #FFF0F5 !important; 
         color: #000000 !important;
         padding: 20px;
         border-radius: 12px;
         margin-bottom: 20px;
-        border: 2px solid #FFC0CB;
+        border: 1px solid #FFD1DC;
         border-left: 10px solid;
     }
 
-    /* 5. 選択肢ボタン（白背景・太い黒枠・黒文字） */
+    /* 4. 選択肢ボタン（白背景・太い黒枠・黒文字） */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
         border: 2px solid #000000 !important;
         font-weight: bold !important;
-        box-shadow: 2px 2px 0px #FFC0CB;
     }
     
-    /* 6. 日本史の解答ボタン（勝負の緑） */
+    /* 5. 日本史の解答ボタン（勝負の緑） */
     button[kind="primaryFormSubmit"] {
         background-color: #2E7D32 !important;
         color: #FFFFFF !important;
         border: none !important;
     }
 
-    /* 7. ハイライト */
-    .hl-red { color: #D32F2F !important; font-weight: bold; text-decoration: underline; }
-    .hl-green { color: #1B5E20 !important; font-weight: bold; border-bottom: 2px solid #1B5E20; }
+    /* 6. ハイライト（太字と色を確実に適用） */
+    .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline; }
+    .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 2px solid #1B5E20; }
     </style>
     """, unsafe_allow_html=True)
 
 st.title("🔥 文系科目は、ゆずれない")
 
-# --- 2. 科目選択 ---
-selected_subject = st.sidebar.selectbox(
-    "学習する科目を選択",
-    ["選択してください", "英単語", "古文単語", "日本史一問一答"]
-)
-
+# --- 2. データ読み込み ---
 @st.cache_data
 def load_raw_data(subject):
     files = {"英単語": "final_tango_list.csv", "古文単語": "kobun350.csv", "日本史一問一答": "nihonshi.csv"}
@@ -85,6 +72,8 @@ def load_raw_data(subject):
                 df = df.iloc[1:].reset_index(drop=True)
             return df
     except: return None
+
+selected_subject = st.sidebar.selectbox("学習する科目を選択", ["選択してください", "英単語", "古文単語", "日本史一問一答"])
 
 # --- 3. メインロジック ---
 if selected_subject != "選択してください":
@@ -99,6 +88,7 @@ if selected_subject != "選択してください":
             current_df, sel_level = raw_df, None
             sub_color = "#2E7D32"
 
+        # リセット処理
         if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
             st.session_state.active_sub = selected_subject
             st.session_state.active_level = sel_level
@@ -128,25 +118,28 @@ if selected_subject != "選択してください":
                         st.rerun()
             else:
                 if selected_subject == "英単語":
-                    word, correct = str(row['question']), str(row['all_answers'])
+                    word, correct = str(row['question']).strip(), str(row['all_answers']).strip()
                     dummy_raw, sentence, trans = str(row['dummy_pool']), str(row['sentence']), str(row['translation'])
                     hl_class = "hl-red"
+                    # 英語は全候補からランダム
+                    sel_correct = random.choice([c.strip() for c in correct.split(',') if c.strip()])
                 else:
-                    word, correct, dummy_raw = str(row.iloc[0]), str(row.iloc[1]), str(row.iloc[2])
-                    sentence = str(row.iloc[3]) if len(row) > 3 else ""
-                    trans = str(row.iloc[4]) if len(row) > 4 else ""
+                    word, correct, dummy_raw = str(row.iloc[0]).strip(), str(row.iloc[1]).strip(), str(row.iloc[2])
+                    sentence, trans = str(row.iloc[3]), str(row.iloc[4])
                     hl_class = "hl-green"
+                    # 古文は「先頭の意味」を正解にする
+                    sel_correct = [c.strip() for c in correct.split(',') if c.strip()][0]
 
+                # ハイライト表示（単語を確実に太字＋色付きに）
                 if not sentence or sentence.lower() in ["nan", "sentence", ""]:
                     disp = f"この単語の意味は？： <span class='{hl_class}'>{word}</span>"
                 else:
+                    # 確実に置換するためstripした単語で検索
                     disp = re.sub(re.escape(word), f'<span class="{hl_class}">{word}</span>', sentence, flags=re.IGNORECASE)
 
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><p style="font-size:22px;">{disp}</p></div>', unsafe_allow_html=True)
 
                 if 'choices' not in st.session_state or st.session_state.get('last_idx') != st.session_state.idx:
-                    c_list = [c.strip() for c in correct.split(',') if c.strip()]
-                    sel_correct = random.choice(c_list)
                     dummies = [d.strip() for d in str(dummy_raw).split(',') if d.strip()]
                     pool = [sel_correct] + random.sample(dummies, min(len(dummies), 3))
                     random.shuffle(pool)
@@ -160,13 +153,13 @@ if selected_subject != "選択してください":
                 if st.session_state.answered:
                     if st.session_state.is_cor: st.success("✨ 正解！")
                     else: st.error(f"❌ 正解は 「{st.session_state.ans_val}」")
-                    st.info(f"💡 意味: {correct}\n\n📖 訳: {trans}")
+                    st.info(f"💡 意味一覧: {correct}\n\n📖 訳: {trans}")
                     if st.button("次へ 👉"):
                         st.session_state.idx += 1
                         st.session_state.answered = False
                         st.rerun()
         else:
             st.balloons()
-            if st.button("最初から"):
+            if st.button("全問終了！最初から"):
                 st.session_state.idx = 0
                 st.rerun()
