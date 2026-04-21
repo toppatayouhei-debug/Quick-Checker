@@ -3,73 +3,65 @@ import pandas as pd
 import random
 import re
 
-# --- 1. 画面設定（サイドバーの裏側まで真っ白にする） ---
+# --- 1. 画面設定（薄ピンク × 漆黒文字で視認性MAX） ---
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 st.markdown("""
     <style>
-    /* 1. メインエリアの背景を白に固定 */
-    .stApp {
-        background-color: #FFFFFF !important;
-    }
-    
-    /* 2. サイドバー全体（開いた時の背景・コンテナすべて）を白にする */
+    /* 1. 全体を薄いピンクに固定 */
+    .stApp, 
     [data-testid="stSidebar"], 
     [data-testid="stSidebarContent"],
-    [data-testid="stSidebarNav"],
-    section[data-testid="stSidebar"] > div {
-        background-color: #FFFFFF !important;
-        background: #FFFFFF !important;
+    header, 
+    [data-testid="stHeader"],
+    [data-testid="stSidebarNav"] {
+        background-color: #FFF0F5 !important; /* ラベンダーピンク */
+        background: #FFF0F5 !important;
     }
 
-    /* 3. サイドバー内の文字を漆黒にする */
-    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] div {
+    /* 2. すべてのテキストを「黒」に強制 */
+    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label,
+    [data-testid="stSidebar"] * {
         color: #000000 !important;
-        font-weight: 600 !important;
     }
 
-    /* 4. セレクトボックスなどの入力欄も白背景・黒枠に */
+    /* 3. サイドバーの入力欄（白背景でクッキリ） */
     .stSelectbox div[data-baseweb="select"] > div {
         background-color: #FFFFFF !important;
         color: #000000 !important;
-        border: 1px solid #CCCCCC !important;
+        border: 1px solid #FFC0CB !important;
     }
 
-    /* 5. 問題文ボックス */
+    /* 4. 問題文ボックス（少し濃いめのピンクで強調） */
     .sentence-box {
-        background-color: #F0F2F6 !important;
+        background-color: #FFE4E1 !important; /* ミスティローズ */
         color: #000000 !important;
         padding: 20px;
         border-radius: 12px;
         margin-bottom: 20px;
-        border: 1px solid #DDDDDD;
+        border: 2px solid #FFC0CB;
         border-left: 10px solid;
     }
 
-    /* 6. ボタン（黒枠・白背景・黒文字） */
+    /* 5. 選択肢ボタン（白背景・太い黒枠・黒文字） */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
         border: 2px solid #000000 !important;
         font-weight: bold !important;
+        box-shadow: 2px 2px 0px #FFC0CB;
     }
     
-    /* 7. 日本史の解答ボタン（緑） */
+    /* 6. 日本史の解答ボタン（勝負の緑） */
     button[kind="primaryFormSubmit"] {
         background-color: #2E7D32 !important;
         color: #FFFFFF !important;
         border: none !important;
     }
 
-    /* 8. ハイライト設定 */
+    /* 7. ハイライト */
     .hl-red { color: #D32F2F !important; font-weight: bold; text-decoration: underline; }
-    .hl-green { color: #2E7D32 !important; font-weight: bold; border-bottom: 2px solid #2E7D32; }
-    
-    /* 9. すべてのテキスト要素を黒に強制 */
-    h1, h2, h3, p, span, div, label { color: #000000 !important; }
+    .hl-green { color: #1B5E20 !important; font-weight: bold; border-bottom: 2px solid #1B5E20; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -107,7 +99,6 @@ if selected_subject != "選択してください":
             current_df, sel_level = raw_df, None
             sub_color = "#2E7D32"
 
-        # リセット処理
         if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
             st.session_state.active_sub = selected_subject
             st.session_state.active_level = sel_level
