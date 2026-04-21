@@ -14,26 +14,22 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（レスポンシブ対応）
+# CSS
 # ==================================================
 st.markdown("""
 <style>
-
-/* 全体 */
 .stApp{
     background:#f7f8fc;
 }
 
-/* 横幅 */
 .block-container{
-    max-width:700px;
+    max-width:720px;
     padding-top:1rem;
     padding-bottom:3rem;
     padding-left:1rem;
     padding-right:1rem;
 }
 
-/* タイトル */
 .main-title{
     text-align:center;
     font-size:2.1rem;
@@ -48,7 +44,6 @@ st.markdown("""
     margin-bottom:1.2rem;
 }
 
-/* カード */
 .card{
     background:white;
     padding:22px;
@@ -64,30 +59,23 @@ st.markdown("""
 .green{border-left:8px solid #2e7d32;}
 .blue{border-left:8px solid #1565c0;}
 
-/* ボタン */
 .stButton button{
     width:100%;
     border-radius:14px;
     padding:0.8rem;
-    font-size:1rem;
+    font-size:0.95rem;
     font-weight:700;
+    min-height:68px;
 }
 
-/* 入力欄 */
 .stTextInput input{
     font-size:1rem;
 }
 
-/* スマホ */
-@media (max-width: 768px){
+@media (max-width:768px){
 
-.main-title{
-    font-size:1.6rem;
-}
-
-.sub-title{
-    font-size:0.82rem;
-}
+.main-title{font-size:1.6rem;}
+.sub-title{font-size:0.82rem;}
 
 .card{
     padding:16px;
@@ -95,12 +83,10 @@ st.markdown("""
 }
 
 .stButton button{
-    padding:0.75rem;
-    font-size:0.95rem;
+    min-height:64px;
+    font-size:0.9rem;
 }
-
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -152,6 +138,24 @@ def next_q():
             del st.session_state[key]
 
 # ==================================================
+# 選択肢（横並び2列）
+# ==================================================
+def choice_buttons(subject, idx):
+    cols = st.columns(2)
+
+    for i, c in enumerate(st.session_state.choices):
+        with cols[i % 2]:
+            if st.button(
+                c,
+                key=f"{subject}_{idx}_{i}",
+                disabled=st.session_state.answered,
+                use_container_width=True
+            ):
+                st.session_state.selected = c
+                st.session_state.answered = True
+                st.rerun()
+
+# ==================================================
 # 科目選択
 # ==================================================
 subject = st.selectbox(
@@ -160,7 +164,7 @@ subject = st.selectbox(
 )
 
 if subject == "選択してください":
-    st.info("科目を選んでください。")
+    st.info("科目を選択してください。")
     st.stop()
 
 df = load_csv(subject)
@@ -215,7 +219,9 @@ if subject == "英単語":
     st.markdown(f'<div class="card red">{sentence}</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
-        correct = random.choice([x.strip() for x in answer.split(",")])
+        answer_list = [x.strip() for x in answer.split(",") if x.strip()]
+        correct = random.choice(answer_list)
+
         dummies = [x.strip() for x in dummy.split(",") if x.strip()]
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
@@ -223,14 +229,9 @@ if subject == "英単語":
         st.session_state.choices = choices
         st.session_state.correct = correct
 
-    for c in st.session_state.choices:
-        if st.button(c, disabled=st.session_state.answered):
-            st.session_state.selected = c
-            st.session_state.answered = True
-            st.rerun()
+    choice_buttons(subject, idx)
 
     if st.session_state.answered:
-
         if st.session_state.selected == st.session_state.correct:
             st.success("✨ 正解！")
         else:
@@ -261,27 +262,27 @@ elif subject == "古文単語":
     st.markdown(f'<div class="card green">{sentence}</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
+
+        # 別解全部表示しない（ランダム1つ）
+        answer_list = [x.strip() for x in answer.split(",") if x.strip()]
+        correct = random.choice(answer_list)
+
         dummies = [x.strip() for x in dummy.split(",") if x.strip()]
-        choices = [answer] + random.sample(dummies, min(3, len(dummies)))
+        choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
 
         st.session_state.choices = choices
-        st.session_state.correct = answer
+        st.session_state.correct = correct
 
-    for c in st.session_state.choices:
-        if st.button(c, disabled=st.session_state.answered):
-            st.session_state.selected = c
-            st.session_state.answered = True
-            st.rerun()
+    choice_buttons(subject, idx)
 
     if st.session_state.answered:
-
         if st.session_state.selected == st.session_state.correct:
             st.success("✨ 正解！")
         else:
             st.error(f"❌ 正解：{st.session_state.correct}")
 
-        st.info(f"訳：{trans}")
+        st.info(f"意味一覧：{answer}\n\n訳：{trans}")
 
         if st.button("次の問題へ"):
             next_q()
