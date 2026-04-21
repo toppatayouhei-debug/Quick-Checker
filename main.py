@@ -3,40 +3,50 @@ import pandas as pd
 import random
 import re
 
-# --- 1. 画面設定（ダークモードでも絶対に見えるように強制上書き） ---
+# --- 1. 画面設定（サイドバーの白地・黒文字を徹底） ---
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 st.markdown("""
     <style>
-    /* 1. 全体の背景を「白」に固定 */
+    /* 1. メイン背景を白に固定 */
     .stApp {
         background-color: #FFFFFF !important;
     }
     
-    /* 2. すべてのテキストを「黒」に固定 */
+    /* 2. サイドバーを「真っ白」に固定し、枠線を引く */
+    [data-testid="stSidebar"] {
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #EEEEEE;
+    }
+
+    /* 3. サイドバー内のすべての文字・ラベルを「漆黒」に固定 */
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] div {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    /* 4. 全体の基本文字色 */
     .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp div, .stApp label {
         color: #000000 !important;
     }
 
-    /* 3. サイドバーの背景と文字色 */
-    [data-testid="stSidebar"] {
-        background-color: #F0F2F6 !important;
-    }
-    [data-testid="stSidebar"] * {
-        color: #000000 !important;
-    }
-
-    /* 4. 問題文のボックス（グレー背景に黒文字） */
+    /* 5. 問題文のボックス */
     .sentence-box {
-        background-color: #E8EAED !important;
+        background-color: #F8F9FA !important;
         color: #000000 !important;
         padding: 20px;
         border-radius: 12px;
         margin-bottom: 20px;
-        border-left: 10px solid; /* 各科目で指定 */
+        border-left: 10px solid;
+        border-top: 1px solid #EEEEEE;
+        border-right: 1px solid #EEEEEE;
+        border-bottom: 1px solid #EEEEEE;
     }
 
-    /* 5. 選択肢ボタン（白背景に黒文字、黒い枠線） */
+    /* 6. 選択肢ボタン（黒枠でクッキリ） */
     .stButton button {
         color: #000000 !important;
         background-color: #FFFFFF !important;
@@ -44,20 +54,19 @@ st.markdown("""
         font-weight: bold !important;
     }
     
-    /* 6. 日本史の「解答する」ボタン（緑背景に白文字） */
+    /* 7. 日本史の「解答する」ボタン */
     button[kind="primaryFormSubmit"] {
         background-color: #2E7D32 !important;
         color: #FFFFFF !important;
         border: none !important;
     }
 
-    /* 7. ハイライト（ダークモード干渉防止） */
+    /* 8. ハイライト */
     .hl-red { color: #CC0000 !important; font-weight: bold; text-decoration: underline; }
     .hl-green { color: #1B5E20 !important; font-weight: bold; border-bottom: 2px solid #1B5E20; }
     </style>
     """, unsafe_allow_html=True)
 
-# タイトル
 st.title("🔥 文系科目は、ゆずれない")
 
 # --- 2. 科目選択 ---
@@ -71,19 +80,18 @@ def load_raw_data(subject):
     files = {"英単語": "final_tango_list.csv", "古文単語": "kobun350.csv", "日本史一問一答": "nihonshi.csv"}
     try:
         if subject == "英単語":
-            df = pd.read_csv(files[subject], encoding='utf-8-sig')
+            return pd.read_csv(files[subject], encoding='utf-8-sig')
         else:
             df = pd.read_csv(files[subject], encoding='utf-8-sig', header=None)
             if "単語" in str(df.iloc[0,0]) or "question" in str(df.iloc[0,0]):
                 df = df.iloc[1:].reset_index(drop=True)
-        return df
+            return df
     except: return None
 
 # --- 3. メインロジック ---
 if selected_subject != "選択してください":
     raw_df = load_raw_data(selected_subject)
     if raw_df is not None:
-        # 科目別設定
         if selected_subject == "英単語":
             levels = ["All"] + sorted(raw_df['level'].unique().tolist(), key=lambda x: int(x) if str(x).isdigit() else 999)
             sel_level = st.sidebar.selectbox("レベルを選択", levels)
@@ -94,8 +102,9 @@ if selected_subject != "選択してください":
             sub_color = "#2E7D32" # 緑
 
         # リセット処理
-        if st.session_state.get('active_sub') != selected_subject:
+        if st.session_state.get('active_sub') != selected_subject or st.session_state.get('active_level') != sel_level:
             st.session_state.active_sub = selected_subject
+            st.session_state.active_level = sel_level
             st.session_state.idx = 0
             st.session_state.answered = False
             st.session_state.q_df = current_df.sample(frac=1).reset_index(drop=True)
@@ -106,12 +115,12 @@ if selected_subject != "選択してください":
             row = df.iloc[st.session_state.idx]
             st.subheader(f"【{selected_subject}】 第 {st.session_state.idx + 1} 問")
 
-            # --- A: 日本史 ---
+            # --- 日本史 ---
             if selected_subject == "日本史一問一答":
                 q, ans = str(row.iloc[0]), str(row.iloc[1]).strip()
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><h3>問題：{q}</h3></div>', unsafe_allow_html=True)
                 with st.form(key='hist_form'):
-                    u_in = st.text_input("答え（漢字）")
+                    u_in = st.text_input("答えを入力（漢字）")
                     if st.form_submit_button("解答する", type="primary"):
                         st.session_state.answered, st.session_state.u_ans = True, u_in.strip()
                 if st.session_state.answered:
@@ -122,7 +131,7 @@ if selected_subject != "選択してください":
                         st.session_state.answered = False
                         st.rerun()
 
-            # --- B: 英語・古文 ---
+            # --- 英語・古文 ---
             else:
                 if selected_subject == "英単語":
                     word, correct = str(row['question']), str(row['all_answers'])
@@ -134,7 +143,6 @@ if selected_subject != "選択してください":
                     trans = str(row.iloc[4]) if len(row) > 4 else ""
                     hl_class = "hl-green"
 
-                # 例文の表示処理
                 if not sentence or sentence.lower() in ["nan", "sentence", ""]:
                     disp = f"この単語の意味は？： <span class='{hl_class}'>{word}</span>"
                 else:
@@ -165,6 +173,6 @@ if selected_subject != "選択してください":
                         st.rerun()
         else:
             st.balloons()
-            if st.button("最初から"):
+            if st.button("全問終了！最初から"):
                 st.session_state.idx = 0
                 st.rerun()
