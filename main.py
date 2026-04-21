@@ -34,7 +34,6 @@ st.markdown("""
     }
     button[kind="primaryFormSubmit"] { background-color: #00796B !important; color: #FFFFFF !important; }
     
-    /* ハイライトを極太に */
     .hl-red { color: #D32F2F !important; font-weight: 900 !important; text-decoration: underline !important; }
     .hl-green { color: #1B5E20 !important; font-weight: 900 !important; border-bottom: 3px solid #1B5E20 !important; }
     </style>
@@ -84,7 +83,7 @@ if selected_subject != "選択してください":
                 q, ans = str(row.iloc[0]), str(row.iloc[1]).strip()
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><h3>問題：{q}</h3></div>', unsafe_allow_html=True)
                 with st.form(key='hist_form'):
-                    u_in = st.text_input("答えを入力（漢字）")
+                    u_in = st.text_input("答えを入力")
                     if st.form_submit_button("解答する", type="primary"):
                         st.session_state.answered, st.session_state.u_ans = True, u_in.strip()
                 if st.session_state.answered:
@@ -106,24 +105,24 @@ if selected_subject != "選択してください":
 
                 sel_correct = [c.strip() for c in correct.split(',') if c.strip()][0]
 
-                # --- 強化版ハイライトロジック ---
-                if not sentence or sentence.lower() in ["nan", "sentence", ""]:
+                # --- 誤作動防止型ハイライト ---
+                # 記号を除去した純粋な単語（検索用）
+                clean_word = re.sub(r'[^\w]', '', word)
+                
+                disp_sentence = sentence if (sentence and sentence.lower() not in ["nan", "sentence", ""]) else ""
+
+                if not disp_sentence:
                     disp = f"意味を答えよ： <span class='{hl_class}'>{word}</span>"
                 else:
-                    # 記号を除去した検索用ワードを作成
-                    clean_word = re.sub(r'[^\w\s]', '', word)
-                    # 1. そのままマッチ
-                    if re.search(re.escape(word), sentence):
-                        disp = re.sub(re.escape(word), f'<span class="{hl_class}">{word}</span>', sentence)
-                    # 2. 記号抜きでマッチ（「(す)」などを無視）
-                    elif clean_word and re.search(re.escape(clean_word), sentence):
-                        disp = re.sub(re.escape(clean_word), f'<span class="{hl_class}">{clean_word}</span>', sentence)
-                    # 3. 語幹（後ろ1文字削り）でマッチ
-                    elif len(clean_word) > 1 and re.search(re.escape(clean_word[:-1]), sentence):
-                        stem = clean_word[:-1]
-                        disp = re.sub(re.escape(stem), f'<span class="{hl_class}">{stem}</span>', sentence)
+                    # 1. 完全一致
+                    if word in disp_sentence:
+                        disp = disp_sentence.replace(word, f'<span class="{hl_class}">{word}</span>', 1)
+                    # 2. 記号抜き単語が3文字以上ならマッチを試みる（短すぎると誤爆するため）
+                    elif len(clean_word) >= 2 and clean_word in disp_sentence:
+                        disp = disp_sentence.replace(clean_word, f'<span class="{hl_class}">{clean_word}</span>', 1)
+                    # 3. それ以外は無理に置換せず、文末にターゲットを出す
                     else:
-                        disp = f"{sentence}<br><br>ターゲット：<span class='{hl_class}'>{word}</span>"
+                        disp = f"{disp_sentence}<br><br>ターゲット単語： <span class='{hl_class}'>{word}</span>"
 
                 st.markdown(f'<div class="sentence-box" style="border-left-color:{sub_color};"><p style="font-size:22px;">{disp}</p></div>', unsafe_allow_html=True)
 
