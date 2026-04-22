@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（レイアウト・視認性・色分け）
+# CSS（カラー設定・レイアウト）
 # ==================================================
 st.markdown("""
 <style>
@@ -30,16 +30,18 @@ st.markdown("""
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
-.red{border-left:8px solid #e53935;}   /* 英単語用 */
-.blue{border-left:8px solid #1565c0;}  /* 日本史用 */
-.green{border-left:8px solid #2e7d32;} /* 世界史用 */
+
+/* 科目別カラー */
+.orange-card { border-left: 8px solid #ff9800; } /* 英単語 */
+.pink-card   { border-left: 8px solid #e91e63; } /* 日本史 */
+.cyan-card   { border-left: 8px solid #00bcd4; } /* 世界史 */
 
 .stButton button{ 
     width:100%; border-radius:14px; padding:0.8rem; 
     font-size:0.95rem; font-weight:700; min-height:60px; 
 }
 
-/* 注意書き・案内文（濃い黒で視認性向上） */
+/* 注意書き・案内文 */
 .guide-text { 
     color: #222222 !important; 
     font-size: 0.88rem; 
@@ -69,14 +71,13 @@ def load_csv(subject):
         "世界史一問一答": "whcheck.csv" 
     }
     try:
-        # UTF-8-SIGで読み込むことでBOM付きCSVにも対応
         return pd.read_csv(files[subject], encoding="utf-8-sig")
     except Exception as e:
         st.error(f"CSV読み込み失敗: {e}")
         return None
 
 # ==================================================
-# 状態管理（セッション管理）
+# 状態管理
 # ==================================================
 def clear_quiz_state():
     for key in ["quiz_subject", "quiz_filter", "df", "idx", "answered", "choices", "correct", "selected"]:
@@ -85,7 +86,6 @@ def clear_quiz_state():
 def start_quiz(df, subject, filter_val):
     st.session_state.quiz_subject = subject
     st.session_state.quiz_filter = filter_val
-    # 最初にリスト全体をシャッフル（一周するまで重複なし）
     st.session_state.df = df.sample(frac=1).reset_index(drop=True)
     st.session_state.idx = 0
     st.session_state.answered = False
@@ -110,7 +110,6 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# --- フィルタロジック ---
 if subject == "日本史一問一答":
     if "chapter" in raw_df.columns:
         raw_chapters = raw_df["chapter"].unique().tolist()
@@ -126,12 +125,9 @@ if subject == "日本史一問一答":
 
 elif subject == "世界史一問一答":
     if "area" in raw_df.columns:
-        # ご指定のカテゴリ順にするための定義（CSVに含まれないものは無視されます）
         area_order = ["アフリカ", "東アジア", "中央アジア", "東南アジア", "南アジア", "西アジア・北アフリカ", "ヨーロッパ", "南北アメリカ"]
         existing_areas = raw_df["area"].unique().tolist()
-        # 定義にないものがCSVにあった場合も考慮してソート
         sorted_areas = [a for a in area_order if a in existing_areas] + sorted([a for a in existing_areas if a not in area_order])
-        
         areas = ["すべて"] + sorted_areas
         current_filter = st.sidebar.selectbox("地域（Area）を選択", areas)
         df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"] == current_filter]
@@ -146,7 +142,6 @@ elif subject == "英単語":
     else:
         df = raw_df
 
-# --- クイズ開始・リセット判定 ---
 if ("quiz_subject" not in st.session_state or 
     st.session_state.quiz_subject != subject or 
     st.session_state.quiz_filter != current_filter):
@@ -156,12 +151,9 @@ if ("quiz_subject" not in st.session_state or
 active_df = st.session_state.df
 idx = st.session_state.idx
 
-# 終了判定
 if idx >= len(active_df):
-    st.balloons()
-    st.success("この範囲の全問が終了しました！")
-    if st.button("最初から解き直す"): 
-        clear_quiz_state(); st.rerun()
+    st.balloons(); st.success("この範囲の全問が終了しました！")
+    if st.button("最初から解き直す"): clear_quiz_state(); st.rerun()
     st.stop()
 
 row = active_df.iloc[idx]
@@ -169,58 +161,50 @@ st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
 # ==================================================
-# 歴史セクション（日本史・世界史）
+# メインセクション
 # ==================================================
 if subject in ["日本史一問一答", "世界史一問一答"]:
     q = str(row["question"])
     ans_raw = str(row["answer"])
     
-    # 科目によって色を変える
-    card_class = "blue" if subject == "日本史一問一答" else "green"
+    card_class = "pink-card" if subject == "日本史一問一答" else "cyan-card"
     st.markdown(f'<div class="card {card_class}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 注意事項の表示（濃い黒）
+    # 共通の注意事項
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
     
+    # 科目別の案内メッセージ（修正箇所）
     if subject == "日本史一問一答":
         st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div class="guide-text">💡 世界史一問一答です。サイドバーから地域を選択してください。</div>', unsafe_allow_html=True)
+        st.markdown('<div class="guide-text">💡 世界史一問一答です。サイドバーで地域を選択できます。まずはナポレオンまで。</div>', unsafe_allow_html=True)
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
-    
-    if st.button("解答する"):
-        st.session_state.answered = True
+    if st.button("解答する"): st.session_state.answered = True
 
     if st.session_state.answered:
         user_clean = user_input.replace(" ", "").replace("　", "")
         valid_answers = [a.strip().replace(" ", "").replace("　", "") for a in ans_raw.split("/")]
-
         if user_clean in valid_answers:
             st.success("✨ 正解！")
             if "/" in ans_raw: st.info(f"正解パターン: {ans_raw.replace('/', ' , ')}")
         else:
             st.error(f"❌ 不正解...")
             st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
-        
-        if st.button("次の問題へ"):
-            next_q(); st.rerun()
+        if st.button("次の問題へ"): next_q(); st.rerun()
 
-# ==================================================
-# 英単語セクション
-# ==================================================
 else:
+    # 英単語
     word = str(row["question"])
     sentence = str(row["sentence"])
-    sentence_html = re.sub(re.escape(word), f"<span style='color:#e53935;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
+    sentence_html = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
     
-    st.markdown(f'<div class="card red">{sentence_html}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="card orange-card">{sentence_html}</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
-        # 選択肢は先頭の1つだけを表示
         correct = ans_list[0] 
         dummies = [x.strip() for x in str(row["dummy_pool"]).split(",") if x.strip()]
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
@@ -238,6 +222,4 @@ else:
         if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
         else: st.error(f"❌ 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        
-        if st.button("次の問題へ"): 
-            next_q(); st.rerun()
+        if st.button("次の問題へ"): next_q(); st.rerun()
