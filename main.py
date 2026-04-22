@@ -7,7 +7,7 @@ import re
 # 基本設定
 # ==================================================
 st.set_page_config(
-    page_title="文系科目は、ゆずれない",
+    page_title="文系科目は, ゆずれない",
     page_icon="🚀",
     layout="centered",
     initial_sidebar_state="expanded"
@@ -24,14 +24,12 @@ st.markdown("""
 .main-title{ text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }
 .sub-title{ text-align:center; color:#666; font-size:0.9rem; margin-bottom:1.5rem; }
 
-/* 問題カードの設定 */
 .card{ 
     background:white; padding:22px; border-radius:18px; 
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
 
-/* 科目別カラー */
 .orange-card { border-left: 8px solid #ff9800; } /* 英単語 */
 .pink-card   { border-left: 8px solid #e91e63; } /* 日本史 */
 .cyan-card   { border-left: 8px solid #00bcd4; } /* 世界史 */
@@ -41,7 +39,6 @@ st.markdown("""
     font-size:0.95rem; font-weight:700; min-height:60px; 
 }
 
-/* 注意書き・案内文 */
 .guide-text { 
     color: #222222 !important; 
     font-size: 0.88rem; 
@@ -57,7 +54,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🚀 文系科目は, ゆずれない</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -161,7 +158,7 @@ st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
 # ==================================================
-# メインセクション
+# 歴史セクション
 # ==================================================
 if subject in ["日本史一問一答", "世界史一問一答"]:
     q = str(row["question"])
@@ -170,11 +167,9 @@ if subject in ["日本史一問一答", "世界史一問一答"]:
     card_class = "pink-card" if subject == "日本史一問一答" else "cyan-card"
     st.markdown(f'<div class="card {card_class}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 共通の注意事項
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
     
-    # 科目別の案内メッセージ（修正箇所）
     if subject == "日本史一問一答":
         st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
     else:
@@ -194,8 +189,10 @@ if subject in ["日本史一問一答", "世界史一問一答"]:
             st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
         if st.button("次の問題へ"): next_q(); st.rerun()
 
+# ==================================================
+# 英単語セクション（修正版ロジック）
+# ==================================================
 else:
-    # 英単語
     word = str(row["question"])
     sentence = str(row["sentence"])
     sentence_html = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
@@ -204,11 +201,21 @@ else:
     st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
-        ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
-        correct = ans_list[0] 
-        dummies = [x.strip() for x in str(row["dummy_pool"]).split(",") if x.strip()]
-        choices = [correct] + random.sample(dummies, min(3, len(dummies)))
+        # --- 【修正点】複数の区切り文字に対応し, 確実に先頭の意味を1つだけ取り出す ---
+        all_ans_str = str(row["all_answers"])
+        # カンマ(,) 読点(、) セミコロン(;) で分割し, 最初の要素の空白を除去
+        ans_list = [x.strip() for x in re.split(r'[,、;]', all_ans_str) if x.strip()]
+        correct = ans_list[0] if ans_list else all_ans_str.strip()
+        
+        # ダミープールも同様にクリーンアップ
+        dummies_raw = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip()]
+        # 正解と同じものが混じらないように除外
+        dummies_raw = [d for d in dummies_raw if d != correct]
+        
+        # 選択肢を作成（4択）
+        choices = [correct] + random.sample(dummies_raw, min(3, len(dummies_raw)))
         random.shuffle(choices)
+        
         st.session_state.choices, st.session_state.correct = choices, correct
 
     cols = st.columns(2)
@@ -221,5 +228,7 @@ else:
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
         else: st.error(f"❌ 正解：{st.session_state.correct}")
+        
+        # 解説では本来のすべての意味を表示
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
         if st.button("次の問題へ"): next_q(); st.rerun()
