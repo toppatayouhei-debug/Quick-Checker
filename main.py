@@ -48,17 +48,16 @@ st.markdown('<div class="sub-title">英語・日本史 統合学習ツール</di
 def load_csv(subject):
     files = {
         "英単語": "final_tango_list.csv", 
-        "日本史一問一答": "nihonshi.csv"
+        "日本史一問一答": "jhcheck.csv"  # ファイル名を修正しました
     }
     try:
-        # すべてヘッダー（1行目）ありのCSVとして読み込み
         return pd.read_csv(files[subject], encoding="utf-8-sig")
     except Exception as e:
         st.error(f"CSV読み込み失敗: {e}")
         return None
 
 # ==================================================
-# 状態管理（セッション管理）
+# 状態管理
 # ==================================================
 def clear_quiz_state():
     for key in ["quiz_subject", "quiz_filter", "df", "idx", "answered", "choices", "correct", "selected"]:
@@ -67,7 +66,6 @@ def clear_quiz_state():
 def start_quiz(df, subject, filter_val):
     st.session_state.quiz_subject = subject
     st.session_state.quiz_filter = filter_val
-    # 問題をランダムにシャッフル
     st.session_state.df = df.sample(frac=1).reset_index(drop=True)
     st.session_state.idx = 0
     st.session_state.answered = False
@@ -92,7 +90,6 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# 日本史：Chapter（章）による絞り込み
 if subject == "日本史一問一答":
     if "chapter" in raw_df.columns:
         chapters = ["すべて"] + sorted(raw_df["chapter"].unique().tolist())
@@ -102,7 +99,6 @@ if subject == "日本史一問一答":
         df = raw_df
         st.sidebar.warning("CSVに 'chapter' 列が見つかりません。")
 
-# 英単語：Levelによる絞り込み
 elif subject == "英単語":
     if "level" in raw_df.columns:
         levels = ["All"] + sorted(raw_df["level"].astype(str).unique().tolist())
@@ -111,7 +107,6 @@ elif subject == "英単語":
     else:
         df = raw_df
 
-# 科目や範囲が変更されたらリセット
 if ("quiz_subject" not in st.session_state or 
     st.session_state.quiz_subject != subject or 
     st.session_state.quiz_filter != current_filter):
@@ -121,7 +116,6 @@ if ("quiz_subject" not in st.session_state or
 active_df = st.session_state.df
 idx = st.session_state.idx
 
-# 全問終了判定
 if idx >= len(active_df):
     st.balloons()
     st.success("この範囲の全問が終了しました！")
@@ -135,24 +129,21 @@ st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
 # ==================================================
-# 日本史セクション（記述式・別解対応）
+# 日本史セクション
 # ==================================================
 if subject == "日本史一問一答":
     q = str(row["question"])
-    ans_raw = str(row["answer"]) # 「/」で区切られた正解データ
+    ans_raw = str(row["answer"])
     
     st.markdown(f'<div class="card blue"><b>{q}</b></div>', unsafe_allow_html=True)
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
     
-    # 解答ボタンまたはEnterキーでの判定
     if st.button("解答する"):
         st.session_state.answered = True
 
     if st.session_state.answered:
-        # 判定用クレンジング（空白を削除）
         user_clean = user_input.replace(" ", "").replace("　", "")
-        # スラッシュで区切って別解リストを作成
         valid_answers = [a.strip().replace(" ", "").replace("　", "") for a in ans_raw.split("/")]
 
         if user_clean in valid_answers:
@@ -168,19 +159,18 @@ if subject == "日本史一問一答":
             st.rerun()
 
 # ==================================================
-# 英単語セクション（選択肢式）
+# 英単語セクション
 # ==================================================
 else:
     word = str(row["question"])
     sentence = str(row["sentence"])
-    # 例文中の英単語を強調
     sentence_html = re.sub(re.escape(word), f"<span style='color:#e53935;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
     
     st.markdown(f'<div class="card red">{sentence_html}</div>', unsafe_allow_html=True)
     
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
-        correct = random.choice(ans_list) # 複数意味がある場合は一つをランダムに
+        correct = random.choice(ans_list)
         dummies = [x.strip() for x in str(row["dummy_pool"]).split(",") if x.strip()]
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
@@ -194,13 +184,7 @@ else:
                 st.rerun()
 
     if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct: 
-            st.success("✨ 正解！")
-        else: 
-            st.error(f"❌ 正解：{st.session_state.correct}")
-        
+        if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
+        else: st.error(f"❌ 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        
-        if st.button("次の問題へ"): 
-            next_q()
-            st.rerun()
+        if st.button("次の問題へ"): next_q(); st.rerun()
