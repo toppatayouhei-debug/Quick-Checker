@@ -14,12 +14,11 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（レイアウト調整・デザイン）
+# CSS（レイアウト・視認性調整）
 # ==================================================
 st.markdown("""
 <style>
 .stApp{ background:#f7f8fc; }
-/* タイトル部分が隠れないよう、上部に余白を追加 */
 .block-container{ max-width:720px; padding-top:4rem; } 
 
 .main-title{ text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }
@@ -29,15 +28,20 @@ st.markdown("""
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
-.red{border-left:8px solid #e53935;}   /* 英単語用 */
-.blue{border-left:8px solid #1565c0;}  /* 日本史用 */
+.red{border-left:8px solid #e53935;}
+.blue{border-left:8px solid #1565c0;}
 
 .stButton button{ 
     width:100%; border-radius:14px; padding:0.8rem; 
     font-size:0.95rem; font-weight:700; min-height:60px; 
 }
-/* 注意書きのスタイル微調整 */
-.guide-text { margin-bottom: 0.5rem; color: #555; font-size: 0.85rem; }
+
+.guide-text { 
+    color: #222222 !important; 
+    font-size: 0.88rem; 
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
 
 @media (max-width:768px){ .main-title{font-size:1.55rem;} .card{padding:16px;font-size:0.98rem;} .block-container{ padding-top:3rem; } }
 </style>
@@ -95,7 +99,6 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# 日本史：Chapter数値順ソート
 if subject == "日本史一問一答":
     if "chapter" in raw_df.columns:
         raw_chapters = raw_df["chapter"].unique().tolist()
@@ -146,10 +149,8 @@ if subject == "日本史一問一答":
     ans_raw = str(row["answer"])
     
     st.markdown(f'<div class="card blue"><b>{q}</b></div>', unsafe_allow_html=True)
-    
-    # 解答入力画面に注意事項と案内を表示
-    st.caption("⚠️ カタカナの人名は姓と名の間にスペースや記号を加えずに解答してください。")
-    st.caption("💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。")
+    st.markdown('<div class="guide-text">⚠️ カタカナの人名は姓と名の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
     
@@ -179,13 +180,14 @@ else:
     sentence_html = re.sub(re.escape(word), f"<span style='color:#e53935;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
     
     st.markdown(f'<div class="card red">{sentence_html}</div>', unsafe_allow_html=True)
-    
-    # 解答（ボタン）選択画面に案内を表示
-    st.caption("💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。")
+    st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
+        # 全ての答えをリスト化
         ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
-        correct = random.choice(ans_list)
+        # 【修正】選択肢には先頭の1つだけを使用する
+        correct = ans_list[0] 
+        
         dummies = [x.strip() for x in str(row["dummy_pool"]).split(",") if x.strip()]
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
@@ -202,6 +204,7 @@ else:
         if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
         else: st.error(f"❌ 正解：{st.session_state.correct}")
         
+        # 解説画面では全ての意味を表示
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
         
         if st.button("次の問題へ"): 
