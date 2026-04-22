@@ -54,7 +54,6 @@ def load_csv(subject):
     }
     try:
         df = pd.read_csv(files[subject], encoding="utf-8-sig")
-        # 読み込み時に不要な空白行（全てNaN）があれば削除
         return df.dropna(how='all')
     except Exception as e:
         st.error(f"CSV読み込み失敗: {e}")
@@ -96,7 +95,6 @@ current_filter = "All"
 
 if subject == "日本史一問一答":
     if "chapter" in raw_df.columns:
-        # NaNを除去してリスト化
         raw_chapters = [str(x) for x in raw_df["chapter"].dropna().unique()]
         def extract_number(text):
             num = re.search(r'\d+', text)
@@ -110,15 +108,10 @@ if subject == "日本史一問一答":
 
 elif subject == "世界史一問一答":
     if "area" in raw_df.columns:
-        # --- エラー修正箇所 ---
-        # NaNを"未分類"に置き換えて文字列としてリスト化
         existing_areas = [str(x) for x in raw_df["area"].fillna("未分類").unique()]
         area_order = ["アフリカ", "東アジア", "中央アジア", "東南アジア", "南アジア", "西アジア・北アフリカ", "ヨーロッパ", "南北アメリカ"]
-        
-        # area_orderにあるものを優先、それ以外（未分類含む）を後ろに回してソート
         sorted_areas = [a for a in area_order if a in existing_areas] + \
                        sorted([a for a in existing_areas if a not in area_order])
-        
         areas = ["すべて"] + sorted_areas
         current_filter = st.sidebar.selectbox("地域（Area）を選択", areas)
         df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
@@ -160,8 +153,12 @@ if subject in ["日本史一問一答", "世界史一問一答"]:
     st.markdown(f'<div class="card {card_class}"><b>{q}</b></div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
-    msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。" if subject == "日本史一問一答" else "💡 世界史一問一答です。サイドバーで地域を選択できます。まずはナポレオンまで。"
-    st.markdown(f'<div class="guide-text">{msg}</div>', unsafe_allow_html=True)
+    
+    # 世界史の説明文を修正
+    if subject == "日本史一問一答":
+        st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
+    else:
+        st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。</div>', unsafe_allow_html=True)
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
     if st.button("解答する"): st.session_state.answered = True
@@ -181,7 +178,6 @@ else:
     st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
-        # 分割・クリーンアップの強化
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"])) if x.strip()]
         correct = ans_list[0] if ans_list else str(row["all_answers"]).strip()
         dummies = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip() and x.strip() != correct]
