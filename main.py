@@ -8,7 +8,7 @@ import re
 # ==================================================
 st.set_page_config(
     page_title="文系科目は、ゆずれない",
-    page_icon="🚀",
+    page_icon="🔥",
     layout="centered",
     initial_sidebar_state="expanded"
 )
@@ -27,8 +27,9 @@ st.markdown("""
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
-.red{border-left:8px solid #e53935;}
-.blue{border-left:8px solid #1565c0;}
+.red{border-left:8px solid #e53935;}   /* 英単語用 */
+.blue{border-left:8px solid #1565c0;}  /* 日本史用 */
+
 .stButton button{ 
     width:100%; border-radius:14px; padding:0.8rem; 
     font-size:0.95rem; font-weight:700; min-height:60px; 
@@ -89,7 +90,7 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# 日本史：Chapter選択（シンプルに第1章などの数値を優先してソート）
+# 日本史：Chapter数値順ソート
 if subject == "日本史一問一答":
     if "chapter" in raw_df.columns:
         raw_chapters = raw_df["chapter"].unique().tolist()
@@ -97,14 +98,12 @@ if subject == "日本史一問一答":
             num = re.search(r'\d+', str(text))
             return int(num.group()) if num else 999
         sorted_chapters = sorted(raw_chapters, key=extract_number)
-        
         chapters = ["すべて"] + sorted_chapters
         current_filter = st.sidebar.selectbox("章（Chapter）を選択", chapters)
         df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"] == current_filter]
     else:
         df = raw_df
 
-# 英単語：Level選択
 elif subject == "英単語":
     if "level" in raw_df.columns:
         levels = ["All"] + sorted(raw_df["level"].astype(str).unique().tolist())
@@ -113,7 +112,6 @@ elif subject == "英単語":
     else:
         df = raw_df
 
-# 状態リセット判定
 if ("quiz_subject" not in st.session_state or 
     st.session_state.quiz_subject != subject or 
     st.session_state.quiz_filter != current_filter):
@@ -161,6 +159,7 @@ if subject == "日本史一問一答":
             st.error(f"❌ 不正解...")
             st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
         
+        # --- 追加した文言 ---
         st.caption("💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。")
         
         if st.button("次の問題へ"):
