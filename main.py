@@ -36,6 +36,7 @@ st.markdown("""
     font-size:0.95rem; font-weight:700; min-height:60px; 
 }
 
+/* 注意書き・案内文の文字を濃く設定 */
 .guide-text { 
     color: #222222 !important; 
     font-size: 0.88rem; 
@@ -149,7 +150,10 @@ if subject == "日本史一問一答":
     ans_raw = str(row["answer"])
     
     st.markdown(f'<div class="card blue"><b>{q}</b></div>', unsafe_allow_html=True)
+    
+    # 日本史の注意事項を追加
     st.markdown('<div class="guide-text">⚠️ カタカナの人名は姓と名の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
@@ -183,9 +187,7 @@ else:
     st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
-        # 全ての答えをリスト化
         ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
-        # 【修正】選択肢には先頭の1つだけを使用する
         correct = ans_list[0] 
         
         dummies = [x.strip() for x in str(row["dummy_pool"]).split(",") if x.strip()]
@@ -204,7 +206,6 @@ else:
         if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
         else: st.error(f"❌ 正解：{st.session_state.correct}")
         
-        # 解説画面では全ての意味を表示
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
         
         if st.button("次の問題へ"): 
