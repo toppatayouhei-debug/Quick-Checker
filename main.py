@@ -8,7 +8,7 @@ import re
 # ==================================================
 st.set_page_config(
     page_title="文系科目は、ゆずれない",
-    page_icon="🔥",
+    page_icon="🚀",
     layout="centered",
     initial_sidebar_state="expanded"
 )
