@@ -14,14 +14,16 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（学習に集中できるモダンなデザイン）
+# CSS（レイアウト調整・デザイン）
 # ==================================================
 st.markdown("""
 <style>
 .stApp{ background:#f7f8fc; }
-.block-container{ max-width:720px; padding-top:1rem; }
+/* タイトル部分が隠れないよう、上部に余白を追加 */
+.block-container{ max-width:720px; padding-top:4rem; } 
+
 .main-title{ text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }
-.sub-title{ text-align:center; color:#666; font-size:0.9rem; margin-bottom:1rem; }
+.sub-title{ text-align:center; color:#666; font-size:0.9rem; margin-bottom:1.5rem; }
 .card{ 
     background:white; padding:22px; border-radius:18px; 
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
@@ -34,11 +36,14 @@ st.markdown("""
     width:100%; border-radius:14px; padding:0.8rem; 
     font-size:0.95rem; font-weight:700; min-height:60px; 
 }
-@media (max-width:768px){ .main-title{font-size:1.55rem;} .card{padding:16px;font-size:0.98rem;} }
+/* 注意書きのスタイル微調整 */
+.guide-text { margin-bottom: 0.5rem; color: #555; font-size: 0.85rem; }
+
+@media (max-width:768px){ .main-title{font-size:1.55rem;} .card{padding:16px;font-size:0.98rem;} .block-container{ padding-top:3rem; } }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-title">🔥 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・日本史 統合学習ツール</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -57,7 +62,7 @@ def load_csv(subject):
         return None
 
 # ==================================================
-# 状態管理（セッション管理）
+# 状態管理
 # ==================================================
 def clear_quiz_state():
     for key in ["quiz_subject", "quiz_filter", "df", "idx", "answered", "choices", "correct", "selected"]:
@@ -141,7 +146,10 @@ if subject == "日本史一問一答":
     ans_raw = str(row["answer"])
     
     st.markdown(f'<div class="card blue"><b>{q}</b></div>', unsafe_allow_html=True)
+    
+    # 解答入力画面に注意事項と案内を表示
     st.caption("⚠️ カタカナの人名は姓と名の間にスペースや記号を加えずに解答してください。")
+    st.caption("💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。")
     
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
     
@@ -159,9 +167,6 @@ if subject == "日本史一問一答":
             st.error(f"❌ 不正解...")
             st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
         
-        # --- 追加した文言 ---
-        st.caption("💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。")
-        
         if st.button("次の問題へ"):
             next_q(); st.rerun()
 
@@ -175,6 +180,9 @@ else:
     
     st.markdown(f'<div class="card red">{sentence_html}</div>', unsafe_allow_html=True)
     
+    # 解答（ボタン）選択画面に案内を表示
+    st.caption("💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。")
+
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in str(row["all_answers"]).split(",") if x.strip()]
         correct = random.choice(ans_list)
@@ -195,7 +203,6 @@ else:
         else: st.error(f"❌ 正解：{st.session_state.correct}")
         
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        st.caption("💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。")
         
         if st.button("次の問題へ"): 
             next_q(); st.rerun()
