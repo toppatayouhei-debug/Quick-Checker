@@ -14,91 +14,6 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（カラー・ボタンデザイン完全統一版）
-# ==================================================
-st.markdown("""
-<style>
-.stApp{ background:#f7f8fc; }
-.block-container{ max-width:720px; padding-top:4rem; } 
-.main-title{ text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }
-.sub-title{ text-align:center; color:#666; font-size:0.9rem; margin-bottom:1.5rem; }
-
-/* カードデザイン */
-.card{ 
-    background:white; padding:22px; border-radius:18px; 
-    box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
-    line-height:1.7; font-size:1.05rem; color:#111; 
-}
-.exp-card {
-    background: #fff9db; padding: 18px; border-radius: 14px; 
-    border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #444;
-}
-.pink-card { border-left: 8px solid #e91e63; }
-.orange-card { border-left: 8px solid #ff9800; }
-.cyan-card { border-left: 8px solid #00bcd4; }
-
-/* ボタン共通デザイン */
-.stButton button {
-    width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800;
-    transition: all 0.2s ease; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* 日本史正誤問題用の色分け（◯×） */
-div[data-testid="stHorizontalBlock"] div:nth-child(1) button:has(div:contains("⭕️")) {
-    background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important;
-}
-div[data-testid="stHorizontalBlock"] div:nth-child(2) button:has(div:contains("❌")) {
-    background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important;
-}
-
-/* 英単語・一問一答用のオレンジ/共通ボタン設定（強制上書き） */
-/* Primary(青)とSecondary(白)の両方をオレンジの枠線スタイルへ */
-button[kind="primary"], button[kind="secondary"] {
-    background-color: #fff4e6 !important;
-    color: #ff9800 !important;
-    border: 2px solid #ff9800 !important;
-}
-button[kind="primary"]:hover, button[kind="secondary"]:hover {
-    background-color: #ff9800 !important;
-    color: white !important;
-}
-
-.guide-text { color: #222222 !important; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; }
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
-
-# ==================================================
-# 正誤問題用の章タイトル定義
-# ==================================================
-SEIGO_TITLES = {
-    "第1章": "日本文化のあけぼの",
-    "第2章": "古墳とヤマト政権",
-    "第3章": "律令国家の形成",
-    "第4章": "貴族政治の展開",
-}
-
-# ==================================================
-# CSV読み込み
-# ==================================================
-@st.cache_data
-def load_csv(subject):
-    files = {
-        "英単語": "final_tango_list.csv", 
-        "日本史一問一答": "jhcheck.csv",
-        "日本史正誤問題攻略": "seigo_check.csv",
-        "世界史一問一答": "whcheck.csv" 
-    }
-    try:
-        df = pd.read_csv(files[subject], encoding="utf-8-sig")
-        return df.dropna(how='all')
-    except Exception as e:
-        st.error(f"CSV読み込み失敗: {e}")
-        return None
-
-# ==================================================
 # 状態管理
 # ==================================================
 def clear_quiz_state():
@@ -119,9 +34,114 @@ def next_q():
         if key in st.session_state: del st.session_state[key]
 
 # ==================================================
-# メインロジック
+# 科目選択（CSS適用のために先に取得）
 # ==================================================
 subject = st.selectbox("学習する科目を選択", ["選択してください", "英単語", "日本史一問一答", "日本史正誤問題攻略", "世界史一問一答"])
+
+# CSS用のクラス名決定
+subject_class = "none"
+if subject == "英単語": subject_class = "tango"
+elif "日本史" in subject: subject_class = "nihonshi"
+elif "世界史" in subject: subject_class = "sekaishi"
+
+# ==================================================
+# CSS（科目別カラー設定）
+# ==================================================
+st.markdown(f"""
+<style>
+.stApp{{ background:#f7f8fc; }}
+.block-container{{ max-width:720px; padding-top:4rem; }} 
+.main-title{{ text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }}
+.sub-title{{ text-align:center; color:#666; font-size:0.9rem; margin-bottom:1.5rem; }}
+
+/* カード共通デザイン */
+.card{{ 
+    background:white; padding:22px; border-radius:18px; 
+    box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
+    line-height:1.7; font-size:1.05rem; color:#111; 
+}}
+.exp-card {{
+    background: #fff9db; padding: 18px; border-radius: 14px; 
+    border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #444;
+}}
+.pink-card {{ border-left: 8px solid #e91e63; }}
+.orange-card {{ border-left: 8px solid #ff9800; }}
+.cyan-card {{ border-left: 8px solid #00bcd4; }}
+
+/* ボタン共通デザイン */
+.stButton button {{
+    width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800;
+    transition: all 0.2s ease; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}}
+
+/* --- 科目別のボタン配色 --- */
+
+/* 1. 日本史正誤問題（◯×は専用色に固定） */
+div[data-testid="stHorizontalBlock"] div:nth-child(1) button:has(div:contains("⭕️")) {{
+    background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important;
+}}
+div[data-testid="stHorizontalBlock"] div:nth-child(2) button:has(div:contains("❌")) {{
+    background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important;
+}}
+
+/* 2. 英単語（オレンジ） */
+.{subject_class} button[kind="secondary"], .{subject_class} button[kind="primary"] {{
+    background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important;
+}}
+.{subject_class} button:hover {{
+    background-color: #ff9800 !important; color: white !important;
+}}
+
+/* 3. 世界史（シアン） */
+.sekaishi button[kind="secondary"], .sekaishi button[kind="primary"] {{
+    background-color: #e3f9fb !important; color: #00bcd4 !important; border: 2px solid #00bcd4 !important;
+}}
+.sekaishi button:hover {{
+    background-color: #00bcd4 !important; color: white !important;
+}}
+
+/* 4. 日本史一問一答（ピンク）※正誤問題以外の次へ進むボタンなど */
+.nihonshi button[kind="secondary"], .nihonshi button[kind="primary"] {{
+    background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important;
+}}
+.nihonshi button:hover {{
+    background-color: #e91e63 !important; color: white !important;
+}}
+
+.guide-text {{ color: #222222 !important; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; }}
+</style>
+""", unsafe_allow_html=True)
+
+# アプリ全体を科目クラスで包む
+st.markdown(f'<div class="{subject_class}">', unsafe_allow_html=True)
+
+st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
+
+# ==================================================
+# 定義・データ読み込み
+# ==================================================
+SEIGO_TITLES = {
+    "第1章": "日本文化のあけぼの",
+    "第2章": "古墳とヤマト政権",
+    "第3章": "律令国家の形成",
+    "第4章": "貴族政治の展開",
+}
+
+@st.cache_data
+def load_csv(subject):
+    files = {
+        "英単語": "final_tango_list.csv", 
+        "日本史一問一答": "jhcheck.csv",
+        "日本史正誤問題攻略": "seigo_check.csv",
+        "世界史一問一答": "whcheck.csv" 
+    }
+    try:
+        df = pd.read_csv(files[subject], encoding="utf-8-sig")
+        return df.dropna(how='all')
+    except Exception as e:
+        st.error(f"CSV読み込み失敗: {e}")
+        return None
 
 if subject == "選択してください":
     st.info("科目を選択して学習を開始しましょう！")
@@ -132,50 +152,38 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# --- サイドバー・フィルタリング ---
+# --- サイドバーフィルタリング ---
 if subject == "英単語":
     st.sidebar.header("📏 レベル選択")
-    # 指定された順番に並び替え
-    level_order = ["All", "Fundamental", "Essential", "Advanced", "Final"]
-    # CSVに存在するレベルのみを抽出（順序維持）
-    existing_levels = raw_df["level"].dropna().unique().tolist()
-    final_levels = [lvl for lvl in level_order if lvl == "All" or lvl in existing_levels]
-    
-    current_filter = st.sidebar.radio("学習するレベルを選択してください", final_levels)
+    target_order = ["All", "Fundamental", "Essential", "Advanced", "Final"]
+    actual_levels = raw_df["level"].astype(str).unique().tolist()
+    final_menu = [opt for opt in target_order if opt == "All" or opt in actual_levels]
+    current_filter = st.sidebar.radio("学習レベル", final_menu)
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str) == current_filter]
 
 elif "chapter" in raw_df.columns:
     st.sidebar.header("🎯 範囲選択")
     raw_chapters = [str(x) for x in raw_df["chapter"].dropna().unique()]
-    
     def extract_number(text):
         num = re.search(r'\d+', text)
         return int(num.group()) if num else 999
     sorted_chapter_ids = sorted(raw_chapters, key=extract_number)
-    
     chapter_options = ["すべてを表示"]
     if subject == "日本史正誤問題攻略":
         for cid in sorted_chapter_ids:
-            title = SEIGO_TITLES.get(cid, "")
-            chapter_options.append(f"{cid} {title}".strip())
+            chapter_options.append(f"{cid} {SEIGO_TITLES.get(cid, '')}".strip())
     else:
         chapter_options.extend(sorted_chapter_ids)
-    
-    selected_option = st.sidebar.radio("学習する範囲を選択してください", chapter_options)
-    
-    if selected_option == "すべてを表示":
-        current_filter = "すべて"
-        df = raw_df
-    else:
-        current_filter = selected_option.split(" ")[0]
-        df = raw_df[raw_df["chapter"].astype(str) == current_filter]
+    selected_option = st.sidebar.radio("章を選択", chapter_options)
+    current_filter = selected_option.split(" ")[0] if selected_option != "すべてを表示" else "すべて"
+    df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str) == current_filter]
+
+elif subject == "世界史一問一答":
+    areas = ["すべて"] + sorted([str(x) for x in raw_df["area"].fillna("未分類").unique()])
+    current_filter = st.sidebar.selectbox("地域を選択", areas)
+    df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
 else:
-    if subject == "世界史一問一答":
-        areas = ["すべて"] + sorted([str(x) for x in raw_df["area"].fillna("未分類").unique()])
-        current_filter = st.sidebar.selectbox("地域を選択", areas)
-        df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
-    else:
-        df = raw_df
+    df = raw_df
 
 # クイズ開始判定
 if ("quiz_subject" not in st.session_state or 
@@ -188,45 +196,35 @@ active_df = st.session_state.df
 idx = st.session_state.idx
 
 if idx >= len(active_df):
-    st.balloons()
-    st.success("この範囲の全問が終了しました！")
-    if st.button("最初から解き直す"):
-        clear_quiz_state()
-        st.rerun()
+    st.balloons(); st.success("全問終了！")
+    if st.button("もう一度解く"): clear_quiz_state(); st.rerun()
     st.stop()
 
 row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
-st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
+st.caption(f"{idx+1} / {len(active_df)} 問目")
 
 # ==================================================
-# クイズ表示
+# 各科目のクイズ表示
 # ==================================================
 
 if subject == "日本史正誤問題攻略":
-    q, ans_raw = str(row["question"]), str(row["answer"]).strip()
+    q, ans = str(row["question"]), str(row["answer"]).strip()
     st.info("📖 『山川 日本史探究』（教科書）の本文をもとにした正誤問題です。")
     st.markdown(f'<div class="card pink-card"><b>{q}</b></div>', unsafe_allow_html=True)
-    
     col_o, col_x = st.columns(2)
     with col_o:
         if st.button("⭕️ 正しい", key=f"o_{idx}", disabled=st.session_state.answered):
-            st.session_state.user_choice, st.session_state.answered = "◯", True
-            st.rerun()
+            st.session_state.user_choice, st.session_state.answered = "◯", True; st.rerun()
     with col_x:
         if st.button("❌ 誤り", key=f"x_{idx}", disabled=st.session_state.answered):
-            st.session_state.user_choice, st.session_state.answered = "×", True
-            st.rerun()
-
+            st.session_state.user_choice, st.session_state.answered = "×", True; st.rerun()
     if st.session_state.answered:
-        if st.session_state.user_choice == ans_raw:
-            st.success("### ✨ 正解！")
-        else:
-            st.error(f"### ❌ 不正解... 正解は【 {ans_raw} 】")
+        if st.session_state.user_choice == ans: st.success("### ✨ 正解！")
+        else: st.error(f"### ❌ 不正解... 正解は【 {ans} 】")
         if "explanation" in row and pd.notna(row["explanation"]):
             st.markdown(f'<div class="exp-card"><b>💡 解説:</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
-        if st.button("次の問題へ進む ➔"):
-            next_q(); st.rerun()
+        if st.button("次の問題へ進む ➔"): next_q(); st.rerun()
 
 elif subject in ["日本史一問一答", "世界史一問一答"]:
     q, ans_raw = str(row["question"]), str(row["answer"])
@@ -238,11 +236,10 @@ elif subject in ["日本史一問一答", "世界史一問一答"]:
         user_clean = user_input.replace(" ", "").replace("　", "")
         valid_answers = [a.strip().replace(" ", "").replace("　", "") for a in ans_raw.split("/")]
         if user_clean in valid_answers: st.success("✨ 正解！")
-        else: st.error(f"❌ 不正解... 正解：{ans_raw}")
+        else: st.error(f"❌ 正解：{ans_raw}")
         if "explanation" in row and pd.notna(row["explanation"]):
             st.markdown(f'<div class="exp-card"><b>💡 解説:</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
-        if st.button("次の問題へ"):
-            next_q(); st.rerun()
+        if st.button("次の問題へ"): next_q(); st.rerun()
 
 else: # 英単語
     word, sentence = str(row["question"]), str(row["sentence"])
@@ -255,17 +252,15 @@ else: # 英単語
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
         st.session_state.choices, st.session_state.correct = choices, correct
-    
     cols = st.columns(2)
     for i, c in enumerate(st.session_state.choices):
         with cols[i % 2]:
-            # すべてオレンジ色にするためキーを固定せず、CSSで強制上書き
             if st.button(c, key=f"btn_{i}", disabled=st.session_state.answered):
                 st.session_state.selected, st.session_state.answered = c, True; st.rerun()
-                
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("### ✨ 正解！")
         else: st.error(f"### ❌ 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        if st.button("次の問題へ進む ➔"):
-            next_q(); st.rerun()
+        if st.button("次の問題へ進む ➔"): next_q(); st.rerun()
+
+st.markdown('</div>', unsafe_allow_html=True) # クラスの閉じタグ
