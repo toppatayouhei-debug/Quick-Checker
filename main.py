@@ -43,7 +43,6 @@ def reset_quiz_engine():
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
 
-# どの状態でも表示される基本の注意書き
 st.info("""
 **【学習の進め方】**
 1. 学習したい科目を選択してください。
@@ -52,7 +51,6 @@ st.info("""
 
 subject = st.selectbox("学習する科目を選択", ["選択してください", "システム英単語", "日本史一問一答", "日本史正誤問題攻略", "世界史一問一答"])
 
-# 未選択時はここでストップ
 if subject == "選択してください":
     st.stop()
 
@@ -74,7 +72,6 @@ def load_csv(name):
 
 raw_df = load_csv(subject)
 
-# サイドバーによるフィルタリング
 current_filter = "All"
 if subject == "システム英単語" and not raw_df.empty:
     st.sidebar.header("📏 レベル選択")
@@ -95,7 +92,6 @@ elif "chapter" in raw_df.columns and not raw_df.empty:
 else:
     df = raw_df
 
-# 科目やフィルタが変わった際のリセット処理
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
     st.session_state.quiz_subject = subject
@@ -123,7 +119,6 @@ row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目")
 
-# ボタンの色分け設定
 btn_class = "nihonshi-btn" if "日本史" in subject else "sekaishi-btn"
 if subject == "システム英単語": btn_class = "tango-btn"
 
@@ -161,6 +156,9 @@ if subject == "システム英単語":
 
 # --- B. 日本史正誤問題の表示 ---
 elif subject == "日本史正誤問題攻略":
+    # 正誤問題用の注意書きを追加
+    st.warning("⚠️ 山川『日本史探究』（教科書）の本文を使った正誤問題です。")
+    
     q, ans = str(row["question"]), str(row["answer"]).strip()
     st.markdown(f'<div class="card pink-card"><b>{q}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
@@ -183,7 +181,6 @@ else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     st.markdown(f'<div class="card {"pink-card" if "日本史" in subject else "cyan-card"}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 記述問題用の詳細な注意書き
     st.warning("""
     **【重要語句Check Listの問題です】**
     * 人名は姓と名の間に記号やスペースを入れないでください。
