@@ -27,7 +27,6 @@ st.markdown("""
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
-/* 解説用カードのスタイル */
 .exp-card {
     background: #fff9db; 
     padding: 18px; 
@@ -60,6 +59,7 @@ def load_csv(subject):
     files = {
         "英単語": "final_tango_list.csv", 
         "日本史一問一答": "jhcheck.csv",
+        "日本史正誤問題攻略": "seigo_check.csv",
         "世界史一問一答": "whcheck.csv" 
     }
     try:
@@ -73,7 +73,7 @@ def load_csv(subject):
 # 状態管理
 # ==================================================
 def clear_quiz_state():
-    for key in ["quiz_subject", "quiz_filter", "df", "idx", "answered", "choices", "correct", "selected"]:
+    for key in ["quiz_subject", "quiz_filter", "df", "idx", "answered", "choices", "correct", "selected", "user_choice"]:
         if key in st.session_state: del st.session_state[key]
 
 def start_quiz(df, subject, filter_val):
@@ -86,13 +86,13 @@ def start_quiz(df, subject, filter_val):
 def next_q():
     st.session_state.idx += 1
     st.session_state.answered = False
-    for key in ["choices", "correct", "selected"]:
+    for key in ["choices", "correct", "selected", "user_choice"]:
         if key in st.session_state: del st.session_state[key]
 
 # ==================================================
 # 科目・フィルタ選択
 # ==================================================
-subject = st.selectbox("学習する科目を選択", ["選択してください", "英単語", "日本史一問一答", "世界史一問一答"])
+subject = st.selectbox("学習する科目を選択", ["選択してください", "英単語", "日本史一問一答", "日本史正誤問題攻略", "世界史一問一答"])
 
 if subject == "選択してください":
     st.info("科目を選択して学習を開始しましょう！")
@@ -103,7 +103,8 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-if subject == "日本史一問一答":
+# フィルタ設定（日本史系）
+if "日本史" in subject:
     if "chapter" in raw_df.columns:
         raw_chapters = [str(x) for x in raw_df["chapter"].dropna().unique()]
         def extract_number(text):
@@ -116,6 +117,7 @@ if subject == "日本史一問一答":
     else:
         df = raw_df
 
+# フィルタ設定（世界史）
 elif subject == "世界史一問一答":
     if "area" in raw_df.columns:
         existing_areas = [str(x) for x in raw_df["area"].fillna("未分類").unique()]
@@ -128,6 +130,7 @@ elif subject == "世界史一問一答":
     else:
         df = raw_df
 
+# フィルタ設定（英単語）
 elif subject == "英単語":
     if "level" in raw_df.columns:
         levels = ["All"] + sorted([str(x) for x in raw_df["level"].dropna().unique()])
@@ -163,19 +166,46 @@ st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 # メイン画面のクイズロジック
 # ==================================================
 
-if subject in ["日本史一問一答", "世界史一問一答"]:
-    q, ans_raw = str(row["question"]), str(row["answer"])
-    card_class = "pink-card" if subject == "日本史一問一答" else "cyan-card"
+# --- 日本史正誤問題攻略（ボタン形式） ---
+if subject == "日本史正誤問題攻略":
+    q, ans_raw = str(row["question"]), str(row["answer"]).strip()
+    st.info("📖 『山川 日本史探究』（教科書）の本文をもとにした正誤問題です。")
+    st.markdown(f'<div class="card pink-card"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 問題表示
+    col_o, col_x = st.columns(2)
+    with col_o:
+        if st.button("◯", key=f"o_{idx}", disabled=st.session_state.answered):
+            st.session_state.user_choice = "◯"
+            st.session_state.answered = True
+            st.rerun()
+    with col_x:
+        if st.button("×", key=f"x_{idx}", disabled=st.session_state.answered):
+            st.session_state.user_choice = "×"
+            st.session_state.answered = True
+            st.rerun()
+
+    if st.session_state.answered:
+        if st.session_state.user_choice == ans_raw:
+            st.success("✨ 正解！")
+        else:
+            st.error(f"❌ 不正解... 正解は【 {ans_raw} 】です。")
+        
+        if "explanation" in row and pd.notna(row["explanation"]):
+            st.markdown(f'<div class="exp-card"><b>💡 解説:</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
+        
+        if st.button("次の問題へ"):
+            next_q()
+            st.rerun()
+
+# --- 一般的な一問一答（記述形式） ---
+elif subject in ["日本史一問一答", "世界史一問一答"]:
+    q, ans_raw = str(row["question"]), str(row["answer"])
+    card_class = "pink-card" if "日本史" in subject else "cyan-card"
+    
     st.markdown(f'<div class="card {card_class}"><b>{q}</b></div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
     
-    # テキスト入力
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
-    
-    # 解答・次へボタンの配置
     col_submit, col_next = st.columns([1, 1])
     
     with col_submit:
@@ -184,17 +214,14 @@ if subject in ["日本史一問一答", "世界史一問一答"]:
             st.rerun()
 
     if st.session_state.answered:
-        # 判定
         user_clean = user_input.replace(" ", "").replace("　", "")
         valid_answers = [a.strip().replace(" ", "").replace("　", "") for a in ans_raw.split("/")]
         
         if user_clean in valid_answers:
             st.success("✨ 正解！")
         else:
-            st.error(f"❌ 不正解...")
-            st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
+            st.error(f"❌ 不正解... 正しい答え：{ans_raw.replace('/', ' または ')}")
         
-        # --- 解説(explanation)の表示 ---
         if "explanation" in row and pd.notna(row["explanation"]):
             st.markdown(f'<div class="exp-card"><b>💡 解説:</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
         
@@ -203,12 +230,11 @@ if subject in ["日本史一問一答", "世界史一問一答"]:
                 next_q()
                 st.rerun()
 
+# --- 英単語（選択形式） ---
 else:
-    # 英単語
     word, sentence = str(row["question"]), str(row["sentence"])
     sentence_html = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sentence_html}</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"])) if x.strip()]
@@ -230,9 +256,7 @@ else:
             st.success("✨ 正解！")
         else: 
             st.error(f"❌ 正解：{st.session_state.correct}")
-        
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        
         if st.button("次の問題へ"):
             next_q()
             st.rerun()
