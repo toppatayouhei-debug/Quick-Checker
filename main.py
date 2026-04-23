@@ -9,40 +9,46 @@ import re
 st.set_page_config(page_title="文系科目は、ゆずれない", layout="centered")
 
 # ==================================================
-# CSS
+# CSS（タイトルの位置調整のみ修正）
 # ==================================================
 st.markdown("""
 <style>
 .stApp { background:#f7f8fc; }
-.block-container { max-width:720px; padding-top:1.5rem; } 
-.main-title { text-align:center; font-size:2rem; font-weight:900; margin-bottom:0.2rem; }
-.sub-title { text-align:center; color:#666; font-size:0.9rem; margin-bottom:1.5rem; }
+
+/* タイトルが見切れないよう、上部余白を適切に設定 */
+.block-container { 
+    max-width:720px; 
+    padding-top: 4rem !important; /* 見切れ防止のため余裕を持たせる */
+} 
+
+.main-title { text-align:center; font-size:1.8rem; font-weight:900; margin-bottom:0.2rem; }
+.sub-title { text-align:center; color:#666; font-size:0.85rem; margin-bottom:1.5rem; }
+
 .card { background:white; padding:22px; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; }
 .orange-card { border-left: 8px solid #ff9800; }
 .pink-card { border-left: 8px solid #e91e63; }
 .cyan-card { border-left: 8px solid #00bcd4; }
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; }
+
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; }
-/* 科目別ボタン色 */
+
 .tango-btn button { background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important; }
 .nihonshi-btn button { background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important; }
 .sekaishi-btn button { background-color: #e3f9fb !important; color: #00bcd4 !important; border: 2px solid #00bcd4 !important; }
+
 button:has(div:contains("⭕️")) { background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important; }
 button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# ==================================================
-# 状態管理：クイズに関わる全変数を一括クリア
-# ==================================================
+# 状態管理リセット
 def reset_quiz_engine():
-    keys_to_delete = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice"]
-    for k in keys_to_delete:
-        if k in st.session_state:
-            del st.session_state[k]
+    to_delete = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice"]
+    for k in to_delete:
+        if k in st.session_state: del st.session_state[k]
 
 # ==================================================
-# メイン表示
+# メイン画面（タイトル -> 科目選択）
 # ==================================================
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
@@ -56,29 +62,19 @@ if subject == "選択してください":
 @st.cache_data
 def load_csv(name):
     files = {"英単語":"final_tango_list.csv", "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", "世界史一問一答":"whcheck.csv"}
-    try:
-        return pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-    except:
-        return pd.DataFrame()
+    try: return pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+    except: return pd.DataFrame()
 
 raw_df = load_csv(subject)
 
-# ==================================================
-# フィルタリング（サイドバー）
-# ==================================================
+# フィルタリング
 current_filter = "All"
 if subject == "英単語" and not raw_df.empty:
     st.sidebar.header("📏 レベル選択")
     level_map = {"All":"All", "Fundamental(1-600)":"Fundamental", "Essential(601-1200)":"Essential", "Advanced(1201-1700)":"Advanced", "Final(1701-2027)":"Final"}
     sel_level = st.sidebar.radio("学習レベル", list(level_map.keys()))
     current_filter = level_map[sel_level]
-    
-    if current_filter == "All":
-        df = raw_df
-    else:
-        # 文字列の前後空白を除去して一致判定を行う（確実性を高める）
-        df = raw_df[raw_df["level"].astype(str).str.strip().str.contains(current_filter, case=False, na=False)]
-
+    df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, case=False, na=False)]
 elif "chapter" in raw_df.columns and not raw_df.empty:
     st.sidebar.header("🎯 範囲選択")
     raw_chaps = raw_df["chapter"].dropna().unique().tolist()
@@ -91,28 +87,23 @@ elif "chapter" in raw_df.columns and not raw_df.empty:
 else:
     df = raw_df
 
-# 科目やフィルタが変わったらリセット
+# リセット検知
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
-    st.session_state.quiz_subject = subject
-    st.session_state.quiz_filter = current_filter
-    st.session_state.df = df.sample(frac=1).reset_index(drop=True)
-    st.session_state.idx = 0
-    st.session_state.answered = False
+    st.session_state.quiz_subject, st.session_state.quiz_filter = subject, current_filter
+    st.session_state.df = df.sample(frac=1).reset_index(drop=True) if not df.empty else pd.DataFrame()
+    st.session_state.idx, st.session_state.answered = 0, False
 
-# ==================================================
 # 実行エンジン
-# ==================================================
 active_df = st.session_state.get("df", pd.DataFrame())
 idx = st.session_state.get("idx", 0)
 
 if active_df.empty:
-    st.warning(f"データがありません。選択した範囲（{current_filter}）が正しいか、CSVファイルの内容を確認してください。")
+    st.warning("データが見つかりません。")
     st.stop()
-
 if idx >= len(active_df):
-    st.balloons(); st.success("全問終了！")
-    if st.button("もう一度解く"): reset_quiz_engine(); st.rerun()
+    st.balloons(); st.success("全問終了しました！")
+    if st.button("最初から解く"): reset_quiz_engine(); st.rerun()
     st.stop()
 
 row = active_df.iloc[idx]
@@ -123,46 +114,34 @@ btn_class = "nihonshi-btn"
 if subject == "英単語": btn_class = "tango-btn"
 elif subject == "世界史一問一答": btn_class = "sekaishi-btn"
 
-# --- クイズ表示：英単語 ---
+# クイズ表示
 if subject == "英単語":
     word = str(row["question"])
     sentence = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sentence}</div>', unsafe_allow_html=True)
-    
-    # 解答前なら選択肢を生成・保持
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"])) if x.strip()]
         correct = ans_list[0]
         dummies = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip() and x.strip() != correct]
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
-        st.session_state.choices = choices
-        st.session_state.correct = correct
-
+        st.session_state.choices, st.session_state.correct = choices, correct
     st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     for i, c in enumerate(st.session_state.get("choices", [])):
         with (c1 if i % 2 == 0 else c2):
             if st.button(c, key=f"btn_{idx}_{i}", disabled=st.session_state.get("answered", False)):
-                st.session_state.selected = c
-                st.session_state.answered = True
-                st.rerun()
-    
+                st.session_state.selected, st.session_state.answered = c, True; st.rerun()
     if st.session_state.get("answered"):
         if st.session_state.selected == st.session_state.correct: st.success("正解！")
         else: st.error(f"不正解... 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n訳：{row['translation']}")
         if st.button("次の問題へ"):
-            # 次へ行くときに現在の問題の選択肢系を消去
             if "choices" in st.session_state: del st.session_state.choices
-            if "correct" in st.session_state: del st.session_state.correct
-            st.session_state.idx += 1
-            st.session_state.answered = False
-            st.rerun()
+            st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- クイズ表示：その他 ---
-else:
+else: # 日本史・世界史
     if subject == "日本史正誤問題攻略":
         q, ans = str(row["question"]), str(row["answer"]).strip()
         st.markdown(f'<div class="card pink-card"><b>{q}</b></div>', unsafe_allow_html=True)
@@ -185,9 +164,7 @@ else:
         st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
         if st.button("解答する", disabled=st.session_state.get("answered", False)): st.session_state.answered = True; st.rerun()
         if st.session_state.get("answered"):
-            u_c = u_in.replace(" ","").replace("　","")
-            oks = [a.strip().replace(" ","").replace("　","") for a in ans_raw.split("/")]
-            if u_c in oks: st.success("正解！")
+            if u_in.replace(" ","") in [a.strip().replace(" ","") for a in ans_raw.split("/")]: st.success("正解！")
             else: st.error(f"不正解... 正解：{ans_raw}")
             if "explanation" in row and pd.notna(row["explanation"]): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
             if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
