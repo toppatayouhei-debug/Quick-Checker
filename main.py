@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS（カラー・ボタンデザイン改良版）
+# CSS（カラー・ボタンデザイン完全統一版）
 # ==================================================
 st.markdown("""
 <style>
@@ -37,26 +37,30 @@ st.markdown("""
 .orange-card { border-left: 8px solid #ff9800; }
 .cyan-card { border-left: 8px solid #00bcd4; }
 
-/* ボタンデザイン（改良版） */
+/* ボタン共通デザイン */
 .stButton button {
     width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800;
-    transition: all 0.3s ease; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.2s ease; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* ◯ボタン（青色系） */
-div[data-testid="stHorizontalBlock"] div:nth-child(1) button {
-    background-color: #e7f3ff; color: #1877f2; border: 2px solid #1877f2;
+/* 日本史正誤問題用の色分け（◯×） */
+div[data-testid="stHorizontalBlock"] div:nth-child(1) button:has(div:contains("⭕️")) {
+    background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important;
 }
-div[data-testid="stHorizontalBlock"] div:nth-child(1) button:hover {
-    background-color: #1877f2; color: white;
+div[data-testid="stHorizontalBlock"] div:nth-child(2) button:has(div:contains("❌")) {
+    background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important;
 }
 
-/* ×ボタン（赤色系） */
-div[data-testid="stHorizontalBlock"] div:nth-child(2) button {
-    background-color: #fff5f5; color: #ff4b4b; border: 2px solid #ff4b4b;
+/* 英単語・一問一答用のオレンジ/共通ボタン設定（強制上書き） */
+/* Primary(青)とSecondary(白)の両方をオレンジの枠線スタイルへ */
+button[kind="primary"], button[kind="secondary"] {
+    background-color: #fff4e6 !important;
+    color: #ff9800 !important;
+    border: 2px solid #ff9800 !important;
 }
-div[data-testid="stHorizontalBlock"] div:nth-child(2) button:hover {
-    background-color: #ff4b4b; color: white;
+button[kind="primary"]:hover, button[kind="secondary"]:hover {
+    background-color: #ff9800 !important;
+    color: white !important;
 }
 
 .guide-text { color: #222222 !important; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; }
@@ -67,14 +71,13 @@ st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div
 st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
 
 # ==================================================
-# 章タイトル定義（ここでタイトルを設定）
+# 正誤問題用の章タイトル定義
 # ==================================================
-CHAPTER_TITLES = {
-    "第1章": "日本列島のあけぼの",
-    "第2章": "律令国家の形成",
-    "第3章": "貴族政治と国風文化",
-    "第4章": "中世社会の成立（平安～）",
-    # 以降、章が増えたらここに追加
+SEIGO_TITLES = {
+    "第1章": "日本文化のあけぼの",
+    "第2章": "古墳とヤマト政権",
+    "第3章": "律令国家の形成",
+    "第4章": "貴族政治の展開",
 }
 
 # ==================================================
@@ -129,46 +132,50 @@ if raw_df is None: st.stop()
 
 current_filter = "All"
 
-# --- サイドバー・フィルタリング（日本史系） ---
-if "日本史" in subject:
-    if "chapter" in raw_df.columns:
-        st.sidebar.header("🎯 範囲選択")
-        raw_chapters = [str(x) for x in raw_df["chapter"].dropna().unique()]
-        
-        # 数値順にソート
-        def extract_number(text):
-            num = re.search(r'\d+', text)
-            return int(num.group()) if num else 999
-        sorted_chapter_ids = sorted(raw_chapters, key=extract_number)
-        
-        # 表示用ラベルの作成（"第4章" -> "第4章：平安時代"）
-        chapter_labels = ["すべてを表示"]
+# --- サイドバー・フィルタリング ---
+if subject == "英単語":
+    st.sidebar.header("📏 レベル選択")
+    # 指定された順番に並び替え
+    level_order = ["All", "Fundamental", "Essential", "Advanced", "Final"]
+    # CSVに存在するレベルのみを抽出（順序維持）
+    existing_levels = raw_df["level"].dropna().unique().tolist()
+    final_levels = [lvl for lvl in level_order if lvl == "All" or lvl in existing_levels]
+    
+    current_filter = st.sidebar.radio("学習するレベルを選択してください", final_levels)
+    df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str) == current_filter]
+
+elif "chapter" in raw_df.columns:
+    st.sidebar.header("🎯 範囲選択")
+    raw_chapters = [str(x) for x in raw_df["chapter"].dropna().unique()]
+    
+    def extract_number(text):
+        num = re.search(r'\d+', text)
+        return int(num.group()) if num else 999
+    sorted_chapter_ids = sorted(raw_chapters, key=extract_number)
+    
+    chapter_options = ["すべてを表示"]
+    if subject == "日本史正誤問題攻略":
         for cid in sorted_chapter_ids:
-            title = CHAPTER_TITLES.get(cid, "")
-            label = f"{cid} {title}".strip()
-            chapter_labels.append(label)
-        
-        selected_label = st.sidebar.radio("学習する章を選択してください", chapter_labels)
-        
-        if selected_label == "すべてを表示":
-            current_filter = "すべて"
-            df = raw_df
-        else:
-            # ラベルからID（"第4章"など）を抽出してフィルタリング
-            current_filter = selected_label.split(" ")[0]
-            df = raw_df[raw_df["chapter"].astype(str) == current_filter]
+            title = SEIGO_TITLES.get(cid, "")
+            chapter_options.append(f"{cid} {title}".strip())
+    else:
+        chapter_options.extend(sorted_chapter_ids)
+    
+    selected_option = st.sidebar.radio("学習する範囲を選択してください", chapter_options)
+    
+    if selected_option == "すべてを表示":
+        current_filter = "すべて"
+        df = raw_df
+    else:
+        current_filter = selected_option.split(" ")[0]
+        df = raw_df[raw_df["chapter"].astype(str) == current_filter]
+else:
+    if subject == "世界史一問一答":
+        areas = ["すべて"] + sorted([str(x) for x in raw_df["area"].fillna("未分類").unique()])
+        current_filter = st.sidebar.selectbox("地域を選択", areas)
+        df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
     else:
         df = raw_df
-
-# --- 英単語 / 世界史（既存ロジック） ---
-elif subject == "世界史一問一答":
-    areas = ["すべて"] + sorted([str(x) for x in raw_df["area"].fillna("未分類").unique()])
-    current_filter = st.sidebar.selectbox("地域を選択", areas)
-    df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
-elif subject == "英単語":
-    levels = ["All"] + sorted([str(x) for x in raw_df["level"].dropna().unique()])
-    current_filter = st.sidebar.selectbox("レベルを選択", levels)
-    df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str) == current_filter]
 
 # クイズ開始判定
 if ("quiz_subject" not in st.session_state or 
@@ -248,14 +255,17 @@ else: # 英単語
         choices = [correct] + random.sample(dummies, min(3, len(dummies)))
         random.shuffle(choices)
         st.session_state.choices, st.session_state.correct = choices, correct
+    
     cols = st.columns(2)
     for i, c in enumerate(st.session_state.choices):
         with cols[i % 2]:
+            # すべてオレンジ色にするためキーを固定せず、CSSで強制上書き
             if st.button(c, key=f"btn_{i}", disabled=st.session_state.answered):
                 st.session_state.selected, st.session_state.answered = c, True; st.rerun()
+                
     if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
-        else: st.error(f"❌ 正解：{st.session_state.correct}")
+        if st.session_state.selected == st.session_state.correct: st.success("### ✨ 正解！")
+        else: st.error(f"### ❌ 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        if st.button("次の問題へ"):
+        if st.button("次の問題へ進む ➔"):
             next_q(); st.rerun()
