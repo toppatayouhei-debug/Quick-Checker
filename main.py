@@ -27,6 +27,16 @@ st.markdown("""
     box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; 
     line-height:1.7; font-size:1.05rem; color:#111; 
 }
+/* 解説用カードのスタイル */
+.exp-card {
+    background: #fff9db; 
+    padding: 18px; 
+    border-radius: 14px; 
+    border: 1px dashed #fab005; 
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #444;
+}
 .orange-card { border-left: 8px solid #ff9800; }
 .pink-card   { border-left: 8px solid #e91e63; }
 .cyan-card   { border-left: 8px solid #00bcd4; }
@@ -111,7 +121,7 @@ elif subject == "世界史一問一答":
         existing_areas = [str(x) for x in raw_df["area"].fillna("未分類").unique()]
         area_order = ["アフリカ", "東アジア", "中央アジア", "東南アジア", "南アジア", "西アジア・北アフリカ", "ヨーロッパ", "南北アメリカ"]
         sorted_areas = [a for a in area_order if a in existing_areas] + \
-                       sorted([a for a in existing_areas if a not in area_order])
+                        sorted([a for a in existing_areas if a not in area_order])
         areas = ["すべて"] + sorted_areas
         current_filter = st.sidebar.selectbox("地域（Area）を選択", areas)
         df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].fillna("未分類").astype(str) == current_filter]
@@ -126,6 +136,7 @@ elif subject == "英単語":
     else:
         df = raw_df
 
+# クイズ開始の判定
 if ("quiz_subject" not in st.session_state or 
     st.session_state.quiz_subject != subject or 
     st.session_state.quiz_filter != current_filter):
@@ -135,9 +146,13 @@ if ("quiz_subject" not in st.session_state or
 active_df = st.session_state.df
 idx = st.session_state.idx
 
+# 終了判定
 if idx >= len(active_df):
-    st.balloons(); st.success("この範囲の全問が終了しました！")
-    if st.button("最初から解き直す"): clear_quiz_state(); st.rerun()
+    st.balloons()
+    st.success("この範囲の全問が終了しました！")
+    if st.button("最初から解き直す"):
+        clear_quiz_state()
+        st.rerun()
     st.stop()
 
 row = active_df.iloc[idx]
@@ -145,37 +160,55 @@ st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
 # ==================================================
-# メイン画面
+# メイン画面のクイズロジック
 # ==================================================
+
 if subject in ["日本史一問一答", "世界史一問一答"]:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_class = "pink-card" if subject == "日本史一問一答" else "cyan-card"
+    
+    # 問題表示
     st.markdown(f'<div class="card {card_class}"><b>{q}</b></div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名を解答する場合『　』は不要です。</div>', unsafe_allow_html=True)
     
-    # 世界史の説明文を修正
-    if subject == "日本史一問一答":
-        st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。</div>', unsafe_allow_html=True)
-    else:
-        st.markdown('<div class="guide-text">💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。</div>', unsafe_allow_html=True)
-    
+    # テキスト入力
     user_input = st.text_input("答えを入力", key=f"input_{idx}")
-    if st.button("解答する"): st.session_state.answered = True
+    
+    # 解答・次へボタンの配置
+    col_submit, col_next = st.columns([1, 1])
+    
+    with col_submit:
+        if st.button("解答する", disabled=st.session_state.answered):
+            st.session_state.answered = True
+            st.rerun()
 
     if st.session_state.answered:
+        # 判定
         user_clean = user_input.replace(" ", "").replace("　", "")
         valid_answers = [a.strip().replace(" ", "").replace("　", "") for a in ans_raw.split("/")]
-        if user_clean in valid_answers: st.success("✨ 正解！")
-        else: st.error(f"❌ 不正解..."); st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
-        if st.button("次の問題へ"): next_q(); st.rerun()
+        
+        if user_clean in valid_answers:
+            st.success("✨ 正解！")
+        else:
+            st.error(f"❌ 不正解...")
+            st.warning(f"正しい答え：{ans_raw.replace('/', ' または ')}")
+        
+        # --- 解説(explanation)の表示 ---
+        if "explanation" in row and pd.notna(row["explanation"]):
+            st.markdown(f'<div class="exp-card"><b>💡 解説:</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
+        
+        with col_next:
+            if st.button("次の問題へ"):
+                next_q()
+                st.rerun()
 
 else:
     # 英単語
     word, sentence = str(row["question"]), str(row["sentence"])
     sentence_html = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", sentence, flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sentence_html}</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。左のサイドバーで問題レベルを選んでください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">💡 シス単準拠の単語学習ツールです。</div>', unsafe_allow_html=True)
 
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"])) if x.strip()]
@@ -193,7 +226,13 @@ else:
                 st.rerun()
 
     if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
-        else: st.error(f"❌ 正解：{st.session_state.correct}")
+        if st.session_state.selected == st.session_state.correct: 
+            st.success("✨ 正解！")
+        else: 
+            st.error(f"❌ 正解：{st.session_state.correct}")
+        
         st.info(f"意味：{row['all_answers']}\n\n訳：{row['translation']}")
-        if st.button("次の問題へ"): next_q(); st.rerun()
+        
+        if st.button("次の問題へ"):
+            next_q()
+            st.rerun()
