@@ -215,7 +215,12 @@ else:
     
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名に『　』は不要です。</div>', unsafe_allow_html=True)
-    msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。" if "日本史" in subject else "💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。"
+    
+    if "日本史" in subject:
+        msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。小テストの章割りに対応させました。"
+    else:
+        msg = "💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。"
+    
     st.markdown(f'<div class="guide-text">{msg}</div>', unsafe_allow_html=True)
     
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
