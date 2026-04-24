@@ -79,20 +79,20 @@ def load_csv(name):
         "世界史一問一答":"whcheck.csv"
     }
     try:
-        # UTF-8-SIGで読み込み（BOM付きCSV対策）
+        # UTF-8-SIGで読み込み
         df = pd.read_csv(files[name], encoding="utf-8-sig")
         return df.dropna(how='all')
     except Exception as e:
-        st.error(f"ファイル読み込みエラー: {e}")
+        st.error(f"ファイル「{files.get(name)}」が見つからないか、エラーが発生しました: {e}")
         return pd.DataFrame()
 
 raw_df = load_csv(subject)
 if raw_df.empty:
-    st.warning("データが空か、読み込めませんでした。")
+    st.warning("表示できるデータがありません。CSVファイルを確認してください。")
     st.stop()
 
 # ==================================================
-# 5. サイドバー・フィルタリング
+# 5. サイドバー・フィルタリング設定
 # ==================================================
 current_filter = "All"
 
@@ -104,17 +104,19 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, case=False, na=False)]
 
-# --- B. 日本史正誤問題（Chapter）フィルタ ---
+# --- B. 日本史正誤問題攻略（章タイトルあり） ---
 elif subject == "日本史正誤問題攻略" and "chapter" in raw_df.columns:
     st.sidebar.header("🎯 範囲選択")
+    # CSV内の章名をクリーンに取得
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
     
-    # 章番号でのソート関数
+    # 章番号でソートする関数
     def get_chap_num(text):
         match = re.search(r'\d+', text)
         return int(match.group()) if match else 999
     sorted_chaps = sorted(raw_chaps, key=get_chap_num)
     
+    # 第1章〜第11章のタイトルマップ
     titles = {
         "第1章": "日本文化のあけぼの", "第2章": "古墳とヤマト政権", 
         "第3章": "律令国家の形成", "第4章": "貴族政治の展開",
@@ -124,8 +126,11 @@ elif subject == "日本史正誤問題攻略" and "chapter" in raw_df.columns:
         "第11章": "近世から近代へ"
     }
     
+    # 選択肢の表示名を「第〇章 〇〇」にする
     options = ["すべてを表示"] + [f"{c} {titles.get(c, '')}".strip() for c in sorted_chaps]
-    sel_chap = st.sidebar.radio("章を選択", options, key="seigo_radio")
+    sel_chap = st.sidebar.radio("章を選択", options, key="seigo_radio_v2")
+    
+    # フィルタリング用に「第〇章」の部分だけを抽出
     current_filter = sel_chap.split(" ")[0] if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 
@@ -137,17 +142,17 @@ elif subject == "世界史一問一答" and "area" in raw_df.columns:
     sorted_areas = [a for a in area_order if a in existing_areas] + sorted([a for a in existing_areas if a not in area_order])
     
     options = ["すべてを表示"] + sorted_areas
-    sel_area = st.sidebar.radio("地域", options, key="wh_radio")
+    sel_area = st.sidebar.radio("地域", options, key="wh_radio_v2")
     current_filter = sel_area if sel_area != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].astype(str).str.strip() == current_filter]
 
-# --- D. その他の一問一答（Chapterのみ） ---
+# --- D. 通常の一問一答（Chapterのみ） ---
 elif "chapter" in raw_df.columns:
     st.sidebar.header("🎯 範囲選択")
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
     sorted_chaps = sorted(raw_chaps, key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
     options = ["すべてを表示"] + sorted_chaps
-    sel_chap = st.sidebar.radio("範囲", options, key="common_radio")
+    sel_chap = st.sidebar.radio("範囲", options, key="common_radio_v2")
     current_filter = sel_chap if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 
@@ -162,6 +167,7 @@ if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz
     reset_quiz_engine()
     st.session_state.quiz_subject = subject
     st.session_state.quiz_filter = current_filter
+    # ランダムに問題をシャッフルして保持
     st.session_state.df = df.sample(frac=1).reset_index(drop=True) if not df.empty else pd.DataFrame()
     st.session_state.idx = 0
     st.session_state.answered = False
@@ -169,34 +175,40 @@ if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz
 active_df = st.session_state.get("df", pd.DataFrame())
 idx = st.session_state.get("idx", 0)
 
+# エラーハンドリング
 if active_df.empty:
-    st.warning("選択された範囲にデータがありません。")
+    st.warning("選択された条件に一致する問題がありません。サイドバーで別の範囲を選んでください。")
     st.stop()
 
+# 終了判定
 if idx >= len(active_df):
     st.balloons()
-    st.success("この範囲の全問が終了しました！")
+    st.success("🎉 この範囲の全問が終了しました！")
     if st.button("最初から解き直す"): 
         reset_quiz_engine()
         st.rerun()
     st.stop()
 
+# 現在の問題データ
 row = active_df.iloc[idx]
+
+# プログレスバー
 st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
-# ボタンの色設定
+# 科目に応じたデザインクラス
 btn_class = "nihonshi-btn" if "日本史" in subject else "sekaishi-btn"
 if subject == "システム英単語": btn_class = "tango-btn"
 
 # ==================================================
-# 7. クイズUI
+# 7. クイズUI表示
 # ==================================================
 
 # --- A. システム英単語 ---
 if subject == "システム英単語":
-    st.warning("⚠️ 基本はシス単本体を使って勉強しましょう。")
+    st.warning("⚠️ シス単本体と併用して学習しましょう。")
     word = str(row["question"])
+    # 例文中の単語を強調
     sentence = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sentence}</div>', unsafe_allow_html=True)
     
@@ -227,7 +239,7 @@ if subject == "システム英単語":
 
 # --- B. 日本史正誤問題 ---
 elif subject == "日本史正誤問題攻略":
-    st.warning("⚠️ 山川『日本史探究』（教科書）の本文を使った正誤問題です。")
+    st.warning("⚠️ 山川『日本史探究』準拠。文章の正誤を判定してください。")
     q, ans = str(row["question"]), str(row["answer"]).strip()
     st.markdown(f'<div class="card pink-card"><b>{q}</b></div>', unsafe_allow_html=True)
     
@@ -246,13 +258,13 @@ elif subject == "日本史正誤問題攻略":
             st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
-# --- C. 一問一答（日本史・世界史） ---
+# --- C. 一問一答（共通） ---
 else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_type}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ スペースを空けずに解答してください。</div>', unsafe_allow_html=True)
     
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
     st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
@@ -260,6 +272,7 @@ else:
         st.session_state.answered = True; st.rerun()
     
     if st.session_state.get("answered"):
+        # 入力のゆらぎを吸収
         u_c = u_in.replace(" ","").replace("　","")
         oks = [a.strip().replace(" ","").replace("　","") for a in ans_raw.split("/")]
         if u_c in oks: st.success("✨ 正解！")
