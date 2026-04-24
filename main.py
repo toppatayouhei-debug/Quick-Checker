@@ -213,7 +213,6 @@ else:
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_type}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 案内メッセージ
     st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を加えずに解答してください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名に『　』は不要です。</div>', unsafe_allow_html=True)
     msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。近現代史は後日追加します。" if "日本史" in subject else "💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。"
@@ -230,4 +229,6 @@ else:
         if u_c in oks: st.success("✨ 正解！")
         else: st.error(f"❌ 不正解... 正解：{ans_raw}")
         if "explanation" in row and pd.notna(row["explanation"]):
-            st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_
+            st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
+        if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
