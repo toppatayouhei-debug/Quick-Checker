@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# 2. CSS（カラー・レイアウト・見切れ防止）
+# 2. CSS（デザイン・レイアウト）
 # ==================================================
 st.markdown("""
 <style>
@@ -84,7 +84,7 @@ def load_csv(name):
 
 raw_df = load_csv(subject)
 if raw_df.empty:
-    st.error("CSVデータが見つからないか、読み込みに失敗しました。")
+    st.error(f"「{subject}」のCSVデータが見つからないか、読み込みに失敗しました。")
     st.stop()
 
 current_filter = "All"
@@ -114,17 +114,34 @@ elif "chapter" in raw_df.columns:
     st.sidebar.header("🎯 範囲選択")
     raw_chaps = [str(x) for x in raw_df["chapter"].dropna().unique().tolist()]
     sorted_chaps = sorted(raw_chaps, key=lambda x: int(re.search(r'\d+', str(x)).group()) if re.search(r'\d+', str(x)) else 999)
-    titles = {"第1章": "日本文化のあけぼの", "第2章": "古墳とヤマト政権", "第3章": "律令国家の形成", "第4章": "貴族政治の展開"}
     
+    # 章タイトル辞書（第5章〜第11章を追加）
+    titles = {
+        "第1章": "日本文化のあけぼの", 
+        "第2章": "古墳とヤマト政権", 
+        "第3章": "律令国家の形成", 
+        "第4章": "貴族政治の展開",
+        "第5章": "院政と武士の躍進",
+        "第6章": "武家政権の成立",
+        "第7章": "武家社会の成長",
+        "第8章": "近世の幕開け",
+        "第9章": "幕藩体制の成立と展開",
+        "第10章": "幕藩体制の動揺",
+        "第11章": "近世から近代へ"
+    }
+    
+    # 表示用のラベルを作成
     options = ["すべてを表示"] + [f"{c} {titles.get(c, '')}".strip() if subject == "日本史正誤問題攻略" else str(c) for c in sorted_chaps]
     sel_chap = st.sidebar.radio("範囲", options)
+    
+    # フィルタリング用に「第〇章」の部分だけを抽出
     current_filter = sel_chap.split(" ")[0] if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 
 else:
     df = raw_df
 
-# クイズエンジンの初期化
+# クイズエンジンの初期化（科目やフィルタが変わったらリセット）
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
     st.session_state.quiz_subject = subject
@@ -144,8 +161,11 @@ if active_df.empty:
     st.stop()
 
 if idx >= len(active_df):
-    st.balloons(); st.success("この範囲の全問が終了しました！")
-    if st.button("最初から解き直す"): reset_quiz_engine(); st.rerun()
+    st.balloons()
+    st.success("この範囲の全問が終了しました！")
+    if st.button("最初から解き直す"): 
+        reset_quiz_engine()
+        st.rerun()
     st.stop()
 
 row = active_df.iloc[idx]
@@ -175,7 +195,8 @@ if subject == "システム英単語":
     for i, val in enumerate(st.session_state.get("choices", [])):
         with (c1 if i % 2 == 0 else c2):
             if st.button(val, key=f"btn_{idx}_{i}", disabled=st.session_state.get("answered", False)):
-                st.session_state.selected, st.session_state.answered = val, True; st.rerun()
+                st.session_state.selected, st.session_state.answered = val, True
+                st.rerun()
     
     if st.session_state.get("answered"):
         if st.session_state.selected == st.session_state.correct: st.success("✨ 正解！")
@@ -217,7 +238,7 @@ else:
     st.markdown('<div class="guide-text">⚠️ 書名に『　』は不要です。</div>', unsafe_allow_html=True)
     
     if "日本史" in subject:
-        msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。小テストの章割りに対応させました。"
+        msg = "💡 重要語句 Check Listの問題です。サイドバーから時代を選択してください。"
     else:
         msg = "💡 重要語句 Check Listの問題です。サイドバーで地域を選択できます。まずはナポレオンまで。"
     
