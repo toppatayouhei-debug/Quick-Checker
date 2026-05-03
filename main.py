@@ -40,10 +40,6 @@ st.markdown("""
 .shiryo-btn button { background-color: #f3e5f5 !important; color: #9c27b0 !important; border: 2px solid #9c27b0 !important; }
 .sekaishi-btn button { background-color: #e3f9fb !important; color: #00bcd4 !important; border: 2px solid #00bcd4 !important; }
 
-/* 正誤問題用の特殊ボタン（⭕️/❌） */
-button:has(div:contains("⭕️")) { background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important; }
-button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important; }
-
 /* 注意書き */
 .guide-text { color: #222222 !important; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; }
 </style>
@@ -111,7 +107,8 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, case=False, na=False)]
 
-elif subject in ["日本史正誤問題攻略", "日本史史料問題攻略"] and "chapter" in raw_df.columns:
+# --- 日本史系科目（一問一答・正誤・史料）すべてで章選択を有効化 ---
+elif "日本史" in subject and "chapter" in raw_df.columns:
     st.sidebar.header("🎯 時代・章選択")
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
     
@@ -235,19 +232,14 @@ elif subject == "日本史史料問題攻略":
     q, ans_raw = str(row["question"]), str(row["answer"])
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{q}</div>', unsafe_allow_html=True)
     
-    # 追加した注意書き
+    # 注意書きを追加
     st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ スペースや記号は自動で無視されます。</div>', unsafe_allow_html=True)
     
-    # 正解リストを作成
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
-    
-    # 答えの数に合わせてラベル(A, B, C...)を自動生成 (IndexError対策)
     labels = [chr(65 + i) for i in range(len(correct_list))]
     
-    # 入力欄の生成
     user_inputs = []
-    # 横に並びすぎないよう最大3列に制限
     col_count = min(len(correct_list), 3)
     cols = st.columns(col_count)
     
@@ -275,11 +267,16 @@ elif subject == "日本史史料問題攻略":
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- D. 一問一答 ---
+# --- D. 一問一答（日本史・世界史） ---
 else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_type}"><b>{q}</b></div>', unsafe_allow_html=True)
+    
+    # 日本史の場合のみ出典の注意書きを表示
+    if "日本史" in subject:
+        st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
+
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
     st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
     if st.button("解答する", key=f"ans_btn_{idx}", disabled=st.session_state.get("answered", False)):
