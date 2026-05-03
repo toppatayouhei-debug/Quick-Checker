@@ -26,7 +26,8 @@ st.markdown("""
 /* 問題カード */
 .card { background:white; padding:22px; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:1rem; line-height:1.7; font-size:1.05rem; color:#111; }
 .orange-card { border-left: 8px solid #ff9800; } /* 英単語 */
-.pink-card   { border-left: 8px solid #e91e63; } /* 日本史 */
+.pink-card   { border-left: 8px solid #e91e63; } /* 日本史一問一答/正誤 */
+.violet-card { border-left: 8px solid #9c27b0; } /* 史料問題 */
 .cyan-card   { border-left: 8px solid #00bcd4; } /* 世界史 */
 
 /* 解説カード */
@@ -36,6 +37,7 @@ st.markdown("""
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; min-height: 55px; transition: 0.2s; }
 .tango-btn button { background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important; }
 .nihonshi-btn button { background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important; }
+.shiryo-btn button { background-color: #f3e5f5 !important; color: #9c27b0 !important; border: 2px solid #9c27b0 !important; }
 .sekaishi-btn button { background-color: #e3f9fb !important; color: #00bcd4 !important; border: 2px solid #00bcd4 !important; }
 
 /* 正誤問題用の特殊ボタン（⭕️/❌） */
@@ -49,7 +51,7 @@ button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #
 
 # 状態リセット関数
 def reset_quiz_engine():
-    keys = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice", "quiz_filter"]
+    keys = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice", "quiz_filter", "quiz_subject"]
     for k in keys:
         if k in st.session_state:
             del st.session_state[k]
@@ -60,7 +62,14 @@ def reset_quiz_engine():
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
 
-subject = st.selectbox("学習する科目を選択", ["選択してください", "システム英単語", "日本史一問一答", "日本史正誤問題攻略", "世界史一問一答"])
+subject = st.selectbox("学習する科目を選択", [
+    "選択してください", 
+    "システム英単語", 
+    "日本史一問一答", 
+    "日本史正誤問題攻略", 
+    "日本史史料問題攻略", 
+    "世界史一問一答"
+])
 
 if subject == "選択してください":
     st.info("**【学習の進め方】**\n1. 科目を選択してください。\n2. サイドバーでレベルや範囲を絞り込めます。")
@@ -75,6 +84,7 @@ def load_csv(name):
         "システム英単語":"final_tango_list.csv", 
         "日本史一問一答":"jhcheck.csv", 
         "日本史正誤問題攻略":"seigo_check.csv", 
+        "日本史史料問題攻略":"shiryo_check.csv",
         "世界史一問一答":"whcheck.csv"
     }
     try:
@@ -101,29 +111,31 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, case=False, na=False)]
 
-elif subject == "日本史正誤問題攻略" and "chapter" in raw_df.columns:
-    st.sidebar.header("🎯 範囲選択")
+elif subject in ["日本史正誤問題攻略", "日本史史料問題攻略"] and "chapter" in raw_df.columns:
+    st.sidebar.header("🎯 時代・章選択")
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
-    def get_chap_num(text):
-        match = re.search(r'\d+', text)
-        return int(match.group()) if match else 999
-    sorted_chaps = sorted(raw_chaps, key=get_chap_num)
     
+    # 章ごとのタイトル定義（ご指定の構成）
     titles = {
-        "第1章": "日本文化のあけぼの", "第2章": "古墳とヤマト政権", 
-        "第3章": "律令国家の形成", "第4章": "貴族政治の展開",
-        "第5章": "院政と武士の躍進", "第6章": "武家政権の成立",
-        "第7章": "武家社会の成長", "第8章": "近世の幕開け",
-        "第9章": "幕藩体制の成立と展開", "第10章": "幕藩体制の動揺",
+        "第1章": "歴史のはじまり", 
+        "第2章": "飛鳥時代", 
+        "第3章": "奈良時代", 
+        "第4章": "平安時代",
+        "第5章": "院政と武士の躍進", 
+        "第6章": "武家政権の成立",
+        "第7章": "武家社会の成長", 
+        "第8章": "近世の幕開け",
+        "第9章": "幕藩体制の成立と展開", 
+        "第10章": "幕藩体制の動揺",
         "第11章": "近世から近代へ",
         "第12章": "近代国家の成立",
         "第13章": "近代国家の展開",
-        "第14章": "近代の産業と生活",
-        "鎌倉文化": "（文化史）"
+        "第14章": "近代の産業と生活"
     }
     
+    sorted_chaps = sorted(raw_chaps, key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
     options = ["すべてを表示"] + [f"{c} {titles.get(c, '')}".strip() for c in sorted_chaps]
-    sel_chap = st.sidebar.radio("章を選択", options, key="seigo_radio_v4")
+    sel_chap = st.sidebar.radio("章を選択", options, key="nihonshi_radio")
     current_filter = sel_chap.split(" ")[0] if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 
@@ -133,7 +145,7 @@ elif subject == "世界史一問一答" and "area" in raw_df.columns:
     area_order = ["アフリカ", "東アジア", "中央アジア", "東南アジア", "南アジア", "西アジア・北アフリカ", "ヨーロッパ", "南北アメリカ"]
     sorted_areas = [a for a in area_order if a in existing_areas] + sorted([a for a in existing_areas if a not in area_order])
     options = ["すべてを表示"] + sorted_areas
-    sel_area = st.sidebar.radio("地域", options, key="wh_radio_v4")
+    sel_area = st.sidebar.radio("地域", options, key="wh_radio")
     current_filter = sel_area if sel_area != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["area"].astype(str).str.strip() == current_filter]
 
@@ -142,10 +154,9 @@ elif "chapter" in raw_df.columns:
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
     sorted_chaps = sorted(raw_chaps, key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
     options = ["すべてを表示"] + sorted_chaps
-    sel_chap = st.sidebar.radio("範囲", options, key="common_radio_v4")
+    sel_chap = st.sidebar.radio("範囲", options, key="common_radio")
     current_filter = sel_chap if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
-
 else:
     df = raw_df
 
@@ -179,8 +190,11 @@ row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
 st.caption(f"{idx+1} / {len(active_df)} 問目（範囲: {current_filter}）")
 
-btn_class = "nihonshi-btn" if "日本史" in subject else "sekaishi-btn"
-if subject == "システム英単語": btn_class = "tango-btn"
+# ボタンクラスの決定
+btn_class = "nihonshi-btn"
+if "史料" in subject: btn_class = "shiryo-btn"
+elif "世界史" in subject: btn_class = "sekaishi-btn"
+elif "英単語" in subject: btn_class = "tango-btn"
 
 # ==================================================
 # 7. クイズUI
@@ -239,14 +253,39 @@ elif subject == "日本史正誤問題攻略":
             st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
-# --- C. 一問一答（日本史・世界史） ---
+# --- C. 日本史史料問題攻略 ---
+elif subject == "日本史史料問題攻略":
+    st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
+    st.info("💡 史料集成の解説もしっかり読み込むこと。関連する知識とセットで身につける。")
+    
+    q, ans_raw = str(row["question"]), str(row["answer"])
+    st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{q}</div>', unsafe_allow_html=True)
+    
+    st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号（・や=など）を入れないでください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ 空欄が複数ある場合は「家康/秀忠/家光」のようにスラッシュで繋いで解答してください。</div>', unsafe_allow_html=True)
+    
+    u_in = st.text_input("答えを入力", key=f"shiryo_in_{idx}")
+    st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
+    if st.button("解答する", key=f"shiryo_ans_{idx}", disabled=st.session_state.get("answered", False)):
+        st.session_state.answered = True; st.rerun()
+    
+    if st.session_state.get("answered"):
+        u_c = u_in.replace(" ","").replace("　","")
+        oks = [a.strip().replace(" ","").replace("　","") for a in ans_raw.split("/")]
+        if u_c in oks: st.success("✨ 正解！")
+        else: st.error(f"❌ 不正解... 正解：{ans_raw}")
+        if "explanation" in row and pd.notna(row["explanation"]):
+            st.markdown(f'<div class="exp-card"><b>【解説・ポイント】</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
+        if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- D. 一問一答（日本史・世界史） ---
 else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_type}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 復活させた注意事項
-    st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号（・や=など）を入れないでください。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ 姓名・語句の間にスペースや記号を入れないでください。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 書名に『　』は不要です。</div>', unsafe_allow_html=True)
     
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
