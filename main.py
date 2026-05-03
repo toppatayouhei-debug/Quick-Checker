@@ -106,11 +106,9 @@ if raw_df.empty:
     st.stop()
 
 # ==================================================
-# 5. サイドバー・フィルタリング（タイトル復元版）
+# 5. サイドバー・フィルタリング（タイトル維持）
 # ==================================================
 current_filter = "All"
-
-# 日本史タイトルのマッピング
 nihonshi_titles = {
     "第1章": "歴史のはじまり", "第2章": "飛鳥時代", "第3章": "奈良時代", "第4章": "平安時代",
     "第5章": "院政と武士の躍進", "第6章": "武家政権の成立", "第7章": "武家社会の成長", 
@@ -123,19 +121,15 @@ if subject == "システム英単語":
     sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
-
 elif "chapter" in raw_df.columns:
     raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
-    
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
     else:
         options = ["すべてを表示"] + raw_chaps
-        
     sel_range = st.sidebar.radio("範囲を選択", options)
     current_filter = sel_range.split(" ")[0] if sel_range != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
-
 elif subject == "世界史一問一答" and "area" in raw_df.columns:
     areas = sorted([str(x).strip() for x in raw_df["area"].dropna().unique().tolist()])
     sel_area = st.sidebar.radio("地域を選択", ["すべてを表示"] + areas)
@@ -156,9 +150,7 @@ active_df = st.session_state.get("df", pd.DataFrame())
 idx = st.session_state.get("idx", 0)
 
 if active_df.empty:
-    st.warning("対象の問題が見つかりません。")
     st.stop()
-
 if idx >= len(active_df):
     st.balloons(); st.success("全問終了！"); st.button("もう一度最初から", on_click=reset_quiz_engine); st.stop()
 
@@ -210,14 +202,18 @@ elif subject == "システム英単語":
         if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
             st.session_state.selected, st.session_state.answered = val, True; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
+
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("正解！")
         else: st.error(f"不正解... 正解：{st.session_state.correct}")
         st.info(f"意味：{row['all_answers']}\n訳：{row['translation']}")
+        # 解答表示後に音声を生成
         play_voice(str(row["question"]))
         st.write("---")
         c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"): del st.session_state.choices; st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
+        if c1.button("✅ 次へ"): 
+            if "choices" in st.session_state: del st.session_state.choices
+            st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
 # --- 日本史正誤問題 ---
@@ -257,7 +253,7 @@ elif subject == "日本史史料問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- その他（一問一答・日本史・世界史） ---
+# --- 一問一答 ---
 else:
     card_c = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
