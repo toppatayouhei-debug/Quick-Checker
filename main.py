@@ -128,7 +128,6 @@ elif subject in ["日本史正誤問題攻略", "日本史史料問題攻略"] a
     current_filter = sel_chap.split(" ")[0] if sel_chap != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 
-# (世界史・その他のフィルタは省略せず維持)
 elif subject == "世界史一問一答" and "area" in raw_df.columns:
     st.sidebar.header("🗺️ 地域選択")
     existing_areas = [str(x).strip() for x in raw_df["area"].fillna("未分類").unique()]
@@ -181,7 +180,7 @@ def clean_text(t):
 # 7. クイズUI
 # ==================================================
 
-# --- A. システム英単語 (既存) ---
+# --- A. システム英単語 ---
 if subject == "システム英単語":
     st.warning("⚠️ シス単本体をメインにしましょう。情報量が全然違います。")
     word = str(row["question"])
@@ -209,7 +208,7 @@ if subject == "システム英単語":
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- B. 日本史正誤問題攻略 (既存) ---
+# --- B. 日本史正誤問題攻略 ---
 elif subject == "日本史正誤問題攻略":
     st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
     q, ans = str(row["question"]), str(row["answer"]).strip()
@@ -228,7 +227,7 @@ elif subject == "日本史正誤問題攻略":
             st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
-# --- C. 日本史史料問題攻略 (アップデート版) ---
+# --- C. 日本史史料問題攻略 (修正版: IndexError対策) ---
 elif subject == "日本史史料問題攻略":
     st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
     st.info("💡 史料集成の解説もしっかり読み込むこと。")
@@ -237,14 +236,19 @@ elif subject == "日本史史料問題攻略":
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{q}</div>', unsafe_allow_html=True)
     
     # 正解リストを作成
-    correct_list = [a.strip() for a in ans_raw.split("/")]
-    labels = ["A", "B", "C", "D", "E"] # 最大5つまで対応
+    correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
+    
+    # 答えの数に合わせてラベル(A, B, C...)を自動生成
+    labels = [chr(65 + i) for i in range(len(correct_list))]
     
     # 入力欄の生成
     user_inputs = []
-    cols = st.columns(len(correct_list))
-    for i, (col, corr) in enumerate(zip(cols, correct_list)):
-        with col:
+    # 横に並びすぎないよう最大3列に制限
+    col_count = min(len(correct_list), 3)
+    cols = st.columns(col_count)
+    
+    for i, corr in enumerate(correct_list):
+        with cols[i % col_count]:
             val = st.text_input(f"空欄 {labels[i]}", key=f"shiryo_in_{idx}_{i}")
             user_inputs.append(val)
     
@@ -255,7 +259,6 @@ elif subject == "日本史史料問題攻略":
     if st.session_state.get("answered"):
         all_ok = True
         for i, (u_in, c_ans) in enumerate(zip(user_inputs, correct_list)):
-            # 記号を除去して比較
             if clean_text(u_in) == clean_text(c_ans):
                 st.success(f"空欄 {labels[i]}：正解！ ({c_ans})")
             else:
@@ -263,13 +266,12 @@ elif subject == "日本史史料問題攻略":
                 all_ok = False
         
         if all_ok: st.balloons()
-        
         if "explanation" in row and pd.notna(row["explanation"]):
             st.markdown(f'<div class="exp-card"><b>【解説・ポイント】</b><br>{row["explanation"]}</div>', unsafe_allow_html=True)
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- D. 一問一答（日本史・世界史） ---
+# --- D. 一問一答 ---
 else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
@@ -280,7 +282,6 @@ else:
         st.session_state.answered = True; st.rerun()
     
     if st.session_state.get("answered"):
-        # スラッシュ区切りの別解すべてに対して表記ゆれ許容でチェック
         oks = [clean_text(a) for a in ans_raw.split("/")]
         if clean_text(u_in) in oks: st.success(f"✨ 正解！ ({ans_raw})")
         else: st.error(f"❌ 不正解... 正解：{ans_raw}")
