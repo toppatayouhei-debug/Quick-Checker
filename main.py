@@ -49,7 +49,7 @@ button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #
 
 .guide-text { color: #555555 !important; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
 
-/* === 再生ボタンのスタイル === */
+/* === かわいい再生ボタンのスタイル === */
 .audio-container {
     background-color: #f8f9fa;
     border-radius: 15px;
@@ -198,6 +198,10 @@ if subject == "暗唱例文集":
         if st.button("🔴 全文暗唱"): st.session_state.study_mode = "全文暗唱"; st.rerun()
     with c_m2:
         if st.button("🔵 ヒントはここ"): st.session_state.study_mode = "空欄補充"; st.rerun()
+
+    # 問題文と同時に表示するアドバイス
+    if st.session_state.study_mode == "空欄補充":
+        st.info("💡 [　　]の中は１語とは限りません")
 
     disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["English"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
     st.markdown(f'<div class="card orange-card">【日本語】<br><b>{row["japanese"]}</b><hr>【英文】<br>{disp}</div>', unsafe_allow_html=True)
