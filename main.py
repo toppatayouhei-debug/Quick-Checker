@@ -227,7 +227,7 @@ elif subject == "日本史正誤問題攻略":
             st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
-# --- C. 日本史史料問題攻略 (修正版: IndexError対策) ---
+# --- C. 日本史史料問題攻略 ---
 elif subject == "日本史史料問題攻略":
     st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
     st.info("💡 史料集成の解説もしっかり読み込むこと。")
@@ -235,10 +235,14 @@ elif subject == "日本史史料問題攻略":
     q, ans_raw = str(row["question"]), str(row["answer"])
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{q}</div>', unsafe_allow_html=True)
     
+    # 追加した注意書き
+    st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ スペースや記号は自動で無視されます。</div>', unsafe_allow_html=True)
+    
     # 正解リストを作成
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
     
-    # 答えの数に合わせてラベル(A, B, C...)を自動生成
+    # 答えの数に合わせてラベル(A, B, C...)を自動生成 (IndexError対策)
     labels = [chr(65 + i) for i in range(len(correct_list))]
     
     # 入力欄の生成
