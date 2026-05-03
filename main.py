@@ -107,7 +107,6 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, case=False, na=False)]
 
-# --- 日本史系科目（一問一答・正誤・史料）すべてで章選択を有効化 ---
 elif "日本史" in subject and "chapter" in raw_df.columns:
     st.sidebar.header("🎯 時代・章選択")
     raw_chaps = [str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()]
@@ -232,7 +231,7 @@ elif subject == "日本史史料問題攻略":
     q, ans_raw = str(row["question"]), str(row["answer"])
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{q}</div>', unsafe_allow_html=True)
     
-    # 注意書きを追加
+    # 注意書き表示
     st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ スペースや記号は自動で無視されます。</div>', unsafe_allow_html=True)
     
@@ -267,14 +266,14 @@ elif subject == "日本史史料問題攻略":
         if st.button("次の問題へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- D. 一問一答（日本史・世界史） ---
+# --- D. 一問一答 ---
 else:
     q, ans_raw = str(row["question"]), str(row["answer"])
     card_type = "pink-card" if "日本史" in subject else "cyan-card"
     st.markdown(f'<div class="card {card_type}"><b>{q}</b></div>', unsafe_allow_html=True)
     
-    # 日本史の場合のみ出典の注意書きを表示
-    if "日本史" in subject:
+    # 史料一問一答の場合のみ出典の注意を表示
+    if "史料" in subject:
         st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
 
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
