@@ -215,10 +215,12 @@ if subject == "システム英単語":
     if st.session_state.get("answered"):
         if st.session_state.selected == st.session_state.correct:
             st.success("✨ 正解！")
-            speak_word(word) # 正解時に発音を再生
         else:
             st.error(f"❌ 不正解... 正解：{st.session_state.correct}")
-            if st.button("音声を聴く"): speak_word(word) # 不正解でも聴けるようにボタン設置
+        
+        # 音声を聴くボタン（選択制）
+        if st.button("🔊 音声を聴く"):
+            speak_word(word)
         
         st.info(f"意味：{row['all_answers']}\n訳：{row['translation']}")
         if st.button("次の問題へ"):
