@@ -34,8 +34,11 @@ st.markdown("""
 .cyan-card   { border-left: 8px solid #00bcd4; }
 .green-card  { border-left: 8px solid #4caf50; } /* 生物用 */
 
-/* 解説カード（黄色点線枠） */
+/* 解説カード */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
+
+/* 生物の正解用フォント設定 */
+.bio-ans { font-family: serif; font-size: 1rem; font-weight: bold; }
 
 /* ボタンデザイン */
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; min-height: 55px; transition: 0.2s; }
@@ -296,15 +299,18 @@ else:
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
     if subject == "生物一問一答":
-        st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
+        st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。")
         if not st.session_state.answered:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
             ans_raw = str(row["answer"])
-            # ★正解と解説を両方「黄色い点線カード」のデザインで統一
-            st.markdown(f'<div class="exp-card">【正解】<br>{ans_raw}</div>', unsafe_allow_html=True)
+            # ★「青い通知枠」に揃え、フォント（serif）とサイズを適用
+            st.success(f"正解！ ({ans_raw})")
+            # CSSのbio-ansクラスを適用してserif表示にする
+            st.markdown(f'<style>.stAlert div {{ font-family: serif !important; font-size: 1rem !important; }}</style>', unsafe_allow_html=True)
+            
             if pd.notna(row.get("explanation")): 
-                st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
             st.write("---")
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
