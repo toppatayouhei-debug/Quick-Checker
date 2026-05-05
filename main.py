@@ -32,6 +32,7 @@ st.markdown("""
 .pink-card   { border-left: 8px solid #e91e63; }
 .violet-card { border-left: 8px solid #9c27b0; }
 .cyan-card   { border-left: 8px solid #00bcd4; }
+.green-card  { border-left: 8px solid #4caf50; } /* 生物用 */
 
 /* 解説カード */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
@@ -40,8 +41,6 @@ st.markdown("""
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; min-height: 55px; transition: 0.2s; }
 .tango-btn button { background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important; }
 .nihonshi-btn button { background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important; }
-.shiryo-btn button { background-color: #f3e5f5 !important; color: #9c27b0 !important; border: 2px solid #9c27b0 !important; }
-.sekaishi-btn button { background-color: #e3f9fb !important; color: #00bcd4 !important; border: 2px solid #00bcd4 !important; }
 
 /* 正誤問題用の特殊ボタン（⭕️/❌） */
 button:has(div:contains("⭕️")) { background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important; }
@@ -49,7 +48,7 @@ button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #
 
 .guide-text { color: #555555 !important; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
 
-/* === かわいい再生ボタンのスタイル === */
+/* === 再生ボタンのスタイル === */
 .audio-container {
     background-color: #f8f9fa;
     border-radius: 15px;
@@ -66,17 +65,11 @@ button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #
     margin-right: auto;
     padding-left: 5px;
 }
-audio::-webkit-media-controls-panel {
-    background-color: #fff4e6;
-}
-audio::-webkit-media-controls-play-button {
-    background-color: #ff9800;
-    border-radius: 50%;
-}
+audio::-webkit-media-controls-panel { background-color: #fff4e6; }
 </style>
 """, unsafe_allow_html=True)
 
-# 音声生成関数
+# ユーティリティ関数
 def play_voice(text, label="音声を聴く"):
     try:
         q = urllib.parse.quote(text)
@@ -91,8 +84,7 @@ def play_voice(text, label="音声を聴く"):
                 </div>
             '''
             st.markdown(md, unsafe_allow_html=True)
-    except:
-        pass
+    except: pass
 
 def reset_quiz_engine():
     keys = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice", "quiz_filter", "quiz_subject", "study_mode"]
@@ -106,11 +98,12 @@ def clean_text(t):
 # 3. メイン画面
 # ==================================================
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴 統合学習ツール</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴・理系基礎 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集",
-    "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", "世界史一問一答"
+    "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
+    "世界史一問一答", "生物一問一答"
 ])
 
 if subject == "選択してください":
@@ -125,16 +118,20 @@ def load_csv(name):
     files = {
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
-        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv"
+        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
+        "生物一問一答":"biology.csv"
     }
     try:
-        return pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+        # すべて小文字のカラム名に統一して読み込み
+        df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+        df.columns = [c.lower() for c in df.columns]
+        return df
     except:
         return pd.DataFrame()
 
 raw_df = load_csv(subject)
 if raw_df.empty:
-    st.warning("データファイルが見つかりません。")
+    st.warning(f"データファイルが見つかりません。({subject})")
     st.stop()
 
 # ==================================================
@@ -162,11 +159,6 @@ elif "chapter" in raw_df.columns:
     sel_range = st.sidebar.radio("範囲を選択", options)
     current_filter = sel_range.split(" ")[0] if sel_range != "すべてを表示" else "すべて"
     df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
-elif subject == "世界史一問一答" and "area" in raw_df.columns:
-    areas = sorted([str(x).strip() for x in raw_df["area"].dropna().unique().tolist()])
-    sel_area = st.sidebar.radio("地域を選択", ["すべてを表示"] + areas)
-    current_filter = sel_area
-    df = raw_df if sel_area == "すべてを表示" else raw_df[raw_df["area"].astype(str).str.strip() == sel_area]
 else:
     df = raw_df
 
@@ -188,10 +180,10 @@ row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
 
 # ==================================================
-# 7. クイズUI
+# 6. クイズUI
 # ==================================================
 
-# --- 暗唱例文集 ---
+# --- 1. 暗唱例文集 ---
 if subject == "暗唱例文集":
     c_m1, c_m2 = st.columns(2)
     with c_m1:
@@ -199,30 +191,28 @@ if subject == "暗唱例文集":
     with c_m2:
         if st.button("🔵 ヒントはここ"): st.session_state.study_mode = "空欄補充"; st.rerun()
 
-    # 問題文と同時に表示するアドバイス
     if st.session_state.study_mode == "空欄補充":
         st.info("💡 [　　]の中は１語とは限りません")
 
-    disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["English"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
+    disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["english"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
     st.markdown(f'<div class="card orange-card">【日本語】<br><b>{row["japanese"]}</b><hr>【英文】<br>{disp}</div>', unsafe_allow_html=True)
 
     if not st.session_state.answered:
         if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
     else:
-        ans_highlight = re.sub(r'\*\*(.*?)\*\*', r'<span style="color:#e91e63; font-weight:800; border-bottom:2px solid;">\1</span>', str(row["English"]))
+        ans_highlight = re.sub(r'\*\*(.*?)\*\*', r'<span style="color:#e91e63; font-weight:800; border-bottom:2px solid;">\1</span>', str(row["english"]))
         st.markdown(f'<div class="exp-card">【正解】<br><span style="font-size:1.3rem; font-family:serif;">{ans_highlight}</span></div>', unsafe_allow_html=True)
-        play_voice(str(row["English"]).replace("**", ""), "音声を聴く")
+        play_voice(str(row["english"]).replace("**", ""), "音声を聴く")
         st.write("---")
         c1, c2 = st.columns(2)
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- システム英単語 ---
+# --- 2. システム英単語 ---
 elif subject == "システム英単語":
     word = str(row["question"])
     sent = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sent}</div>', unsafe_allow_html=True)
-    
     st.warning("⚠️ シス単本体をメインにしましょう。情報量が全然違います。")
     
     if "choices" not in st.session_state:
@@ -252,7 +242,7 @@ elif subject == "システム英単語":
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 日本史正誤問題 ---
+# --- 3. 日本史正誤問題 ---
 elif subject == "日本史正誤問題攻略":
     st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
     st.markdown(f'<div class="card pink-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
@@ -269,14 +259,11 @@ elif subject == "日本史正誤問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 日本史史料問題 ---
+# --- 4. 日本史史料問題 ---
 elif subject == "日本史史料問題攻略":
     st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
-    st.info("💡 史料集成の解説もしっかり読み込むこと。")
-    
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{row["question"]}</div>', unsafe_allow_html=True)
     st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">⚠️ スペースや記号は自動で無視されます。</div>', unsafe_allow_html=True)
     
     ans_raw = str(row["answer"])
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
@@ -297,10 +284,22 @@ elif subject == "日本史史料問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- その他（一問一答・世界史） ---
+# --- 5. その他（一問一答・世界史・生物） ---
 else:
-    card_c = "pink-card" if "日本史" in subject else "cyan-card"
+    # 科目に応じてカードの色を決定
+    if subject == "生物一問一答":
+        card_c = "green-card"
+    elif "日本史" in subject:
+        card_c = "pink-card"
+    else:
+        card_c = "cyan-card"
+    
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+    
+    # 生物一問一答が選択された時のみ、指定の注意書きを表示
+    if subject == "生物一問一答":
+        st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
+
     u_in = st.text_input("答えを入力", key=f"in_{idx}")
     if st.button("解答する", disabled=st.session_state.answered): st.session_state.answered = True; st.rerun()
     if st.session_state.answered:
