@@ -123,7 +123,7 @@ def load_csv(name):
     }
     try:
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-        # カラム名を小文字に統一（chapter, question, answerなどを確実に取得するため）
+        # カラム名を小文字＆空白除去に統一
         df.columns = [c.lower().strip() for c in df.columns]
         return df
     except:
@@ -135,7 +135,7 @@ if raw_df.empty:
     st.stop()
 
 # ==================================================
-# 5. サイドバー
+# 5. サイドバー（チャプター判定の強化版）
 # ==================================================
 current_filter = "All"
 nihonshi_titles = {
@@ -150,21 +150,34 @@ if subject == "システム英単語":
     sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
+
 elif "chapter" in raw_df.columns:
-    # 数値が含まれるchapter名（第1章など）を正しくソート
-    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], 
-                       key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
+    # 全角数字を半角に変換、または正規表現で数字を抽出してソート
+    def get_sort_key(x):
+        nums = re.findall(r'\d+', str(x).translate(str.maketrans('０１２３４５６７８９', '0123456789')))
+        return int(nums[0]) if nums else 999
+
+    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=get_sort_key)
+    
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
     else:
-        # 世界史や生物はそのまま表示
         options = ["すべてを表示"] + raw_chaps
+        
     sel_range = st.sidebar.radio("範囲を選択", options)
-    current_filter = sel_range.split(" ")[0] if sel_range != "すべてを表示" else "すべて"
-    df = raw_df if current_filter == "すべて" else raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
+    
+    # フィルタリング判定（生物の「１ 〇〇」形式に配慮）
+    if sel_range == "すべてを表示":
+        current_filter = "すべて"
+        df = raw_df
+    else:
+        # 日本史の場合は「第1章」の部分だけ抽出、それ以外（生物など）は選択肢そのまま
+        current_filter = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        df = raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 else:
     df = raw_df
 
+# セッション状態の更新
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
     st.session_state.quiz_subject, st.session_state.quiz_filter = subject, current_filter
@@ -175,8 +188,8 @@ if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz
 active_df = st.session_state.get("df", pd.DataFrame())
 idx = st.session_state.get("idx", 0)
 
-if active_df.empty: 
-    st.info("選択された範囲に問題がありません。")
+if active_df.empty:
+    st.error(f"⚠️ 範囲『{current_filter}』に問題が見つかりません。CSVのカラム名や内容を確認してください。")
     st.stop()
 
 if idx >= len(active_df):
@@ -196,13 +209,9 @@ if subject == "暗唱例文集":
         if st.button("🔴 全文暗唱"): st.session_state.study_mode = "全文暗唱"; st.rerun()
     with c_m2:
         if st.button("🔵 ヒントはここ"): st.session_state.study_mode = "空欄補充"; st.rerun()
-
-    if st.session_state.study_mode == "空欄補充":
-        st.info("💡 [　　]の中は１語とは限りません")
-
+    if st.session_state.study_mode == "空欄補充": st.info("💡 [　　]の中は１語とは限りません")
     disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["english"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
     st.markdown(f'<div class="card orange-card">【日本語】<br><b>{row["japanese"]}</b><hr>【英文】<br>{disp}</div>', unsafe_allow_html=True)
-
     if not st.session_state.answered:
         if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
     else:
@@ -220,7 +229,6 @@ elif subject == "システム英単語":
     sent = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sent}</div>', unsafe_allow_html=True)
     st.warning("⚠️ シス単本体をメインにしましょう。情報量が全然違います。")
-    
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"]))]
         correct = ans_list[0]
@@ -228,14 +236,12 @@ elif subject == "システム英単語":
         st.session_state.choices = random.sample([correct] + random.sample(dummies, 3), 4)
         random.shuffle(st.session_state.choices)
         st.session_state.correct = correct
-
     st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
     cols = st.columns(2)
     for i, val in enumerate(st.session_state.choices):
         if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
             st.session_state.selected, st.session_state.answered = val, True; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
-
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("正解！")
         else: st.error(f"不正解... 正解：{st.session_state.correct}")
@@ -250,7 +256,7 @@ elif subject == "システム英単語":
 
 # --- 3. 日本史正誤問題 ---
 elif subject == "日本史正誤問題攻略":
-    st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
+    st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤判定に。")
     st.markdown(f'<div class="card pink-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     ans = str(row["answer"]).strip()
@@ -267,19 +273,14 @@ elif subject == "日本史正誤問題攻略":
 
 # --- 4. 日本史史料問題 ---
 elif subject == "日本史史料問題攻略":
-    st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
+    st.warning("⚠️ 重要史料を抜粋して空欄補充にしています。")
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{row["question"]}</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
-    
     ans_raw = str(row["answer"])
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
     user_inputs = []
     cols = st.columns(min(len(correct_list), 3))
-    for i, corr in enumerate(correct_list):
-        user_inputs.append(cols[i % len(cols)].text_input(f"空欄 {chr(65+i)}", key=f"s_{idx}_{i}"))
-    
+    for i, corr in enumerate(correct_list): user_inputs.append(cols[i % len(cols)].text_input(f"空欄 {chr(65+i)}", key=f"s_{idx}_{i}"))
     if st.button("解答する", disabled=st.session_state.answered): st.session_state.answered = True; st.rerun()
-    
     if st.session_state.answered:
         for i, (u, c) in enumerate(zip(user_inputs, correct_list)):
             if clean_text(u) == clean_text(c): st.success(f"{chr(65+i)}: 正解! ({c})")
@@ -292,17 +293,12 @@ elif subject == "日本史史料問題攻略":
 
 # --- 5. その他（一問一答・世界史・生物） ---
 else:
-    # 科目に応じてカードの色を決定
-    if subject == "生物一問一答":
-        card_c = "green-card"
-    elif "日本史" in subject:
-        card_c = "pink-card"
-    else:
-        card_c = "cyan-card"
+    if subject == "生物一問一答": card_c = "green-card"
+    elif "日本史" in subject: card_c = "pink-card"
+    else: card_c = "cyan-card"
     
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
-    # 生物一問一答が選択された時のみ、指定の注意書きを表示
     if subject == "生物一問一答":
         st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
 
