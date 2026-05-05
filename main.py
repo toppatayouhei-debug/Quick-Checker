@@ -302,9 +302,9 @@ else:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
             ans_raw = str(row["answer"])
-            # ★正解の文字サイズを1.1remに調整し、明朝体系(serif)を適用
-            st.markdown(f'<div class="exp-card">【正解】<br><span style="font-size:1.1rem; font-weight:800; font-family:serif;">{ans_raw}</span></div>', unsafe_allow_html=True)
-            if pd.notna(row.get("explanation")): st.info(f"解説：{row['explanation']}")
+            # ★正解を「解説」と同じexp-cardデザインで表示
+            st.markdown(f'<div class="exp-card">【正解】<br>{ans_raw}</div>', unsafe_allow_html=True)
+            if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
             st.write("---")
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
