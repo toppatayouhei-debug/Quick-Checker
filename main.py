@@ -298,19 +298,18 @@ else:
     
     if subject == "生物一問一答":
         st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
-        # ★生物のみ記述枠を表示せず、ボタンのみ設置
         if not st.session_state.answered:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
             ans_raw = str(row["answer"])
-            st.markdown(f'<div class="exp-card">【正解】<br><span style="font-size:1.2rem; font-weight:800;">{ans_raw}</span></div>', unsafe_allow_html=True)
+            # ★正解の文字サイズを1.1remに調整し、明朝体系(serif)を適用
+            st.markdown(f'<div class="exp-card">【正解】<br><span style="font-size:1.1rem; font-weight:800; font-family:serif;">{ans_raw}</span></div>', unsafe_allow_html=True)
             if pd.notna(row.get("explanation")): st.info(f"解説：{row['explanation']}")
             st.write("---")
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
     else:
-        # 世界史や日本史一問一答は元の記述枠ありのまま
         u_in = st.text_input("答えを入力", key=f"in_{idx}")
         if st.button("解答する", disabled=st.session_state.answered): st.session_state.answered = True; st.rerun()
         if st.session_state.answered:
