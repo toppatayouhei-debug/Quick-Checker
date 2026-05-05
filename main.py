@@ -34,7 +34,7 @@ st.markdown("""
 .cyan-card   { border-left: 8px solid #00bcd4; }
 .green-card  { border-left: 8px solid #4caf50; } /* 生物用 */
 
-/* 解説カード */
+/* 解説カード（黄色点線枠） */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
 
 /* ボタンデザイン */
@@ -301,9 +301,10 @@ else:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
             ans_raw = str(row["answer"])
-            # ★生物も他の科目と同じ st.success（青枠）で正解を表示
-            st.success(f"正解！ ({ans_raw})")
-            if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
+            # ★正解と解説を両方「黄色い点線カード」のデザインで統一
+            st.markdown(f'<div class="exp-card">【正解】<br>{ans_raw}</div>', unsafe_allow_html=True)
+            if pd.notna(row.get("explanation")): 
+                st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
             st.write("---")
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
