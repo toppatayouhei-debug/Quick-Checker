@@ -305,11 +305,11 @@ else:
         # 【生物】入力枠なし、「答えを確認する」ボタンのみ
         if subject == "生物一問一答":
             if st.button("答えを確認する"):
-                st.session_state.user_choice = None # 入力なしフラグ
+                st.session_state.user_choice = None 
                 st.session_state.answered = True
                 st.rerun()
         
-        # 【日本史・世界史】従来通りの入力式
+        # 【日本史・世界史】入力式
         else:
             u_in = st.text_input("答えを入力", key=f"in_{idx}")
             if st.button("解答する"):
@@ -321,18 +321,24 @@ else:
         ans_raw = str(row["answer"])
         user_input = st.session_state.get("user_choice")
 
-        # 自動判定（入力があった場合のみ実行）
         if user_input:
             if clean_text(user_input) in [clean_text(a) for a in ans_raw.split("/")]:
                 st.success(f"正解！ ({ans_raw})")
             else:
                 st.error(f"不正解... 正解：{ans_raw}")
         else:
-            # 生物などの「答えのみ確認」ルート
             st.info(f"正解：{ans_raw}")
 
+        # --- 解説表示（LaTeX対応） ---
         if pd.notna(row.get("explanation")):
-            st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
+            exp_text = str(row["explanation"])
+            # 解説文をそのまま表示（Streamlitは標準で$内のLaTeXを認識します）
+            st.markdown(f'''
+            <div class="exp-card">
+                <div style="margin-bottom:5px; font-weight:bold; color:#fab005;">💡 解説</div>
+                {exp_text}
+            </div>
+            ''', unsafe_allow_html=True)
         
         st.write("---")
         c1, c2 = st.columns(2)
