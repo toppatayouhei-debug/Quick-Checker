@@ -98,7 +98,7 @@ def clean_text(t):
 # 3. メイン画面
 # ==================================================
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴・理系基礎 統合学習ツール</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集",
@@ -122,9 +122,9 @@ def load_csv(name):
         "生物一問一答":"biology.csv"
     }
     try:
-        # すべて小文字のカラム名に統一して読み込み
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-        df.columns = [c.lower() for c in df.columns]
+        # カラム名を小文字に統一（chapter, question, answerなどを確実に取得するため）
+        df.columns = [c.lower().strip() for c in df.columns]
         return df
     except:
         return pd.DataFrame()
@@ -151,10 +151,13 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
 elif "chapter" in raw_df.columns:
-    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
+    # 数値が含まれるchapter名（第1章など）を正しくソート
+    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], 
+                       key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
     else:
+        # 世界史や生物はそのまま表示
         options = ["すべてを表示"] + raw_chaps
     sel_range = st.sidebar.radio("範囲を選択", options)
     current_filter = sel_range.split(" ")[0] if sel_range != "すべてを表示" else "すべて"
@@ -172,7 +175,10 @@ if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz
 active_df = st.session_state.get("df", pd.DataFrame())
 idx = st.session_state.get("idx", 0)
 
-if active_df.empty: st.stop()
+if active_df.empty: 
+    st.info("選択された範囲に問題がありません。")
+    st.stop()
+
 if idx >= len(active_df):
     st.balloons(); st.success("全問終了！"); st.button("リセットして最初から", on_click=reset_quiz_engine); st.stop()
 
