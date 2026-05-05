@@ -40,13 +40,10 @@ st.markdown("""
 /* ボタンデザイン */
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; min-height: 55px; transition: 0.2s; }
 .tango-btn button { background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important; }
-.nihonshi-btn button { background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important; }
 
 /* 正誤問題用の特殊ボタン（⭕️/❌） */
 button:has(div:contains("⭕️")) { background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important; }
 button:has(div:contains("❌")) { background-color: #fff5f5 !important; color: #ff4b4b !important; border: 2px solid #ff4b4b !important; }
-
-.guide-text { color: #555555 !important; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
 
 /* === 再生ボタンのスタイル === */
 .audio-container {
@@ -98,7 +95,7 @@ def clean_text(t):
 # 3. メイン画面
 # ==================================================
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴・理系基礎 統合学習ツール</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集",
@@ -122,7 +119,7 @@ def load_csv(name):
         "生物一問一答":"biology.csv"
     }
     try:
-        # すべて小文字のカラム名に統一して読み込み
+        # カラム名を小文字に統一
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
         df.columns = [c.lower() for c in df.columns]
         return df
@@ -150,8 +147,10 @@ if subject == "システム英単語":
     sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
+
 elif "chapter" in raw_df.columns:
-    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
+    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], 
+                       key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 999)
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
     else:
@@ -191,9 +190,6 @@ if subject == "暗唱例文集":
     with c_m2:
         if st.button("🔵 ヒントはここ"): st.session_state.study_mode = "空欄補充"; st.rerun()
 
-    if st.session_state.study_mode == "空欄補充":
-        st.info("💡 [　　]の中は１語とは限りません")
-
     disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["english"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
     st.markdown(f'<div class="card orange-card">【日本語】<br><b>{row["japanese"]}</b><hr>【英文】<br>{disp}</div>', unsafe_allow_html=True)
 
@@ -206,14 +202,12 @@ if subject == "暗唱例文集":
         st.write("---")
         c1, c2 = st.columns(2)
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
 # --- 2. システム英単語 ---
 elif subject == "システム英単語":
     word = str(row["question"])
     sent = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
     st.markdown(f'<div class="card orange-card">{sent}</div>', unsafe_allow_html=True)
-    st.warning("⚠️ シス単本体をメインにしましょう。情報量が全然違います。")
     
     if "choices" not in st.session_state:
         ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"]))]
@@ -233,18 +227,16 @@ elif subject == "システム英単語":
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("正解！")
         else: st.error(f"不正解... 正解：{st.session_state.correct}")
-        st.info(f"意味：{row['all_answers']}\n訳：{row['translation']}")
+        st.info(f"意味：{row['all_answers']}")
         play_voice(str(row["question"]), "音声を聴く")
         st.write("---")
-        c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"): 
+        if st.button("✅ 次へ"): 
             if "choices" in st.session_state: del st.session_state.choices
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
 # --- 3. 日本史正誤問題 ---
 elif subject == "日本史正誤問題攻略":
-    st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
+    st.warning("⚠️ 山川『日本史探究』の文章を正誤判定に。")
     st.markdown(f'<div class="card pink-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     ans = str(row["answer"]).strip()
@@ -255,97 +247,58 @@ elif subject == "日本史正誤問題攻略":
         else: st.error(f"不正解... 正解は【 {ans} 】")
         if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         st.write("---")
-        c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+        if st.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
 # --- 4. 日本史史料問題 ---
 elif subject == "日本史史料問題攻略":
-    st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{row["question"]}</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
-    
     ans_raw = str(row["answer"])
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
     user_inputs = []
     cols = st.columns(min(len(correct_list), 3))
     for i, corr in enumerate(correct_list):
         user_inputs.append(cols[i % len(cols)].text_input(f"空欄 {chr(65+i)}", key=f"s_{idx}_{i}"))
-    
     if st.button("解答する", disabled=st.session_state.answered): st.session_state.answered = True; st.rerun()
-    
     if st.session_state.answered:
         for i, (u, c) in enumerate(zip(user_inputs, correct_list)):
             if clean_text(u) == clean_text(c): st.success(f"{chr(65+i)}: 正解! ({c})")
             else: st.error(f"{chr(65+i)}: 不正解. 正解: {c}")
         if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         st.write("---")
-        c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+        if st.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
 
 # --- 5. その他（一問一答・世界史・生物） ---
 else:
-    # 科目に応じてカードの色を決定
-    if subject == "生物一問一答":
-        card_c = "green-card"
-    elif "日本史" in subject:
-        card_c = "pink-card"
-    else:
-        card_c = "cyan-card"
+    if subject == "生物一問一答": card_c = "green-card"
+    elif "日本史" in subject: card_c = "pink-card"
+    else: card_c = "cyan-card"
     
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
-    # 生物のみ専用の注意書きを表示
     if subject == "生物一問一答":
         st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
 
-    # --- 解答アクションエリア ---
     if not st.session_state.answered:
-        # 【生物】入力枠なし、「答えを確認する」ボタンのみ
         if subject == "生物一問一答":
             if st.button("答えを確認する"):
                 st.session_state.user_choice = None 
-                st.session_state.answered = True
-                st.rerun()
-        
-        # 【日本史・世界史】入力式
+                st.session_state.answered = True; st.rerun()
         else:
             u_in = st.text_input("答えを入力", key=f"in_{idx}")
             if st.button("解答する"):
                 st.session_state.user_choice = u_in
-                st.session_state.answered = True
-                st.rerun()
+                st.session_state.answered = True; st.rerun()
     else:
-        # 解答表示エリア
         ans_raw = str(row["answer"])
         user_input = st.session_state.get("user_choice")
-
         if user_input:
-            if clean_text(user_input) in [clean_text(a) for a in ans_raw.split("/")]:
-                st.success(f"正解！ ({ans_raw})")
-            else:
-                st.error(f"不正解... 正解：{ans_raw}")
-        else:
-            st.info(f"正解：{ans_raw}")
+            if clean_text(user_input) in [clean_text(a) for a in ans_raw.split("/")]: st.success(f"正解！ ({ans_raw})")
+            else: st.error(f"不正解... 正解：{ans_raw}")
+        else: st.info(f"正解：{ans_raw}")
 
-        # --- 解説表示（LaTeX対応） ---
         if pd.notna(row.get("explanation")):
-            exp_text = str(row["explanation"])
-            # 解説文をそのまま表示（Streamlitは標準で$内のLaTeXを認識します）
-            st.markdown(f'''
-            <div class="exp-card">
-                <div style="margin-bottom:5px; font-weight:bold; color:#fab005;">💡 解説</div>
-                {exp_text}
-            </div>
-            ''', unsafe_allow_html=True)
+            # LaTeX対応の表示
+            st.markdown(f'<div class="exp-card"><div style="font-weight:bold; color:#fab005; margin-bottom:5px;">💡 解説</div>{row["explanation"]}</div>', unsafe_allow_html=True)
         
         st.write("---")
-        c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"):
-            st.session_state.idx += 1
-            st.session_state.answered = False
-            st.rerun()
-        if c2.button("🔄 もう一度"):
-            st.session_state.answered = False
-            st.rerun()
+        if st.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
