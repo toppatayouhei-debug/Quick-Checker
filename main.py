@@ -296,25 +296,20 @@ else:
     
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
-    # 生物一問一答が選択された時のみ、指定の注意書きを表示
+    # 生物のみ専用の注意書きを表示
     if subject == "生物一問一答":
         st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
 
     # --- 解答アクションエリア ---
     if not st.session_state.answered:
-        # 生物のみ「答えのみ確認」ボタンを表示
+        # 【生物】入力枠なし、「答えを確認する」ボタンのみ
         if subject == "生物一問一答":
-            u_in = st.text_input("答えを入力（空欄で下のボタン確認もOK）", key=f"in_{idx}")
-            c_btn1, c_btn2 = st.columns(2)
-            if c_btn1.button("解答する"):
-                st.session_state.user_choice = u_in
+            if st.button("答えを確認する"):
+                st.session_state.user_choice = None # 入力なしフラグ
                 st.session_state.answered = True
                 st.rerun()
-            if c_btn2.button("答えのみ確認"):
-                st.session_state.user_choice = None
-                st.session_state.answered = True
-                st.rerun()
-        # 日本史・世界史は従来通りの入力式
+        
+        # 【日本史・世界史】従来通りの入力式
         else:
             u_in = st.text_input("答えを入力", key=f"in_{idx}")
             if st.button("解答する"):
@@ -326,14 +321,14 @@ else:
         ans_raw = str(row["answer"])
         user_input = st.session_state.get("user_choice")
 
-        # 自動判定（入力があった場合のみ）
+        # 自動判定（入力があった場合のみ実行）
         if user_input:
             if clean_text(user_input) in [clean_text(a) for a in ans_raw.split("/")]:
                 st.success(f"正解！ ({ans_raw})")
             else:
                 st.error(f"不正解... 正解：{ans_raw}")
         else:
-            # 入力なし（生物で「答えのみ確認」を押した場合など）
+            # 生物などの「答えのみ確認」ルート
             st.info(f"正解：{ans_raw}")
 
         if pd.notna(row.get("explanation")):
