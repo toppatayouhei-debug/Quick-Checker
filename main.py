@@ -236,7 +236,6 @@ elif subject == "システム英単語":
     for i, val in enumerate(st.session_state.choices):
         if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
             st.session_state.selected, st.session_state.answered = val, True; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
     if st.session_state.answered:
         if st.session_state.selected == st.session_state.correct: st.success("正解！")
         else: st.error(f"不正解... 正解：{st.session_state.correct}")
@@ -302,9 +301,9 @@ else:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
             ans_raw = str(row["answer"])
-            # ★正解を「解説」と同じexp-cardデザインで表示
-            st.markdown(f'<div class="exp-card">【正解】<br>{ans_raw}</div>', unsafe_allow_html=True)
-            if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
+            # ★生物も他の科目と同じ st.success（青枠）で正解を表示
+            st.success(f"正解！ ({ans_raw})")
+            if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
             st.write("---")
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
