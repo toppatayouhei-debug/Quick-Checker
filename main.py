@@ -269,8 +269,7 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     
-    # 【判定ロジックの修正】
-    # データ側の「◯/×」のバリエーションを吸収する
+    # 判定と表示の記号を「◯」に統一
     raw_ans = str(row["answer"]).strip().lower()
     if raw_ans in ["◯", "○", "正", "1", "true", "ok", "yes"]:
         ans = "◯"
