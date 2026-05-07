@@ -152,12 +152,15 @@ if subject == "システム英単語":
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
 
-elif "chapter" in raw_df.columns:
+elif "chapter" in raw_df.columns or "area" in raw_df.columns:
+    # フィルタリングに使うカラムを特定
+    col_name = "chapter" if "chapter" in raw_df.columns else "area"
+    
     def get_sort_key(x):
         nums = re.findall(r'\d+', str(x).translate(str.maketrans('０１２３４５６７８９', '0123456789')))
         return int(nums[0]) if nums else 999
 
-    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=get_sort_key)
+    raw_chaps = sorted([str(x).strip() for x in raw_df[col_name].dropna().unique().tolist()], key=get_sort_key)
     
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
@@ -170,10 +173,9 @@ elif "chapter" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
-        # 日本史の場合は章番号のみ抽出、それ以外（世界史等）はそのままマッチング
         target_chap = sel_range.split(" ")[0] if "日本史" in subject else sel_range
         current_filter = target_chap
-        df = raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
+        df = raw_df[raw_df[col_name].astype(str).str.strip() == current_filter]
 else:
     df = raw_df
 
