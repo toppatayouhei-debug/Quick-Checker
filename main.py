@@ -103,7 +103,7 @@ st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツー�
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
-    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答"
+    "世界史一問一答", "生物一問一答"
 ])
 
 if subject == "選択してください":
@@ -119,7 +119,6 @@ def load_csv(name):
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
         "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
-        "世界史正誤問題攻略":"wh_seigo.csv",
         "生物一問一答":"biology.csv"
     }
     try:
@@ -145,21 +144,18 @@ nihonshi_titles = {
     "第11章": "近世から近代へ", "第12章": "近代国家の成立", "第13章": "近代国家の展開", "第14章": "近代の産業と生活"
 }
 
-# --- フィルタリングロジック ---
 if subject == "システム英単語":
     level_map = {"All":"All", "Fundamental(1-600)":"Fundamental", "Essential(601-1200)":"Essential", "Advanced(1201-1700)":"Advanced", "Final(1701-2027)":"Final"}
     sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
     current_filter = level_map[sel_level]
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
 
-elif "chapter" in raw_df.columns or "area" in raw_df.columns:
-    col_name = "chapter" if "chapter" in raw_df.columns else "area"
-    
+elif "chapter" in raw_df.columns:
     def get_sort_key(x):
         nums = re.findall(r'\d+', str(x).translate(str.maketrans('０１２３４５６７８９', '0123456789')))
         return int(nums[0]) if nums else 999
 
-    raw_chaps = sorted([str(x).strip() for x in raw_df[col_name].dropna().unique().tolist()], key=get_sort_key)
+    raw_chaps = sorted([str(x).strip() for x in raw_df["chapter"].dropna().unique().tolist()], key=get_sort_key)
     
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
@@ -172,20 +168,16 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
-        target_chap = sel_range.split(" ")[0] if "日本史" in subject else sel_range
-        current_filter = target_chap
-        df = raw_df[raw_df[col_name].astype(str).str.strip() == current_filter]
+        current_filter = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        df = raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 else:
     df = raw_df
 
-# セッションの初期化チェック
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
-    st.session_state.quiz_subject = subject
-    st.session_state.quiz_filter = current_filter
+    st.session_state.quiz_subject, st.session_state.quiz_filter = subject, current_filter
     st.session_state.df = df.sample(frac=1).reset_index(drop=True)
-    st.session_state.idx = 0
-    st.session_state.answered = False
+    st.session_state.idx, st.session_state.answered = 0, False
     st.session_state.study_mode = "全文暗唱"
 
 active_df = st.session_state.get("df", pd.DataFrame())
@@ -257,25 +249,14 @@ elif subject == "システム英単語":
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 3. 正誤問題 (日本史・世界史) ---
-elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
-    if subject == "日本史正誤問題攻略":
-        st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
-        card_class = "pink-card"
-    else:
-        st.warning("⚠️ 世界史の教科書文章をベースにした正誤問題です。知識の定着を確認しましょう。")
-        card_class = "cyan-card"
-        
-    st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+# --- 3. 日本史正誤問題 ---
+elif subject == "日本史正誤問題攻略":
+    st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
+    st.markdown(f'<div class="card pink-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
-    
-    # 判定の揺れを防ぐため、データ側の答えを整形
-    raw_ans = str(row["answer"]).strip()
-    ans = "◯" if raw_ans in ["◯", "○", "正", "1"] else "×"
-    
+    ans = str(row["answer"]).strip()
     if c1.button("⭕️ 正しい", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "◯", True; st.rerun()
     if c2.button("❌ 誤り", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "×", True; st.rerun()
-    
     if st.session_state.answered:
         if st.session_state.user_choice == ans: st.success("正解！")
         else: st.error(f"不正解... 正解は【 {ans} 】")
@@ -307,7 +288,7 @@ elif subject == "日本史史料問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 5. その他（一問一答・生物） ---
+# --- 5. その他（一問一答・世界史・生物） ---
 else:
     if subject == "生物一問一答": card_c = "green-card"
     elif "日本史" in subject: card_c = "pink-card"
@@ -320,6 +301,7 @@ else:
         if not st.session_state.answered:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
+            # 正解と解説を一つの st.success に統合
             ans_raw = str(row["answer"])
             exp_raw = str(row["explanation"]) if pd.notna(row.get("explanation")) else ""
             display_text = f"【正解】\n{ans_raw}"
