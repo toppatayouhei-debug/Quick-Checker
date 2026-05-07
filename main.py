@@ -119,7 +119,7 @@ def load_csv(name):
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
         "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
-        "世界史正誤問題攻略":"wh_seigo.csv", # 追加
+        "世界史正誤問題攻略":"wh_seigo.csv",
         "生物一問一答":"biology.csv"
     }
     try:
