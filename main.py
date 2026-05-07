@@ -145,6 +145,7 @@ nihonshi_titles = {
     "第11章": "近世から近代へ", "第12章": "近代国家の成立", "第13章": "近代国家の展開", "第14章": "近代の産業と生活"
 }
 
+# --- フィルタリングロジック ---
 if subject == "システム英単語":
     level_map = {"All":"All", "Fundamental(1-600)":"Fundamental", "Essential(601-1200)":"Essential", "Advanced(1201-1700)":"Advanced", "Final(1701-2027)":"Final"}
     sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
@@ -169,16 +170,21 @@ elif "chapter" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
-        current_filter = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        # 日本史の場合は章番号のみ抽出、それ以外（世界史等）はそのままマッチング
+        target_chap = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        current_filter = target_chap
         df = raw_df[raw_df["chapter"].astype(str).str.strip() == current_filter]
 else:
     df = raw_df
 
+# セッションの初期化チェック
 if st.session_state.get("quiz_subject") != subject or st.session_state.get("quiz_filter") != current_filter:
     reset_quiz_engine()
-    st.session_state.quiz_subject, st.session_state.quiz_filter = subject, current_filter
+    st.session_state.quiz_subject = subject
+    st.session_state.quiz_filter = current_filter
     st.session_state.df = df.sample(frac=1).reset_index(drop=True)
-    st.session_state.idx, st.session_state.answered = 0, False
+    st.session_state.idx = 0
+    st.session_state.answered = False
     st.session_state.study_mode = "全文暗唱"
 
 active_df = st.session_state.get("df", pd.DataFrame())
