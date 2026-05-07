@@ -153,7 +153,6 @@ if subject == "システム英単語":
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
 
 elif "chapter" in raw_df.columns or "area" in raw_df.columns:
-    # フィルタリングに使うカラムを特定
     col_name = "chapter" if "chapter" in raw_df.columns else "area"
     
     def get_sort_key(x):
@@ -269,9 +268,14 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
-    ans = str(row["answer"]).strip()
+    
+    # 判定の揺れを防ぐため、データ側の答えを整形
+    raw_ans = str(row["answer"]).strip()
+    ans = "◯" if raw_ans in ["◯", "○", "正", "1"] else "×"
+    
     if c1.button("⭕️ 正しい", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "◯", True; st.rerun()
     if c2.button("❌ 誤り", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "×", True; st.rerun()
+    
     if st.session_state.answered:
         if st.session_state.user_choice == ans: st.success("正解！")
         else: st.error(f"不正解... 正解は【 {ans} 】")
