@@ -103,7 +103,7 @@ st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツー�
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
-    "世界史一問一答", "生物一問一答"
+    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答"
 ])
 
 if subject == "選択してください":
@@ -118,7 +118,8 @@ def load_csv(name):
     files = {
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
-        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"wh_seigo.csv", # 指定のファイル名に変更
+        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
+        "世界史正誤問題攻略":"wh_seigo.csv", # 追加
         "生物一問一答":"biology.csv"
     }
     try:
@@ -249,10 +250,16 @@ elif subject == "システム英単語":
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 3. 日本史正誤問題 ---
-elif subject == "日本史正誤問題攻略":
-    st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
-    st.markdown(f'<div class="card pink-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+# --- 3. 正誤問題 (日本史・世界史) ---
+elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
+    if subject == "日本史正誤問題攻略":
+        st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
+        card_class = "pink-card"
+    else:
+        st.warning("⚠️ 世界史の教科書文章をベースにした正誤問題です。知識の定着を確認しましょう。")
+        card_class = "cyan-card"
+        
+    st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     ans = str(row["answer"]).strip()
     if c1.button("⭕️ 正しい", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "◯", True; st.rerun()
@@ -288,7 +295,7 @@ elif subject == "日本史史料問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 5. その他（一問一答・世界史・生物） ---
+# --- 5. その他（一問一答・生物） ---
 else:
     if subject == "生物一問一答": card_c = "green-card"
     elif "日本史" in subject: card_c = "pink-card"
@@ -301,7 +308,6 @@ else:
         if not st.session_state.answered:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
-            # 正解と解説を一つの st.success に統合
             ans_raw = str(row["answer"])
             exp_raw = str(row["explanation"]) if pd.notna(row.get("explanation")) else ""
             display_text = f"【正解】\n{ans_raw}"
