@@ -269,9 +269,13 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     
-    # 判定の揺れを防ぐため、データ側の答えを整形
-    raw_ans = str(row["answer"]).strip()
-    ans = "◯" if raw_ans in ["◯", "○", "正", "1"] else "×"
+    # 【判定ロジックの修正】
+    # データ側の「◯/×」のバリエーションを吸収する
+    raw_ans = str(row["answer"]).strip().lower()
+    if raw_ans in ["◯", "○", "正", "1", "true", "ok", "yes"]:
+        ans = "◯"
+    else:
+        ans = "×"
     
     if c1.button("⭕️ 正しい", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "◯", True; st.rerun()
     if c2.button("❌ 誤り", disabled=st.session_state.answered): st.session_state.user_choice, st.session_state.answered = "×", True; st.rerun()
