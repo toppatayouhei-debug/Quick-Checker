@@ -154,7 +154,6 @@ if subject == "システム英単語":
     df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
 
 elif subject == "頻出！英文法入試問題":
-    # fieldを「/」でバラして重複のないユニークな分野リストを抽出
     fields_set = set()
     if "field" in raw_df.columns:
         for f_val in raw_df["field"].dropna():
@@ -170,7 +169,6 @@ elif subject == "頻出！英文法入試問題":
     if sel_field == "ランダム（全問シャッフル）":
         df = raw_df
     else:
-        # スラッシュ区切りのいずれかに選択された分野が含まれる行を抽出（マルチカテゴリ対応）
         df = raw_df[raw_df["field"].astype(str).apply(lambda x: sel_field in [s.strip() for s in x.split("/")])]
 
 elif "chapter" in raw_df.columns or "area" in raw_df.columns:
@@ -217,7 +215,7 @@ if active_df.empty:
     st.stop()
 
 if idx >= len(active_df):
-    st.balloons(); st.success("全問終了！"); st.button("リセットして最初から", on_click=reset_quiz_engine); st.stop()
+    st.balloons(); st.success("全問終了！"); st.button("リresetして最初から", on_click=reset_quiz_engine); st.stop()
 
 row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
@@ -278,7 +276,7 @@ elif subject == "システム英単語":
             st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 3. 頻出！英文法入試問題 (追加項目) ---
+# --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
     st.markdown(f'<div class="card orange-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
@@ -288,8 +286,8 @@ elif subject == "頻出！英文法入試問題":
     st.error("⚠️ 湧き出る問題、解いて解いて解きまくる。ニガテ意識よさようなら")
     
     if "choices" not in st.session_state:
-        # スラッシュ「/」で区切られた4つの選択肢をリスト化
-        choice_list = [x.strip() for x in str(row["choices"]).split("/") if x.strip()]
+        # ヘッダー指定の 'option' 列からデータを取得するよう修正
+        choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
         st.session_state.choices = choice_list
         st.session_state.correct = str(row["answer"]).strip()
 
@@ -306,11 +304,9 @@ elif subject == "頻出！英文法入試問題":
         else: 
             st.error(f"不正解... 正解：{st.session_state.correct}")
             
-        # 大学名と解説をカードで表示
         uni_str = f"【出典】 {row['university']}\n\n" if pd.notna(row.get("university")) else ""
         st.markdown(f'<div class="exp-card">{uni_str}{row["explanation"]}</div>', unsafe_allow_html=True)
         
-        # 英文法アプリのため、問題文全体の音声を再生できるようにTTSを配置
         voice_sentence = str(row["question"]).replace("(      )", st.session_state.correct)
         play_voice(voice_sentence, "英文を聴く")
         
@@ -333,7 +329,6 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     
-    # 判定と表示の記号を「◯」に統一
     raw_ans = str(row["answer"]).strip().lower()
     if raw_ans in ["◯", "○", "正", "1", "true", "ok", "yes"]:
         ans = "◯"
