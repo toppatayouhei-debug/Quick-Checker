@@ -148,6 +148,12 @@ def load_csv_with_cache(name):
     df.columns = [c.lower().strip() for c in df.columns]
     return df
 
+# 元の生データ（raw_df）をここで安全に定義してエラーを回避
+raw_df = load_csv(subject)
+if raw_df.empty:
+    st.warning(f"データファイルが見つかりません。({subject})")
+    st.stop()
+
 # ==================================================
 # 5. サイドバー（フィルタリング・範囲選択）
 # ==================================================
@@ -228,7 +234,7 @@ if active_df.empty:
     st.stop()
 
 if idx >= len(active_df):
-    st.balloons(); st.success("全問終了！"); st.button("リresetして最初から", on_click=reset_quiz_engine); st.stop()
+    st.balloons(); st.success("全問終了！"); st.button("リセットして最初から", on_click=reset_quiz_engine); st.stop()
 
 row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
@@ -376,7 +382,7 @@ elif subject == "日本史史料問題攻略":
     if st.session_state.answered:
         for i, (u, c) in enumerate(zip(user_inputs, correct_list)):
             if clean_text(u) == clean_text(c): st.success(f"{chr(65+i)}: 正解! ({c})")
-            else: text_error = st.error(f"{chr(65+i)}: 不正解. 正解: {c}")
+            else: st.error(f"{chr(65+i)}: 不正解. 正解: {c}")
         if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         st.write("---")
         c1, c2 = st.columns(2)
