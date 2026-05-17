@@ -297,7 +297,6 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
-    # 枠内の文字がすべて綺麗に左に揃うよう、文字列の先頭空白（インデント）を除去して配置
     st.info(
         "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
         "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
@@ -307,37 +306,36 @@ elif subject == "頻出！英文法入試問題":
     uni_suffix = f" （{row['university']}）" if pd.notna(row.get("university")) and str(row["university"]).strip() else ""
     full_question = f"{row['question']}{uni_suffix}"
     
-    st.markdown(f'<div class="card orange-card"><b>{full_question}</b></div>', unsafe_allow_html=True)
-    
-    if "choices" not in st.session_state:
+    # 選択肢情報がある場合は、問題カードの中にパーツとして並べて視認しやすくする
+    options_text = ""
+    if pd.notna(row.get("option")) and str(row["option"]).strip():
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
-        st.session_state.choices = choice_list
-        st.session_state.correct = str(row["answer"]).strip()
-
-    st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
-    cols = st.columns(2)
-    for i, val in enumerate(st.session_state.choices):
-        if cols[i%2].button(val, key=f"g_{i}", disabled=st.session_state.answered):
-            st.session_state.selected, st.session_state.answered = val, True; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct: 
-            st.success("正解！")
-        else: 
-            st.error(f"不正解... 正解：{st.session_state.correct}")
+        if choice_list:
+            options_text = "<hr>【選択肢】<br>" + " ｜ ".join([f"<b>[{i+1}]</b> {val}" for i, val in enumerate(choice_list)])
             
-        st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="card orange-card"><b>{full_question}</b>{options_text}</div>', unsafe_allow_html=True)
+    
+    if not st.session_state.answered:
+        if st.button("答えを確認する"): 
+            st.session_state.answered = True
+            st.rerun()
+    else:
+        st.success(f"【正解】\n{row['answer']}")
+        st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
         
-        voice_sentence = str(row["question"]).replace("(      )", st.session_state.correct)
+        # 音声再生用
+        voice_sentence = str(row["question"]).replace("(      )", str(row["answer"]))
         play_voice(voice_sentence, "英文を聴く")
         
         st.write("---")
         c1, c2 = st.columns(2)
         if c1.button("✅ 次へ"): 
-            if "choices" in st.session_state: del st.session_state.choices
-            st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+            st.session_state.idx += 1
+            st.session_state.answered = False
+            st.rerun()
+        if c2.button("🔄 もう一度"): 
+            st.session_state.answered = False
+            st.rerun()
 
 # --- 4. 正誤問題 (日本史・世界史) ---
 elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
