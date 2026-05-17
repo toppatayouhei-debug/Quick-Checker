@@ -215,7 +215,7 @@ if active_df.empty:
     st.stop()
 
 if idx >= len(active_df):
-    st.balloons(); st.success("全問終了！"); st.button("リresetして最初から", on_click=reset_quiz_engine); st.stop()
+    st.balloons(); st.success("全問終了！"); st.button("リセットして最初から", on_click=reset_quiz_engine); st.stop()
 
 row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
@@ -278,7 +278,11 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
-    st.markdown(f'<div class="card orange-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+    # university の記述があれば、問題文（question）の末尾へ結合する設定を追加
+    uni_suffix = f" （{row['university']}）" if pd.notna(row.get("university")) and str(row["university"]).strip() else ""
+    full_question = f"{row['question']}{uni_suffix}"
+    
+    st.markdown(f'<div class="card orange-card"><b>{full_question}</b></div>', unsafe_allow_html=True)
     
     # 3つの指定注意書きの出力
     st.warning("⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう")
@@ -286,7 +290,6 @@ elif subject == "頻出！英文法入試問題":
     st.error("⚠️ 湧き出る問題、解いて解いて解きまくる。ニガテ意識よさようなら")
     
     if "choices" not in st.session_state:
-        # ヘッダー指定の 'option' 列からデータを取得するよう修正
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
         st.session_state.choices = choice_list
         st.session_state.correct = str(row["answer"]).strip()
@@ -304,8 +307,8 @@ elif subject == "頻出！英文法入試問題":
         else: 
             st.error(f"不正解... 正解：{st.session_state.correct}")
             
-        uni_str = f"【出典】 {row['university']}\n\n" if pd.notna(row.get("university")) else ""
-        st.markdown(f'<div class="exp-card">{uni_str}{row["explanation"]}</div>', unsafe_allow_html=True)
+        # 解説カード側（解答後）の見栄えをスッキリさせるため、解説文のみを表示
+        st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         
         voice_sentence = str(row["question"]).replace("(      )", st.session_state.correct)
         play_voice(voice_sentence, "英文を聴く")
