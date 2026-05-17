@@ -278,7 +278,6 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
-    # university の記述があれば、問題文（question）の末尾へ結合する設定を追加
     uni_suffix = f" （{row['university']}）" if pd.notna(row.get("university")) and str(row["university"]).strip() else ""
     full_question = f"{row['question']}{uni_suffix}"
     
@@ -287,7 +286,7 @@ elif subject == "頻出！英文法入試問題":
     # 3つの指定注意書きの出力
     st.warning("⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう")
     st.info("⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう")
-    st.error("⚠️ 湧き出る問題、解いて解いて解きまくる。ニガテ意識よさようなら")
+    st.error("⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よさようなら")
     
     if "choices" not in st.session_state:
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
@@ -307,7 +306,6 @@ elif subject == "頻出！英文法入試問題":
         else: 
             st.error(f"不正解... 正解：{st.session_state.correct}")
             
-        # 解説カード側（解答後）の見栄えをスッキリさせるため、解説文のみを表示
         st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         
         voice_sentence = str(row["question"]).replace("(      )", st.session_state.correct)
