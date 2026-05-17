@@ -297,15 +297,17 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
+    # 3つの指定注意書きを1つの黄色の枠（st.info）にまとめて問題の上に配置
+    st.info(
+        "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
+        "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
+        "⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よさようなら"
+    )
+    
     uni_suffix = f" （{row['university']}）" if pd.notna(row.get("university")) and str(row["university"]).strip() else ""
     full_question = f"{row['question']}{uni_suffix}"
     
     st.markdown(f'<div class="card orange-card"><b>{full_question}</b></div>', unsafe_allow_html=True)
-    
-    # 3つの指定注意書きの出力
-    st.warning("⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう")
-    st.info("⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう")
-    st.error("⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よさようなら")
     
     if "choices" not in st.session_state:
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
