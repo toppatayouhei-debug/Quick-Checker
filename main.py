@@ -111,9 +111,8 @@ if subject == "選択してください":
     st.stop()
 
 # ==================================================
-# 4. データ読み込み
+# 4. データ読み込み（英文法だけキャッシュを完全無効化）
 # ==================================================
-@st.cache_data
 def load_csv(name):
     files = {
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
@@ -124,16 +123,30 @@ def load_csv(name):
         "生物一問一答":"biology.csv"
     }
     try:
-        df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-        df.columns = [c.lower().strip() for c in df.columns]
-        return df
+        # 英文法だけキャッシュを通さず、常に最新のCSVを直接読み込む
+        if name == "頻出！英文法入試問題":
+            df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+            df.columns = [c.lower().strip() for c in df.columns]
+            return df
+            
+        # 他の科目は、既存の挙動（キャッシュ高速化）を壊さないよう別関数へパス
+        return load_csv_with_cache(name)
     except:
         return pd.DataFrame()
 
-raw_df = load_csv(subject)
-if raw_df.empty:
-    st.warning(f"データファイルが見つかりません。({subject})")
-    st.stop()
+# 他の科目のためのキャッシュ用隔離関数
+@st.cache_data
+def load_csv_with_cache(name):
+    files = {
+        "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
+        "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
+        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
+        "世界史正誤問題攻略":"wh_seigo.csv",
+        "生物一問一答":"biology.csv"
+    }
+    df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+    df.columns = [c.lower().strip() for c in df.columns]
+    return df
 
 # ==================================================
 # 5. サイドバー（フィルタリング・範囲選択）
@@ -215,7 +228,7 @@ if active_df.empty:
     st.stop()
 
 if idx >= len(active_df):
-    st.balloons(); st.success("全問終了！"); st.button("リセットして最初から", on_click=reset_quiz_engine); st.stop()
+    st.balloons(); st.success("全問終了！"); st.button("リresetして最初から", on_click=reset_quiz_engine); st.stop()
 
 row = active_df.iloc[idx]
 st.progress((idx + 1) / len(active_df))
@@ -363,7 +376,7 @@ elif subject == "日本史史料問題攻略":
     if st.session_state.answered:
         for i, (u, c) in enumerate(zip(user_inputs, correct_list)):
             if clean_text(u) == clean_text(c): st.success(f"{chr(65+i)}: 正解! ({c})")
-            else: st.error(f"{chr(65+i)}: 不正解. 正解: {c}")
+            else: text_error = st.error(f"{chr(65+i)}: 不正解. 正解: {c}")
         if pd.notna(row.get("explanation")): st.markdown(f'<div class="exp-card">{row["explanation"]}</div>', unsafe_allow_html=True)
         st.write("---")
         c1, c2 = st.columns(2)
