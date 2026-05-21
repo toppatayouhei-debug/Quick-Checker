@@ -286,11 +286,13 @@ elif subject == "システム英単語":
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
 # --- 3. 頻出！英文法入試問題 ---
+# --- 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
+    # 指定の注意書きを1つの黄色の枠（st.info）にまとめ、文字が左に綺麗に揃うよう配置
     st.info(
-        "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
-        "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
-        "⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よさようなら"
+        "⚠️ 文法の得点目標は７割。そのために何が必要かを理解する。\n\n"
+        "⚠️ 論理とパターン。これが文法を攻略するためのカギになる。\n\n"
+        "⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よサヨウナラ。"
     )
     
     uni_suffix = f" （{row['university']}）" if "university" in row and pd.notna(row["university"]) and str(row["university"]).strip() else ""
