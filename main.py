@@ -111,7 +111,7 @@ if subject == "選択してください":
     st.stop()
 
 # ==================================================
-# 4. データ読み込み（英文法だけキャッシュを完全無効化）
+# 4. データ読み込み（全科目のキャッシュ設定を完全撤廃）
 # ==================================================
 def load_csv(name):
     files = {
@@ -123,30 +123,12 @@ def load_csv(name):
         "生物一問一答":"biology.csv"
     }
     try:
-        # 英文法だけキャッシュを通さず、常に最新のCSVを直接読み込む
-        if name == "頻出！英文法入試問題":
-            df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-            df.columns = [c.lower().strip() for c in df.columns]
-            return df
-            
-        # 他の科目は、既存の挙動（キャッシュ高速化）を壊さないよう別関数へパス
-        return load_csv_with_cache(name)
+        # 全ての科目でキャッシュを一切通さず、毎回直接最新のファイルを読み込むように統一
+        df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+        df.columns = [c.lower().strip() for c in df.columns]
+        return df
     except:
         return pd.DataFrame()
-
-# 他の科目のためのキャッシュ用隔離関数
-@st.cache_data
-def load_csv_with_cache(name):
-    files = {
-        "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
-        "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
-        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
-        "世界史正誤問題攻略":"wh_seigo.csv",
-        "生物一問一答":"biology.csv"
-    }
-    df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-    df.columns = [c.lower().strip() for c in df.columns]
-    return df
 
 # 元の生データ（raw_df）をここで安全に定義してエラーを回避
 raw_df = load_csv(subject)
