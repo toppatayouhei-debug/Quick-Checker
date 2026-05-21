@@ -297,14 +297,15 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
+    # 3つの指定注意書きを1つの黄色の枠（st.info）にまとめ、文字が左に綺麗に揃うよう配置
     st.info(
         "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
         "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
         "⚠️ 問題を、解いて解いて解きまくる。ニガテ意識よさようなら"
     )
     
-    uni_suffix = f" （{row['university']}）" if pd.notna(row.get("university")) and str(row["university"]).strip() else ""
-    full_question = f"{row['question']}{uni_suffix}"
+    uni_suffix = f" （{row['university']}）" if "university" in row and pd.notna(row["university"]) and str(row["university"]).strip() else ""
+    full_question = f"{row.get('question', '')}{uni_suffix}"
     
     # 選択肢情報がある場合は、問題カードの中にパーツとして並べて視認しやすくする
     options_text = ""
