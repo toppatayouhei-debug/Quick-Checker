@@ -95,23 +95,7 @@ def clean_text(t):
     return re.sub(r'[「」『』・=＝\s　.,?!-]', '', str(t))
 
 # ==================================================
-# 3. メイン画面
-# ==================================================
-st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツール</div>', unsafe_allow_html=True)
-
-subject = st.selectbox("学習する科目を選択", [
-    "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
-    "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
-    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答"
-])
-
-if subject == "選択してください":
-    st.info("1. 科目を選択してください。\n2. サイドバーでレベルや範囲を絞り込めます。")
-    st.stop()
-
-# ==================================================
-# 4. データ読み込み（英文法だけキャッシュを完全無効化）
+# 4. データ読み込み（全科目のキャッシュ設定を完全撤廃）
 # ==================================================
 def load_csv(name):
     files = {
@@ -123,32 +107,38 @@ def load_csv(name):
         "生物一問一答":"biology.csv"
     }
     try:
-        # 英文法だけキャッシュを通さず、常に最新のCSVを直接読み込む
-        if name == "頻出！英文法入試問題":
-            df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-            df.columns = [c.lower().strip() for c in df.columns]
-            return df
-            
-        # 他の科目は、既存の挙動（キャッシュ高速化）を壊さないよう別関数へパス
-        return load_csv_with_cache(name)
+        # 全ての科目でキャッシュを一切通さず、毎回直接最新のファイルを読み込むように統一
+        df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
+        df.columns = [c.lower().strip() for c in df.columns]
+        return df
     except:
         return pd.DataFrame()
 
-# 他の科目のためのキャッシュ用隔離関数
-@st.cache_data
-def load_csv_with_cache(name):
-    files = {
-        "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
-        "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
-        "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
-        "世界史正誤問題攻略":"wh_seigo.csv",
-        "生物一問一答":"biology.csv"
-    }
-    df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
-    df.columns = [c.lower().strip() for c in df.columns]
-    return df
 
-# 元の生データ（raw_df）をここで安全に定義してエラーを回避
+# ==================================================
+# 3. メイン画面
+# ==================================================
+st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツール</div>', unsafe_allow_html=True)
+
+subject = st.selectbox("学習する科目を選択", [
+    "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
+    "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
+    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答"
+])
+
+# サイドバーにキャッシュクリアボタンを常設するための処理
+st.sidebar.title("🛠️ 管理メニュー")
+if st.sidebar.button("🔄 アプリのキャッシュをクリア"):
+    st.cache_data.clear()
+    reset_quiz_engine()
+    st.rerun()
+
+if subject == "選択してください":
+    st.info("1. 科目を選択してください。\n2. サイドバーでレベルや範囲を絞り込めます。")
+    st.stop()
+
+# 元の生データ（raw_df）を安全にロード
 raw_df = load_csv(subject)
 if raw_df.empty:
     st.warning(f"データファイルが見つかりません。({subject})")
@@ -297,7 +287,6 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
-    # 3つの指定注意書きを1つの黄色の枠（st.info）にまとめ、文字が左に綺麗に揃うよう配置
     st.info(
         "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
         "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
@@ -307,7 +296,6 @@ elif subject == "頻出！英文法入試問題":
     uni_suffix = f" （{row['university']}）" if "university" in row and pd.notna(row["university"]) and str(row["university"]).strip() else ""
     full_question = f"{row.get('question', '')}{uni_suffix}"
     
-    # 選択肢情報がある場合は、問題カードの中にパーツとして並べて視認しやすくする
     options_text = ""
     if pd.notna(row.get("option")) and str(row["option"]).strip():
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
@@ -324,7 +312,6 @@ elif subject == "頻出！英文法入試問題":
         st.success(f"【正解】\n{row['answer']}")
         st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
         
-        # 音声再生用
         voice_sentence = str(row["question"]).replace("(      )", str(row["answer"]))
         play_voice(voice_sentence, "英文を聴く")
         
