@@ -149,10 +149,30 @@ nihonshi_titles = {
 
 # --- フィルタリングロジック ---
 if subject == "システム英単語":
-    level_map = {"All":"All", "Fundamental(1-600)":"Fundamental", "Essential(601-1200)":"Essential", "Advanced(1201-1700)":"Advanced", "Final(1701-2027)":"Final"}
-    sel_level = st.sidebar.radio("レベル選択", list(level_map.keys()))
-    current_filter = level_map[sel_level]
-    df = raw_df if current_filter == "All" else raw_df[raw_df["level"].astype(str).str.contains(current_filter, na=False)]
+    # データ自体の並び替えを防ぎつつ、1からの連番を安全に作成
+    if "word_no" not in raw_df.columns:
+        raw_df["word_no"] = range(1, len(raw_df) + 1)
+    
+    total_words = len(raw_df)
+    
+    # 100刻みのセレクトボックス用選択肢を動的に生成
+    tango_options = ["すべてを表示"]
+    for start in range(1, total_words + 1, 100):
+        end = min(start + 99, total_words)
+        tango_options.append(f"{start} - {end}")
+    
+    sel_range = st.sidebar.radio("単語範囲（100個刻み）", tango_options)
+    current_filter = sel_range
+    
+    if sel_range == "すべてを表示":
+        df = raw_df
+    else:
+        # 選択した文字列から数値（開始・終了）を抽出してフィルタリング
+        bounds = [int(s) for s in re.findall(r'\d+', sel_range)]
+        if len(bounds) == 2:
+            df = raw_df[(raw_df["word_no"] >= bounds[0]) & (raw_df["word_no"] <= bounds[1])]
+        else:
+            df = raw_df
 
 elif subject == "頻出！英文法入試問題":
     fields_set = set()
@@ -279,7 +299,6 @@ elif subject == "システム英単語":
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
-    # 3つの指定注意書きを1つの黄色の枠（st.info）にまとめ、文字が左に綺麗に揃うよう配置
     st.info(
         "⚠️ 目標は７割。そのために必要な知識量を演習で知りましょう\n\n"
         "⚠️ 「理屈で解く問題」と「知識で解く」問題を区別しましょう\n\n"
@@ -289,7 +308,6 @@ elif subject == "頻出！英文法入試問題":
     uni_suffix = f" （{row['university']}）" if "university" in row and pd.notna(row["university"]) and str(row["university"]).strip() else ""
     full_question = f"{row.get('question', '')}{uni_suffix}"
     
-    # 選択肢情報がある場合は、問題カードの中にパーツとして並べて視認しやすくする
     options_text = ""
     if pd.notna(row.get("option")) and str(row["option"]).strip():
         choice_list = [x.strip() for x in str(row["option"]).split("/") if x.strip()]
@@ -306,7 +324,6 @@ elif subject == "頻出！英文法入試問題":
         st.success(f"【正解】\n{row['answer']}")
         st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
         
-        # 音声再生用
         voice_sentence = str(row["question"]).replace("(      )", str(row["answer"]))
         play_voice(voice_sentence, "英文を聴く")
         
