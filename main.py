@@ -346,7 +346,7 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "
         st.warning("⚠️ 世界史の教科書文章をベースにした正誤問題です。知識の定着を確認しましょう。")
         card_class = "cyan-card"
     else:
-        st.warning("⚠️ 地学基礎の教科書文章・図表内容を網羅した正誤問題です。共通テストのデータ読解・防災知識対策に最適。")
+        st.warning("⚠️ 地学基礎の教科書をもとにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "earth-card"
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
