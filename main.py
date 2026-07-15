@@ -1,10 +1,3 @@
-提示された Streamlit アプリケーションの既存ロジックに一切干渉せず、新しい科目として「地学基礎 共通テスト対策（ファイル名: `geo_seigo.csv`）」を安全に組み込みました。
-
-変更箇所は、選択肢の追加、ファイルのマッピング、および正誤問題用のUIロジックの共有化のみですので、他の科目の動作に影響を与えることはありません。以下のコードをそのまま差し替えてご活用ください。
-
-### 🚀 地学基礎を追加した修正版ソースコード
-
-```python
 import streamlit as st
 import pandas as pd
 import random
@@ -437,5 +430,3 @@ else:
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
-
-```
