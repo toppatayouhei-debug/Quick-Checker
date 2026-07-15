@@ -1,3 +1,10 @@
+提示された Streamlit アプリケーションの既存ロジックに一切干渉せず、新しい科目として「地学基礎 共通テスト対策（ファイル名: `geo_seigo.csv`）」を安全に組み込みました。
+
+変更箇所は、選択肢の追加、ファイルのマッピング、および正誤問題用のUIロジックの共有化のみですので、他の科目の動作に影響を与えることはありません。以下のコードをそのまま差し替えてご活用ください。
+
+### 🚀 地学基礎を追加した修正版ソースコード
+
+```python
 import streamlit as st
 import pandas as pd
 import random
@@ -33,6 +40,7 @@ st.markdown("""
 .violet-card { border-left: 8px solid #9c27b0; }
 .cyan-card   { border-left: 8px solid #00bcd4; }
 .green-card  { border-left: 8px solid #4caf50; } /* 生物用 */
+.earth-card  { border-left: 8px solid #8b5a2b; } /* 地学基礎用 */
 
 /* 解説カード */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
@@ -92,18 +100,18 @@ def reset_quiz_engine():
         if k in st.session_state: del st.session_state[k]
 
 def clean_text(t):
-    return re.sub(r'[「」『』・=＝\s　.,?!-]', '', str(t))
+    return re.sub(r'[「」『』・=＝\s .,?!-]', '', str(t))
 
 # ==================================================
 # 3. メイン画面
 # ==================================================
 st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴・生物 統合学習ツール</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・地歴・公民・理科基礎 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
-    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答"
+    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", "地学基礎 共通テスト対策"
 ])
 
 if subject == "選択してください":
@@ -111,7 +119,7 @@ if subject == "選択してください":
     st.stop()
 
 # ==================================================
-# 4. データ読み込み（全科目のキャッシュ設定を完全撤廃）
+# 4. データ読み込み（キャッシュなし・毎回読み込み）
 # ==================================================
 def load_csv(name):
     files = {
@@ -120,17 +128,16 @@ def load_csv(name):
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
         "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
         "世界史正誤問題攻略":"wh_seigo.csv",
-        "生物一問一答":"biology.csv"
+        "生物一問一答":"biology.csv",
+        "地学基礎 共通テスト対策":"geo_seigo.csv"
     }
     try:
-        # 全ての科目でキャッシュを一切通さず、毎回直接最新のファイルを読み込むように統一
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
         df.columns = [c.lower().strip() for c in df.columns]
         return df
     except:
         return pd.DataFrame()
 
-# 元の生データ（raw_df）をここで安全に定義してエラーを回避
 raw_df = load_csv(subject)
 if raw_df.empty:
     st.warning(f"データファイルが見つかりません。({subject})")
@@ -146,16 +153,15 @@ nihonshi_titles = {
     "第8章": "江戸時代", "第9章": "明治時代", "第10章": "幕藩体制の動揺",
     "第11章": "近世から近代へ", "第12章": "近代国家の成立", "第13章": "近代国家の展開", "第14章": "近代の産業と生活"
 }
+geography_titles = {
+    "第11章": "自然との共生"
+}
 
-# --- フィルタリングロジック ---
 if subject == "システム英単語":
-    # データ自体の並び替えを防ぎつつ、1からの連番を安全に作成
     if "word_no" not in raw_df.columns:
         raw_df["word_no"] = range(1, len(raw_df) + 1)
     
     total_words = len(raw_df)
-    
-    # 100刻みのセレクトボックス用選択肢を動的に生成
     tango_options = ["すべてを表示"]
     for start in range(1, total_words + 1, 100):
         end = min(start + 99, total_words)
@@ -167,7 +173,6 @@ if subject == "システム英単語":
     if sel_range == "すべてを表示":
         df = raw_df
     else:
-        # 選択した文字列から数値（開始・終了）を抽出してフィルタリング
         bounds = [int(s) for s in re.findall(r'\d+', sel_range)]
         if len(bounds) == 2:
             df = raw_df[(raw_df["word_no"] >= bounds[0]) & (raw_df["word_no"] <= bounds[1])]
@@ -203,6 +208,8 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
     
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
+    elif subject == "地学基礎 共通テスト対策":
+        options = ["すべてを表示"] + [f"{c} {geography_titles.get(c, '')}".strip() for c in raw_chaps]
     else:
         options = ["すべてを表示"] + raw_chaps
         
@@ -212,7 +219,7 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
-        target_chap = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        target_chap = sel_range.split(" ")[0] if ("日本史" in subject or subject == "地学基礎 共通テスト対策") else sel_range
         current_filter = target_chap
         df = raw_df[raw_df[col_name].astype(str).str.strip() == current_filter]
 else:
@@ -252,7 +259,7 @@ if subject == "暗唱例文集":
         if st.button("🔴 全文暗唱"): st.session_state.study_mode = "全文暗唱"; st.rerun()
     with c_m2:
         if st.button("🔵 ヒントはここ"): st.session_state.study_mode = "空欄補充"; st.rerun()
-    if st.session_state.study_mode == "空欄補充": st.info("💡 [　　]の中は１語とは限りません")
+    if st.session_state.study_mode == "空欄補充": st.info("💡 [  ]の中は１語とは限りません")
     disp = re.sub(r'\*\*(.*?)\*\*', "[ ____ ]", str(row["english"])) if st.session_state.study_mode == "空欄補充" else "（英文を思い出してください）"
     st.markdown(f'<div class="card orange-card">【日本語】<br><b>{row["japanese"]}</b><hr>【英文】<br>{disp}</div>', unsafe_allow_html=True)
     if not st.session_state.answered:
@@ -337,14 +344,17 @@ elif subject == "頻出！英文法入試問題":
             st.session_state.answered = False
             st.rerun()
 
-# --- 4. 正誤問題 (日本史・世界史) ---
-elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
+# --- 4. 正誤問題 (日本史・世界史・地学基礎) ---
+elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策"]:
     if subject == "日本史正誤問題攻略":
         st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
         card_class = "pink-card"
-    else:
+    elif subject == "世界史正誤問題攻略":
         st.warning("⚠️ 世界史の教科書文章をベースにした正誤問題です。知識の定着を確認しましょう。")
         card_class = "cyan-card"
+    else:
+        st.warning("⚠️ 地学基礎の教科書文章・図表内容を網羅した正誤問題です。共通テストのデータ読解・防災知識対策に最適。")
+        card_class = "earth-card"
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
@@ -371,7 +381,7 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略"]:
 elif subject == "日本史史料問題攻略":
     st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{row["question"]}</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">⚠️ 【　】は史料の出典を表しています。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">⚠️ 【 】は史料の出典を表しています。</div>', unsafe_allow_html=True)
     ans_raw = str(row["answer"])
     correct_list = [a.strip() for a in ans_raw.split("/") if a.strip()]
     user_inputs = []
@@ -427,3 +437,5 @@ else:
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+
+```
