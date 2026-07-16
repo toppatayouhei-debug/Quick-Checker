@@ -197,12 +197,13 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         nums = re.findall(r'\d+', str(x).translate(str.maketrans('０１２３４５６７８９', '0123456789')))
         return int(nums[0]) if nums else 999
 
-    raw_chaps = sorted([str(x).strip() for x in raw_df[col_name].dropna().unique().tolist()], key=get_sort_key)
+    raw_chaps = sorted([str(x).strip() for x in raw_df[col_name].dropna().unique().tolist() if str(x).strip()], key=get_sort_key)
     
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
     elif subject == "地学基礎 共通テスト対策":
-        options = ["すべてを表示"] + [f"{c} {geography_titles.get(c, '')}".strip() for c in raw_chaps]
+        # CSVから取得した生データ（例：「第11章 自然との共生」）をそのまま選択肢として登録する
+        options = ["すべてを表示"] + raw_chaps
     else:
         options = ["すべてを表示"] + raw_chaps
         
@@ -212,10 +213,12 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
-        # 日本史・地学基礎の表示文字列（例: "第11章 自然との共生"）から章のキー部分（"第11章"）を抽出
-        target_chap = sel_range.split(" ")[0] if ("日本史" in subject or subject == "地学基礎 共通テスト対策") else sel_range
-        current_filter = target_chap
-        df = raw_df[raw_df[col_name].astype(str).str.strip() == current_filter]
+        current_filter = sel_range
+        # --- 【ここを強力＆安全に修正】 ---
+        # ユーザーの選択したテキストそのもの（または日本史用の置換テキスト）で「部分一致（contains）」をかけて絞り込みます。
+        # 地学基礎の場合、選択した「第11章 自然との共生」がCSVデータの「第11章 自然との共生」と100%完全一致してヒットするようになります。
+        target_keyword = sel_range.split(" ")[0] if "日本史" in subject else sel_range
+        df = raw_df[raw_df[col_name].astype(str).str.strip().str.contains(target_keyword, na=False, regex=False)]
 else:
     df = raw_df
 
