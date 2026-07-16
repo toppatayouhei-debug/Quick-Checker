@@ -147,7 +147,7 @@ nihonshi_titles = {
     "第11章": "近世から近代へ", "第12章": "近代国家の成立", "第13章": "近代国家の展開", "第14章": "近代の産業と生活"
 }
 geography_titles = {
-    "第11章": "自然との共生"
+    "第9章": "太陽と恒星", "第10章": "銀河系と宇宙", "第11章": "自然との共生"
 }
 
 if subject == "システム英単語":
@@ -212,6 +212,7 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         current_filter = "すべて"
         df = raw_df
     else:
+        # 日本史・地学基礎の表示文字列（例: "第11章 自然との共生"）から章のキー部分（"第11章"）を抽出
         target_chap = sel_range.split(" ")[0] if ("日本史" in subject or subject == "地学基礎 共通テスト対策") else sel_range
         current_filter = target_chap
         df = raw_df[raw_df[col_name].astype(str).str.strip() == current_filter]
