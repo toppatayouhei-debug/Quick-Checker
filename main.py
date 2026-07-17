@@ -34,6 +34,7 @@ st.markdown("""
 .cyan-card   { border-left: 8px solid #00bcd4; }
 .green-card  { border-left: 8px solid #4caf50; } /* 生物用 */
 .earth-card  { border-left: 8px solid #8b5a2b; } /* 地学基礎用 */
+.navy-card   { border-left: 8px solid #1f3a60; } /* 政経用 */
 
 /* 解説カード */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
@@ -105,7 +106,7 @@ subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
     "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", 
-    "地学基礎 共通テスト対策", "生物基礎 共通テスト対策"
+    "地学基礎 共通テスト対策", "生物基礎 共通テスト対策", "政経 共通テスト対策"
 ])
 
 if subject == "選択してください":
@@ -124,7 +125,8 @@ def load_csv(name):
         "世界史正誤問題攻略":"wh_seigo.csv",
         "生物一問一答":"biology.csv",
         "地学基礎 共通テスト対策":"geo_seigo.csv",
-        "生物基礎 共通テスト対策":"bio_seigo.csv"
+        "生物基礎 共通テスト対策":"bio_seigo.csv",
+        "政経 共通テスト対策":"seikei_seigo.csv"
     }
     try:
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
@@ -334,8 +336,8 @@ elif subject == "頻出！英文法入試問題":
             st.session_state.answered = False
             st.rerun()
 
-# --- 4. 正誤問題 (日本史・世界史・地学基礎・生物基礎) ---
-elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策", "生物基礎 共通テスト対策"]:
+# --- 4. 正誤問題 (日本史・世界史・地学基礎・生物基礎・政経) ---
+elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策", "生物基礎 共通テスト対策", "政経 共通テスト対策"]:
     if subject == "日本史正誤問題攻略":
         st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
         card_class = "pink-card"
@@ -345,9 +347,12 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "
     elif subject == "地学基礎 共通テスト対策":
         st.warning("⚠️ 地学基礎の教科書をもとにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "earth-card"
-    else: # 生物基礎 共通テスト対策
+    elif subject == "生物基礎 共通テスト対策":
         st.warning("⚠️ 共通テストの選択肢をバラバラにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "green-card"
+    else: # 政経 共通テスト対策
+        st.warning("⚠️ 政治・経済の教科書文章や共通テストの過去問をもとにした正誤問題です。確実な一得点を積み上げましょう。")
+        card_class = "navy-card"
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
