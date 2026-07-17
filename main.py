@@ -104,7 +104,8 @@ st.markdown('<div class="sub-title">英語・地歴・公民・理科基礎 統�
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
-    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", "地学基礎 共通テスト対策"
+    "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", 
+    "地学基礎 共通テスト対策", "生物基礎 共通テスト対策"
 ])
 
 if subject == "選択してください":
@@ -122,7 +123,8 @@ def load_csv(name):
         "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
         "世界史正誤問題攻略":"wh_seigo.csv",
         "生物一問一答":"biology.csv",
-        "地学基礎 共通テスト対策":"geo_seigo.csv"
+        "地学基礎 共通テスト対策":"geo_seigo.csv",
+        "生物基礎 共通テスト対策":"bio_seigo.csv"
     }
     try:
         df = pd.read_csv(files[name], encoding="utf-8-sig").dropna(how='all')
@@ -145,9 +147,6 @@ nihonshi_titles = {
     "第5章": "鎌倉時代", "第6章": "室町時代", "第7章": "戦国・安土桃山時代", 
     "第8章": "江戸時代", "第9章": "明治時代", "第10章": "幕藩体制の動揺",
     "第11章": "近世から近代へ", "第12章": "近代国家の成立", "第13章": "近代国家の展開", "第14章": "近代の産業と生活"
-}
-geography_titles = {
-    "第9章": "太陽と恒星", "第10章": "銀河系と宇宙", "第11章": "自然との共生"
 }
 
 if subject == "システム英単語":
@@ -201,9 +200,6 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
     
     if "日本史" in subject:
         options = ["すべてを表示"] + [f"{c} {nihonshi_titles.get(c, '')}".strip() for c in raw_chaps]
-    elif subject == "地学基礎 共通テスト対策":
-        # CSVから取得した生データ（例：「第11章 自然との共生」）をそのまま選択肢として登録する
-        options = ["すべてを表示"] + raw_chaps
     else:
         options = ["すべてを表示"] + raw_chaps
         
@@ -214,9 +210,6 @@ elif "chapter" in raw_df.columns or "area" in raw_df.columns:
         df = raw_df
     else:
         current_filter = sel_range
-        # --- 【ここを強力＆安全に修正】 ---
-        # ユーザーの選択したテキストそのもの（または日本史用の置換テキスト）で「部分一致（contains）」をかけて絞り込みます。
-        # 地学基礎の場合、選択した「第11章 自然との共生」がCSVデータの「第11章 自然との共生」と100%完全一致してヒットするようになります。
         target_keyword = sel_range.split(" ")[0] if "日本史" in subject else sel_range
         df = raw_df[raw_df[col_name].astype(str).str.strip().str.contains(target_keyword, na=False, regex=False)]
 else:
@@ -341,17 +334,20 @@ elif subject == "頻出！英文法入試問題":
             st.session_state.answered = False
             st.rerun()
 
-# --- 4. 正誤問題 (日本史・世界史・地学基礎) ---
-elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策"]:
+# --- 4. 正誤問題 (日本史・世界史・地学基礎・生物基礎) ---
+elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策", "生物基礎 共通テスト対策"]:
     if subject == "日本史正誤問題攻略":
         st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
         card_class = "pink-card"
     elif subject == "世界史正誤問題攻略":
         st.warning("⚠️ 世界史の教科書文章をベースにした正誤問題です。知識の定着を確認しましょう。")
         card_class = "cyan-card"
-    else:
+    elif subject == "地学基礎 共通テスト対策":
         st.warning("⚠️ 地学基礎の教科書をもとにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "earth-card"
+    else: # 生物基礎 共通テスト対策
+        st.warning("⚠️ 生物基礎の教科書をもとにした正誤問題です。共通テストの知識・正誤問題対策に。")
+        card_class = "green-card"
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
