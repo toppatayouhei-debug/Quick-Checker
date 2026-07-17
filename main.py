@@ -348,10 +348,10 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "
         st.warning("⚠️ 地学基礎の教科書をもとにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "earth-card"
     elif subject == "生物基礎 共通テスト対策":
-        st.warning("⚠️ 共通テストの選択肢をバラバラにした正誤問題です。共通テストの知識・正誤問題対策に。")
+        st.warning("⚠️ 共通テストの過去問の選択肢をバラバラにした正誤問題です。共通テストの知識・正誤問題対策に。")
         card_class = "green-card"
     else: # 政経 共通テスト対策
-        st.warning("⚠️ 政治・経済の教科書文章や共通テストの過去問をもとにした正誤問題です。確実な一得点を積み上げましょう。")
+        st.warning("⚠️ 共通テストの過去問の選択肢をバラバラにして〇✕問題にしました。")
         card_class = "navy-card"
         
     st.markdown(f'<div class="card {card_class}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
