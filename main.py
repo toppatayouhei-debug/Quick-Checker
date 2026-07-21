@@ -1,8 +1,3 @@
-単語カードの表面でも、ミニフレーズ内のターゲット英単語（`[ ____ ]`）をオレンジ色の太字で分かりやすく表示するように修正しました！
-
-以下、`main.py` の**コード全文**です。そのまま丸ごと上書き保存してください。
-
-```python
 import streamlit as st
 import pandas as pd
 import random
@@ -525,5 +520,3 @@ else:
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
-
-```
