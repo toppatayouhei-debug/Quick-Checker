@@ -159,7 +159,6 @@ if subject == "システム英単語":
     
     total_words = len(raw_df)
     
-    # スライダーで自由な範囲（例: 1〜100番）を指定
     start_no, end_no = st.sidebar.slider(
         "単語番号の範囲を指定",
         min_value=1,
@@ -267,52 +266,50 @@ if subject == "暗唱例文集":
 elif subject == "システム英単語":
     st.info("💡 単語帳本体が学習の軸。アプリと併用して力をつけよう")
 
-    # 1. モード切り替え
     mode = st.radio("学習モード", ["🎴 単語カード（高速）", "📝 4択テスト"], horizontal=True)
 
-    # データの抽出
     word = str(row["question"])
     sentence = str(row["sentence"])
     translation = str(row["translation"])
     all_answers = str(row["all_answers"])
 
-    # フレーズ内の単語ハイライト（色付き）
-    highlighted_sent = re.sub(re.escape(word), f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", sentence, flags=re.IGNORECASE)
-    
-    # フレーズの空欄化（色付き [ ____ ]）
-    blanked_sent = re.sub(re.escape(word), "<span style='color:#ff9800; font-weight:bold;'>[ ____ ]</span>", sentence, flags=re.IGNORECASE)
+    # フレーズ内のターゲット英単語を「オレンジ色の太字」で表示（空欄化なし）
+    highlighted_sent = re.sub(
+        re.escape(word), 
+        f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", 
+        sentence, 
+        flags=re.IGNORECASE
+    )
 
-    # --- モードA: 単語カード（表：色付き英単語＋色付き空欄フレーズ ➔ 裏：意味・フレーズ正解） ---
+    # --- モードA: 単語カード ---
     if mode == "🎴 単語カード（高速）":
-        # 表面：英単語 ＆ 空欄付きミニフレーズを表示（どちらも色付き）
+        # 表面：英単語は黒字、フレーズ内の単語はオレンジ色の太字
         st.markdown(f'''
             <div class="card orange-card" style="text-align: center; padding: 25px 20px;">
                 <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
-                <div style="font-size: 2.5rem; font-weight: 900; color: #ff9800; letter-spacing: 1px; margin-bottom: 15px;">{word}</div>
+                <div style="font-size: 2.5rem; font-weight: 900; color: #111111; letter-spacing: 1px; margin-bottom: 15px;">{word}</div>
                 <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 15px 0;">
                 <div style="font-size: 0.85rem; color: #666; margin-bottom: 4px;">【ミニフレーズ】</div>
-                <div style="font-size: 1.15rem; color: #333; font-weight: 500;">{blanked_sent}</div>
+                <div style="font-size: 1.15rem; color: #333; font-weight: 500;">{highlighted_sent}</div>
             </div>
         ''', unsafe_allow_html=True)
 
         if not st.session_state.answered:
-            if st.button("👁️ 意味・フレーズを確認する"):
+            if st.button("👁️ 意味・訳を確認する"):
                 st.session_state.answered = True
                 st.rerun()
         else:
-            # 裏面：日本語の意味 ＆ ミニフレーズ（完成形） ＆ フレーズ訳
+            # 裏面：意味 ＆ フレーズ訳
             st.markdown(f'''
                 <div class="exp-card" style="text-align: center;">
                     <div style="font-size: 0.85rem; color: #666;">【意味】</div>
                     <div style="font-size: 1.5rem; font-weight: bold; color: #d9480f; margin-bottom: 12px;">{all_answers}</div>
                     <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
-                    <div style="font-size: 0.85rem; color: #666;">【ミニフレーズ】</div>
-                    <div style="font-size: 1.1rem; color: #222; margin-bottom: 4px;">{highlighted_sent}</div>
-                    <div style="font-size: 0.95rem; color: #555;">{translation}</div>
+                    <div style="font-size: 0.85rem; color: #666;">【フレーズ訳】</div>
+                    <div style="font-size: 1.05rem; color: #222;">{translation}</div>
                 </div>
             ''', unsafe_allow_html=True)
             
-            # 音声再生
             play_voice(word, "単語の発音")
 
             st.write("---")
@@ -325,25 +322,36 @@ elif subject == "システム英単語":
                 st.session_state.answered = False
                 st.rerun()
 
-    # --- モードB: 4択テスト（表：ミニフレーズ穴埋め ➔ 4択から選ぶ） ---
+    # --- モードB: 4択テスト ---
     else:
-        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ穴埋め】</b><br>{blanked_sent}</div>', unsafe_allow_html=True)
+        # 4択テストでもミニフレーズ内の単語をオレンジ色の太字で表示
+        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ】</b><br>{highlighted_sent}</div>', unsafe_allow_html=True)
         
+        # 選択肢の生成ロジック（確実に正解を含む）
         if "choices" not in st.session_state:
-            ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers)]
-            correct = ans_list[0]
+            # 第一の意味を正解とする
+            ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers) if x.strip()]
+            correct = ans_list[0] if ans_list else all_answers
             
-            # 動的ダミー作成
+            # ダミー選択肢のプール取得（正解データと完全一致しない全回答列から取得）
             pool_source = active_df if len(active_df) >= 4 else raw_df
-            candidate_pool = pool_source[pool_source["all_answers"] != all_answers]["all_answers"].dropna().unique().tolist()
+            candidate_rows = pool_source[pool_source["all_answers"] != all_answers]["all_answers"].dropna().tolist()
             
-            if len(candidate_pool) >= 3:
-                dummies = random.sample(candidate_pool, 3)
+            dummy_candidates = []
+            for item in candidate_rows:
+                first_meaning = [x.strip() for x in re.split(r'[,、;]', str(item)) if x.strip()][0]
+                if first_meaning != correct and first_meaning not in dummy_candidates:
+                    dummy_candidates.append(first_meaning)
+            
+            # 3個のダミーを抽出
+            if len(dummy_candidates) >= 3:
+                dummies = random.sample(dummy_candidates, 3)
             else:
-                dummies = candidate_pool
+                dummies = dummy_candidates
                 while len(dummies) < 3:
                     dummies.append(f"ダミー選択肢{len(dummies)+1}")
             
+            # 正解1つ + ダミー3個をセットしてシャッフル
             choices = [correct] + dummies
             random.shuffle(choices)
             
@@ -364,7 +372,7 @@ elif subject == "システム英単語":
             else:
                 st.error(f"不正解... 正解：{st.session_state.correct}")
             
-            st.info(f"意味：{all_answers}\n訳：{translation}")
+            st.info(f"全意味：{all_answers}\n訳：{translation}")
             play_voice(word, "音声を聴く")
             st.write("---")
             c1, c2 = st.columns(2)
