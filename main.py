@@ -1,3 +1,8 @@
+単語カードの表面でも、ミニフレーズ内のターゲット英単語（`[ ____ ]`）をオレンジ色の太字で分かりやすく表示するように修正しました！
+
+以下、`main.py` の**コード全文**です。そのまま丸ごと上書き保存してください。
+
+```python
 import streamlit as st
 import pandas as pd
 import random
@@ -276,16 +281,22 @@ elif subject == "システム英単語":
     translation = str(row["translation"])
     all_answers = str(row["all_answers"])
 
-    # フレーズ内の単語ハイライト
+    # フレーズ内の単語ハイライト（色付き）
     highlighted_sent = re.sub(re.escape(word), f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", sentence, flags=re.IGNORECASE)
+    
+    # フレーズの空欄化（色付き [ ____ ]）
+    blanked_sent = re.sub(re.escape(word), "<span style='color:#ff9800; font-weight:bold;'>[ ____ ]</span>", sentence, flags=re.IGNORECASE)
 
-    # --- モードA: 単語カード（表：英単語のみ ➔ 裏：意味・フレーズ） ---
+    # --- モードA: 単語カード（表：色付き英単語＋色付き空欄フレーズ ➔ 裏：意味・フレーズ正解） ---
     if mode == "🎴 単語カード（高速）":
-        # 表面：英単語を大きく表示
+        # 表面：英単語 ＆ 空欄付きミニフレーズを表示（どちらも色付き）
         st.markdown(f'''
-            <div class="card orange-card" style="text-align: center; padding: 35px 20px;">
+            <div class="card orange-card" style="text-align: center; padding: 25px 20px;">
                 <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
-                <div style="font-size: 2.5rem; font-weight: 900; color: #111; letter-spacing: 1px;">{word}</div>
+                <div style="font-size: 2.5rem; font-weight: 900; color: #ff9800; letter-spacing: 1px; margin-bottom: 15px;">{word}</div>
+                <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 15px 0;">
+                <div style="font-size: 0.85rem; color: #666; margin-bottom: 4px;">【ミニフレーズ】</div>
+                <div style="font-size: 1.15rem; color: #333; font-weight: 500;">{blanked_sent}</div>
             </div>
         ''', unsafe_allow_html=True)
 
@@ -294,7 +305,7 @@ elif subject == "システム英単語":
                 st.session_state.answered = True
                 st.rerun()
         else:
-            # 裏面：日本語の意味 ＆ ミニフレーズ ＆ フレーズ訳
+            # 裏面：日本語の意味 ＆ ミニフレーズ（完成形） ＆ フレーズ訳
             st.markdown(f'''
                 <div class="exp-card" style="text-align: center;">
                     <div style="font-size: 0.85rem; color: #666;">【意味】</div>
@@ -321,7 +332,7 @@ elif subject == "システム英単語":
 
     # --- モードB: 4択テスト（表：ミニフレーズ穴埋め ➔ 4択から選ぶ） ---
     else:
-        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ穴埋め】</b><br>{highlighted_sent}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ穴埋め】</b><br>{blanked_sent}</div>', unsafe_allow_html=True)
         
         if "choices" not in st.session_state:
             ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers)]
@@ -514,3 +525,5 @@ else:
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+
+```
