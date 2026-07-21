@@ -267,8 +267,8 @@ if subject == "暗唱例文集":
 elif subject == "システム英単語":
     st.info("💡 単語帳本体が学習の軸。アプリと併用して力をつけよう")
 
-    # 1. モード切り替え（デフォルトは単語カード）
-    mode = st.radio("学習モード", [" 単語カード（高速）", " 4択テスト"], horizontal=True)
+    # 1. モード切り替え
+    mode = st.radio("学習モード", ["🎴 単語カード（高速）", "📝 4択テスト"], horizontal=True)
 
     # データの抽出
     word = str(row["question"])
@@ -279,28 +279,30 @@ elif subject == "システム英単語":
     # フレーズ内の単語ハイライト
     highlighted_sent = re.sub(re.escape(word), f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", sentence, flags=re.IGNORECASE)
 
-    # --- モードA: 単語カード（高速周回用） ---
+    # --- モードA: 単語カード（表：英単語のみ ➔ 裏：意味・フレーズ） ---
     if mode == "🎴 単語カード（高速）":
-        # 表面：見出し語 ＆ ミニフレーズ
+        # 表面：英単語を大きく表示
         st.markdown(f'''
-            <div class="card orange-card" style="text-align: center;">
-                <div style="font-size: 2.2rem; font-weight: 900; color: #111;">{word}</div>
-                <hr style="margin: 10px 0;">
-                <div style="font-size: 1.1rem; color: #444;">{highlighted_sent}</div>
+            <div class="card orange-card" style="text-align: center; padding: 35px 20px;">
+                <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
+                <div style="font-size: 2.5rem; font-weight: 900; color: #111; letter-spacing: 1px;">{word}</div>
             </div>
         ''', unsafe_allow_html=True)
 
         if not st.session_state.answered:
-            if st.button(" 意味・訳を確認する"):
+            if st.button("👁️ 意味・フレーズを確認する"):
                 st.session_state.answered = True
                 st.rerun()
         else:
-            # 裏面：意味・フレーズ訳
+            # 裏面：日本語の意味 ＆ ミニフレーズ ＆ フレーズ訳
             st.markdown(f'''
                 <div class="exp-card" style="text-align: center;">
                     <div style="font-size: 0.85rem; color: #666;">【意味】</div>
-                    <div style="font-size: 1.4rem; font-weight: bold; color: #d9480f; margin-bottom: 8px;">{all_answers}</div>
-                    <div style="font-size: 1.0rem; color: #333;">フレーズ訳：{translation}</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #d9480f; margin-bottom: 12px;">{all_answers}</div>
+                    <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
+                    <div style="font-size: 0.85rem; color: #666;">【ミニフレーズ】</div>
+                    <div style="font-size: 1.1rem; color: #222; margin-bottom: 4px;">{highlighted_sent}</div>
+                    <div style="font-size: 0.95rem; color: #555;">{translation}</div>
                 </div>
             ''', unsafe_allow_html=True)
             
@@ -317,19 +319,18 @@ elif subject == "システム英単語":
                 st.session_state.answered = False
                 st.rerun()
 
-    # --- モードB: 4択テスト（他問題の正解から動的にダミーを生成） ---
+    # --- モードB: 4択テスト（表：ミニフレーズ穴埋め ➔ 4択から選ぶ） ---
     else:
-        st.markdown(f'<div class="card orange-card">{highlighted_sent}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ穴埋め】</b><br>{highlighted_sent}</div>', unsafe_allow_html=True)
         
         if "choices" not in st.session_state:
             ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers)]
             correct = ans_list[0]
             
-            # 1. 絞り込み後の全データ、または全体データから他問題の全正解(all_answers)を取得
+            # 動的ダミー作成
             pool_source = active_df if len(active_df) >= 4 else raw_df
             candidate_pool = pool_source[pool_source["all_answers"] != all_answers]["all_answers"].dropna().unique().tolist()
             
-            # 2. 候補が十分にある場合はランダム抽出、足りない場合は代替処理
             if len(candidate_pool) >= 3:
                 dummies = random.sample(candidate_pool, 3)
             else:
@@ -337,7 +338,6 @@ elif subject == "システム英単語":
                 while len(dummies) < 3:
                     dummies.append(f"ダミー選択肢{len(dummies)+1}")
             
-            # 3. 選択肢のシャッフル
             choices = [correct] + dummies
             random.shuffle(choices)
             
