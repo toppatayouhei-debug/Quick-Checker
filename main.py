@@ -158,22 +158,18 @@ if subject == "システム英単語":
         raw_df["word_no"] = range(1, len(raw_df) + 1)
     
     total_words = len(raw_df)
-    tango_options = ["すべてを表示"]
-    for start in range(1, total_words + 1, 100):
-        end = min(start + 99, total_words)
-        tango_options.append(f"{start} - {end}")
     
-    sel_range = st.sidebar.radio("単語範囲（100個刻み）", tango_options)
-    current_filter = sel_range
+    # スライダーで自由な範囲（例: 1〜100番）を指定
+    start_no, end_no = st.sidebar.slider(
+        "単語番号の範囲を指定",
+        min_value=1,
+        max_value=total_words,
+        value=(1, min(100, total_words)),
+        step=10
+    )
     
-    if sel_range == "すべてを表示":
-        df = raw_df
-    else:
-        bounds = [int(s) for s in re.findall(r'\d+', sel_range)]
-        if len(bounds) == 2:
-            df = raw_df[(raw_df["word_no"] >= bounds[0]) & (raw_df["word_no"] <= bounds[1])]
-        else:
-            df = raw_df
+    current_filter = f"{start_no}-{end_no}"
+    df = raw_df[(raw_df["word_no"] >= start_no) & (raw_df["word_no"] <= end_no)]
 
 elif subject == "頻出！英文法入試問題":
     fields_set = set()
@@ -269,34 +265,97 @@ if subject == "暗唱例文集":
 
 # --- 2. システム英単語 ---
 elif subject == "システム英単語":
+    st.info("💡 単語帳本体が学習の軸。アプリと併用して力をつけよう")
+
+    # 1. モード切り替え（デフォルトは単語カード）
+    mode = st.radio("学習モード", ["🎴 単語カード（高速）", "📝 4択テスト"], horizontal=True)
+
+    # データの抽出
     word = str(row["question"])
-    sent = re.sub(re.escape(word), f"<span style='color:#ff9800;font-weight:bold'>{word}</span>", str(row["sentence"]), flags=re.IGNORECASE)
-    st.markdown(f'<div class="card orange-card">{sent}</div>', unsafe_allow_html=True)
-    st.warning("⚠️ シス単本体をメインにしましょう。情報量が全然違います。")
-    if "choices" not in st.session_state:
-        ans_list = [x.strip() for x in re.split(r'[,、;]', str(row["all_answers"]))]
-        correct = ans_list[0]
-        dummies = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip() != correct]
-        st.session_state.choices = random.sample([correct] + random.sample(dummies, 3), 4)
-        random.shuffle(st.session_state.choices)
-        st.session_state.correct = correct
-    st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
-    cols = st.columns(2)
-    for i, val in enumerate(st.session_state.choices):
-        if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
-            st.session_state.selected, st.session_state.answered = val, True; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
-    if st.session_state.answered:
-        if st.session_state.selected == st.session_state.correct: st.success("正解！")
-        else: st.error(f"不正解... 正解：{st.session_state.correct}")
-        st.info(f"意味：{row['all_answers']}\n訳：{row['translation']}")
-        play_voice(str(row["question"]), "音声を聴く")
-        st.write("---")
-        c1, c2 = st.columns(2)
-        if c1.button("✅ 次へ"): 
-            if "choices" in st.session_state: del st.session_state.choices
-            st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
-        if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+    sentence = str(row["sentence"])
+    translation = str(row["translation"])
+    all_answers = str(row["all_answers"])
+
+    # フレーズ内の単語ハイライト
+    highlighted_sent = re.sub(re.escape(word), f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", sentence, flags=re.IGNORECASE)
+
+    # --- モードA: 単語カード（高速周回用） ---
+    if mode == "🎴 単語カード（高速）":
+        # 表面：見出し語 ＆ ミニフレーズ
+        st.markdown(f'''
+            <div class="card orange-card" style="text-align: center;">
+                <div style="font-size: 2.2rem; font-weight: 900; color: #111;">{word}</div>
+                <hr style="margin: 10px 0;">
+                <div style="font-size: 1.1rem; color: #444;">{highlighted_sent}</div>
+            </div>
+        ''', unsafe_allow_html=True)
+
+        if not st.session_state.answered:
+            if st.button("👁️ 意味・訳を確認する"):
+                st.session_state.answered = True
+                st.rerun()
+        else:
+            # 裏面：意味・フレーズ訳
+            st.markdown(f'''
+                <div class="exp-card" style="text-align: center;">
+                    <div style="font-size: 0.85rem; color: #666;">【意味】</div>
+                    <div style="font-size: 1.4rem; font-weight: bold; color: #d9480f; margin-bottom: 8px;">{all_answers}</div>
+                    <div style="font-size: 1.0rem; color: #333;">フレーズ訳：{translation}</div>
+                </div>
+            ''', unsafe_allow_html=True)
+            
+            # 音声再生
+            play_voice(word, "単語の発音")
+
+            st.write("---")
+            c1, c2 = st.columns(2)
+            if c1.button("✅ 次へ"):
+                st.session_state.idx += 1
+                st.session_state.answered = False
+                st.rerun()
+            if c2.button("🔄 もう一度"):
+                st.session_state.answered = False
+                st.rerun()
+
+    # --- モードB: 従来の4択テスト ---
+    else:
+        st.markdown(f'<div class="card orange-card">{highlighted_sent}</div>', unsafe_allow_html=True)
+        
+        if "choices" not in st.session_state:
+            ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers)]
+            correct = ans_list[0]
+            dummies = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip() != correct]
+            st.session_state.choices = random.sample([correct] + random.sample(dummies, 3), 4)
+            random.shuffle(st.session_state.choices)
+            st.session_state.correct = correct
+
+        st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
+        cols = st.columns(2)
+        for i, val in enumerate(st.session_state.choices):
+            if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
+                st.session_state.selected, st.session_state.answered = val, True
+                st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        if st.session_state.answered:
+            if st.session_state.selected == st.session_state.correct:
+                st.success("正解！")
+            else:
+                st.error(f"不正解... 正解：{st.session_state.correct}")
+            
+            st.info(f"意味：{all_answers}\n訳：{translation}")
+            play_voice(word, "音声を聴く")
+            st.write("---")
+            c1, c2 = st.columns(2)
+            if c1.button("✅ 次へ"):
+                if "choices" in st.session_state:
+                    del st.session_state.choices
+                st.session_state.idx += 1
+                st.session_state.answered = False
+                st.rerun()
+            if c2.button("🔄 もう一度"):
+                st.session_state.answered = False
+                st.rerun()
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
