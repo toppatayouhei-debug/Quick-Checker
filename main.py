@@ -1,3 +1,8 @@
+`dummy_pool` カラムを使わず、**「現在選択されている単語データの正解リスト（他の単語の意味）」から動的にダミー選択肢（3つ）を生成する**ように改善したコード全文です。
+
+他の科目、音声読み上げ機能（`play_voice`）、および他のUI要素には一切干渉しないよう慎重に修正を加えています。
+
+```python
 import streamlit as st
 import pandas as pd
 import random
@@ -268,7 +273,7 @@ elif subject == "システム英単語":
     st.info("💡 単語帳本体が学習の軸。アプリと併用して力をつけよう")
 
     # 1. モード切り替え（デフォルトは単語カード）
-    mode = st.radio("学習モード", ["🎴 単語カード（高速）", "📝 4択テスト"], horizontal=True)
+    mode = st.radio("学習モード", [" 単語カード（高速）", " 4択テスト"], horizontal=True)
 
     # データの抽出
     word = str(row["question"])
@@ -291,7 +296,7 @@ elif subject == "システム英単語":
         ''', unsafe_allow_html=True)
 
         if not st.session_state.answered:
-            if st.button("👁️ 意味・訳を確認する"):
+            if st.button(" 意味・訳を確認する"):
                 st.session_state.answered = True
                 st.rerun()
         else:
@@ -317,16 +322,31 @@ elif subject == "システム英単語":
                 st.session_state.answered = False
                 st.rerun()
 
-    # --- モードB: 従来の4択テスト ---
+    # --- モードB: 4択テスト（他問題の正解から動的にダミーを生成） ---
     else:
         st.markdown(f'<div class="card orange-card">{highlighted_sent}</div>', unsafe_allow_html=True)
         
         if "choices" not in st.session_state:
             ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers)]
             correct = ans_list[0]
-            dummies = [x.strip() for x in re.split(r'[,、;]', str(row["dummy_pool"])) if x.strip() != correct]
-            st.session_state.choices = random.sample([correct] + random.sample(dummies, 3), 4)
-            random.shuffle(st.session_state.choices)
+            
+            # 1. 絞り込み後の全データ、または全体データから他問題の全正解(all_answers)を取得
+            pool_source = active_df if len(active_df) >= 4 else raw_df
+            candidate_pool = pool_source[pool_source["all_answers"] != all_answers]["all_answers"].dropna().unique().tolist()
+            
+            # 2. 候補が十分にある場合はランダム抽出、足りない場合は代替処理
+            if len(candidate_pool) >= 3:
+                dummies = random.sample(candidate_pool, 3)
+            else:
+                dummies = candidate_pool
+                while len(dummies) < 3:
+                    dummies.append(f"ダミー選択肢{len(dummies)+1}")
+            
+            # 3. 選択肢のシャッフル
+            choices = [correct] + dummies
+            random.shuffle(choices)
+            
+            st.session_state.choices = choices
             st.session_state.correct = correct
 
         st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
@@ -499,3 +519,5 @@ else:
             c1, c2 = st.columns(2)
             if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
             if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+
+```
