@@ -1,8 +1,3 @@
-`dummy_pool` カラムを使わず、**「現在選択されている単語データの正解リスト（他の単語の意味）」から動的にダミー選択肢（3つ）を生成する**ように改善したコード全文です。
-
-他の科目、音声読み上げ機能（`play_voice`）、および他のUI要素には一切干渉しないよう慎重に修正を加えています。
-
-```python
 import streamlit as st
 import pandas as pd
 import random
