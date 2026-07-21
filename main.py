@@ -10,7 +10,7 @@ import requests
 # 1. 基本設定
 # ==================================================
 st.set_page_config(
-    page_title="文系科目は、ゆずれない",
+    page_title="Pass Pack -Type A-",
     page_icon="🚀",
     layout="centered",
     initial_sidebar_state="expanded"
