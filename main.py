@@ -37,13 +37,12 @@ st.markdown("""
 .navy-card   { border-left: 8px solid #1f3a60; } /* 政経用 */
 .rinri-card  { border-left: 8px solid #673ab7; } /* 倫理用 */
 
-/* 解説カード */
+/* 解説・カード裏面 */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
 
 /* ボタンデザイン */
 .stButton button { width: 100%; border-radius: 16px; font-size: 1.1rem; font-weight: 800; min-height: 55px; transition: 0.2s; }
 .tango-btn button { background-color: #fff4e6 !important; color: #ff9800 !important; border: 2px solid #ff9800 !important; }
-.nihonshi-btn button { background-color: #fce4ec !important; color: #e91e63 !important; border: 2px solid #e91e63 !important; }
 
 /* 正誤問題用の特殊ボタン（⭕️/❌） */
 button:has(div:contains("⭕️")) { background-color: #e7f3ff !important; color: #1877f2 !important; border: 2px solid #1877f2 !important; }
@@ -90,7 +89,7 @@ def play_voice(text, label="音声を聴く"):
     except: pass
 
 def reset_quiz_engine():
-    keys = ["df", "idx", "answered", "choices", "correct", "selected", "user_choice", "quiz_filter", "quiz_subject", "study_mode"]
+    keys = ["df", "idx", "answered", "user_choice", "quiz_filter", "quiz_subject", "study_mode"]
     for k in keys:
         if k in st.session_state: del st.session_state[k]
 
@@ -262,18 +261,16 @@ if subject == "暗唱例文集":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 2. システム英単語 ---
+# --- 2. システム英単語（高速単語カード専用UI） ---
 elif subject == "システム英単語":
-    st.info("💡 単語帳本体が学習の軸。アプリと併用して力をつけよう")
-
-    mode = st.radio("学習モード", ["🎴 単語カード（高速）", "📝 4択テスト"], horizontal=True)
+    st.info("💡 単語帳が使えるときは単語帳本体で。関連知識までインプットしよう。")
 
     word = str(row["question"])
     sentence = str(row["sentence"])
     translation = str(row["translation"])
     all_answers = str(row["all_answers"])
 
-    # フレーズ内のターゲット英単語を「オレンジ色の太字」で表示（空欄化なし）
+    # フレーズ内のターゲット英単語を「オレンジ色の太字」で表示
     highlighted_sent = re.sub(
         re.escape(word), 
         f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", 
@@ -281,110 +278,44 @@ elif subject == "システム英単語":
         flags=re.IGNORECASE
     )
 
-    # --- モードA: 単語カード ---
-    if mode == "🎴 単語カード（高速）":
-        # 表面：英単語は黒字、フレーズ内の単語はオレンジ色の太字
+    # 表面：英単語は黒字、フレーズ内の単語はオレンジ色の太字（No.表示のみ維持）
+    st.markdown(f'''
+        <div class="card orange-card" style="text-align: center; padding: 25px 20px;">
+            <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
+            <div style="font-size: 2.5rem; font-weight: 900; color: #111111; letter-spacing: 1px; margin-bottom: 15px;">{word}</div>
+            <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 15px 0;">
+            <div style="font-size: 0.85rem; color: #666; margin-bottom: 4px;">【ミニフレーズ】</div>
+            <div style="font-size: 1.15rem; color: #333; font-weight: 500;">{highlighted_sent}</div>
+        </div>
+    ''', unsafe_allow_html=True)
+
+    if not st.session_state.answered:
+        if st.button(" 意味を確認"):
+            st.session_state.answered = True
+            st.rerun()
+    else:
+        # 裏面：意味 ＆ フレーズ訳
         st.markdown(f'''
-            <div class="card orange-card" style="text-align: center; padding: 25px 20px;">
-                <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
-                <div style="font-size: 2.5rem; font-weight: 900; color: #111111; letter-spacing: 1px; margin-bottom: 15px;">{word}</div>
-                <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 15px 0;">
-                <div style="font-size: 0.85rem; color: #666; margin-bottom: 4px;">【ミニフレーズ】</div>
-                <div style="font-size: 1.15rem; color: #333; font-weight: 500;">{highlighted_sent}</div>
+            <div class="exp-card" style="text-align: center;">
+                <div style="font-size: 0.85rem; color: #666;">【意味】</div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #d9480f; margin-bottom: 12px;">{all_answers}</div>
+                <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
+                <div style="font-size: 0.85rem; color: #666;">【フレーズ訳】</div>
+                <div style="font-size: 1.05rem; color: #222;">{translation}</div>
             </div>
         ''', unsafe_allow_html=True)
-
-        if not st.session_state.answered:
-            if st.button("👁️ 意味・訳を確認する"):
-                st.session_state.answered = True
-                st.rerun()
-        else:
-            # 裏面：意味 ＆ フレーズ訳
-            st.markdown(f'''
-                <div class="exp-card" style="text-align: center;">
-                    <div style="font-size: 0.85rem; color: #666;">【意味】</div>
-                    <div style="font-size: 1.5rem; font-weight: bold; color: #d9480f; margin-bottom: 12px;">{all_answers}</div>
-                    <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
-                    <div style="font-size: 0.85rem; color: #666;">【フレーズ訳】</div>
-                    <div style="font-size: 1.05rem; color: #222;">{translation}</div>
-                </div>
-            ''', unsafe_allow_html=True)
-            
-            play_voice(word, "単語の発音")
-
-            st.write("---")
-            c1, c2 = st.columns(2)
-            if c1.button("✅ 次へ"):
-                st.session_state.idx += 1
-                st.session_state.answered = False
-                st.rerun()
-            if c2.button("🔄 もう一度"):
-                st.session_state.answered = False
-                st.rerun()
-
-    # --- モードB: 4択テスト ---
-    else:
-        # 4択テストでもミニフレーズ内の単語をオレンジ色の太字で表示
-        st.markdown(f'<div class="card orange-card"><b>【ミニフレーズ】</b><br>{highlighted_sent}</div>', unsafe_allow_html=True)
         
-        # 選択肢の生成ロジック（確実に正解を含む）
-        if "choices" not in st.session_state:
-            # 第一の意味を正解とする
-            ans_list = [x.strip() for x in re.split(r'[,、;]', all_answers) if x.strip()]
-            correct = ans_list[0] if ans_list else all_answers
-            
-            # ダミー選択肢のプール取得（正解データと完全一致しない全回答列から取得）
-            pool_source = active_df if len(active_df) >= 4 else raw_df
-            candidate_rows = pool_source[pool_source["all_answers"] != all_answers]["all_answers"].dropna().tolist()
-            
-            dummy_candidates = []
-            for item in candidate_rows:
-                first_meaning = [x.strip() for x in re.split(r'[,、;]', str(item)) if x.strip()][0]
-                if first_meaning != correct and first_meaning not in dummy_candidates:
-                    dummy_candidates.append(first_meaning)
-            
-            # 3個のダミーを抽出
-            if len(dummy_candidates) >= 3:
-                dummies = random.sample(dummy_candidates, 3)
-            else:
-                dummies = dummy_candidates
-                while len(dummies) < 3:
-                    dummies.append(f"ダミー選択肢{len(dummies)+1}")
-            
-            # 正解1つ + ダミー3個をセットしてシャッフル
-            choices = [correct] + dummies
-            random.shuffle(choices)
-            
-            st.session_state.choices = choices
-            st.session_state.correct = correct
+        play_voice(word, "単語の発音")
 
-        st.markdown('<div class="tango-btn">', unsafe_allow_html=True)
-        cols = st.columns(2)
-        for i, val in enumerate(st.session_state.choices):
-            if cols[i%2].button(val, key=f"t_{i}", disabled=st.session_state.answered):
-                st.session_state.selected, st.session_state.answered = val, True
-                st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        if st.session_state.answered:
-            if st.session_state.selected == st.session_state.correct:
-                st.success("正解！")
-            else:
-                st.error(f"不正解... 正解：{st.session_state.correct}")
-            
-            st.info(f"全意味：{all_answers}\n訳：{translation}")
-            play_voice(word, "音声を聴く")
-            st.write("---")
-            c1, c2 = st.columns(2)
-            if c1.button("✅ 次へ"):
-                if "choices" in st.session_state:
-                    del st.session_state.choices
-                st.session_state.idx += 1
-                st.session_state.answered = False
-                st.rerun()
-            if c2.button("🔄 もう一度"):
-                st.session_state.answered = False
-                st.rerun()
+        st.write("---")
+        c1, c2 = st.columns(2)
+        if c1.button("✅ 次へ"):
+            st.session_state.idx += 1
+            st.session_state.answered = False
+            st.rerun()
+        if c2.button("🔄 もう一度"):
+            st.session_state.answered = False
+            st.rerun()
 
 # --- 3. 頻出！英文法入試問題 ---
 elif subject == "頻出！英文法入試問題":
@@ -499,7 +430,7 @@ else:
     st.markdown(f'<div class="card {card_c}"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
     
     if subject == "生物一問一答":
-        st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。共通テストは用語を直接問われるわけではないので、「考える」訓練を忘れずに。")
+        st.warning("⚠️理系用のものをそのまま移植しています。必要なところだけ使ってください。")
         if not st.session_state.answered:
             if st.button("答えを確認する"): st.session_state.answered = True; st.rerun()
         else:
