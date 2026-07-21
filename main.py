@@ -100,7 +100,7 @@ def clean_text(t):
 # ==================================================
 # 3. メイン画面
 # ==================================================
-st.markdown('<div class="main-title">🚀 文系科目は、ゆずれない</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🚀 Pass Pack -Type A-</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">英語・地歴・公民・理科基礎 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
