@@ -36,6 +36,7 @@ st.markdown("""
 .earth-card  { border-left: 8px solid #8b5a2b; } /* 地学基礎用 */
 .navy-card   { border-left: 8px solid #1f3a60; } /* 政経用 */
 .rinri-card  { border-left: 8px solid #673ab7; } /* 倫理用 */
+.red-card    { border-left: 8px solid #d32f2f; } /* 現代文漢字用 */
 
 /* 解説・カード裏面 */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
@@ -100,10 +101,11 @@ def clean_text(t):
 # 3. メイン画面
 # ==================================================
 st.markdown('<div class="main-title">🚀 Pass Pack -Type A-</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">英語・地歴・公民・理科基礎 統合学習ツール</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">英語・国語・地歴・公民・理科基礎 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
     "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
+    "共通テスト現代文（漢字）",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
     "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", 
     "地学基礎 共通テスト対策", "生物基礎 共通テスト対策", "政経 共通テスト対策", "倫理 共通テスト対策"
@@ -120,6 +122,7 @@ def load_csv(name):
     files = {
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "頻出！英文法入試問題":"grammar.csv",
+        "共通テスト現代文（漢字）":"kokugo_kanji.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
         "日本史史料問題攻略":"shiryo_check.csv", "世界史一問一答":"whcheck.csv",
         "世界史正誤問題攻略":"wh_seigo.csv",
@@ -270,7 +273,6 @@ elif subject == "システム英単語":
     translation = str(row["translation"])
     all_answers = str(row["all_answers"])
 
-    # フレーズ内のターゲット英単語を「オレンジ色の太字」で表示
     highlighted_sent = re.sub(
         re.escape(word), 
         f"<span style='color:#ff9800; font-weight:bold;'>{word}</span>", 
@@ -278,7 +280,6 @@ elif subject == "システム英単語":
         flags=re.IGNORECASE
     )
 
-    # 表面：英単語は黒字、フレーズ内の単語はオレンジ色の太字（No.表示のみ維持）
     st.markdown(f'''
         <div class="card orange-card" style="text-align: center; padding: 25px 20px;">
             <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">No. {row.get("word_no", "")}</div>
@@ -294,7 +295,6 @@ elif subject == "システム英単語":
             st.session_state.answered = True
             st.rerun()
     else:
-        # 裏面：意味 ＆ フレーズ訳
         st.markdown(f'''
             <div class="exp-card" style="text-align: center;">
                 <div style="font-size: 0.85rem; color: #666;">【意味】</div>
@@ -344,7 +344,7 @@ elif subject == "頻出！英文法入試問題":
         st.success(f"【正解】\n{row['answer']}")
         st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
         
-        voice_sentence = str(row["question"]).replace("(      )", str(row["answer"]))
+        voice_sentence = str(row["question"]).replace("(     )", str(row["answer"]))
         play_voice(voice_sentence, "英文を聴く")
         
         st.write("---")
@@ -357,7 +357,47 @@ elif subject == "頻出！英文法入試問題":
             st.session_state.answered = False
             st.rerun()
 
-# --- 4. 正誤問題 (日本史・世界史・地学基礎・生物基礎・政経・倫理) ---
+# --- 4. 共通テスト現代文（漢字） ---
+elif subject == "共通テスト現代文（漢字）":
+    st.info("💡 カタカナ部分と同じ漢字を含む選択肢を選んでください。")
+
+    st.markdown(f'<div class="card red-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+
+    # 選択肢の分割 (`/`区切り)
+    raw_options = str(row.get("option", "")).split("/")
+    options = [o.strip() for o in raw_options if o.strip()]
+
+    # 選択肢をボタンで設置
+    for opt in options:
+        if st.button(opt, disabled=st.session_state.answered, key=f"kanji_opt_{opt}"):
+            st.session_state.user_choice = opt
+            st.session_state.answered = True
+            st.rerun()
+
+    if st.session_state.answered:
+        user_ans = st.session_state.get("user_choice", "")
+        correct_ans = str(row.get("answer", "")).strip()
+
+        # 正誤判定 (正解漢字が選択肢に含まれているか、または完全一致)
+        if correct_ans in user_ans:
+            st.success("正解！")
+        else:
+            st.error(f"不正解... 正解は 【 {correct_ans} 】 を含む選択肢です。")
+
+        if pd.notna(row.get("explanation")):
+            st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
+
+        st.write("---")
+        c1, c2 = st.columns(2)
+        if c1.button("✅ 次へ"):
+            st.session_state.idx += 1
+            st.session_state.answered = False
+            st.rerun()
+        if c2.button("🔄 もう一度"):
+            st.session_state.answered = False
+            st.rerun()
+
+# --- 5. 正誤問題 (日本史・世界史・地学基礎・生物基礎・政経・倫理) ---
 elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "地学基礎 共通テスト対策", "生物基礎 共通テスト対策", "政経 共通テスト対策", "倫理 共通テスト対策"]:
     if subject == "日本史正誤問題攻略":
         st.warning("⚠️ 山川『日本史探究』（教科書）の文章を正誤問題にしてあります。共テ&私大に効果抜群。")
@@ -399,7 +439,7 @@ elif subject in ["日本史正誤問題攻略", "世界史正誤問題攻略", "
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 5. 日本史史料問題 ---
+# --- 6. 日本史史料問題 ---
 elif subject == "日本史史料問題攻略":
     st.warning("⚠️ 「史料集成」から重要史料を抜粋して空欄補充にしています。")
     st.markdown(f'<div class="card violet-card"><b>【史料文】</b><br>{row["question"]}</div>', unsafe_allow_html=True)
@@ -421,7 +461,7 @@ elif subject == "日本史史料問題攻略":
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
 
-# --- 6. その他（一問一答・生物） ---
+# --- 7. その他（一問一答・生物） ---
 else:
     if subject == "生物一問一答": card_c = "green-card"
     elif "日本史" in subject: card_c = "pink-card"
