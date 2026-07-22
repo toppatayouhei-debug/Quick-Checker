@@ -428,30 +428,36 @@ elif subject == "共通テスト現代文（漢字）":
     st.warning("💡 カタカナ部分と同じ漢字を含む選択肢を選んでください。")
     st.markdown(f'<div class="card red-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
 
-    # option a, option b, option c, option d 列から選択肢を取得
-    options = []
-    for opt_key in ["option a", "option b", "option c", "option d"]:
-        if opt_key in row and pd.notna(row[opt_key]) and str(row[opt_key]).strip():
-            options.append(str(row[opt_key]).strip())
+    # 選択肢の辞書を構築（例: {"A": "1. 漢字", ...}）
+    opt_dict = {}
+    for letter in ["a", "b", "c", "d"]:
+        col_key = f"option {letter}"
+        if col_key in row and pd.notna(row[col_key]) and str(row[col_key]).strip():
+            opt_dict[letter.upper()] = str(row[col_key]).strip()
 
-    if not options:
-        st.warning("⚠️ 選択肢データが見つかりませんでした。CSVの列名（option A, option B...）をご確認ください。")
+    # 正解テキストの取得（"A"ならoption Aの内容、直接文字列が入っている場合はそのまま）
+    raw_ans = str(row.get("answer", "")).strip()
+    ans_key = raw_ans.upper()
+    
+    if ans_key in opt_dict:
+        correct_text = opt_dict[ans_key]
+    else:
+        correct_text = raw_ans
 
-    # 選択肢をボタン表示
-    for opt in options:
-        if st.button(opt, disabled=st.session_state.answered, key=f"kanji_opt_{idx}_{opt}"):
-            st.session_state.user_choice = opt
+    # ボタン生成
+    for key, opt_val in opt_dict.items():
+        if st.button(opt_val, disabled=st.session_state.answered, key=f"kanji_opt_{idx}_{key}"):
+            st.session_state.user_choice = opt_val
             st.session_state.answered = True
             st.rerun()
 
     if st.session_state.answered:
         user_ans = st.session_state.get("user_choice", "")
-        correct_ans = str(row.get("answer", "")).strip()
 
-        if correct_ans and (correct_ans in user_ans):
+        if user_ans == correct_text:
             st.success("正解！")
         else:
-            st.error(f"不正解... 正解は【 {correct_ans} 】です。")
+            st.error(f"不正解... 正解は【 {correct_text} 】です。")
 
         if pd.notna(row.get("explanation")):
             st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
