@@ -36,6 +36,7 @@ st.markdown("""
 .earth-card  { border-left: 8px solid #8b5a2b; } /* 地学基礎用 */
 .navy-card   { border-left: 8px solid #1f3a60; } /* 政経用 */
 .rinri-card  { border-left: 8px solid #673ab7; } /* 倫理用 */
+.red-card    { border-left: 8px solid #ef5350; } /* 現代文漢字用 */
 
 /* 解説・カード裏面 */
 .exp-card { background: #fff9db; padding: 18px; border-radius: 14px; border: 1px dashed #fab005; margin-top: 10px; font-size: 0.95rem; color: #333; }
@@ -103,7 +104,7 @@ st.markdown('<div class="main-title">🚀 Pass Pack -Type A-</div>', unsafe_allo
 st.markdown('<div class="sub-title">英語・地歴・公民・理科基礎 統合学習ツール</div>', unsafe_allow_html=True)
 
 subject = st.selectbox("学習する科目を選択", [
-    "選択してください", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
+    "選択してください", "共通テスト現代文（漢字）", "システム英単語", "暗唱例文集", "頻出！英文法入試問題",
     "日本史一問一答", "日本史正誤問題攻略", "日本史史料問題攻略", 
     "世界史一問一答", "世界史正誤問題攻略", "生物一問一答", 
     "地学基礎 共通テスト対策", "生物基礎 共通テスト対策", "政経 共通テスト対策", "倫理 共通テスト対策"
@@ -118,6 +119,7 @@ if subject == "選択してください":
 # ==================================================
 def load_csv(name):
     files = {
+        "共通テスト現代文（漢字）":"kokugo_kanji.csv",
         "システム英単語":"final_tango_list.csv", "暗唱例文集":"english_sent.csv",
         "頻出！英文法入試問題":"grammar.csv",
         "日本史一問一答":"jhcheck.csv", "日本史正誤問題攻略":"seigo_check.csv", 
@@ -420,6 +422,49 @@ elif subject == "日本史史料問題攻略":
         c1, c2 = st.columns(2)
         if c1.button("✅ 次へ"): st.session_state.idx += 1; st.session_state.answered = False; st.rerun()
         if c2.button("🔄 もう一度"): st.session_state.answered = False; st.rerun()
+
+# --- 7. 共通テスト現代文（漢字） ---
+elif subject == "共通テスト現代文（漢字）":
+    st.warning("💡 カタカナ部分と同じ漢字を含む選択肢を選んでください。")
+    st.markdown(f'<div class="card red-card"><b>{row["question"]}</b></div>', unsafe_allow_html=True)
+
+    # option a, option b, option c, option d 列から選択肢を取得
+    options = []
+    for opt_key in ["option a", "option b", "option c", "option d"]:
+        if opt_key in row and pd.notna(row[opt_key]) and str(row[opt_key]).strip():
+            options.append(str(row[opt_key]).strip())
+
+    if not options:
+        st.warning("⚠️ 選択肢データが見つかりませんでした。CSVの列名（option A, option B...）をご確認ください。")
+
+    # 選択肢をボタン表示
+    for opt in options:
+        if st.button(opt, disabled=st.session_state.answered, key=f"kanji_opt_{idx}_{opt}"):
+            st.session_state.user_choice = opt
+            st.session_state.answered = True
+            st.rerun()
+
+    if st.session_state.answered:
+        user_ans = st.session_state.get("user_choice", "")
+        correct_ans = str(row.get("answer", "")).strip()
+
+        if correct_ans and (correct_ans in user_ans):
+            st.success("正解！")
+        else:
+            st.error(f"不正解... 正解は【 {correct_ans} 】です。")
+
+        if pd.notna(row.get("explanation")):
+            st.markdown(f'<div class="exp-card">【解説】<br>{row["explanation"]}</div>', unsafe_allow_html=True)
+
+        st.write("---")
+        c1, c2 = st.columns(2)
+        if c1.button("✅ 次へ"):
+            st.session_state.idx += 1
+            st.session_state.answered = False
+            st.rerun()
+        if c2.button("🔄 もう一度"):
+            st.session_state.answered = False
+            st.rerun()
 
 # --- 6. その他（一問一答・生物） ---
 else:
